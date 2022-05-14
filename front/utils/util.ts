@@ -58,7 +58,7 @@ export type ValueTypeOf<T> = T[keyof T];
  * const ALERT_TYPE = keyEnumObject(ALERT_TYPE_MAP)
  *
  * // このとき、以下のように出力される
- * // ALERT_TYPE = {                                                                                                                                   23:50:18
+ * // ALERT_TYPE = {
  * //   ERROR: 'error',
  * //   WARNING: 'warning'
  * // }
