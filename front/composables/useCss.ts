@@ -1,4 +1,4 @@
-import { computed, watch, onMounted, onUnmounted } from "vue";
+import { ref, unref, computed, watch, onMounted, onUnmounted } from "vue";
 
 /**
  * ## CSSタグ埋め込み
@@ -44,6 +44,7 @@ export default (cssFunc: () => string) => {
 
   onMounted(() => {
     styleElement.value = document.createElement("style");
+    styleElement.value.innerHTML = unref(style);
     document.head.append(styleElement.value);
   });
 

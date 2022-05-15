@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import useId from "@/composables/useId";
 import useCss from "@/composables/useCss";
+import useWebFont from "@/composables/useWebFont";
+import { bemx } from "@/utils/util";
 import { LOGO_FONT_TYPE, LogoFontType } from "./logoComposable";
 
 interface LogoPropType {
@@ -11,10 +13,10 @@ const props = withDefaults(defineProps<LogoPropType>(), {
   font: LOGO_FONT_TYPE.ADVENT__PRO,
 });
 
+useWebFont(props.font);
+
 const id = useId();
-
-const className = `DbeLogo--${id}`;
-
+const className = bemx("DbeLogo", id);
 useCss(
   () =>
     `.${className} {
@@ -24,7 +26,7 @@ useCss(
 </script>
 
 <template>
-  <div class="DbeLogo">
+  <div :class="className">
     <span class="DbeLogo__Designer">DESIGNER</span>
     <span class="DbeLogo__Star1">*</span>
     <span class="DbeLogo__Blue">BLUE</span>

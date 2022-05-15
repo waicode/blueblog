@@ -31,6 +31,26 @@ export const upperSnakeCase = <T extends string>(
   upperCase(snakeCase(value)) as ScreamingSnakeCase<T>;
 
 /**
+ * 入力テキストを`__`区切りの大文字スネークケースに変換。
+ *
+ * キャメルケース・パスカルケース・スネークケースに対応。
+ *
+ * @param value 変換したいテキスト
+ * @returns 大文字スネークケースに変換された文字列
+ *
+ * @example
+ * ```
+ * upperSnakeDoubleCase('myTestString' === 'MY__TEST__STRING') // true
+ * upperSnakeDoubleCase('MyTestString' === 'MY__TEST__STRING') // true
+ * upperSnakeDoubleCase('My Test String' === 'MY__TEST__STRING') // true
+ * upperSnakeDoubleCase('my_test_string' === 'MY__TEST__STRING') // true
+ *
+ * ```
+ */
+export const upperSnakeDoubleCase = <T extends string>(value: T) =>
+  upperCase(snakeCase(value, { delimiter: "__" }));
+
+/**
  * 指定オブジェクトのKeyの型。
  *
  * オブジェクトの中のvalueに、さらにオブジェクトが内包されている場合は使えないので注意。
@@ -85,13 +105,22 @@ export const keyEnumObject = <T extends Record<string, unknown>>(
  * //   ERROR: 'error',
  * //   WARNING: 'warning'
  * // }
+ *
+ * // 半角スペースを含む場合は`ScreamingSnakeCase`の仕様に合わせて以下のように出力される
+ * // LOGO_FONT_TYPE = {
+ * //   ADVENT__PRO: '"Advent Pro"',
+ * // }
  *```
  */
 export const arrayToEnumObject = <T extends string>(
   args: Readonly<T[]>
 ): UnionToEnumObject<T> =>
   args.reduce(
-    (draft, value) => ({ ...draft, [upperCase(snakeCase(value))]: value }),
+    (draft, value) => ({
+      ...draft,
+      [value.match(/ /g) ? upperSnakeDoubleCase(value) : upperSnakeCase(value)]:
+        value,
+    }),
     {}
   ) as unknown as UnionToEnumObject<T>;
 
@@ -248,3 +277,16 @@ export const isNumerical = (str: string) => /^([1-9]\d*|0)$/.test(str);
  */
 export const isYyyyMm = (yyyy: string, mm: string) =>
   /^[0-9]{4}$/.test(yyyy) && /^(0[1-9]|1[0-2])$/.test(mm);
+
+/**
+ * GoogleFontのクエリ文字列用フォーマット。
+ * クエリ文字列に指定するために` `（半角スペース）を`+`に置換する。
+ * 連続する半角スペースは1つにまとめたうえで置換する。
+ *
+ * @param fontNameWithSpace 半角スペース区切りのWebフォント文字列
+ * @returns プラス区切りのWebフォント文字列
+ */
+export const formatGoogleFontQuery = (fontNameWithSpace: string) =>
+  fontNameWithSpace
+    ? fontNameWithSpace.replace(/ +/g, " ").replace(" ", "+")
+    : "";

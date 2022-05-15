@@ -17,27 +17,23 @@ export default {
 const Template = (args) => ({
   components: { DbeLogo },
   setup() {
-    onMounted(() => {
-      useCss(
-        () =>
-          `.logo {
+    useCss(
+      () => `
+        #root {
             background: #4B73FF;
-          }`
-      );
-    });
+        }
+      `
+    );
     return {
       args,
     };
   },
   template: `
-    <div class="logo">
-      <DbeLogo v-bind="args" />
-    </div>
+    <DbeLogo :font="font" />
   `,
 });
 
 export const Primary = Template.bind({});
 Primary.args = {
-  outlined: false,
-  type: "button",
+  font: LOGO_FONT_TYPE.ADVENT__PRO,
 };
