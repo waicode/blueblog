@@ -22,7 +22,8 @@
     "clsx",
     "Nuxt",
     "Vibur",
-    "vite"
+    "vite",
+    "wght"
   ],
   "ignorePaths": [
     ".vscode",

@@ -2,6 +2,8 @@ import { defineNuxtConfig } from "nuxt";
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  // サーバサイドレンダリングは行わない
+  ssr: false,
   // 自動インポートは行わない
   autoImports: {
     dirs: [],

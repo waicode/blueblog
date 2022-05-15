@@ -44,6 +44,7 @@ export default (cssFunc: () => string) => {
 
   onMounted(() => {
     styleElement.value = document.createElement("style");
+    styleElement.value.type = "text/css";
     styleElement.value.innerHTML = unref(style);
     document.head.append(styleElement.value);
   });

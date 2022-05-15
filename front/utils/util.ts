@@ -70,15 +70,15 @@ export type ValueTypeOf<T> = T[keyof T];
  * @returns オブジェクトのキーから生成された定数オブジェクト
  * @example
  * ```
- * const ALERT_TYPE_MAP = {
+ * const ALERT_INFO_MAP = {
  *   error: { icon: mdiAlertCircle },
  *   warning: { icon: mdiAlert },
  * } as const
  *
- * const ALERT_TYPE = keyEnumObject(ALERT_TYPE_MAP)
+ * const ALERT_TYPE_MAP = keyEnumObject(ALERT_INFO_MAP)
  *
  * // このとき、以下のように出力される
- * // ALERT_TYPE = {
+ * // ALERT_TYPE_MAP = {
  * //   ERROR: 'error',
  * //   WARNING: 'warning'
  * // }
@@ -98,16 +98,16 @@ export const keyEnumObject = <T extends Record<string, unknown>>(
  *
  * @example
  * ```
- * const ALERT_TYPE = arrayToEnumObject(['error', 'warning'])
+ * const ALERT_TYPE_MAP = arrayToEnumObject(['error', 'warning'])
  *
  * // このとき、以下のように出力される
- * // ALERT_TYPE = {
+ * // ALERT_TYPE_MAP = {
  * //   ERROR: 'error',
  * //   WARNING: 'warning'
  * // }
  *
  * // 半角スペースを含む場合は`ScreamingSnakeCase`の仕様に合わせて以下のように出力される
- * // LOGO_FONT_TYPE = {
+ * // LOGO_FONT_TYPE_MAP = {
  * //   ADVENT__PRO: '"Advent Pro"',
  * // }
  *```

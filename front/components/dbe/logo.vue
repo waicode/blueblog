@@ -3,24 +3,32 @@ import useId from "@/composables/useId";
 import useCss from "@/composables/useCss";
 import useWebFont from "@/composables/useWebFont";
 import { bemx } from "@/utils/util";
-import { LOGO_FONT_TYPE, LogoFontType } from "./logoComposable";
+import {
+  LOGO_FONT_TYPE_MAP,
+  LogoFontType,
+  LOGO_FONT_WEIGHT_MAP,
+  LogoFontWeightValueType,
+} from "./logoComposable";
 
 interface LogoPropType {
   font?: LogoFontType;
+  weight?: LogoFontWeightValueType;
 }
 
 const props = withDefaults(defineProps<LogoPropType>(), {
-  font: LOGO_FONT_TYPE.ADVENT__PRO,
+  font: LOGO_FONT_TYPE_MAP.ADVENT__PRO,
+  weight: LOGO_FONT_WEIGHT_MAP.weight600,
 });
 
-useWebFont(props.font);
+useWebFont(props.font, props.weight);
 
 const id = useId();
 const className = bemx("DbeLogo", id);
 useCss(
   () =>
-    `.${className} {
-      font-family: ${props.font} !important;
+    `.DbeLogo--${id} {
+      font-family: "${props.font}" !important;
+      font-weight: ${props.weight} !important;
     }`
 );
 </script>

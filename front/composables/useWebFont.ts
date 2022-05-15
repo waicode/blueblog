@@ -25,23 +25,32 @@ import { formatGoogleFontQuery } from "@/utils/util";
  * // <link href='http://fonts.googleapis.com/css?family=Advent+Pro' rel='stylesheet' type='text/css'>
  * ```
  */
-export default (webFontName: Ref<string> | string) => {
-  const href = ref();
+export default (
+  webFontName: Ref<string> | string,
+  weight?: Ref<string> | string
+) => {
   const linkElement = ref();
+  const wght = ref("");
+  const hrefText = computed(
+    () =>
+      `http://fonts.googleapis.com/css?family=${formatGoogleFontQuery(
+        unref(webFontName)
+      )}${unref(wght)}`
+  );
 
   onMounted(() => {
-    href.value = `http://fonts.googleapis.com/css?family=${formatGoogleFontQuery(
-      unref(webFontName)
-    )}`;
+    if (weight && unref(weight)) {
+      wght.value = `:wght@${unref(weight)}`;
+    }
     linkElement.value = document.createElement("link");
-    linkElement.value.href = href.value;
+    linkElement.value.href = unref(hrefText);
     linkElement.value.rel = "stylesheet";
     linkElement.value.type = "text/css";
     document.head.append(linkElement.value);
   });
 
   watch(
-    [href],
+    [hrefText],
     ([text]) => {
       if (linkElement.value) {
         linkElement.value.href = text;
