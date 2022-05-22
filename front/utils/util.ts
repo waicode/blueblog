@@ -1,6 +1,7 @@
 import { ScreamingSnakeCase, UnionToIntersection } from "type-fest";
 import { upperCase } from "upper-case";
 import { snakeCase } from "change-case";
+import { format } from "date-fns";
 
 type UnionToObjectUnion<X extends string> = X extends string
   ? { [key in ScreamingSnakeCase<X>]: X }
@@ -290,3 +291,17 @@ export const formatGoogleFontQuery = (fontNameWithSpace: string) =>
   fontNameWithSpace
     ? fontNameWithSpace.replace(/ +/g, " ").replace(" ", "+")
     : "";
+
+/**
+ * ISO8601形式の日時文字列をyyyy-MM-dd形式の日付文字列に変換する。
+ *
+ * `date-fns`の`format`で使えるパターン文字列は以下を参照
+ *
+ * https://date-fns.org/v2.28.0/docs/format
+ *
+ * @param datetimeStr ISO8601形式の日時文字列（例：2022-05-22T13:50:40+09:00）
+ * @returns yyyy-MM-dd形式の日付文字列（例：2022-05-22）
+ */
+export const formatDate = (datetimeStr: string) => {
+  return format(new Date(Date.parse(datetimeStr)), "yyyy-MM-dd");
+};
