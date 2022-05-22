@@ -3,8 +3,12 @@ import { LOGO_FONT_TYPE_MAP, LOGO_FONT_WEIGHT_MAP } from "./logoComposable";
 import useCss from "@/composables/useCss";
 
 export default {
-  title: "@component/dbe/logo",
+  title: "@component/dbe/Logo",
   component: DbeLogo,
+  args: {
+    font: LOGO_FONT_TYPE_MAP.ADVENT__PRO,
+    weight: LOGO_FONT_WEIGHT_MAP.weight600,
+  },
   argTypes: {
     font: {
       control: { type: "inline-radio" },
@@ -17,9 +21,8 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
+const Template = (args) => ({
   components: { DbeLogo },
-  props: Object.keys(argTypes),
   setup() {
     useCss(
       () => `
@@ -28,7 +31,7 @@ const Template = (args, { argTypes }) => ({
         }
       `
     );
-    return args;
+    return { args };
   },
   template: `
     <DbeLogo v-bind="args" />
@@ -36,7 +39,4 @@ const Template = (args, { argTypes }) => ({
 });
 
 export const Primary = Template.bind({});
-Primary.args = {
-  font: LOGO_FONT_TYPE_MAP.ADVENT__PRO,
-  weight: LOGO_FONT_WEIGHT_MAP.weight600,
-};
+Primary.args = {};
