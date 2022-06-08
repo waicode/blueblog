@@ -2,19 +2,11 @@
   "version": "0.2",
   "language": "en",
   "allowCompoundWords": true,
-  "enableFiletypes": [
-    "vue"
-  ],
+  "enableFiletypes": ["vue"],
   "languageSettings": [
     {
       "languageId": "vue",
-      "dictionaries": [
-        "html",
-        "fonts",
-        "typescript",
-        "javascript",
-        "css"
-      ]
+      "dictionaries": ["html", "fonts", "typescript", "javascript", "css"]
     }
   ],
   "words": [
@@ -22,7 +14,9 @@
     "clsx",
     "iconify",
     "Nuxt",
+    "nuxtjs",
     "tabler",
+    "unplugin",
     "Vibur",
     "vite",
     "wght"

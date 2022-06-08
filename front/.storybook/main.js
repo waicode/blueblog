@@ -1,4 +1,6 @@
 const { mergeConfig } = require("vite");
+const Components = require("unplugin-vue-components/vite");
+const AutoImport = require("unplugin-auto-import/vite");
 const path = require("path");
 
 module.exports = {
@@ -12,6 +14,22 @@ module.exports = {
     builder: "@storybook/builder-vite",
   },
   viteFinal: async (config) => {
+    config.plugins = config.plugins ?? [];
+    // Nuxt3のVue3自動インポートをStorybookで再現
+    config.plugins.push(
+      AutoImport({
+        imports: ["vue"],
+        dts: ".storybook/auto-imports.d.ts",
+      })
+    );
+    // Nuxt3のコンポーネント自動インポートをStorybookで再現
+    config.plugins.push(
+      Components({
+        dirs: ["components"],
+        directoryAsNamespace: true,
+        dts: ".storybook/components.d.ts",
+      })
+    );
     return mergeConfig(config, {
       css: {
         preprocessorOptions: {

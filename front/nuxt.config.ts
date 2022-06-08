@@ -4,15 +4,11 @@ import { defineNuxtConfig } from "nuxt";
 export default defineNuxtConfig({
   // サーバサイドレンダリングは行わない
   ssr: false,
-  // 自動インポートは行わない
-  autoImports: {
-    dirs: [],
-    global: false,
-  },
   vite: {
     css: {
       preprocessorOptions: {
         scss: {
+          // Nuxt3ではまだ`@nuxtjs/style-resources`が使えないので個別に読み込む
           additionalData: '@import "@/assets/styles/global.scss";',
         },
       },
