@@ -34,7 +34,12 @@ module.exports = {
       css: {
         preprocessorOptions: {
           scss: {
-            additionalData: '@import "../assets/styles/global.scss";',
+            additionalData: `
+              @import "../node_modules/bulma/sass/utilities/functions";
+              @import "../node_modules/bulma/sass/utilities/initial-variables";
+              @import "@/assets/styles/global.scss";
+              @import "../node_modules/bulma/bulma.sass";
+            `,
           },
         },
       },

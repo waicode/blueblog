@@ -4,12 +4,18 @@ import { defineNuxtConfig } from "nuxt";
 export default defineNuxtConfig({
   // サーバサイドレンダリングは行わない
   ssr: false,
+  css: ["bulma/bulma.sass"],
   vite: {
     css: {
       preprocessorOptions: {
         scss: {
           // Nuxt3ではまだ`@nuxtjs/style-resources`が使えないので個別に読み込む
-          additionalData: '@import "@/assets/styles/global.scss";',
+          additionalData: `
+            @import "../node_modules/bulma/sass/utilities/functions";
+            @import "../node_modules/bulma/sass/utilities/initial-variables";
+            @import "@/assets/styles/global.scss";
+            @import "../node_modules/bulma/bulma.sass";
+          `,
         },
       },
     },
