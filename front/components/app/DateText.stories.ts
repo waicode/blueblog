@@ -1,9 +1,9 @@
-import DateText from "./DateText.vue";
+import AppDateText from "./DateText.vue";
 import { DATE_TEXT_TYPE_MAP } from "./DateTextComposable";
 
 export default {
   title: "@component/app/DateText",
-  component: DateText,
+  component: AppDateText,
   args: {
     type: DATE_TEXT_TYPE_MAP.CREATED,
     dateTimeText: "2022-05-22T13:50:40+09:00",
@@ -20,12 +20,12 @@ export default {
 };
 
 const Template = (args) => ({
-  components: { DateText },
+  components: { AppDateText },
   setup() {
     return { args };
   },
   template: `
-    <DateText v-bind="args" />
+    <AppDateText v-bind="args" />
   `,
 });
 
