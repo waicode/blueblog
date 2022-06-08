@@ -1,10 +1,10 @@
-import DbeLogo from "./logo.vue";
+import DbeLayoutLogo from "./logo.vue";
 import { LOGO_FONT_TYPE_MAP, LOGO_FONT_WEIGHT_MAP } from "./logoComposable";
 import useCss from "@/composables/useCss";
 
 export default {
-  title: "@component/dbe/Logo",
-  component: DbeLogo,
+  title: "@component/dbe/layout/Logo",
+  component: DbeLayoutLogo,
   args: {
     font: LOGO_FONT_TYPE_MAP.ADVENT__PRO,
     weight: LOGO_FONT_WEIGHT_MAP.weight600,
@@ -22,19 +22,19 @@ export default {
 };
 
 const Template = (args) => ({
-  components: { DbeLogo },
+  components: { DbeLayoutLogo },
   setup() {
     useCss(
       () => `
         body {
-            background: #4B73FF;
+          background: #4B73FF;
         }
       `
     );
     return { args };
   },
   template: `
-    <DbeLogo v-bind="args" />
+    <DbeLayoutLogo v-bind="args" />
   `,
 });
 

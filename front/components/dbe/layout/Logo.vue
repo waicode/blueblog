@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// TODO: Storybookのautoimports対応が完了したら消す
 import useId from "@/composables/useId";
 import useCss from "@/composables/useCss";
 import useWebFont from "@/composables/useWebFont";
@@ -12,7 +13,17 @@ import {
 } from "./logoComposable";
 
 interface LogoPropType {
+  /**
+   * ロゴに適用するフォント
+   *
+   * `Advent Pro` | `Vibur`
+   */
   font?: LogoFontType;
+  /**
+   * ロゴ文字列の太さ
+   *
+   * `400` | `600`
+   */
   weight?: LogoFontWeightValueType;
 }
 
@@ -24,10 +35,10 @@ const props = withDefaults(defineProps<LogoPropType>(), {
 useWebFont(props.font, props.weight);
 
 const id = useId();
-const className = bemx("DbeLogo", id);
+const className = bemx("DbeLayoutLogo", id);
 useCss(
   () =>
-    `.DbeLogo--${id} {
+    `.DbeLayoutLogo--${id} {
       font-family: "${props.font}" !important;
       font-weight: ${props.weight} !important;
     }`
@@ -36,16 +47,16 @@ useCss(
 
 <template>
   <div :class="className">
-    <span class="DbeLogo__Designer">DESIGNER</span>
-    <span class="DbeLogo__Star1">*</span>
-    <span class="DbeLogo__Blue">BLUE</span>
-    <span class="DbeLogo__Star2">*</span>
-    <span class="DbeLogo__Engineer">ENGINEER</span>
+    <span class="DbeLayoutLogo__Designer">DESIGNER</span>
+    <span class="DbeLayoutLogo__Star1">*</span>
+    <span class="DbeLayoutLogo__Blue">BLUE</span>
+    <span class="DbeLayoutLogo__Star2">*</span>
+    <span class="DbeLayoutLogo__Engineer">ENGINEER</span>
   </div>
 </template>
 
 <style lang="scss">
-.DbeLogo {
+.DbeLayoutLogo {
   display: flex;
   font-size: $font-size-48px;
   flex-direction: row;

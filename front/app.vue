@@ -1,5 +1,5 @@
 <template>
   <div>
-    <DbeLogo />
+    <DbeLayoutLogo />
   </div>
 </template>
