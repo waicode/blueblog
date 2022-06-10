@@ -22,7 +22,7 @@ const toggle = () => (isActive.value = !isActive.value);
 
 <template>
   <div class="AppDropdown">
-    <div class="dropdown">
+    <div class="dropdown" :class="{ 'is-active': isActive }">
       <div class="dropdown-trigger">
         <button
           class="button"
@@ -30,10 +30,9 @@ const toggle = () => (isActive.value = !isActive.value);
           aria-haspopup="true"
           aria-controls="dropdown-menu"
         >
-          <span class="AppDropdown__TriggerLabel">{{ label }}</span>
-          <span>
+          <span>{{ label }}</span>
+          <span class="icon is-small">
             <Icon
-              class="icon is-small"
               aria-hidden="true"
               :icon="isActive ? 'tabler:chevron-up' : 'tabler:chevron-down'"
             />

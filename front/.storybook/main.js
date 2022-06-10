@@ -37,8 +37,9 @@ module.exports = {
             additionalData: `
               @import "../node_modules/bulma/sass/utilities/functions";
               @import "../node_modules/bulma/sass/utilities/initial-variables";
-              @import "@/assets/styles/global.scss";
+              @import "@/assets/styles/_bulma.scss";
               @import "../node_modules/bulma/bulma.sass";
+              @import "@/assets/styles/_variables.scss";
             `,
           },
         },

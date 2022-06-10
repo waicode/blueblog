@@ -2,11 +2,19 @@
   "version": "0.2",
   "language": "en",
   "allowCompoundWords": true,
-  "enableFiletypes": ["vue"],
+  "enableFiletypes": [
+    "vue"
+  ],
   "languageSettings": [
     {
       "languageId": "vue",
-      "dictionaries": ["html", "fonts", "typescript", "javascript", "css"]
+      "dictionaries": [
+        "html",
+        "fonts",
+        "typescript",
+        "javascript",
+        "css"
+      ]
     }
   ],
   "words": [
@@ -14,6 +22,7 @@
     "bulma",
     "clsx",
     "iconify",
+    "Kaku",
     "Nuxt",
     "nuxtjs",
     "tabler",
