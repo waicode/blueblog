@@ -1,6 +1,6 @@
 ![archt.blue](https://i.gyazo.com/8160d493a83be0c0369c83068ccda3ab.png "archt.blue")
 
-- 主にフロントエンドとサーバレスについて書く予定の個人的な「技術ブログ」です（現在作成中）
+- 主にフロントエンドとサーバレスについて書く予定の技術ブログです（現在作成中）
 - [Figmaのデザインカンプ](https://www.figma.com/file/5pw5pG3l4d0YJoroP55Ras/blueblog)を公開しています
 - コンポーネント設計が書かれたStorybookもGithubページに公開予定です
 - `front`/`bff`/`infra`のモノレポ構成のリポジトリです
