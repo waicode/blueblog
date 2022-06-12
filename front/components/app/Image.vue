@@ -1,67 +1,29 @@
 <script setup lang="ts">
-interface EyeCatchImagePropType {
+interface ImagePropType {
   /**
-   * アイコン指定文字列
+   * 画像パス
    *
-   * iconifyに指定する文字列
+   * assets/imagesフォルダ配下のパスを指定する。
    */
-  icon: string;
+  path: string;
 
   /**
-   * 幅
+   * 画像のaltテキスト
    *
-   * アイキャッチ画像の幅
+   * 未指定の場合はファイル名がalt属性に設定される。
    */
-  width: number;
-
-  /**
-   * 高さ
-   *
-   * アイキャッチ画像の高さ
-   */
-  height: number;
+  alt: string;
 }
 
-const props = defineProps<EyeCatchImagePropType>();
+const props = defineProps<ImagePropType>();
 
-const id = useId();
-const className = bemx("AppEyeCatchImage", id);
-useCss(
-  () =>
-    `
-    .AppEyeCatchImage--${id} .AppEyeCatchImage__Bg {
-      width: ${props.width}px !important;
-      height: ${props.height}px !important;
-    }
-    .AppEyeCatchImage--${id} .AppEyeCatchImage__Icon svg {
-      width: ${Math.trunc(props.width / 1.5)}px !important;
-      height: ${Math.trunc(props.height / 1.5)}px !important;
-    }
-    `
-);
+// 静的アセットの解決されたURLを取得
+const imageUrl = new URL(`../../assets/images/${props.path}`, import.meta.url)
+  .href;
+// altが未指定の場合はファイル名を設定
+const imageAltText = props.alt ? props.alt : getFileName(props.path);
 </script>
 
 <template>
-  <img
-    v-lazy-load
-    :alt="imageAltText"
-    class="AppAssetsImage"
-    :src="dynamicImageSrcPath"
-  />
+  <img class="AppAssetsImage" :alt="imageAltText" :src="imageUrl" />
 </template>
-
-<style lang="scss">
-.AppEyeCatchImage {
-  &__Bg {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(220.55deg, #7cf7ff 0%, #4b73ff 100%);
-  }
-  &__Icon {
-    svg {
-      color: #fff;
-    }
-  }
-}
-</style>
