@@ -2,7 +2,7 @@ import AppDateText from "./DateText.vue";
 import { DATE_TEXT_TYPE_MAP } from "./DateTextComposable";
 
 export default {
-  title: "@component/app/DateText",
+  title: "@components/app/DateText",
   component: AppDateText,
   args: {
     type: DATE_TEXT_TYPE_MAP.CREATED,

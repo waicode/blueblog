@@ -1,5 +1,45 @@
 import { Ref, ref, unref, computed, watch, onMounted, onUnmounted } from "vue";
-import { formatGoogleFontQuery } from "@/utils/util";
+
+import {
+  formatGoogleFontQuery,
+  arrayToEnumObject,
+  keyEnumObject,
+  KeyTypeOf,
+  ValueTypeOf,
+} from "@/utils/util";
+
+/**
+ * フォント種別の定数
+ */
+export const FONT_TYPE_MAP = arrayToEnumObject(["Advent Pro", "Vibur"]);
+
+/**
+ * フォント種別の型
+ */
+export type FontType = ValueTypeOf<typeof FONT_TYPE_MAP>;
+
+/**
+ * フォント太さマップ
+ */
+export const FONT_WEIGHT_MAP = {
+  weight400: "400",
+  weight600: "600",
+} as const;
+
+/**
+ * フォント太さマップ キーの定数
+ */
+export const FONT_WEIGHT_TYPE = keyEnumObject(FONT_WEIGHT_MAP);
+
+/**
+ * フォント太さマップ キーの型
+ */
+export type FontWeightKeyType = KeyTypeOf<typeof FONT_WEIGHT_MAP>;
+
+/**
+ * フォント太さマップ 値の型
+ */
+export type FontWeightValueType = ValueTypeOf<typeof FONT_WEIGHT_MAP>;
 
 /**
  * ## WebFontタグ埋め込み

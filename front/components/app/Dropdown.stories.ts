@@ -1,7 +1,7 @@
 import AppDropdown from "./Dropdown.vue";
 
 export default {
-  title: "@component/app/Dropdown",
+  title: "@components/app/Dropdown",
   component: AppDropdown,
   args: {
     label: "項目を選択",

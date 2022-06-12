@@ -1,5 +1,5 @@
 <template>
-  <div>
-    <DbeLayoutLogo />
-  </div>
+  <NuxtLayout name="default">
+    <NuxtPage />
+  </NuxtLayout>
 </template>

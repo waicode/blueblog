@@ -1,7 +1,7 @@
 import AppEyeCatchImage from "./EyeCatchImage.vue";
 
 export default {
-  title: "@component/app/EyeCatchImage",
+  title: "@components/app/EyeCatchImage",
   component: AppEyeCatchImage,
   args: {
     icon: "tabler:calendar-event",
