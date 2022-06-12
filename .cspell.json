@@ -25,12 +25,14 @@
     "Kaku",
     "Nuxt",
     "nuxtjs",
+    "Qiita",
     "rchitect",
     "tabler",
     "unplugin",
     "Vibur",
     "vite",
-    "wght"
+    "wght",
+    "Zenn"
   ],
   "ignorePaths": [
     ".vscode",
