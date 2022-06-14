@@ -1,0 +1,20 @@
+@import "../node_modules/bulma/bulma.sass";
+@import "_variables.scss";
+
+// スマホ用のブレークポイントを独自に追加
+$phone: 480px;
+
+// mobile
+@mixin tablet {
+  // 769px
+  @media screen and (max-width: ($tablet)) {
+    @content;
+  }
+}
+
+// narrow
+@mixin phone {
+  @media screen and (max-width: ($phone)) {
+    @content;
+  }
+}

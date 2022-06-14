@@ -145,7 +145,7 @@ $github-icon-color: #778cff;
     font-size: $font-size-48px;
     letter-spacing: $letter-spacing-2px;
     line-height: $line-height-60px;
-    @media (max-width: $phone) {
+    @mixin phone {
       font-size: $font-size-36px;
     }
   }
