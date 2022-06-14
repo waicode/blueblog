@@ -57,7 +57,7 @@ jobs:
 
       - name: Build storybook 🏗
         run: |
-          yarn run dev
+          yarn run build
           yarn run build-storybook
         working-directory: ./front
 
