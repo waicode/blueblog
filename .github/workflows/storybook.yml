@@ -1,0 +1,68 @@
+name: Storybook Deploy to Github Page
+
+on: [workflow_dispatch]
+
+jobs:
+  setup-node:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
+
+      - name: Cache volta 📦
+        id: cache-volta
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.volta
+            ~/.npm
+            ~/.bash_profile
+            node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+
+      - name: Install volta ⚡️
+        if: steps.cache-volta.outputs.cache-hit != 'true'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl
+          touch ~/.bash_profile
+          curl https://get.volta.sh | bash
+          source ~/.bash_profile
+
+      - name: Install dependencies 👨🏻‍💻
+        run: |
+          yarn install
+        working-directory: ./front
+
+  build:
+    runs-on: ubuntu-20.04
+    needs:
+      - setup-node
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
+
+      - name: Cache volta 📦
+        id: cache-volta
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.volta
+            ~/.npm
+            ~/.bash_profile
+            node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+
+      - run: source ~/.bash_profile
+
+      - name: Build storybook 🏗
+        run: |
+          yarn run build-storybook
+        working-directory: ./front
+
+      - name: Deploy pages 📄
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./storybook-static
+        working-directory: ./front
