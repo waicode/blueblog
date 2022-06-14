@@ -1,5 +1,5 @@
-import AppDateText from "./DateText.vue";
-import { DATE_TEXT_TYPE_MAP } from "./DateTextComposable";
+import AppDateText from "@/components/app/DateText.vue";
+import { DATE_TEXT_TYPE_MAP } from "@/components/app/DateTextComposable";
 
 export default {
   title: "@components/app/DateText",

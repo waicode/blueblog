@@ -1,4 +1,4 @@
-import AppEyeCatchImage from "./EyeCatchImage.vue";
+import AppEyeCatchImage from "@/components/app/EyeCatchImage.vue";
 
 export default {
   title: "@components/app/EyeCatchImage",

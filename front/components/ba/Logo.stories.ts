@@ -1,4 +1,4 @@
-import BaLogo from "./logo.vue";
+import BaLogo from "@/components/ba/Logo.vue";
 import { FONT_TYPE_MAP, FONT_WEIGHT_MAP } from "@/composables/useWebFont";
 import useCss from "@/composables/useCss";
 

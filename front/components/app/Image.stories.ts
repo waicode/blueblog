@@ -1,4 +1,4 @@
-import AppImage from "./Image.vue";
+import AppImage from "@/components/app/Image.vue";
 
 export default {
   title: "@components/app/Image",

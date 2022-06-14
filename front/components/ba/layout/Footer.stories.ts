@@ -1,4 +1,4 @@
-import BaLayoutFooter from "./Footer.vue";
+import BaLayoutFooter from "@/components/ba/layout/Footer.vue";
 import { FONT_TYPE_MAP, FONT_WEIGHT_MAP } from "@/composables/useWebFont";
 import useCss from "@/composables/useCss";
 

@@ -1,4 +1,4 @@
-import AppDropdown from "./Dropdown.vue";
+import AppDropdown from "@/components/app/Dropdown.vue";
 
 export default {
   title: "@components/app/Dropdown",

@@ -1,4 +1,4 @@
-import BaLayoutHeader from "./Header.vue";
+import BaLayoutHeader from "@/components/ba/layout/Header.vue";
 import useCss from "@/composables/useCss";
 
 export default {
