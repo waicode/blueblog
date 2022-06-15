@@ -1,29 +1,31 @@
-import AppImage from "@/components/app/Supplement.vue";
+import AppSupplement from "@/components/app/Supplement.vue";
+import { SUPPLEMENT_TYPE } from "@/components/app/SupplementComposable";
 
 export default {
   title: "@components/app/Image",
-  component: AppImage,
+  component: AppSupplement,
   args: {
-    path: "capture/content_v1_v2_comparison.png",
-    alt: "@nuxt/content feature comparison",
+    type: SUPPLEMENT_TYPE.NORMAL,
+    title: "補足説明のタイトル",
   },
   argTypes: {
-    path: {
-      control: { type: "text" },
+    type: {
+      control: { type: "inline-radio" },
+      options: SUPPLEMENT_TYPE,
     },
-    alt: {
+    title: {
       control: { type: "text" },
     },
   },
 };
 
 const Template = (args) => ({
-  components: { AppImage },
+  components: { AppSupplement },
   setup() {
     return { args };
   },
   template: `
-    <AppImage v-bind="args" />
+    <AppSupplement v-bind="args" />
   `,
 });
 
