@@ -1,4 +1,6 @@
-// Archiveの型定義
+/**
+ * ドロップダウン項目の型
+ */
 export type DropdownItem = {
   label: string;
   count: number;
