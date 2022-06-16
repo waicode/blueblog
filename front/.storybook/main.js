@@ -32,6 +32,7 @@ module.exports = {
       })
     );
     return mergeConfig(config, {
+      base: "/blueblog/storybook",
       css: {
         preprocessorOptions: {
           scss: {
