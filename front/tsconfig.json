@@ -1,5 +1,4 @@
 {
   // https://v3.nuxtjs.org/concepts/typescript
-  "extends": "./.nuxt/tsconfig.json",
-  "exclude": ["node_modules", ".nuxt", "dist", "storybook-static", "coverage"]
+  "extends": "./.nuxt/tsconfig.json"
 }
