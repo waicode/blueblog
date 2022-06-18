@@ -58,6 +58,8 @@ useCss(
 </template>
 
 <style lang="scss">
+$svg-icon-color: $white-color;
+
 .AppEyeCatchImage {
   &__Bg {
     display: flex;
@@ -65,9 +67,10 @@ useCss(
     align-items: center;
     background: linear-gradient(220.55deg, #7cf7ff 0%, #4b73ff 100%);
   }
+
   &__Icon {
     svg {
-      color: #fff;
+      color: $svg-icon-color;
     }
   }
 }

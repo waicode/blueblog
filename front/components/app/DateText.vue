@@ -23,20 +23,25 @@ const props = withDefaults(defineProps<DateTextPropType>(), {
 </template>
 
 <style lang="scss">
+$svg-icon-width: 13px;
+$svg-icon-height: $svg-icon-width;
+
 .AppDateText {
   display: flex;
   align-items: center;
 
   &__Icon {
     margin-right: $scale4;
+
     svg {
-      width: 13px;
-      height: 13px;
+      width: $svg-icon-width;
+      height: $svg-icon-height;
     }
   }
+
   &__DateText {
-    font-size: 12px;
-    line-height: 20px;
+    font-size: $font-size-12px;
+    line-height: $line-height-167;
   }
 }
 </style>

@@ -14,8 +14,8 @@
   align-items: center;
 
   &__Logo {
-    margin-top: 80px;
-    margin-bottom: 56px;
+    margin-top: $scale80;
+    margin-bottom: $scale56;
   }
 }
 </style>

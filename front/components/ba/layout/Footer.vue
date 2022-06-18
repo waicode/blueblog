@@ -23,7 +23,7 @@ interface FooterPropType {
 
 const props = withDefaults(defineProps<FooterPropType>(), {
   font: FONT_TYPE_MAP.ADVENT__PRO,
-  weight: FONT_WEIGHT_MAP.WEIGHT400,
+  weight: FONT_WEIGHT_MAP[FONT_WEIGHT_TYPE.WEIGHT400],
 });
 
 const thisYear = getYear(new Date());
@@ -81,15 +81,18 @@ $github-icon-color: #778cff;
     align-items: center;
     justify-content: center;
     padding: $scale32 $scale24;
+
     ul {
       display: flex;
       justify-content: center;
       margin-bottom: 0;
       list-style: none;
+
       li {
         &:not(:last-child) {
           margin-right: $scale32;
         }
+
         a {
           svg {
             color: $white-color;
@@ -105,6 +108,7 @@ $github-icon-color: #778cff;
         width: $twitter-icon-width;
         height: $twitter-icon-height;
       }
+
       &:focus,
       &:hover {
         svg {
@@ -120,6 +124,7 @@ $github-icon-color: #778cff;
         width: $github-icon-width;
         height: $github-icon-height;
       }
+
       &:focus,
       &:hover {
         svg {
@@ -135,7 +140,7 @@ $github-icon-color: #778cff;
     justify-content: center;
     font-size: $font-size-48px;
     letter-spacing: $letter-spacing-2px;
-    line-height: $line-height-60px;
+    line-height: $line-height-125;
     @mixin phone {
       font-size: $font-size-36px;
     }

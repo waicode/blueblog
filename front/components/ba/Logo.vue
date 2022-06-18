@@ -53,6 +53,9 @@ useCss(
 </template>
 
 <style lang="scss">
+$logo-initial-letter-spacing: 6px;
+$logo-letter-spacing: 4px;
+
 .BaLayoutLogo {
   display: flex;
   font-size: $font-size-64px;
@@ -66,12 +69,12 @@ useCss(
   }
 
   &__B {
-    letter-spacing: 6px;
+    letter-spacing: $logo-initial-letter-spacing;
   }
 
   &__Lue {
-    letter-spacing: 4px;
-    font-weight: 700;
+    letter-spacing: $logo-letter-spacing;
+    font-weight: $font-weight-700;
     font-size: $font-size-40px;
   }
 
@@ -83,12 +86,12 @@ useCss(
   }
 
   &__A {
-    letter-spacing: 6px;
+    letter-spacing: $logo-initial-letter-spacing;
   }
 
   &__Rchitect {
-    letter-spacing: 4px;
-    font-weight: 700;
+    letter-spacing: $logo-letter-spacing;
+    font-weight: $font-weight-700;
     font-size: $font-size-40px;
   }
 }
