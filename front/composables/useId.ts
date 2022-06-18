@@ -1,5 +1,5 @@
-import { onMounted, onUnmounted } from "vue";
-import { randomString } from "@/utils/util";
+import { onMounted, onUnmounted } from 'vue';
+import { randomString } from '@/utils/util';
 
 /**
  * 貸出済のランダム文字列のSet。

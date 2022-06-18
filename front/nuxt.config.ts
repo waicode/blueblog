@@ -1,11 +1,11 @@
-import { defineNuxtConfig } from "nuxt";
-import eslintPlugin from "vite-plugin-eslint";
+import { defineNuxtConfig } from 'nuxt';
+import eslintPlugin from 'vite-plugin-eslint';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   // サーバサイドレンダリングは行わない
   ssr: false,
-  css: ["bulma/bulma.sass"],
+  css: ['bulma/bulma.sass'],
   vite: {
     plugins: [eslintPlugin()],
     css: {

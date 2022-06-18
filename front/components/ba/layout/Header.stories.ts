@@ -1,8 +1,8 @@
-import BaLayoutHeader from "@/components/ba/layout/Header.vue";
-import useCss from "@/composables/useCss";
+import BaLayoutHeader from '@/components/ba/layout/Header.vue';
+import useCss from '@/composables/useCss';
 
 export default {
-  title: "@components/ba/layout/Header",
+  title: '@components/ba/layout/Header',
   component: BaLayoutHeader,
 };
 
@@ -14,7 +14,7 @@ const Template = (args) => ({
         body {
           background: linear-gradient(180deg, #4b73ff 10%, #7cf7ff 100%);
         }
-      `
+      `,
     );
     return { args };
   },

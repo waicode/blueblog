@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { Icon } from "@iconify/vue";
+import { Icon } from '@iconify/vue';
 
-import useId from "@/composables/useId";
-import useCss from "@/composables/useCss";
-import { bemx } from "@/utils/util";
+import useId from '@/composables/useId';
+import useCss from '@/composables/useCss';
+import { bemx } from '@/utils/util';
 
 interface EyeCatchImagePropType {
   /**
@@ -31,7 +31,7 @@ interface EyeCatchImagePropType {
 const props = defineProps<EyeCatchImagePropType>();
 
 const id = useId();
-const className = bemx("AppEyeCatchImage", id);
+const className = bemx('AppEyeCatchImage', id);
 useCss(
   () =>
     `
@@ -43,7 +43,7 @@ useCss(
       width: ${Math.trunc(props.width / 1.5)}px !important;
       height: ${Math.trunc(props.height / 1.5)}px !important;
     }
-    `
+    `,
 );
 </script>
 

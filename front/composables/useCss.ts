@@ -1,4 +1,4 @@
-import { ref, unref, computed, watch, onMounted, onUnmounted } from "vue";
+import { ref, unref, computed, watch, onMounted, onUnmounted } from 'vue';
 
 /**
  * ## CSSタグ埋め込み
@@ -43,8 +43,8 @@ export default (cssFunc: () => string) => {
   const styleElement = ref();
 
   onMounted(() => {
-    styleElement.value = document.createElement("style");
-    styleElement.value.type = "text/css";
+    styleElement.value = document.createElement('style');
+    styleElement.value.type = 'text/css';
     styleElement.value.innerHTML = unref(style);
     document.head.append(styleElement.value);
   });
@@ -56,7 +56,7 @@ export default (cssFunc: () => string) => {
         styleElement.value.innerHTML = text;
       }
     },
-    { immediate: true }
+    { immediate: true },
   );
 
   onUnmounted(() => {

@@ -1,9 +1,9 @@
-import BaLogo from "@/components/ba/Logo.vue";
-import { FONT_TYPE_MAP, FONT_WEIGHT_MAP } from "@/composables/useWebFont";
-import useCss from "@/composables/useCss";
+import BaLogo from '@/components/ba/Logo.vue';
+import { FONT_TYPE_MAP, FONT_WEIGHT_MAP } from '@/composables/useWebFont';
+import useCss from '@/composables/useCss';
 
 export default {
-  title: "@components/ba/Logo",
+  title: '@components/ba/Logo',
   component: BaLogo,
   args: {
     font: FONT_TYPE_MAP.ADVENT__PRO,
@@ -11,11 +11,11 @@ export default {
   },
   argTypes: {
     font: {
-      control: { type: "inline-radio" },
+      control: { type: 'inline-radio' },
       options: Object.values(FONT_TYPE_MAP),
     },
     weight: {
-      control: { type: "inline-radio" },
+      control: { type: 'inline-radio' },
       options: Object.values(FONT_WEIGHT_MAP),
     },
   },
@@ -29,7 +29,7 @@ const Template = (args) => ({
         body {
           background: #4B73FF;
         }
-      `
+      `,
     );
     return { args };
   },

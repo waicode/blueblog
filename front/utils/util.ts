@@ -1,14 +1,10 @@
-import { ScreamingSnakeCase, UnionToIntersection } from "type-fest";
-import { upperCase } from "upper-case";
-import { snakeCase } from "change-case";
-import { format } from "date-fns";
+import { ScreamingSnakeCase, UnionToIntersection } from 'type-fest';
+import { upperCase } from 'upper-case';
+import { snakeCase } from 'change-case';
+import { format } from 'date-fns';
 
-type UnionToObjectUnion<X extends string> = X extends string
-  ? { [key in ScreamingSnakeCase<X>]: X }
-  : never;
-type UnionToEnumObject<X extends string> = UnionToIntersection<
-  UnionToObjectUnion<X>
->;
+type UnionToObjectUnion<X extends string> = X extends string ? { [key in ScreamingSnakeCase<X>]: X } : never;
+type UnionToEnumObject<X extends string> = UnionToIntersection<UnionToObjectUnion<X>>;
 
 /**
  * 入力テキストを大文字スネークケースに変換。
@@ -26,9 +22,7 @@ type UnionToEnumObject<X extends string> = UnionToIntersection<
  *
  * ```
  */
-export const upperSnakeCase = <T extends string>(
-  value: T
-): ScreamingSnakeCase<T> =>
+export const upperSnakeCase = <T extends string>(value: T): ScreamingSnakeCase<T> =>
   upperCase(snakeCase(value)) as ScreamingSnakeCase<T>;
 
 /**
@@ -48,8 +42,7 @@ export const upperSnakeCase = <T extends string>(
  *
  * ```
  */
-export const upperSnakeDoubleCase = <T extends string>(value: T) =>
-  upperCase(snakeCase(value, { delimiter: "__" }));
+export const upperSnakeDoubleCase = <T extends string>(value: T) => upperCase(snakeCase(value, { delimiter: '__' }));
 
 /**
  * 指定オブジェクトのKeyの型。
@@ -85,11 +78,11 @@ export type ValueTypeOf<T> = T[keyof T];
  * // }
  * ``` */
 export const keyEnumObject = <T extends Record<string, unknown>>(
-  arg: Readonly<T>
+  arg: Readonly<T>,
 ): keyof T extends string ? UnionToEnumObject<keyof T> : never =>
-  Object.fromEntries(
-    Object.keys(arg).map((key) => [upperSnakeCase(key), key])
-  ) as unknown as keyof T extends string ? UnionToEnumObject<keyof T> : never;
+  Object.fromEntries(Object.keys(arg).map((key) => [upperSnakeCase(key), key])) as unknown as keyof T extends string
+    ? UnionToEnumObject<keyof T>
+    : never;
 
 /**
  * 文字配列から定数オブジェクトを生成。
@@ -113,26 +106,17 @@ export const keyEnumObject = <T extends Record<string, unknown>>(
  * // }
  *```
  */
-export const arrayToEnumObject = <T extends string>(
-  args: Readonly<T[]>
-): UnionToEnumObject<T> =>
+export const arrayToEnumObject = <T extends string>(args: Readonly<T[]>): UnionToEnumObject<T> =>
   args.reduce(
     (draft, value) => ({
       ...draft,
-      [value.match(/ /g) ? upperSnakeDoubleCase(value) : upperSnakeCase(value)]:
-        value,
+      [value.match(/ /g) ? upperSnakeDoubleCase(value) : upperSnakeCase(value)]: value,
     }),
-    {}
+    {},
   ) as unknown as UnionToEnumObject<T>;
 
-type StringKeyBemRecord = Record<
-  string,
-  string | number | boolean | undefined | null
->;
-type BemModifierRecord =
-  | string
-  | StringKeyBemRecord
-  | (string | StringKeyBemRecord)[];
+type StringKeyBemRecord = Record<string, string | number | boolean | undefined | null>;
+type BemModifierRecord = string | StringKeyBemRecord | (string | StringKeyBemRecord)[];
 
 /**
  * BEM Classの配列生成。
@@ -177,23 +161,17 @@ type BemModifierRecord =
  * // ]
  * ```
  */
-export const bemx = (
-  groupAndElement: string,
-  ...modifiers: BemModifierRecord[]
-): string[] => [
+export const bemx = (groupAndElement: string, ...modifiers: BemModifierRecord[]): string[] => [
   groupAndElement,
   ...modifiers
     .flat()
     .flatMap((v1) => {
-      if (typeof v1 === "string") {
+      if (typeof v1 === 'string') {
         return v1 ? [v1] : [];
       }
-      if (typeof v1 === "object") {
+      if (typeof v1 === 'object') {
         return Object.entries(v1).flatMap(([k, v]) => {
-          if (
-            (typeof v === "string" && v.length > 0) ||
-            typeof v === "number"
-          ) {
+          if ((typeof v === 'string' && v.length > 0) || typeof v === 'number') {
             return [`${k}-${v}`];
           }
 
@@ -225,11 +203,7 @@ const charCodeFromTo = (from: string, to: string): number[] => {
 export const charFromTo = (from: string, to: string): string[] =>
   charCodeFromTo(from, to).map((ch) => String.fromCharCode(ch));
 
-const azAZ09 = [
-  ...charFromTo("a", "z"),
-  ...charFromTo("A", "Z"),
-  ...charFromTo("0", "9"),
-];
+const azAZ09 = [...charFromTo('a', 'z'), ...charFromTo('A', 'Z'), ...charFromTo('0', '9')];
 
 /**
  * a-z,A-Z,0-9で構成されるランダム文字列を生成。
@@ -240,7 +214,7 @@ const azAZ09 = [
 export const randomString = (length = 10): string =>
   Array.from({ length })
     .map(() => azAZ09[Math.floor(Math.random() * azAZ09.length)])
-    .join("");
+    .join('');
 
 /**
  * ファイルパスからファイル名を取得。
@@ -256,8 +230,7 @@ export const randomString = (length = 10): string =>
  * const fileName = getFileName(path) // file1
  * ```
  */
-export const getFileName = (path: string) =>
-  path.split("/").reverse()[0].split(".")[0];
+export const getFileName = (path: string) => path.split('/').reverse()[0].split('.')[0];
 
 /**
  * 文字列が数字かどうかを判定。
@@ -276,8 +249,7 @@ export const isNumerical = (str: string) => /^([1-9]\d*|0)$/.test(str);
  * @param mm 月（ゼロ埋めあり2桁）の文字列
  * @returns 判定結果
  */
-export const isYyyyMm = (yyyy: string, mm: string) =>
-  /^[0-9]{4}$/.test(yyyy) && /^(0[1-9]|1[0-2])$/.test(mm);
+export const isYyyyMm = (yyyy: string, mm: string) => /^[0-9]{4}$/.test(yyyy) && /^(0[1-9]|1[0-2])$/.test(mm);
 
 /**
  * GoogleFontのクエリ文字列用フォーマット。
@@ -288,9 +260,7 @@ export const isYyyyMm = (yyyy: string, mm: string) =>
  * @returns プラス区切りのWebフォント文字列
  */
 export const formatGoogleFontQuery = (fontNameWithSpace: string) =>
-  fontNameWithSpace
-    ? fontNameWithSpace.replace(/ +/g, " ").replace(" ", "+")
-    : "";
+  fontNameWithSpace ? fontNameWithSpace.replace(/ +/g, ' ').replace(' ', '+') : '';
 
 /**
  * ISO8601形式の日時文字列をyyyy-MM-dd形式の日付文字列に変換する。
@@ -303,5 +273,5 @@ export const formatGoogleFontQuery = (fontNameWithSpace: string) =>
  * @returns yyyy-MM-dd形式の日付文字列（例：2022-05-22）
  */
 export const formatDate = (datetimeStr: string) => {
-  return format(new Date(Date.parse(datetimeStr)), "yyyy-MM-dd");
+  return format(new Date(Date.parse(datetimeStr)), 'yyyy-MM-dd');
 };

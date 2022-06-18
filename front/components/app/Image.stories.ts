@@ -1,18 +1,18 @@
-import AppImage from "@/components/app/Image.vue";
+import AppImage from '@/components/app/Image.vue';
 
 export default {
-  title: "@components/app/Image",
+  title: '@components/app/Image',
   component: AppImage,
   args: {
-    path: "capture/content_v1_v2_comparison.png",
-    alt: "@nuxt/content feature comparison",
+    path: 'capture/content_v1_v2_comparison.png',
+    alt: '@nuxt/content feature comparison',
   },
   argTypes: {
     path: {
-      control: { type: "text" },
+      control: { type: 'text' },
     },
     alt: {
-      control: { type: "text" },
+      control: { type: 'text' },
     },
   },
 };

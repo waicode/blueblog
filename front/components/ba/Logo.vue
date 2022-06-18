@@ -1,14 +1,9 @@
 <script setup lang="ts">
 // TODO: Storybookのautoimports対応が完了したら消す
-import useId from "@/composables/useId";
-import useCss from "@/composables/useCss";
-import useWebFont, {
-  FONT_TYPE_MAP,
-  FontType,
-  FONT_WEIGHT_MAP,
-  FontWeightValueType,
-} from "@/composables/useWebFont";
-import { bemx } from "@/utils/util";
+import useId from '@/composables/useId';
+import useCss from '@/composables/useCss';
+import useWebFont, { FONT_TYPE_MAP, FontType, FONT_WEIGHT_MAP, FontWeightValueType } from '@/composables/useWebFont';
+import { bemx } from '@/utils/util';
 
 interface LogoPropType {
   /**
@@ -16,13 +11,13 @@ interface LogoPropType {
    *
    * `Advent Pro` | `Vibur`
    */
-  font?: LogoFontType;
+  font?: FontType;
   /**
    * ロゴ文字列の太さ
    *
    * `400` | `600`
    */
-  weight?: LogoFontWeightValueType;
+  weight?: FontWeightValueType;
 }
 
 const props = withDefaults(defineProps<LogoPropType>(), {
@@ -33,13 +28,13 @@ const props = withDefaults(defineProps<LogoPropType>(), {
 useWebFont(props.font, props.weight);
 
 const id = useId();
-const className = bemx("BaLayoutLogo", id);
+const className = bemx('BaLayoutLogo', id);
 useCss(
   () =>
     `.BaLayoutLogo--${id} {
       font-family: "${props.font}" !important;
       font-weight: ${props.weight} !important;
-    }`
+    }`,
 );
 </script>
 

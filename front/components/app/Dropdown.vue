@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Icon } from "@iconify/vue";
-import { DropdownItem } from "./DropdownComposable";
+import { Icon } from '@iconify/vue';
+import { DropdownItem } from './DropdownComposable';
 
 interface DropdownPropType {
   /**
@@ -24,28 +24,16 @@ const toggle = () => (isActive.value = !isActive.value);
   <div class="AppDropdown">
     <div class="dropdown" :class="{ 'is-active': isActive }">
       <div class="dropdown-trigger">
-        <button
-          class="button"
-          @click="toggle"
-          aria-haspopup="true"
-          aria-controls="dropdown-menu"
-        >
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" @click="toggle">
           <span>{{ label }}</span>
           <span class="icon is-small">
-            <Icon
-              aria-hidden="true"
-              :icon="isActive ? 'tabler:chevron-up' : 'tabler:chevron-down'"
-            />
+            <Icon aria-hidden="true" :icon="isActive ? 'tabler:chevron-up' : 'tabler:chevron-down'" />
           </span>
         </button>
       </div>
       <div class="dropdown-menu" role="menu">
         <div class="dropdown-content">
-          <NuxtLink
-            class="dropdown-item"
-            v-for="item in items"
-            :key="item.label"
-            :to="item.path"
+          <NuxtLink v-for="item in items" :key="item.label" class="dropdown-item" :to="item.path"
             >{{ item.label }}({{ item.count }})</NuxtLink
           >
         </div>

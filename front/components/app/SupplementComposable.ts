@@ -1,9 +1,9 @@
-import { arrayToEnumObject, ValueTypeOf } from "@/utils/util";
+import { arrayToEnumObject, ValueTypeOf } from '@/utils/util';
 
 /**
  * 補足説明種別の定数
  */
-export const SUPPLEMENT_TYPE = arrayToEnumObject(["normal", "warning"]);
+export const SUPPLEMENT_TYPE = arrayToEnumObject(['normal', 'warning']);
 
 /**
  * 補足説明種別の型

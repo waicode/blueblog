@@ -1,17 +1,11 @@
-import { Ref, ref, unref, computed, watch, onMounted, onUnmounted } from "vue";
+import { Ref, ref, unref, computed, watch, onMounted, onUnmounted } from 'vue';
 
-import {
-  formatGoogleFontQuery,
-  arrayToEnumObject,
-  keyEnumObject,
-  KeyTypeOf,
-  ValueTypeOf,
-} from "@/utils/util";
+import { formatGoogleFontQuery, arrayToEnumObject, keyEnumObject, KeyTypeOf, ValueTypeOf } from '@/utils/util';
 
 /**
  * フォント種別の定数
  */
-export const FONT_TYPE_MAP = arrayToEnumObject(["Advent Pro", "Vibur"]);
+export const FONT_TYPE_MAP = arrayToEnumObject(['Advent Pro', 'Vibur']);
 
 /**
  * フォント種別の型
@@ -22,8 +16,8 @@ export type FontType = ValueTypeOf<typeof FONT_TYPE_MAP>;
  * フォント太さマップ
  */
 export const FONT_WEIGHT_MAP = {
-  weight400: "400",
-  weight600: "600",
+  weight400: '400',
+  weight600: '600',
 } as const;
 
 /**
@@ -65,27 +59,21 @@ export type FontWeightValueType = ValueTypeOf<typeof FONT_WEIGHT_MAP>;
  * // <link href='http://fonts.googleapis.com/css?family=Advent+Pro' rel='stylesheet' type='text/css'>
  * ```
  */
-export default (
-  webFontName: Ref<string> | string,
-  weight?: Ref<string> | string
-) => {
+export default (webFontName: Ref<string> | string, weight?: Ref<string> | string) => {
   const linkElement = ref();
-  const wght = ref("");
+  const wght = ref('');
   const hrefText = computed(
-    () =>
-      `http://fonts.googleapis.com/css?family=${formatGoogleFontQuery(
-        unref(webFontName)
-      )}${unref(wght)}`
+    () => `http://fonts.googleapis.com/css?family=${formatGoogleFontQuery(unref(webFontName))}${unref(wght)}`,
   );
 
   onMounted(() => {
     if (weight && unref(weight)) {
       wght.value = `:wght@${unref(weight)}`;
     }
-    linkElement.value = document.createElement("link");
+    linkElement.value = document.createElement('link');
     linkElement.value.href = unref(hrefText);
-    linkElement.value.rel = "stylesheet";
-    linkElement.value.type = "text/css";
+    linkElement.value.rel = 'stylesheet';
+    linkElement.value.type = 'text/css';
     document.head.append(linkElement.value);
   });
 
@@ -96,7 +84,7 @@ export default (
         linkElement.value.href = text;
       }
     },
-    { immediate: true }
+    { immediate: true },
   );
 
   onUnmounted(() => {

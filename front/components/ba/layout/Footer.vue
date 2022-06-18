@@ -1,15 +1,10 @@
 <script setup lang="ts">
-import { Icon } from "@iconify/vue";
-import { getYear } from "date-fns";
-import useId from "@/composables/useId";
-import useCss from "@/composables/useCss";
-import useWebFont, {
-  FONT_TYPE_MAP,
-  FontType,
-  FONT_WEIGHT_MAP,
-  FontWeightValueType,
-} from "@/composables/useWebFont";
-import { bemx } from "@/utils/util";
+import { Icon } from '@iconify/vue';
+import { getYear } from 'date-fns';
+import useId from '@/composables/useId';
+import useCss from '@/composables/useCss';
+import useWebFont, { FONT_TYPE_MAP, FontType, FONT_WEIGHT_MAP, FontWeightValueType } from '@/composables/useWebFont';
+import { bemx } from '@/utils/util';
 
 interface FooterPropType {
   /**
@@ -35,13 +30,13 @@ const thisYear = getYear(new Date());
 
 useWebFont(props.font, props.weight);
 const id = useId();
-const className = bemx("BaLayoutFooter", id);
+const className = bemx('BaLayoutFooter', id);
 useCss(
   () =>
     `.BaLayoutFooter--${id} .BaLayoutFooter__Copyright{
       font-family: "${props.font}" !important;
       font-weight: ${props.weight} !important;
-    }`
+    }`,
 );
 </script>
 
@@ -50,11 +45,7 @@ useCss(
     <div class="BaLayoutFooter__SocialIcons">
       <ul>
         <li class="BaLayoutFooter__TwitterIcon">
-          <a
-            href="https://twitter.com/waicode37"
-            target="_blank"
-            rel="noopener"
-          >
+          <a href="https://twitter.com/waicode37" target="_blank" rel="noopener">
             <Icon icon="tabler:brand-twitter" />
           </a>
         </li>

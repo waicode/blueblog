@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Icon } from "@iconify/vue";
-import { SUPPLEMENT_TYPE, SupplementType } from "./SupplementComposable";
-import { bemx } from "@/utils/util";
+import { Icon } from '@iconify/vue';
+import { SUPPLEMENT_TYPE, SupplementType } from './SupplementComposable';
+import { bemx } from '@/utils/util';
 
 interface SupplementPropType {
   /**
@@ -19,7 +19,7 @@ interface SupplementPropType {
 
 const props = defineProps<SupplementPropType>();
 
-const className = computed(() => bemx("AppSupplement", { type: props.type }));
+const className = computed(() => bemx('AppSupplement', { type: props.type }));
 </script>
 
 <template>
