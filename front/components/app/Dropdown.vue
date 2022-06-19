@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
+import { TEXT_SIZE } from '@/components/app/TextComposable';
 import { DropdownItem } from './DropdownComposable';
 
 interface DropdownPropType {
@@ -25,7 +26,9 @@ const toggle = () => (isActive.value = !isActive.value);
     <div class="dropdown" :class="{ 'is-active': isActive }">
       <div class="dropdown-trigger">
         <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" @click="toggle">
-          <span>{{ label }}</span>
+          <span
+            ><AppText :type="TEXT_SIZE.BODY1">{{ label }}</AppText></span
+          >
           <span class="icon is-small">
             <Icon aria-hidden="true" :icon="isActive ? 'tabler:chevron-up' : 'tabler:chevron-down'" />
           </span>
@@ -34,7 +37,7 @@ const toggle = () => (isActive.value = !isActive.value);
       <div class="dropdown-menu" role="menu">
         <div class="dropdown-content">
           <NuxtLink v-for="item in items" :key="item.label" class="dropdown-item" :to="item.path"
-            >{{ item.label }}({{ item.count }})</NuxtLink
+            ><AppText :type="TEXT_SIZE.BODY1">{{ item.label }}({{ item.count }})</AppText></NuxtLink
           >
         </div>
       </div>

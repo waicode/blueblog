@@ -23,7 +23,7 @@ interface FooterPropType {
 
 const props = withDefaults(defineProps<FooterPropType>(), {
   font: FONT_TYPE_MAP.ADVENT__PRO,
-  weight: FONT_WEIGHT_MAP[FONT_WEIGHT_TYPE.WEIGHT400],
+  weight: FONT_WEIGHT_MAP.weight400,
 });
 
 const thisYear = getYear(new Date());

@@ -2,7 +2,7 @@ import AppSupplement from '@/components/app/Supplement.vue';
 import { SUPPLEMENT_TYPE } from '@/components/app/SupplementComposable';
 
 export default {
-  title: '@components/app/Image',
+  title: '@components/app/Supplement',
   component: AppSupplement,
   args: {
     type: SUPPLEMENT_TYPE.NORMAL,

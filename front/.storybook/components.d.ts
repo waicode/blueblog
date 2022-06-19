@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
     AppImage: typeof import('./../components/app/Image.vue')['default']
     AppSupplement: typeof import('./../components/app/Supplement.vue')['default']
     AppTagLabel: typeof import('./../components/app/TagLabel.vue')['default']
+    AppText: typeof import('./../components/app/Text.vue')['default']
     BaArticle: typeof import('./../components/ba/Article.vue')['default']
     BaLayoutFooter: typeof import('./../components/ba/layout/Footer.vue')['default']
     BaLayoutHeader: typeof import('./../components/ba/layout/Header.vue')['default']

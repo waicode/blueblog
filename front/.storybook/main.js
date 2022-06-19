@@ -28,8 +28,9 @@ module.exports = {
         dts: '.storybook/components.d.ts',
       }),
     );
+
     return mergeConfig(config, {
-      base: '/blueblog/',
+      base: config.build ? '/blueblog/' : '/',
       css: {
         preprocessorOptions: {
           scss: {
