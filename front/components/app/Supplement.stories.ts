@@ -7,6 +7,7 @@ export default {
   args: {
     type: SUPPLEMENT_TYPE.NORMAL,
     title: '補足説明のタイトル',
+    default: 'ここにテキストを入力します。'.repeat(10),
   },
   argTypes: {
     type: {
@@ -16,16 +17,17 @@ export default {
     title: {
       control: { type: 'text' },
     },
+    default: { control: { type: 'text' } },
   },
 };
 
 const Template = (args) => ({
   components: { AppSupplement },
   setup() {
-    return { args };
+    return { args: { ...args }, slotValue: args.default };
   },
   template: `
-    <AppSupplement v-bind="args" />
+    <AppSupplement v-bind="args">{{ slotValue }}</AppSupplement>
   `,
 });
 

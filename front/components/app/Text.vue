@@ -33,7 +33,7 @@ interface TextPropType {
    * ```
    *
    */
-  type: TextSizeType;
+  type?: TextSizeType;
   height?: LineHeightType;
   spacing?: LetterSpacingType;
   weight?: TextWeightType;
@@ -65,6 +65,7 @@ const className = computed(() =>
 </template>
 
 <style lang="scss">
+$text-dark-black-color: $dark-black-color;
 $text-black-color: $black-color;
 $text-white-color: $white-color;
 
@@ -75,23 +76,31 @@ $text-white-color: $white-color;
       font-style: normal;
       line-height: $line-height-175;
     }
+    &-copyright {
+      font-size: $font-size-48px;
+      line-height: $line-height-125;
+      letter-spacing: $letter-spacing2;
+      @mixin phone {
+        font-size: $font-size-36px;
+      }
+    }
   }
 
   &--height {
     &-125 {
-      letter-spacing: 1.25 !important;
+      letter-spacing: $line-height-125 !important;
     }
 
     &-167 {
-      letter-spacing: 1.67 !important;
+      letter-spacing: $line-height-167 !important;
     }
 
     &-171 {
-      letter-spacing: 1.71 !important;
+      letter-spacing: $line-height-171 !important;
     }
 
     &-175 {
-      letter-spacing: 1.75 !important;
+      letter-spacing: $line-height-175 !important;
     }
   }
 
@@ -105,11 +114,11 @@ $text-white-color: $white-color;
     }
 
     &-4 {
-      letter-spacing: 4px !important;
+      letter-spacing: $letter-spacing4 !important;
     }
 
     &-6 {
-      letter-spacing: 6px !important;
+      letter-spacing: $letter-spacing6 !important;
     }
   }
   &--weight {
@@ -124,6 +133,9 @@ $text-white-color: $white-color;
   &--color {
     &-normal {
       color: $text-black-color;
+    }
+    &-darkBlack {
+      color: $text-dark-black-color;
     }
     &-white {
       color: $text-white-color;

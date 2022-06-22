@@ -5,6 +5,7 @@ import { keyEnumObject, KeyTypeOf } from '@/utils/util';
  */
 export const TEXT_SIZE_MAP = {
   body1: 'body1',
+  copyright: 'copyright',
 } as const;
 
 /**
@@ -79,6 +80,7 @@ export const TEXT_WEIGHT = keyEnumObject(TEXT_WEIGHT_MAP);
  */
 export const TEXT_COLOR_MAP = {
   normal: 'normal',
+  darkBlack: 'darkBlack',
   white: 'white',
 } as const;
 

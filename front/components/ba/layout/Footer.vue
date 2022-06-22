@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { getYear } from 'date-fns';
+import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
 import useId from '@/composables/useId';
 import useCss from '@/composables/useCss';
 import useWebFont, { FONT_TYPE_MAP, FontType, FONT_WEIGHT_MAP, FontWeightValueType } from '@/composables/useWebFont';
@@ -57,7 +58,9 @@ useCss(
       </ul>
     </div>
     <div class="BaLayoutFooter__Copyright">
-      <p>© {{ thisYear }} archt.blue</p>
+      <p>
+        <AppText :type="TEXT_SIZE.COPYRIGHT" :color="TEXT_COLOR.WHITE">© {{ thisYear }} archt.blue</AppText>
+      </p>
     </div>
   </footer>
 </template>
@@ -138,12 +141,6 @@ $github-icon-color: #778cff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: $font-size-48px;
-    letter-spacing: $letter-spacing-2px;
-    line-height: $line-height-125;
-    @mixin phone {
-      font-size: $font-size-36px;
-    }
   }
 }
 </style>
