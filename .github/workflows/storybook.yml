@@ -30,7 +30,6 @@ jobs:
           source ~/.bash_profile
 
       - name: Install dependencies 👨🏻‍💻
-        if: steps.cache-volta.outputs.cache-hit != 'true'
         run: |
           yarn install
         working-directory: ./front
