@@ -5,6 +5,7 @@ import { keyEnumObject, KeyTypeOf } from '@/utils/util';
  */
 export const TEXT_SIZE_MAP = {
   body1: 'body1',
+  date1: 'date1',
   copyright: 'copyright',
 } as const;
 

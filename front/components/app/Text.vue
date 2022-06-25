@@ -76,6 +76,11 @@ $text-white-color: $white-color;
       font-style: normal;
       line-height: $line-height-175;
     }
+    &-date1 {
+      font-size: $font-size-12px;
+      font-style: normal;
+      line-height: $line-height-167;
+    }
     &-copyright {
       font-size: $font-size-48px;
       line-height: $line-height-125;

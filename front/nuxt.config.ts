@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   // サーバサイドレンダリングは行わない
   ssr: false,
   css: ['bulma/bulma.sass'],
+  buildModules: ['@pinia/nuxt'],
   vite: {
     plugins: [eslintPlugin()],
     css: {

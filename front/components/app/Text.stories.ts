@@ -37,7 +37,9 @@ export default {
 const Template = (args) => ({
   components: { AppText },
   setup() {
-    return { args: { ...args }, slotValue: args.default };
+    const slotValue = args.default;
+    delete args.default;
+    return { args, slotValue };
   },
   template: `
       <AppText v-bind="args">{{ slotValue }}</AppText>`,

@@ -18,17 +18,20 @@ interface EyeCatchImagePropType {
    *
    * アイキャッチ画像の幅
    */
-  width: number;
+  width?: number;
 
   /**
    * 高さ
    *
    * アイキャッチ画像の高さ
    */
-  height: number;
+  height?: number;
 }
 
-const props = defineProps<EyeCatchImagePropType>();
+const props = withDefaults(defineProps<EyeCatchImagePropType>(), {
+  width: 884,
+  height: 464,
+});
 
 const id = useId();
 const className = bemx('AppEyeCatchImage', id);
