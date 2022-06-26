@@ -9,19 +9,7 @@ jobs:
       - name: Checkout 🛎
         uses: actions/checkout@v2
 
-      - name: Cache volta 📦
-        id: cache-volta
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.volta
-            ~/.npm
-            ~/.bash_profile
-            node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-
       - name: Install volta ⚡️
-        if: steps.cache-volta.outputs.cache-hit != 'true'
         run: |
           sudo apt-get update
           sudo apt-get install -y curl
@@ -41,17 +29,6 @@ jobs:
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v2
-
-      - name: Cache volta 📦
-        id: cache-volta
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.volta
-            ~/.npm
-            ~/.bash_profile
-            node_modules
-          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
 
       - run: source ~/.bash_profile
 
