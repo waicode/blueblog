@@ -4,16 +4,23 @@ export default {
   title: '@components/app/EyeCatchImage',
   component: AppEyeCatchImage,
   args: {
-    icon: 'tabler:calendar-event',
+    icon: 'tabler:brand-docker',
+    width: '400px',
   },
   argTypes: {
     icon: {
       control: { type: 'text' },
     },
     width: {
-      control: { type: 'number' },
+      control: { type: 'text' },
     },
     height: {
+      control: { type: 'text' },
+    },
+    iconRatio: {
+      control: { type: 'number' },
+    },
+    aspectRatio: {
       control: { type: 'number' },
     },
   },

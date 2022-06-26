@@ -47,7 +47,7 @@ interface EyeCatchImagePropType {
 }
 
 const props = withDefaults(defineProps<EyeCatchImagePropType>(), {
-  width: '100%',
+  width: '400px',
   height: undefined,
   iconRatio: 1 / 3,
   aspectRatio: undefined,
