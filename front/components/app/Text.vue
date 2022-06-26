@@ -76,16 +76,32 @@ $text-white-color: $white-color;
       font-style: normal;
       line-height: $line-height-175;
     }
+    &-title1 {
+      font-size: $font-size-20px;
+      font-style: normal;
+      line-height: $line-height-160;
+      font-weight: 700;
+    }
+    &-description1 {
+      font-size: $font-size-14px;
+      font-style: normal;
+      line-height: $line-height-167;
+    }
     &-date1 {
       font-size: $font-size-12px;
       font-style: normal;
       line-height: $line-height-167;
     }
+    &-tag1 {
+      font-size: $font-size-10px;
+      font-style: normal;
+      line-height: $line-height-160;
+    }
     &-copyright {
       font-size: $font-size-48px;
       line-height: $line-height-125;
       letter-spacing: $letter-spacing2;
-      @mixin phone {
+      @include phone {
         font-size: $font-size-36px;
       }
     }
@@ -93,19 +109,23 @@ $text-white-color: $white-color;
 
   &--height {
     &-125 {
-      letter-spacing: $line-height-125 !important;
+      line-height: $line-height-125 !important;
+    }
+
+    &-160 {
+      line-height: $line-height-160 !important;
     }
 
     &-167 {
-      letter-spacing: $line-height-167 !important;
+      line-height: $line-height-167 !important;
     }
 
     &-171 {
-      letter-spacing: $line-height-171 !important;
+      line-height: $line-height-171 !important;
     }
 
     &-175 {
-      letter-spacing: $line-height-175 !important;
+      line-height: $line-height-175 !important;
     }
   }
 

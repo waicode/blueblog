@@ -281,11 +281,11 @@ export const formatDate = (datetimeStr: string) => {
  *
  * @returns メディアクエリ
  */
-export const tabletMediaQuery = () => 'max-width: (769px)';
+export const tabletMediaQuery = () => '(max-width: 769px)';
 
 /**
  * スマホ画面幅以下であるかを判定するためのメディアクエリ
  *
  * @returns メディアクエリ
  */
-export const phoneMediaQuery = () => 'max-width: (479px)';
+export const phoneMediaQuery = () => '(max-width: 479px)';

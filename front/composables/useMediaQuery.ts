@@ -1,9 +1,8 @@
 /**
  * ## メディアクエリ判定
  *
- * CSSで行うメディアクエリ判定をJavaScriptでライフサイクル期間に実施する。
+ * CSSのメディアクエリ判定をJavaScriptでライフサイクル期間に実施する。
  * 判定結果がリアクティブな真偽値で返却される。
- *
  *
  * @param mediaQueryFunc メディアクエリ文字列を返却する関数
  *
@@ -14,11 +13,7 @@ export default (mediaQueryFunc: () => string) => {
 
   const isMatch = ref(matchQuery.matches);
 
-  const listener = (event) => {
-    if (event.matches) {
-      isMatch.value = event.matches;
-    }
-  };
+  const listener = (event) => (isMatch.value = event.matches);
 
   onMounted(() => {
     matchQuery.addEventListener('change', listener);
