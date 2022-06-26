@@ -1,4 +1,4 @@
-import { ScreamingSnakeCase, UnionToIntersection } from 'type-fest';
+import { UnionToIntersection, ScreamingSnakeCase } from 'type-fest';
 import { upperCase } from 'upper-case';
 import { snakeCase } from 'change-case';
 import { format } from 'date-fns';
