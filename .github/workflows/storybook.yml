@@ -19,8 +19,6 @@ jobs:
           curl https://get.volta.sh | bash
           source ~/.bash_profile
 
-      - run: source ~/.bash_profile
-
       - name: Build storybook 🏗
         run: |
           yarn install
