@@ -63,7 +63,7 @@ export default (webFontName: Ref<string> | string, weight?: Ref<string> | string
   const linkElement = ref();
   const wght = ref('');
   const hrefText = computed(
-    () => `http://fonts.googleapis.com/css?family=${formatGoogleFontQuery(unref(webFontName))}${unref(wght)}`,
+    () => `https://fonts.googleapis.com/css?family=${formatGoogleFontQuery(unref(webFontName))}${unref(wght)}`,
   );
 
   onMounted(() => {
