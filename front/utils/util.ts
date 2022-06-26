@@ -275,3 +275,17 @@ export const formatGoogleFontQuery = (fontNameWithSpace: string) =>
 export const formatDate = (datetimeStr: string) => {
   return format(new Date(Date.parse(datetimeStr)), 'yyyy-MM-dd');
 };
+
+/**
+ * タブレット画面幅以下であるかを判定するためのメディアクエリ
+ *
+ * @returns メディアクエリ
+ */
+export const tabletMediaQuery = () => 'max-width: (769px)';
+
+/**
+ * スマホ画面幅以下であるかを判定するためのメディアクエリ
+ *
+ * @returns メディアクエリ
+ */
+export const phoneMediaQuery = () => 'max-width: (479px)';
