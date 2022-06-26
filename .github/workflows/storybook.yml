@@ -3,8 +3,10 @@ name: Storybook Deploy to Github Page
 on: [workflow_dispatch]
 
 jobs:
-  setup-node:
+  deploy:
     runs-on: ubuntu-20.04
+    needs:
+      - setup-node
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v2
@@ -17,25 +19,13 @@ jobs:
           curl https://get.volta.sh | bash
           source ~/.bash_profile
 
-      - name: Install dependencies 👨🏻‍💻
-        run: |
-          yarn install
-        working-directory: ./front
-
-  build:
-    runs-on: ubuntu-20.04
-    needs:
-      - setup-node
-    steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@v2
-
       - run: source ~/.bash_profile
 
       - name: Build storybook 🏗
         run: |
-          yarn build
-          yarn build-storybook
+          yarn install
+          yarn run build
+          yarn run build-storybook
         working-directory: ./front
 
       - name: Deploy pages 📄
