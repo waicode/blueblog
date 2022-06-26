@@ -15,7 +15,7 @@ export type Article = {
   updatedAt: string;
 };
 
-const useArticleStore = defineStore('article', () => {
+export const useArticleStore = defineStore('article', () => {
   // -----------------------
   // State
   // -----------------------
@@ -49,5 +49,5 @@ const useArticleStore = defineStore('article', () => {
   // Action
   // -----------------------
 
-  return articleState;
+  return { articleState, setArticleState };
 });

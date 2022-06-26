@@ -48,7 +48,9 @@ interface EyeCatchImagePropType {
 
 const props = withDefaults(defineProps<EyeCatchImagePropType>(), {
   width: '100%',
+  height: undefined,
   iconRatio: 1 / 3,
+  aspectRatio: undefined,
 });
 
 // アスペクト比は高さが未指定の場合は`1.91 / 1`に指定する

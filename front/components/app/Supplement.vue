@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { TEXT_WEIGHT, TEXT_COLOR } from '@/components/app/TextComposable';
-import { SUPPLEMENT_TYPE, SupplementType } from './SupplementComposable';
+import { SUPPLEMENT_TYPE, SupplementType } from '@/components/app/SupplementComposable';
 import { bemx } from '@/utils/util';
 
 interface SupplementPropType {

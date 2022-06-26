@@ -43,6 +43,11 @@ interface TextPropType {
 
 const props = withDefaults(defineProps<TextPropType>(), {
   type: TEXT_SIZE_MAP.body1,
+  height: undefined,
+  spacing: undefined,
+  weight: undefined,
+  color: undefined,
+  underline: false,
 });
 
 const className = computed(() =>

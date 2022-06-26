@@ -4,7 +4,11 @@ import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
 import { DATE_TEXT_TYPE_MAP } from '@/components/app/DateTextComposable';
 import useMediaQuery from '@/composables/useMediaQuery';
 import { tabletMediaQuery, phoneMediaQuery } from '@/utils/util';
-import { EYE_CATCH_WIDTH_DESKTOP, EYE_CATCH_WIDTH_PHONE, EYE_CATCH_WIDTH_TABLET } from './ArticleComposable';
+import {
+  EYE_CATCH_WIDTH_DESKTOP,
+  EYE_CATCH_WIDTH_PHONE,
+  EYE_CATCH_WIDTH_TABLET,
+} from '@/components/ba/ArticleComposable';
 
 interface ArticlePropType {
   /**
@@ -65,7 +69,7 @@ watchEffect(() => {
           <div class="BaArticle__Meta">
             <div class="BaArticle__Date">
               <span class="BaArticle__DatePublished" itemprop="createdAt" :content="article.createdAt">
-                <AppDateText :dateTimeText="article.createdAt" />
+                <AppDateText :date-time-text="article.createdAt" />
               </span>
               <span
                 v-if="article.updatedAt != article.createdAt"
@@ -73,7 +77,7 @@ watchEffect(() => {
                 itemprop="updatedAt"
                 :content="article.updatedAt"
               >
-                <AppDateText :type="DATE_TEXT_TYPE_MAP.UPDATED" :dateTimeText="article.updatedAt" />
+                <AppDateText :type="DATE_TEXT_TYPE_MAP.UPDATED" :date-time-text="article.updatedAt" />
               </span>
             </div>
             <div v-if="article.tags" class="BaArticle__Tags">

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { TEXT_SIZE } from '@/components/app/TextComposable';
-import { DropdownItem } from './DropdownComposable';
+import { DropdownItem } from '@/components/app/DropdownComposable';
 
 interface DropdownPropType {
   /**

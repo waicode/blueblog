@@ -38,6 +38,7 @@ const Template = (args) => ({
   components: { AppText },
   setup() {
     const slotValue = args.default;
+    // eslint-disable-next-line no-param-reassign
     delete args.default;
     return { args, slotValue };
   },
