@@ -1,9 +1,7 @@
-@import '../node_modules/bulma/bulma';
-
 // スマホ用のブレークポイントを独自に追加
-$phone: 480px;
+$phone: 479px;
 
-// mobile
+// tablet
 @mixin tablet {
   // $tabletはbulmaの組込変数（デフォルトで769px）
   @media screen and (max-width: ($tablet)) {
@@ -11,7 +9,7 @@ $phone: 480px;
   }
 }
 
-// narrow
+// phone
 @mixin phone {
   @media screen and (max-width: ($phone)) {
     @content;

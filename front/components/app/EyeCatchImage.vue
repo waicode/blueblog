@@ -16,21 +16,59 @@ interface EyeCatchImagePropType {
   /**
    * 幅
    *
-   * アイキャッチ画像の幅
+   * アイキャッチ画像の幅。
+   * %単位の比率かpx単位または単位なしの数値で指定する。
+   * `auto`の指定は不可。
    */
-  width?: number;
+  width?: string;
 
   /**
    * 高さ
    *
-   * アイキャッチ画像の高さ
+   * アイキャッチ画像の高さ。
+   * %単位の比率かpx単位または単位なしの数値で指定する。
+   * `auto`の指定も可。
    */
-  height?: number;
+  height?: string;
+
+  /**
+   * アイコンサイズ比率
+   *
+   * イメージ中央に表示するアイコンサイズの比率。
+   */
+  iconRatio?: number;
+
+  /**
+   * アスペクト比
+   *
+   * 幅と高さをアスペクト比で指定する場合に設定する
+   */
+  aspectRatio?: number;
 }
 
 const props = withDefaults(defineProps<EyeCatchImagePropType>(), {
-  width: 884,
-  height: 464,
+  width: '100%',
+  iconRatio: 1 / 3,
+});
+
+// アスペクト比は高さが未指定の場合は`1.91 / 1`に指定する
+const aspectRatioValue = computed(() => props.aspectRatio ?? (props.height ? undefined : 1.91 / 1));
+
+const iconRatioWidth = computed(() => {
+  if (props.width.includes('%')) {
+    const widthRatio = props.width.replace('%', '');
+    return `${Math.trunc(Number(widthRatio) * props.iconRatio)}%`;
+  } else {
+    return undefined;
+  }
+});
+
+const iconPixelWidth = computed(() => {
+  if (props.width.includes('%')) {
+    return undefined;
+  }
+  const widthNumber = props.width.includes('px') ? props.width.replace('px', '') : props.width;
+  return `${Math.trunc(Number(widthNumber) * props.iconRatio)}px`;
 });
 
 const id = useId();
@@ -39,12 +77,15 @@ useCss(
   () =>
     `
     .AppEyeCatchImage--${id} .AppEyeCatchImage__Bg {
-      width: ${props.width}px !important;
-      height: ${props.height}px !important;
+      ${props.width ? `width: ${props.width} !important;` : ''}
+      ${props.height ? `height: ${props.height} !important;` : ''}
+      ${unref(aspectRatioValue) ? `aspect-ratio: ${unref(aspectRatioValue)} !important;` : ''}
+    }
+    .AppEyeCatchImage--${id} .AppEyeCatchImage__Icon {
+      ${unref(iconRatioWidth) ? `width: ${unref(iconRatioWidth)} !important;` : ''}
     }
     .AppEyeCatchImage--${id} .AppEyeCatchImage__Icon svg {
-      width: ${Math.trunc(props.width / 1.5)}px !important;
-      height: ${Math.trunc(props.height / 1.5)}px !important;
+      ${unref(iconPixelWidth) ? `width: ${unref(iconPixelWidth)} !important;` : ''}
     }
     `,
 );
@@ -74,6 +115,8 @@ $svg-icon-color: $white-color;
   &__Icon {
     svg {
       color: $svg-icon-color;
+      width: 100%;
+      height: auto;
     }
   }
 }

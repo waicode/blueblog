@@ -5,8 +5,6 @@ export default {
   component: AppEyeCatchImage,
   args: {
     icon: 'tabler:calendar-event',
-    width: 884,
-    height: 464,
   },
   argTypes: {
     icon: {
