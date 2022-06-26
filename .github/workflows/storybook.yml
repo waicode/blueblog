@@ -34,8 +34,8 @@ jobs:
 
       - name: Build storybook 🏗
         run: |
-          yarn run build
-          yarn run build-storybook
+          yarn build
+          yarn build-storybook
         working-directory: ./front
 
       - name: Deploy pages 📄
