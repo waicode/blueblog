@@ -18,7 +18,7 @@ export default {
     },
   },
   argTypes: {
-    args: {
+    article: {
       control: { type: 'object' },
     },
   },

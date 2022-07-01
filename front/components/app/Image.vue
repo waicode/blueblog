@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { getFileName } from '@/utils/util';
+
 interface ImagePropType {
   /**
    * 画像パス
@@ -12,7 +14,7 @@ interface ImagePropType {
    *
    * 未指定の場合はファイル名がalt属性に設定される。
    */
-  alt: string;
+  alt?: string;
 }
 
 const props = defineProps<ImagePropType>();
