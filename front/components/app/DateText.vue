@@ -26,7 +26,7 @@ const props = withDefaults(defineProps<DateTextPropType>(), {
 </template>
 
 <style lang="scss">
-$svg-icon-width: 13px;
+$svg-icon-width: 12px;
 $svg-icon-height: $svg-icon-width;
 
 .AppDateText {
@@ -38,7 +38,6 @@ $svg-icon-height: $svg-icon-width;
     svg {
       width: $svg-icon-width;
       height: $svg-icon-height;
-      vertical-align: middle;
     }
   }
 

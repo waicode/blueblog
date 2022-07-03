@@ -146,8 +146,8 @@ $card-link-hover-color: $gray-66-color;
 $card-link-hover-bg-color: $pale-blue-alpha-color;
 $card-link-hover-label-color: $black-color;
 
-$link-title-before-top: -2px;
 $link-title-before-width: 64px;
+$link-title-before-height: 22px;
 $link-title-before-text-color: $white-color;
 $link-title-before-bg-color-external: $black-color;
 $link-title-before-bg-color-related: $main-blue-color;
@@ -171,8 +171,6 @@ $link-title-before-bg-color-related: $main-blue-color;
         }
       }
     }
-
-    // TODO: ここから、type別のCSSもいれること
   }
 
   &__LinkImage {
@@ -184,6 +182,17 @@ $link-title-before-bg-color-related: $main-blue-color;
       border-top-left-radius: $border-radius4;
       border-bottom-left-radius: $border-radius4;
     }
+    @include tablet {
+      margin-top: $scale12;
+      margin-left: $scale12;
+      img {
+        height: auto;
+        border-top-left-radius: $border-radius2;
+        border-bottom-left-radius: $border-radius2;
+        border-top-right-radius: $border-radius2;
+        border-bottom-right-radius: $border-radius2;
+      }
+    }
   }
 
   &__Contents {
@@ -191,19 +200,28 @@ $link-title-before-bg-color-related: $main-blue-color;
     flex-direction: column;
     justify-content: space-between;
     padding: $scale12 $scale16 $scale8 0;
+    @include tablet {
+      justify-content: start;
+    }
   }
 
-  // &__TitleNoteWrapper {
-  // }
+  &__TitleNoteWrapper {
+    @include tablet {
+      margin-bottom: $scale12;
+    }
+  }
 
   &__LinkTitle {
+    display: flex;
     margin-bottom: $scale12;
     font-weight: $font-weight-700;
     &::before {
-      position: relative;
-      top: $link-title-before-top;
-      display: inline-block;
+      display: block;
       width: $link-title-before-width;
+      height: $link-title-before-height;
+      flex-basis: $link-title-before-width;
+      flex-grow: 0;
+      flex-shrink: 0;
       padding: $scale4;
       margin-right: $scale8;
       font-size: $font-size-10px;
@@ -216,6 +234,17 @@ $link-title-before-bg-color-related: $main-blue-color;
       transition: 0.3s ease-in-out;
     }
   }
+  &--type-related {
+    .BaLinkCard {
+      &__LinkTitle {
+        &::before {
+          content: '関連リンク';
+          background: $link-title-before-bg-color-related;
+        }
+      }
+    }
+  }
+
   // &__LinkNote {
   // }
 
