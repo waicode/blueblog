@@ -87,10 +87,21 @@ $text-white-color: $white-color;
       line-height: $line-height-160;
       font-weight: 700;
     }
+    &-title2 {
+      font-size: $font-size-16px;
+      font-style: normal;
+      line-height: $line-height-125;
+      font-weight: 700;
+    }
     &-description1 {
       font-size: $font-size-14px;
       font-style: normal;
       line-height: $line-height-167;
+    }
+    &-description2 {
+      font-size: $font-size-14px;
+      font-style: normal;
+      line-height: $line-height-143;
     }
     &-date1 {
       font-size: $font-size-12px;
@@ -115,6 +126,10 @@ $text-white-color: $white-color;
   &--height {
     &-125 {
       line-height: $line-height-125 !important;
+    }
+
+    &-143 {
+      line-height: $line-height-143 !important;
     }
 
     &-160 {

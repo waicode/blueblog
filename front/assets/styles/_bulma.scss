@@ -1,8 +1,17 @@
 /**
  * Bulma組込変数のカスタマイズ
  *
+ * `_variables.scss`より前に読み込むため、変数参照でなく値を直接指定すること。
+ *
  * https://bulma.io/documentation/customize/variables/
  */
 
 // フォントファミリーを変更
 $family-sans-serif: '"Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif';
+
+// 行の高さをテキストコンポーネントの最小定義値に変更する。
+// 数値指定の場合、親要素の高さより小さい値を設定しても親側が優先されるため。
+$body-line-height: 1.25;
+
+// Bodyのフォントサイズを変更
+$body-font-size: 16px;

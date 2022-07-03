@@ -6,7 +6,9 @@ import { keyEnumObject, KeyTypeOf } from '@/utils/util';
 export const TEXT_SIZE_MAP = {
   body1: 'body1',
   title1: 'title1',
+  title2: 'title2',
   description1: 'description1',
+  description2: 'description2',
   date1: 'date1',
   tag1: 'tag1',
   copyright: 'copyright',
@@ -27,6 +29,7 @@ export const TEXT_SIZE = keyEnumObject(TEXT_SIZE_MAP);
  */
 export const LINE_HEIGHT_MAP = {
   height125: 1.25,
+  height143: 1.43,
   height160: 1.6,
   height167: 1.67,
   height171: 1.71,

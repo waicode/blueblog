@@ -7,7 +7,7 @@ type UnionToObjectUnion<X extends string> = X extends string ? { [key in Screami
 type UnionToEnumObject<X extends string> = UnionToIntersection<UnionToObjectUnion<X>>;
 
 /**
- * 入力テキストを大文字スネークケースに変換。
+ * 入力テキストを大文字スネークケースに変換
  *
  * キャメルケース・パスカルケース・スネークケースに対応。
  *
@@ -26,7 +26,7 @@ export const upperSnakeCase = <T extends string>(value: T): ScreamingSnakeCase<T
   upperCase(snakeCase(value)) as ScreamingSnakeCase<T>;
 
 /**
- * 入力テキストを`__`区切りの大文字スネークケースに変換。
+ * 入力テキストを`__`区切りの大文字スネークケースに変換
  *
  * キャメルケース・パスカルケース・スネークケースに対応。
  *
@@ -45,7 +45,7 @@ export const upperSnakeCase = <T extends string>(value: T): ScreamingSnakeCase<T
 export const upperSnakeDoubleCase = <T extends string>(value: T) => upperCase(snakeCase(value, { delimiter: '__' }));
 
 /**
- * 指定オブジェクトのKeyの型。
+ * 指定オブジェクトのKeyの型
  *
  * オブジェクトの中のvalueに、さらにオブジェクトが内包されている場合は使えないので注意。
  * 代わりに`keyEnumObject(object)`と`ValueTypeOf<T>`を組み合わせて型情報をつくること。
@@ -53,12 +53,12 @@ export const upperSnakeDoubleCase = <T extends string>(value: T) => upperCase(sn
 export type KeyTypeOf<T> = keyof T;
 
 /**
- * 指定オブジェクトのValueの型。
+ * 指定オブジェクトのValueの型
  */
 export type ValueTypeOf<T> = T[keyof T];
 
 /**
- * stringキーを持つ定数オブジェクトからキー情報の定数オブジェクトを生成。
+ * stringキーを持つ定数オブジェクトからキー情報の定数オブジェクトを生成
  *
  * @param arg stringのキーを持つ定数オブジェクト
  * @returns オブジェクトのキーから生成された定数オブジェクト
@@ -85,7 +85,7 @@ export const keyEnumObject = <T extends Record<string, unknown>>(
     : never;
 
 /**
- * 文字配列から定数オブジェクトを生成。
+ * 文字配列から定数オブジェクトを生成
  *
  * @param args stringの配列
  * @returns 文字配列から生成した定数オブジェクト
@@ -119,7 +119,7 @@ type StringKeyBemRecord = Record<string, string | number | boolean | undefined |
 type BemModifierRecord = string | StringKeyBemRecord | (string | StringKeyBemRecord)[];
 
 /**
- * BEM Classの配列生成。
+ * BEM Classの配列生成
  *
  * clsxのような記述でclassの記述を行うユーティリティ。
  *
@@ -195,7 +195,8 @@ const charCodeFromTo = (from: string, to: string): number[] => {
 };
 
 /**
- * 開始文字と終了文字を指定し、指定文字コード範囲の文字配列を返却。
+ * 開始文字と終了文字を指定し、指定文字コード範囲の文字配列を返却
+ *
  * @param from 開始文字
  * @param to 終了文字
  * @returns 指定文字コード範囲の文字配列
@@ -206,7 +207,7 @@ export const charFromTo = (from: string, to: string): string[] =>
 const azAZ09 = [...charFromTo('a', 'z'), ...charFromTo('A', 'Z'), ...charFromTo('0', '9')];
 
 /**
- * a-z,A-Z,0-9で構成されるランダム文字列を生成。
+ * a-z,A-Z,0-9で構成されるランダム文字列を生成
  *
  * @param length 文字列長
  * @returns ランダム文字列
@@ -217,7 +218,7 @@ export const randomString = (length = 10): string =>
     .join('');
 
 /**
- * ファイルパスからファイル名を取得。
+ * ファイルパスからファイル名を取得
  *
  * `/`で区切られた最後の要素の`.`より前のテキストを取得する。
  *
@@ -233,7 +234,22 @@ export const randomString = (length = 10): string =>
 export const getFileName = (path: string) => path.split('/').reverse()[0].split('.')[0];
 
 /**
- * 文字列が数字かどうかを判定。
+ * URLからFQDN（完全修飾ドメイン名）を取得
+ *
+ * @params url ホスト名・ドメイン名を含むURL文字列
+ * @returns ホスト名・ドメイン名が連結されたFQDN文字列
+ *
+ * @example
+ * ```
+ * const url = 'https://sample.archt.blue/aaa/bbb'
+ * const fqdnName = getUrlFqdn(url) // sample.archt.blue
+ * ```
+ */
+export const getUrlFqdn = (url: string) => url.match(/^https?:\/{2,}(.*?)(?:\/|\?|#|$)/)[1];
+
+/**
+ * 文字列が数字かどうかを判定
+ *
  * 0以上のゼロ埋めなし整数の場合は`true`を返却する。
  *
  * @param str 文字列
@@ -242,7 +258,8 @@ export const getFileName = (path: string) => path.split('/').reverse()[0].split(
 export const isNumerical = (str: string) => /^([1-9]\d*|0)$/.test(str);
 
 /**
- * 文字列が年月の形式（YYYYMM）かどうかを判定。
+ * 文字列が年月の形式（YYYYMM）かどうかを判定
+ *
  * 正しい形式なら`true`を返却する。
  *
  * @param yyyy 年（ゼロ埋めあり4桁）の文字列
@@ -252,7 +269,8 @@ export const isNumerical = (str: string) => /^([1-9]\d*|0)$/.test(str);
 export const isYyyyMm = (yyyy: string, mm: string) => /^[0-9]{4}$/.test(yyyy) && /^(0[1-9]|1[0-2])$/.test(mm);
 
 /**
- * GoogleFontのクエリ文字列用フォーマット。
+ * GoogleFontのクエリ文字列用フォーマット
+ *
  * クエリ文字列に指定するために` `（半角スペース）を`+`に置換する。
  * 連続する半角スペースは1つにまとめたうえで置換する。
  *
@@ -263,7 +281,7 @@ export const formatGoogleFontQuery = (fontNameWithSpace: string) =>
   fontNameWithSpace ? fontNameWithSpace.replace(/ +/g, ' ').replace(' ', '+') : '';
 
 /**
- * ISO8601形式の日時文字列をyyyy-MM-dd形式の日付文字列に変換する。
+ * ISO8601形式の日時文字列をyyyy-MM-dd形式の日付文字列に変換する
  *
  * `date-fns`の`format`で使えるパターン文字列は以下を参照
  *
