@@ -171,6 +171,9 @@ $link-title-before-bg-color-related: $main-blue-color;
         }
       }
     }
+    @include phone {
+      flex-direction: column;
+    }
   }
 
   &__LinkImage {
@@ -193,6 +196,13 @@ $link-title-before-bg-color-related: $main-blue-color;
         border-bottom-right-radius: $border-radius2;
       }
     }
+    @include phone {
+      margin: 0 0 $scale12;
+      border-top-left-radius: $border-radius4;
+      border-bottom-left-radius: $border-radius1;
+      border-top-right-radius: $border-radius4;
+      border-bottom-right-radius: $border-radius1;
+    }
   }
 
   &__Contents {
@@ -203,10 +213,17 @@ $link-title-before-bg-color-related: $main-blue-color;
     @include tablet {
       justify-content: start;
     }
+    @include phone {
+      padding: 0 $scale12 $scale8;
+      justify-content: start;
+    }
   }
 
   &__TitleNoteWrapper {
     @include tablet {
+      margin-bottom: $scale12;
+    }
+    @include phone {
       margin-bottom: $scale12;
     }
   }
