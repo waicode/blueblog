@@ -2,6 +2,7 @@
 import { DATE_TEXT_TYPE_MAP } from '@/components/app/DateTextComposable';
 import { LinkCardType, LINK_CARD_TYPE_MAP } from '@/components/ba/LinkCardComposable';
 import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
+import useOgp from '@/composables/useOgp';
 import { Article } from '@/store/article';
 import { bemx, getUrlFqdn } from '@/utils/util';
 
@@ -17,27 +18,30 @@ interface LinkCardPropType {
    * タイトル
    *
    * 外部リンクの場合は必須。
+   * 未設定の場合はリンクからOGPの`title`を調べて見つかればそれを適用する。
    */
   title?: string;
 
   /**
    * 説明
    *
-   * 外部リンクの場合は必須。
+   * 外部リンクの場合に設定する。
+   * 未設定の場合はリンクからOGPの`description`を調べて見つかればそれを適用する。
    */
-  note?: string;
+  description?: string;
 
   /**
    * リンク
    *
-   * 外部リンクの場合は必須。
+   * 外部リンク、Qiita、Zennの場合は必須。
    */
   link?: string;
 
   /**
    * 画像ファイル名
    *
-   * 外部リンクの場合は必須。
+   * 外部リンクの場合に設定する。
+   * 未設定の場合はリンクからOGP画像を調べて見つかればそれを適用する。
    */
   imgFileName?: string;
 
@@ -56,34 +60,43 @@ interface LinkCardPropType {
    * 関連記事の場合は必須。
    */
   article?: Article;
-
-  /**
-   * 記事ID
-   *
-   * 関連記事、Qiita、Zennの場合は必須。
-   * 対象記事を一意特定できるID文字列を指定する。
-   */
-  id?: string;
 }
 
 const props = defineProps<LinkCardPropType>();
 
-const domain = ref('');
+const linkDomain = ref('');
 
 switch (props.type) {
   case LINK_CARD_TYPE_MAP.EXTERNAL:
-    domain.value = getUrlFqdn(props.link);
+    linkDomain.value = getUrlFqdn(props.link);
     break;
   case LINK_CARD_TYPE_MAP.RELATED:
-    domain.value = 'archt.blue';
+    linkDomain.value = 'archt.blue';
     break;
   case LINK_CARD_TYPE_MAP.QIITA:
-    domain.value = 'qiita.com';
+    linkDomain.value = 'qiita.com';
     break;
   case LINK_CARD_TYPE_MAP.ZENN:
-    domain.value = 'zenn.dev';
+    linkDomain.value = 'zenn.dev';
     break;
   default:
+}
+
+const linkTitle = ref(props.title);
+const linkDescription = ref(props.description);
+const linkImage = ref('');
+
+if (props.link) {
+  const ogp = await useOgp(props.link);
+  if (ogp.title) {
+    linkTitle.value = props.title ?? ogp.title;
+  }
+  if (ogp.description) {
+    linkDescription.value = props.description ?? ogp.description;
+  }
+  if (ogp.imageUrl) {
+    linkImage.value = ogp.imageUrl;
+  }
 }
 
 const className = computed(() =>
@@ -98,15 +111,16 @@ const className = computed(() =>
     <a :href="link" target="_blank" rel="nofollow noopener">
       <div class="BaLinkCard__Wrapper">
         <div class="BaLinkCard__LinkImage">
-          <AppImage v-if="imgFileName" :path="`link/${imgFileName}`" />
+          <AppImage v-if="imgFileName" :imagePath="`link/${imgFileName}`" />
+          <AppImage v-else :url="linkImage" />
         </div>
         <div class="BaLinkCard__Contents">
           <div class="BaLinkCard__TitleNoteWrapper">
             <div class="BaLinkCard__LinkTitle">
-              <AppText :type="TEXT_SIZE.TITLE2" :color="TEXT_COLOR.NORMAL">{{ title }}</AppText>
+              <AppText :type="TEXT_SIZE.TITLE2" :color="TEXT_COLOR.NORMAL">{{ linkTitle }}</AppText>
             </div>
             <div class="BaLinkCard__LinkNote">
-              <AppText :type="TEXT_SIZE.DESCRIPTION2" :color="TEXT_COLOR.NORMAL">{{ note }}</AppText>
+              <AppText :type="TEXT_SIZE.DESCRIPTION2" :color="TEXT_COLOR.NORMAL">{{ linkDescription }}</AppText>
             </div>
           </div>
           <div class="BaLinkCard__Meta">
@@ -128,7 +142,7 @@ const className = computed(() =>
               </div>
             </div>
             <div class="BaLinkCard__LinkDomain">
-              <AppText :type="TEXT_SIZE.DATE1" :color="TEXT_COLOR.NORMAL">{{ domain }}</AppText>
+              <AppText :type="TEXT_SIZE.DATE1" :color="TEXT_COLOR.NORMAL">{{ linkDomain }}</AppText>
             </div>
           </div>
           <img v-if="aspMeasurementImgLink" border="0" width="1" height="1" :src="aspMeasurementImgLink" alt="" />
@@ -206,6 +220,7 @@ $link-title-before-bg-color-related: $main-blue-color;
   }
 
   &__Contents {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

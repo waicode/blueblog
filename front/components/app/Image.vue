@@ -7,11 +7,20 @@ interface ImagePropType {
    *
    * assets/imagesフォルダ配下のパスを指定する。
    */
-  path: string;
+  imagePath?: string;
+
+  /**
+   * 画像リンク
+   *
+   * 外部サイトの画像を利用する際に画像URLを指定する。
+   * imagePathが指定されている場合はそちらが優先される。
+   */
+  url?: string;
 
   /**
    * 画像のaltテキスト
    *
+   * imagePathを指定している場合に限り、
    * 未指定の場合はファイル名がalt属性に設定される。
    */
   alt?: string;
@@ -20,11 +29,15 @@ interface ImagePropType {
 const props = defineProps<ImagePropType>();
 
 // 静的アセットの解決されたURLを取得
-const imageUrl = new URL(`../../assets/images/${props.path}`, import.meta.url).href;
-// altが未指定の場合はファイル名を設定
-const imageAltText = props.alt ? props.alt : getFileName(props.path);
+const imageUrl = new URL(`../../assets/images/${props.imagePath}`, import.meta.url).href;
+// altが未指定のとき、画像パス指定の場合はファイル名を設定
+const imageAltText = ref('');
+if (props.imagePath) {
+  imageAltText.value = props.alt ? props.alt : getFileName(props.imagePath);
+}
 </script>
 
 <template>
-  <img class="AppAssetsImage" :alt="imageAltText" :src="imageUrl" />
+  <img v-if="imagePath" class="AppAssetsImage" :alt="imageAltText" :src="imageUrl" />
+  <img v-else class="AppAssetsImage" :alt="alt" :src="url" />
 </template>
