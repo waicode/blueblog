@@ -1,3 +1,10 @@
+import { domParseFromString, getAttributeContent, getAttributeProperty } from '@/utils/util';
+
+export const OG_TITLE = 'og:title';
+export const OG_TYPE = 'og:type';
+export const OG_DESCRIPTION = 'og:description';
+export const OG_IMAGE = 'og:image';
+
 /**
  * ## OGP情報の取得
  *
@@ -23,33 +30,31 @@ export default (link: string) => {
   onMounted(async () => {
     // TODO: Storybookで落ちないようにuseFetchをモックする
     const { data } = await useFetch(() => link);
-    const el = new DOMParser().parseFromString(data.value as string, 'text/html');
-    const headEls = el.head.children;
+    const doc = domParseFromString(data.value as string);
+    const headEls = doc.head.children;
 
-    Array.from(headEls).map((val) => {
-      // property名を取得
-      const pro = val.getAttribute('property');
-      if (!pro) return val;
+    Array.from(headEls).map((el: Element) => {
+      const propertyName = getAttributeProperty(el);
 
-      // contentの値を取得してコンソールに出力
-      console.log(pro, val.getAttribute('content'));
+      if (!propertyName) return el;
 
-      if (pro === 'og:title') {
-        ogp.title = val.getAttribute('content');
+      switch (propertyName) {
+        case OG_TITLE:
+          ogp.title = getAttributeContent(el);
+          break;
+        case OG_TYPE:
+          ogp.type = getAttributeContent(el);
+          break;
+        case OG_DESCRIPTION:
+          ogp.description = getAttributeContent(el);
+          break;
+        case OG_IMAGE:
+          ogp.imageUrl = getAttributeContent(el);
+          break;
+        default:
       }
 
-      if (pro === 'og:type') {
-        ogp.type = val.getAttribute('content');
-      }
-
-      if (pro === 'og:description') {
-        ogp.description = val.getAttribute('content');
-      }
-
-      if (pro === 'og:image') {
-        ogp.imageUrl = val.getAttribute('content');
-      }
-      return val;
+      return el;
     });
   });
 

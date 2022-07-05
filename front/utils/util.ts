@@ -307,3 +307,27 @@ export const tabletMediaQuery = () => '(max-width: 769px)';
  * @returns メディアクエリ
  */
 export const phoneMediaQuery = () => '(max-width: 479px)';
+
+/**
+ * 文字列をパースしてHTMLドキュメントに変換
+ *
+ * @param data HTMLドキュメントの文字列
+ * @returns 構文解析されたHTMLドキュメント
+ */
+export const domParseFromString = (data: string) => new DOMParser().parseFromString(data, 'text/html');
+
+/**
+ * HTML要素のproperty属性値を取得
+ *
+ * @param el HTML要素
+ * @returns property属性値
+ */
+export const getAttributeProperty = (el: Element) => el.getAttribute('property');
+
+/**
+ * HTML要素のcontent属性値を取得
+ *
+ * @param el HTML要素
+ * @returns content属性値
+ */
+export const getAttributeContent = (el: Element) => el.getAttribute('content');
