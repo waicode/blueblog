@@ -162,6 +162,8 @@ $card-link-hover-label-color: $black-color;
 
 $link-title-before-width: 64px;
 $link-title-before-height: 22px;
+$link-title-before-height-qiita: 24px;
+$link-title-before-height-zenn: 13px;
 $link-title-before-text-color: $white-color;
 $link-title-before-bg-color-external: $black-color;
 $link-title-before-bg-color-related: $main-blue-color;
@@ -272,6 +274,28 @@ $link-title-before-bg-color-related: $main-blue-color;
         &::before {
           content: '関連リンク';
           background: $link-title-before-bg-color-related;
+        }
+      }
+    }
+  }
+  &--type-qiita {
+    .BaLinkCard {
+      &__LinkTitle {
+        &::before {
+          content: url('~@/assets/images/shared/qiita-logo-background-color.png');
+          height: $link-title-before-height-qiita;
+          width: auto;
+        }
+      }
+    }
+  }
+  &--type-zenn {
+    .BaLinkCard {
+      &__LinkTitle {
+        &::before {
+          content: url('~@/assets/images/shared/zenn-logo.png');
+          height: $link-title-before-height-zenn;
+          width: auto;
         }
       }
     }

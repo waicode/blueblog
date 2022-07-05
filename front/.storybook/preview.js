@@ -8,6 +8,9 @@ import useWebFont from '../composables/useWebFont.ts';
 // NuxtLinkをスタブ化
 app.component('NuxtLink', NuxtLinkStub);
 
+// TODO: ここから　useFetchをモックする
+// app.use(useFetch)
+
 // TODO: composablesの自動読み込みを対応する
 export const decorators = [
   (story, context) => {
