@@ -29,6 +29,9 @@ module.exports = {
       }),
     );
 
+    // Nuxtが用意している処理をモック化
+    config.resolve.alias['#app'] = require.resolve('./__mocks__/nuxtMock.ts');
+
     return mergeConfig(config, {
       base: config.build ? '/blueblog/' : '/',
       css: {

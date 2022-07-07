@@ -86,17 +86,24 @@ const linkTitle = ref(props.title);
 const linkDescription = ref(props.description);
 const linkImage = ref('');
 
-if (props.link) {
-  const ogp = await useOgp(props.link);
-  if (ogp.title) {
-    linkTitle.value = props.title ?? ogp.title;
-  }
-  if (ogp.description) {
-    linkDescription.value = props.description ?? ogp.description;
-  }
-  if (ogp.imageUrl) {
-    linkImage.value = ogp.imageUrl;
-  }
+if (props.type === LINK_CARD_TYPE_MAP.RELATED) {
+  linkTitle.value = props.article?.title;
+  linkDescription.value = props.article?.description;
+} else {
+  const ogp = useOgp(props.link);
+  watchEffect(() => {
+    if (props.link) {
+      if (ogp.title) {
+        linkTitle.value = props.title ?? ogp.title;
+      }
+      if (ogp.description) {
+        linkDescription.value = props.description ?? ogp.description;
+      }
+      if (ogp.imageUrl) {
+        linkImage.value = ogp.imageUrl;
+      }
+    }
+  });
 }
 
 const className = computed(() =>
@@ -110,7 +117,10 @@ const className = computed(() =>
   <div :class="className">
     <a :href="link" target="_blank" rel="nofollow noopener">
       <div class="BaLinkCard__Wrapper">
-        <div class="BaLinkCard__LinkImage">
+        <div v-if="props.type === LINK_CARD_TYPE_MAP.RELATED && props.article" class="BaLinkCard__LinkImage">
+          <AppEyeCatchImage :icon="props.article.icon" />
+        </div>
+        <div v-else class="BaLinkCard__LinkImage">
           <AppImage v-if="imgFileName" :imagePath="`link/${imgFileName}`" />
           <AppImage v-else :url="linkImage" />
         </div>
@@ -162,8 +172,8 @@ $card-link-hover-label-color: $black-color;
 
 $link-title-before-width: 64px;
 $link-title-before-height: 22px;
-$link-title-before-height-qiita: 24px;
-$link-title-before-height-zenn: 13px;
+$link-title-before-height-qiita: 20px;
+$link-title-before-height-zenn: 16px;
 $link-title-before-text-color: $white-color;
 $link-title-before-bg-color-external: $black-color;
 $link-title-before-bg-color-related: $main-blue-color;
@@ -195,9 +205,16 @@ $link-title-before-bg-color-related: $main-blue-color;
   &__LinkImage {
     margin-right: $scale16;
     img {
+      max-width: 400px;
       height: 100%;
       object-fit: cover;
       aspect-ratio: $aspect-ratio-191;
+      border-top-left-radius: $border-radius4;
+      border-bottom-left-radius: $border-radius4;
+    }
+    .AppEyeCatchImage {
+      width: 400px;
+      height: 100%;
       border-top-left-radius: $border-radius4;
       border-bottom-left-radius: $border-radius4;
     }
@@ -205,6 +222,15 @@ $link-title-before-bg-color-related: $main-blue-color;
       margin-top: $scale12;
       margin-left: $scale12;
       img {
+        width: 200px;
+        height: auto;
+        border-top-left-radius: $border-radius2;
+        border-bottom-left-radius: $border-radius2;
+        border-top-right-radius: $border-radius2;
+        border-bottom-right-radius: $border-radius2;
+      }
+      .AppEyeCatchImage {
+        width: 200px;
         height: auto;
         border-top-left-radius: $border-radius2;
         border-bottom-left-radius: $border-radius2;
@@ -214,10 +240,20 @@ $link-title-before-bg-color-related: $main-blue-color;
     }
     @include phone {
       margin: 0 0 $scale12;
-      border-top-left-radius: $border-radius4;
-      border-bottom-left-radius: $border-radius1;
-      border-top-right-radius: $border-radius4;
-      border-bottom-right-radius: $border-radius1;
+      img {
+        width: 100%;
+        border-top-left-radius: $border-radius4;
+        border-bottom-left-radius: $border-radius1;
+        border-top-right-radius: $border-radius4;
+        border-bottom-right-radius: $border-radius1;
+      }
+      .AppEyeCatchImage {
+        width: 100%;
+        border-top-left-radius: $border-radius4;
+        border-bottom-left-radius: $border-radius1;
+        border-top-right-radius: $border-radius4;
+        border-bottom-right-radius: $border-radius1;
+      }
     }
   }
 
@@ -260,12 +296,41 @@ $link-title-before-bg-color-related: $main-blue-color;
       margin-right: $scale8;
       font-size: $font-size-10px;
       font-weight: $font-weight-700;
-      color: $link-title-before-text-color;
-      text-align: center;
-      content: '外部リンク';
-      background: $link-title-before-bg-color-external;
-      border-radius: $border-radius2;
       transition: 0.3s ease-in-out;
+    }
+  }
+
+  &--type-external,
+  &--type-related {
+    .BaLinkCard {
+      &__LinkTitle {
+        &::before {
+          display: block;
+          width: $link-title-before-width;
+          height: $link-title-before-height;
+          flex-basis: $link-title-before-width;
+          flex-grow: 0;
+          flex-shrink: 0;
+          padding: $scale4;
+          margin-right: $scale8;
+          font-size: $font-size-10px;
+          font-weight: $font-weight-700;
+          color: $link-title-before-text-color;
+          text-align: center;
+          border-radius: $border-radius2;
+          transition: 0.3s ease-in-out;
+        }
+      }
+    }
+  }
+  &--type-external {
+    .BaLinkCard {
+      &__LinkTitle {
+        &::before {
+          content: '外部リンク';
+          background: $link-title-before-bg-color-external;
+        }
+      }
     }
   }
   &--type-related {
@@ -278,24 +343,43 @@ $link-title-before-bg-color-related: $main-blue-color;
       }
     }
   }
-  &--type-qiita {
-    .BaLinkCard {
-      &__LinkTitle {
-        &::before {
-          content: url('~@/assets/images/shared/qiita-logo-background-color.png');
-          height: $link-title-before-height-qiita;
-          width: auto;
-        }
-      }
-    }
-  }
+
+  &--type-qiita,
   &--type-zenn {
     .BaLinkCard {
       &__LinkTitle {
         &::before {
-          content: url('~@/assets/images/shared/zenn-logo.png');
+          display: inline-block;
+          content: '';
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+  }
+
+  &--type-qiita {
+    .BaLinkCard {
+      &__LinkTitle {
+        &::before {
+          background-image: url('~/assets/images/shared/qiita-logo-background-color.png');
+          height: $link-title-before-height-qiita;
+          width: auto;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  &--type-zenn {
+    .BaLinkCard {
+      &__LinkTitle {
+        &::before {
+          background-image: url('~/assets/images/shared/zenn-logo.png');
           height: $link-title-before-height-zenn;
           width: auto;
+          margin-top: $scale2;
+          margin-right: $scale12;
         }
       }
     }

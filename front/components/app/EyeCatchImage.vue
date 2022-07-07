@@ -47,10 +47,10 @@ interface EyeCatchImagePropType {
 }
 
 const props = withDefaults(defineProps<EyeCatchImagePropType>(), {
-  width: '400px',
-  height: undefined,
+  width: '100%',
+  height: '100%',
   iconRatio: 1 / 3,
-  aspectRatio: undefined,
+  aspectRatio: 1.91,
 });
 
 // アスペクト比は高さが未指定の場合は`1.91 / 1`に指定する
@@ -79,15 +79,15 @@ useCss(
   () =>
     `
     .AppEyeCatchImage--${id} .AppEyeCatchImage__Bg {
-      ${props.width ? `width: ${props.width} !important;` : ''}
-      ${props.height ? `height: ${props.height} !important;` : ''}
-      ${unref(aspectRatioValue) ? `aspect-ratio: ${unref(aspectRatioValue)} !important;` : ''}
+      ${props.width ? `width: ${props.width};` : ''}
+      ${props.height ? `height: ${props.height};` : ''}
+      ${unref(aspectRatioValue) ? `aspect-ratio: ${unref(aspectRatioValue)};` : ''}
     }
     .AppEyeCatchImage--${id} .AppEyeCatchImage__Icon {
-      ${unref(iconRatioWidth) ? `width: ${unref(iconRatioWidth)} !important;` : ''}
+      ${unref(iconRatioWidth) ? `width: ${unref(iconRatioWidth)};` : ''}
     }
     .AppEyeCatchImage--${id} .AppEyeCatchImage__Icon svg {
-      ${unref(iconPixelWidth) ? `width: ${unref(iconPixelWidth)} !important;` : ''}
+      ${unref(iconPixelWidth) ? `width: ${unref(iconPixelWidth)};` : ''}
     }
     `,
 );

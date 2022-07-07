@@ -1,3 +1,4 @@
+import { useFetch } from '#app';
 import { domParseFromString, getAttributeContent, getAttributeProperty } from '@/utils/util';
 
 export const OG_TITLE = 'og:title';
@@ -18,8 +19,6 @@ export const OG_IMAGE = 'og:image';
  * @returns OGP情報を格納するオブジェクト
  */
 export default (link: string) => {
-  console.log(link);
-
   const ogp = reactive({
     title: undefined,
     type: undefined,
@@ -28,7 +27,6 @@ export default (link: string) => {
   });
 
   onMounted(async () => {
-    // TODO: Storybookで落ちないようにuseFetchをモックする
     const { data } = await useFetch(() => link);
     const doc = domParseFromString(data.value as string);
     const headEls = doc.head.children;
