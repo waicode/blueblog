@@ -12,6 +12,7 @@
     "lint:script": "eslint --ext .ts,vue --ignore-path .gitignore .",
     "lint:style": "stylelint --ignore-path .gitignore \"**/*.{css,scss,vue,html}\"",
     "lint:prettier": "prettier --ignore-path .gitignore --check .",
+    "lintfix:style": "yarn lint:style --fix",
     "lintfix:prettier": "prettier --ignore-path .gitignore --write --list-different ."
   },
   "devDependencies": {

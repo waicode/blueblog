@@ -81,38 +81,45 @@ $text-white-color: $white-color;
       font-style: normal;
       line-height: $line-height-175;
     }
+
     &-title1 {
       font-size: $font-size-20px;
       font-style: normal;
       line-height: $line-height-160;
-      font-weight: 700;
+      font-weight: $font-weight-700;
     }
+
     &-title2 {
       font-size: $font-size-16px;
       font-style: normal;
       line-height: $line-height-125;
-      font-weight: 700;
+      font-weight: $font-weight-700;
     }
+
     &-description1 {
       font-size: $font-size-14px;
       font-style: normal;
       line-height: $line-height-167;
     }
+
     &-description2 {
       font-size: $font-size-14px;
       font-style: normal;
       line-height: $line-height-143;
     }
+
     &-date1 {
       font-size: $font-size-12px;
       font-style: normal;
       line-height: $line-height-167;
     }
+
     &-tag1 {
       font-size: $font-size-10px;
       font-style: normal;
       line-height: $line-height-160;
     }
+
     &-copyright {
       font-size: $font-size-48px;
       line-height: $line-height-125;
@@ -166,6 +173,7 @@ $text-white-color: $white-color;
       letter-spacing: $letter-spacing6 !important;
     }
   }
+
   &--weight {
     &-400 {
       font-weight: $font-weight-400;
@@ -175,13 +183,16 @@ $text-white-color: $white-color;
       font-weight: $font-weight-700;
     }
   }
+
   &--color {
     &-normal {
       color: $text-black-color;
     }
+
     &-darkBlack {
       color: $text-dark-black-color;
     }
+
     &-white {
       color: $text-white-color;
     }

@@ -57,6 +57,7 @@ const className = computed(() => bemx('AppSupplement', { type: props.type }));
   &__Title,
   &__Icon {
     margin-bottom: $scale4;
+
     svg {
       margin-right: $scale4;
       vertical-align: text-bottom;

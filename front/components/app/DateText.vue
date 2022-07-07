@@ -35,6 +35,7 @@ $svg-icon-height: $svg-icon-width;
 
   &__Icon {
     margin-right: $scale4;
+
     svg {
       width: $svg-icon-width;
       height: $svg-icon-height;

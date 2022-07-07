@@ -95,6 +95,7 @@ watchEffect(() => {
 <style lang="scss">
 .BaArticle {
   height: auto;
+
   &__Wrapper {
     display: flex;
     @include tablet {
@@ -104,12 +105,14 @@ watchEffect(() => {
       flex-direction: column;
     }
   }
+
   &__FirstContents {
     display: flex;
     @include tablet {
       margin-bottom: $scale12;
     }
   }
+
   &__Eyecatch {
     height: auto;
     margin-right: $scale32;
@@ -125,18 +128,21 @@ watchEffect(() => {
       width: 100%;
     }
   }
+
   &__SecondContents {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
   }
+
   &__Title {
     color: $text;
     @include phone {
       margin-bottom: $scale12;
     }
   }
+
   &__Description {
     @include tablet {
       margin-bottom: $scale24;
@@ -145,31 +151,35 @@ watchEffect(() => {
       margin-bottom: $scale12;
     }
   }
+
   &__Meta {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     color: $text;
   }
+
   &__Date {
     display: flex;
     flex-wrap: nowrap;
     padding-right: 0;
   }
+
   &__DatePublished {
     margin-right: $scale12;
     @include phone {
       margin-right: $scale8;
     }
   }
+
   &__Tags {
     display: flex;
     padding-left: 0;
     margin-top: $scale8;
   }
+
   &__Tag {
     &:not(:last-child) {
       margin-right: $scale8;

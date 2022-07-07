@@ -87,8 +87,10 @@ const linkDescription = ref(props.description);
 const linkImage = ref('');
 
 if (props.type === LINK_CARD_TYPE_MAP.RELATED) {
-  linkTitle.value = props.article?.title;
-  linkDescription.value = props.article?.description;
+  watchEffect(() => {
+    linkTitle.value = props.article?.title;
+    linkDescription.value = props.article?.description;
+  });
 } else {
   const ogp = useOgp(props.link);
   watchEffect(() => {
@@ -121,7 +123,7 @@ const className = computed(() =>
           <AppEyeCatchImage :icon="props.article.icon" />
         </div>
         <div v-else class="BaLinkCard__LinkImage">
-          <AppImage v-if="imgFileName" :imagePath="`link/${imgFileName}`" />
+          <AppImage v-if="imgFileName" :image-path="`link/${imgFileName}`" />
           <AppImage v-else :url="linkImage" />
         </div>
         <div class="BaLinkCard__Contents">
@@ -188,9 +190,11 @@ $link-title-before-bg-color-related: $main-blue-color;
     border-radius: $border-radius4;
     box-shadow: 0 0 2px $link-box-shadow-color;
     transition: 0.3s ease-in-out;
+
     &:hover {
       color: $card-link-hover-color;
       background: $card-link-hover-bg-color;
+
       .AppExternalLink__LinkTitle {
         &::before {
           background: $card-link-hover-label-color;
@@ -204,6 +208,7 @@ $link-title-before-bg-color-related: $main-blue-color;
 
   &__LinkImage {
     margin-right: $scale16;
+
     img {
       max-width: 400px;
       height: 100%;
@@ -212,6 +217,7 @@ $link-title-before-bg-color-related: $main-blue-color;
       border-top-left-radius: $border-radius4;
       border-bottom-left-radius: $border-radius4;
     }
+
     .AppEyeCatchImage {
       width: 400px;
       height: 100%;
@@ -221,38 +227,30 @@ $link-title-before-bg-color-related: $main-blue-color;
     @include tablet {
       margin-top: $scale12;
       margin-left: $scale12;
+
       img {
         width: 200px;
         height: auto;
-        border-top-left-radius: $border-radius2;
-        border-bottom-left-radius: $border-radius2;
-        border-top-right-radius: $border-radius2;
-        border-bottom-right-radius: $border-radius2;
+        border-radius: $border-radius2;
       }
+
       .AppEyeCatchImage {
         width: 200px;
         height: auto;
-        border-top-left-radius: $border-radius2;
-        border-bottom-left-radius: $border-radius2;
-        border-top-right-radius: $border-radius2;
-        border-bottom-right-radius: $border-radius2;
+        border-radius: $border-radius2;
       }
     }
     @include phone {
       margin: 0 0 $scale12;
+
       img {
         width: 100%;
-        border-top-left-radius: $border-radius4;
-        border-bottom-left-radius: $border-radius1;
-        border-top-right-radius: $border-radius4;
-        border-bottom-right-radius: $border-radius1;
+        border-radius: $border-radius4 $border-radius4 $border-radius1 $border-radius1;
       }
+
       .AppEyeCatchImage {
         width: 100%;
-        border-top-left-radius: $border-radius4;
-        border-bottom-left-radius: $border-radius1;
-        border-top-right-radius: $border-radius4;
-        border-bottom-right-radius: $border-radius1;
+        border-radius: $border-radius4 $border-radius4 $border-radius1 $border-radius1;
       }
     }
   }
@@ -285,13 +283,12 @@ $link-title-before-bg-color-related: $main-blue-color;
     display: flex;
     margin-bottom: $scale12;
     font-weight: $font-weight-700;
+
     &::before {
       display: block;
       width: $link-title-before-width;
       height: $link-title-before-height;
-      flex-basis: $link-title-before-width;
-      flex-grow: 0;
-      flex-shrink: 0;
+      flex: 0 0 $link-title-before-width;
       padding: $scale4;
       margin-right: $scale8;
       font-size: $font-size-10px;
@@ -308,9 +305,7 @@ $link-title-before-bg-color-related: $main-blue-color;
           display: block;
           width: $link-title-before-width;
           height: $link-title-before-height;
-          flex-basis: $link-title-before-width;
-          flex-grow: 0;
-          flex-shrink: 0;
+          flex: 0 0 $link-title-before-width;
           padding: $scale4;
           margin-right: $scale8;
           font-size: $font-size-10px;
@@ -323,6 +318,7 @@ $link-title-before-bg-color-related: $main-blue-color;
       }
     }
   }
+
   &--type-external {
     .BaLinkCard {
       &__LinkTitle {
@@ -333,6 +329,7 @@ $link-title-before-bg-color-related: $main-blue-color;
       }
     }
   }
+
   &--type-related {
     .BaLinkCard {
       &__LinkTitle {
@@ -390,24 +387,26 @@ $link-title-before-bg-color-related: $main-blue-color;
 
   &__Meta {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     color: $text;
   }
+
   &__Date {
     display: flex;
     flex-wrap: nowrap;
     padding-right: 0;
   }
+
   &__DatePublished {
     margin-right: $scale12;
     @include phone {
       margin-right: $scale8;
     }
   }
+
   // &__LinkDomain {
   // }
 }
