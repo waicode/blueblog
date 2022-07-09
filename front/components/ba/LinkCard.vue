@@ -91,17 +91,15 @@ watchEffect(() => {
   if (props.type === LINK_CARD_TYPE_MAP.RELATED) {
     linkTitle.value = props.article?.title;
     linkDescription.value = props.article?.description;
-  } else {
-    if (props.link) {
-      if (ogp.title) {
-        linkTitle.value = props.title ?? ogp.title;
-      }
-      if (ogp.description) {
-        linkDescription.value = props.description ?? ogp.description;
-      }
-      if (ogp.imageUrl) {
-        linkImage.value = ogp.imageUrl;
-      }
+  } else if (props.link) {
+    if (ogp.title) {
+      linkTitle.value = props.title ?? ogp.title;
+    }
+    if (ogp.description) {
+      linkDescription.value = props.description ?? ogp.description;
+    }
+    if (ogp.imageUrl) {
+      linkImage.value = ogp.imageUrl;
     }
   }
 });
