@@ -28,8 +28,6 @@ interface ImagePropType {
 
 const props = defineProps<ImagePropType>();
 
-// 静的アセットの解決されたURLを取得
-const imageUrl = new URL(`../../assets/images/${props.imagePath}`, import.meta.url).href;
 // altが未指定のとき、画像パス指定の場合はファイル名を設定
 const imageAltText = ref('');
 if (props.imagePath) {
@@ -38,6 +36,6 @@ if (props.imagePath) {
 </script>
 
 <template>
-  <img v-if="imagePath" class="AppAssetsImage" :alt="imageAltText" :src="imageUrl" />
+  <img v-if="imagePath" class="AppAssetsImage" :alt="imageAltText" :src="`~/assets/image/${props.imagePath}`" />
   <img v-else class="AppAssetsImage" :alt="alt" :src="url" />
 </template>
