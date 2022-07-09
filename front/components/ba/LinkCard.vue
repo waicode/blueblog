@@ -86,14 +86,12 @@ const linkTitle = ref(props.title);
 const linkDescription = ref(props.description);
 const linkImage = ref('');
 
-if (props.type === LINK_CARD_TYPE_MAP.RELATED) {
-  watchEffect(() => {
+const ogp = useOgp(props.link);
+watchEffect(() => {
+  if (props.type === LINK_CARD_TYPE_MAP.RELATED) {
     linkTitle.value = props.article?.title;
     linkDescription.value = props.article?.description;
-  });
-} else {
-  const ogp = useOgp(props.link);
-  watchEffect(() => {
+  } else {
     if (props.link) {
       if (ogp.title) {
         linkTitle.value = props.title ?? ogp.title;
@@ -105,8 +103,8 @@ if (props.type === LINK_CARD_TYPE_MAP.RELATED) {
         linkImage.value = ogp.imageUrl;
       }
     }
-  });
-}
+  }
+});
 
 const className = computed(() =>
   bemx('BaLinkCard', {

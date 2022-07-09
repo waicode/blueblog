@@ -1,4 +1,3 @@
-import { useFetch } from '#app';
 import { domParseFromString, getAttributeContent, getAttributeProperty } from '@/utils/util';
 
 export const OG_TITLE = 'og:title';
@@ -24,10 +23,13 @@ export default (link: string) => {
     type: undefined,
     description: undefined,
     imageUrl: undefined,
+    emojiIcon: undefined,
   });
 
-  onMounted(async () => {
-    const { data } = await useFetch(() => link);
+  // TODO: SSGに対応させる
+  const { data } = useLazyFetch(link);
+
+  watchEffect(() => {
     const doc = domParseFromString(data.value as string);
     const headEls = doc.head.children;
 
@@ -54,6 +56,14 @@ export default (link: string) => {
 
       return el;
     });
+
+    if (link.includes('zenn.dev')) {
+      const emojiIconEl = doc.querySelectorAll(`span[class^="Emoji_nativeEmoji__"]`)[0];
+      if (emojiIconEl) {
+        // Zennの絵文字があれば取得
+        ogp.emojiIcon = emojiIconEl.nodeValue;
+      }
+    }
   });
 
   return ogp;
