@@ -1,4 +1,4 @@
-const { loadConfigFromFile, mergeConfig } = require('vite');
+const { mergeConfig } = require('vite');
 const Components = require('unplugin-vue-components/vite');
 const AutoImport = require('unplugin-auto-import/vite');
 const path = require('path');

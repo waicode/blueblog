@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 let result;
-export async function useFetch() {
+export function useLazyFetch() {
   if (result) {
     return {
       data: ref(result),
@@ -10,8 +10,8 @@ export async function useFetch() {
 }
 
 export function useFetchDecorator(story, { parameters }) {
-  if (parameters && parameters.useFetch) {
-    result = parameters.useFetch.data;
+  if (parameters && parameters.useLazyFetch) {
+    result = parameters.useLazyFetch.data;
   }
   return story();
 }
