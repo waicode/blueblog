@@ -54,7 +54,7 @@ const pageNumbers = computed(() => {
   const maxWidth = props.max < 7 ? 7 : props.max;
   if (unref(lastPageCount) <= maxWidth) {
     // 1, 2, 3, 4, 5, 6, 7
-    return [...Array(unref(lastPageCount)).keys()].map((i) => ++i);
+    return [...Array(unref(lastPageCount)).keys()].map((i) => i + 1);
   }
   if (currentPage.value < Math.ceil(maxWidth / 2)) {
     // 1, 2, 3, 4, 5, ..., 20
@@ -105,7 +105,7 @@ watch(currentPage, () => {
         ><Icon icon="fa6-solid:chevron-right"
       /></a>
       <ul class="pagination-list">
-        <li v-for="pageNumber in pageNumbers">
+        <li v-for="(pageNumber, index) in pageNumbers" :key="index">
           <a
             v-if="pageNumber && currentPage === pageNumber"
             class="pagination-link is-current"

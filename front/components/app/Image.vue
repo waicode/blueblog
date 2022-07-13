@@ -36,6 +36,7 @@ if (props.imagePath) {
 </script>
 
 <template>
-  <img v-if="imagePath" class="AppAssetsImage" :alt="imageAltText" :src="`~/assets/image/${props.imagePath}`" />
+  <!-- TODO: Storybookでも表示できるように修正する -->
+  <img v-if="imagePath" class="AppAssetsImage" :alt="imageAltText" :src="`~/assets/images/${props.imagePath}`" />
   <img v-else class="AppAssetsImage" :alt="alt" :src="url" />
 </template>

@@ -1,5 +1,5 @@
-import { domParseFromString, getAttributeContent, getAttributeProperty } from '@/utils/util';
 import { useLazyFetch } from '#app';
+import { domParseFromString, getAttributeContent, getAttributeProperty } from '@/utils/util';
 
 export const OG_TITLE = 'og:title';
 export const OG_TYPE = 'og:type';
