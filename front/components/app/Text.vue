@@ -120,6 +120,13 @@ $text-white-color: $white-color;
       line-height: $line-height-160;
     }
 
+    &-share1 {
+      font-size: $font-size-24px;
+      font-style: normal;
+      font-weight: $font-weight-300;
+      line-height: $line-height-150;
+    }
+
     &-copyright {
       font-size: $font-size-48px;
       line-height: $line-height-125;
@@ -137,6 +144,10 @@ $text-white-color: $white-color;
 
     &-143 {
       line-height: $line-height-143 !important;
+    }
+
+    &-150 {
+      line-height: $line-height-150 !important;
     }
 
     &-160 {

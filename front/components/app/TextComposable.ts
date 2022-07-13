@@ -11,6 +11,7 @@ export const TEXT_SIZE_MAP = {
   description2: 'description2',
   date1: 'date1',
   tag1: 'tag1',
+  share1: 'share1',
   copyright: 'copyright',
 } as const;
 
@@ -30,6 +31,7 @@ export const TEXT_SIZE = keyEnumObject(TEXT_SIZE_MAP);
 export const LINE_HEIGHT_MAP = {
   height125: 1.25,
   height143: 1.43,
+  height150: 1.5,
   height160: 1.6,
   height167: 1.67,
   height171: 1.71,
