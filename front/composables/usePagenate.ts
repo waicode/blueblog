@@ -1,5 +1,5 @@
-import { Article } from '@/store/article';
 import { Ref } from 'vue';
+import { Article } from '@/store/article';
 
 /**
  * ## ページネーション
