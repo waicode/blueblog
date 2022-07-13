@@ -7,7 +7,7 @@
  */
 
 // フォントファミリーを変更
-$family-sans-serif: '"Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif';
+$family-sans-serif: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
 
 // 行の高さをテキストコンポーネントの最小定義値に変更する。
 // 数値指定の場合、親要素の高さより小さい値を設定しても親側が優先されるため。

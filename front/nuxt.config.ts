@@ -6,6 +6,23 @@ export default defineNuxtConfig({
   // サーバサイドレンダリングは行わない
   ssr: false,
   css: ['bulma/bulma.sass'],
+  head: {
+    link: [
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossorigin: true,
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap',
+      },
+    ],
+  },
   buildModules: ['@pinia/nuxt'],
   vite: {
     plugins: [eslintPlugin()],
