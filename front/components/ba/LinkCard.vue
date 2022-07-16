@@ -163,7 +163,7 @@ const className = computed(() =>
 <style lang="scss">
 $card-bg-color: $white-color;
 $card-border-color: $gray-f5-color;
-$link-box-shadow-color: $gray-00-alpha-025-color;
+$link-box-shadow-color: $gray-000-alpha-025-color;
 $card-link-hover-color: $gray-66-color;
 $card-link-hover-bg-color: $pale-blue-alpha-color;
 $card-link-hover-label-color: $black-color;
@@ -218,6 +218,10 @@ $link-title-before-bg-color-related: $main-blue-color;
       height: 100%;
       border-top-left-radius: $border-radius4;
       border-bottom-left-radius: $border-radius4;
+      .AppEyeCatchImage__Bg {
+        border-top-left-radius: $border-radius4;
+        border-bottom-left-radius: $border-radius4;
+      }
     }
     @include tablet {
       margin-top: $scale12;
