@@ -120,6 +120,13 @@ $text-white-color: $white-color;
       line-height: $line-height-160;
     }
 
+    &-button1 {
+      font-size: $font-size-13px;
+      font-style: normal;
+      line-height: $line-height-143;
+      font-weight: $font-weight-700;
+    }
+
     &-share1 {
       font-size: $font-size-24px;
       font-style: normal;

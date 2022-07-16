@@ -29,14 +29,15 @@ interface ImagePropType {
 const props = defineProps<ImagePropType>();
 
 // altが未指定のとき、画像パス指定の場合はファイル名を設定
-const imageAltText = ref('');
-if (props.imagePath) {
-  imageAltText.value = props.alt ? props.alt : getFileName(props.imagePath);
-}
+const imageAltText = computed(() => {
+  if (!props.imagePath) return undefined;
+  return props.alt ? props.alt : getFileName(props.imagePath);
+});
+
+const imageSrcPath = computed(() => new URL(`../../assets/images/${props.imagePath}`, import.meta.url).href);
 </script>
 
 <template>
-  <!-- TODO: Storybookでも表示できるように修正する -->
-  <img v-if="imagePath" class="AppAssetsImage" :alt="imageAltText" :src="`~/assets/images/${props.imagePath}`" />
+  <img v-if="imagePath" class="AppAssetsImage" :alt="imageAltText" :src="imageSrcPath" />
   <img v-else class="AppAssetsImage" :alt="alt" :src="url" />
 </template>

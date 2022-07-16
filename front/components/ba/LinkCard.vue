@@ -162,8 +162,8 @@ const className = computed(() =>
 
 <style lang="scss">
 $card-bg-color: $white-color;
-$card-border-color: $gray-e0-color;
-$link-box-shadow-color: $gray-ef-color;
+$card-border-color: $gray-f5-color;
+$link-box-shadow-color: $gray-00-alpha-025-color;
 $card-link-hover-color: $gray-66-color;
 $card-link-hover-bg-color: $pale-blue-alpha-color;
 $card-link-hover-label-color: $black-color;
@@ -181,6 +181,7 @@ $link-title-before-bg-color-related: $main-blue-color;
 
   &__Wrapper {
     display: flex;
+    gap: $scale16;
     background: $card-bg-color;
     border: $border-width1 solid $card-border-color;
     border-radius: $border-radius4;
@@ -203,8 +204,6 @@ $link-title-before-bg-color-related: $main-blue-color;
   }
 
   &__LinkImage {
-    margin-right: $scale16;
-
     img {
       max-width: 400px;
       height: 100%;
@@ -252,8 +251,8 @@ $link-title-before-bg-color-related: $main-blue-color;
   }
 
   &__Contents {
-    flex-grow: 1;
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
     justify-content: space-between;
     padding: $scale12 $scale16 $scale8 0;
@@ -278,7 +277,6 @@ $link-title-before-bg-color-related: $main-blue-color;
   &__LinkTitle {
     display: flex;
     margin-bottom: $scale12;
-    font-weight: $font-weight-700;
 
     &::before {
       display: block;
