@@ -134,6 +134,13 @@ $text-white-color: $white-color;
       line-height: $line-height-150;
     }
 
+    &-sideHeading {
+      font-size: $font-size-20px;
+      font-style: normal;
+      line-height: $line-height-160;
+      font-weight: $font-weight-700;
+    }
+
     &-copyright {
       font-size: $font-size-48px;
       line-height: $line-height-125;
