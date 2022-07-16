@@ -33,7 +33,7 @@ const className = computed(() => bemx('AppSupplement', { type: props.type }));
       >
     </div>
     <div class="AppSupplement__Description">
-      <AppText :color="TEXT_COLOR.DARK_BLACK"><slot /></AppText>
+      <AppText><slot /></AppText>
     </div>
   </div>
 </template>
