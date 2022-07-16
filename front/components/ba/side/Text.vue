@@ -25,6 +25,7 @@ defineProps<BaSideTextPropType>();
 <style lang="scss">
 .BaSideText {
   margin-bottom: $scale28;
+
   &__Heading {
     margin-bottom: $scale20;
   }

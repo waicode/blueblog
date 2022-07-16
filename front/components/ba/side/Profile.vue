@@ -58,6 +58,7 @@ $side-profile-github-icon-color: $github-purple-color;
 
 .BaSideProfile {
   margin-bottom: $scale28;
+
   &__Heading {
     margin-bottom: $scale32;
   }
@@ -78,6 +79,7 @@ $side-profile-github-icon-color: $github-purple-color;
     display: flex;
     justify-content: center;
     margin-bottom: $scale28;
+
     ul {
       display: flex;
       justify-content: center;
