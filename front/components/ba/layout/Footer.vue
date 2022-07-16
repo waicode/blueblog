@@ -66,13 +66,13 @@ useCss(
 </template>
 
 <style lang="scss">
-$twitter-icon-width: 80px;
-$twitter-icon-height: $twitter-icon-width;
-$twitter-icon-color: #00afff;
+$footer-twitter-icon-width: 80px;
+$footer-twitter-icon-height: $footer-twitter-icon-width;
+$footer-twitter-icon-color: $twitter-blue-color;
 
-$github-icon-width: 80px;
-$github-icon-height: $github-icon-width;
-$github-icon-color: #778cff;
+$footer-github-icon-width: 80px;
+$footer-github-icon-height: $footer-github-icon-width;
+$footer-github-icon-color: $github-purple-color;
 
 .BaLayoutFooter {
   padding: $scale24 0;
@@ -88,14 +88,11 @@ $github-icon-color: #778cff;
     ul {
       display: flex;
       justify-content: center;
+      gap: $scale32;
       margin-bottom: 0;
       list-style: none;
 
       li {
-        &:not(:last-child) {
-          margin-right: $scale32;
-        }
-
         a {
           svg {
             color: $white-color;
@@ -108,14 +105,14 @@ $github-icon-color: #778cff;
   &__TwitterIcon {
     a {
       svg {
-        width: $twitter-icon-width;
-        height: $twitter-icon-height;
+        width: $footer-twitter-icon-width;
+        height: $footer-twitter-icon-height;
       }
 
       &:focus,
       &:hover {
         svg {
-          color: $twitter-icon-color;
+          color: $footer-twitter-icon-color;
         }
       }
     }
@@ -124,14 +121,14 @@ $github-icon-color: #778cff;
   &__GithubIcon {
     a {
       svg {
-        width: $github-icon-width;
-        height: $github-icon-height;
+        width: $footer-github-icon-width;
+        height: $footer-github-icon-height;
       }
 
       &:focus,
       &:hover {
         svg {
-          color: $github-icon-color;
+          color: $footer-github-icon-color;
         }
       }
     }

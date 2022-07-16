@@ -250,9 +250,9 @@ const className = computed(() =>
 <style lang="scss">
 $item-card-bg-color: $white-color;
 $item-card-border-color: $gray-f5-color;
-$item-card-box-shadow-color: $gray-00-alpha-025-color;
+$item-card-box-shadow-color: $gray-000-alpha-025-color;
 
-$item-card-button-box-shadow-color: $gray-51-alpha-050-color;
+$item-card-button-box-shadow-color: $gray-051-alpha-050-color;
 $rakuten-button-color: $rakuten-red-color;
 $amazon-button-color: $amazon-yellow-color;
 $yahoo-button-color: $yahoo-blue-color;

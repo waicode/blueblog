@@ -24,7 +24,7 @@ defineProps<BaSideDropdownPropType>();
 <template>
   <div class="BaSideDropdown">
     <h3 class="BaSideDropdown__Heading">
-      <AppText :type="TEXT_SIZE.SIDE_HEADING">{{ title }}</AppText>
+      <AppText :type="TEXT_SIZE.SIDE_HEADING1">{{ title }}</AppText>
     </h3>
     <AppDropdown :label="label" :items="items" />
   </div>

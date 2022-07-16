@@ -13,7 +13,9 @@ export const TEXT_SIZE_MAP = {
   tag1: 'tag1',
   button1: 'button1',
   share1: 'share1',
-  sideHeading: 'sideHeading',
+  sideHeading1: 'sideHeading1',
+  sideHeading2: 'sideHeading2',
+  sideDescription: 'sideDescription',
   copyright: 'copyright',
 } as const;
 

@@ -134,15 +134,30 @@ $text-white-color: $white-color;
       line-height: $line-height-150;
     }
 
-    &-sideHeading {
+    &-sideHeading1 {
       font-size: $font-size-20px;
       font-style: normal;
       line-height: $line-height-160;
       font-weight: $font-weight-700;
     }
 
+    &-sideHeading2 {
+      font-family: 'Advent Pro';
+      font-size: $font-size-20px;
+      font-style: normal;
+      line-height: $line-height-160;
+      font-weight: $font-weight-600;
+    }
+
+    &-sideDescription {
+      font-size: $font-size-12px;
+      font-style: normal;
+      line-height: $line-height-167;
+    }
+
     &-copyright {
       font-size: $font-size-48px;
+      font-style: normal;
       line-height: $line-height-125;
       letter-spacing: $letter-spacing2;
       @include phone {
