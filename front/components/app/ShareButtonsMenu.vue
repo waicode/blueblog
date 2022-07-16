@@ -68,13 +68,16 @@ const shareUrlPocket = computed(() => `http://getpocket.com/edit?url=${props.pag
   display: flex;
   width: 36px;
   flex-direction: column;
+
   &__ShareText {
     margin-bottom: $scale24;
     padding-left: $scale1;
+
     .AppText {
       writing-mode: vertical-rl;
     }
   }
+
   &__ShareIcons {
     display: flex;
     flex-direction: column;

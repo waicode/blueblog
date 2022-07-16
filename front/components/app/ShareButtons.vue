@@ -70,6 +70,7 @@ const shareUrlPocket = computed(() => `http://getpocket.com/edit?url=${props.pag
     flex-direction: column;
     align-items: center;
   }
+
   &__ShareIcons {
     display: flex;
     gap: $scale44;

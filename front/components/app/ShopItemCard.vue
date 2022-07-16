@@ -89,6 +89,13 @@ interface ShopItemCardPropType {
 
 const props = withDefaults(defineProps<ShopItemCardPropType>(), {
   type: SHOP_ITEM_CARD_TYPE_MAP.GOODS,
+  shopName: undefined,
+  authorName: undefined,
+  amazonItemId: undefined,
+  kindleItemId: undefined,
+  rakutenItemId: undefined,
+  koboItemId: undefined,
+  searchKeyword: undefined,
   mainAspType: EC_MALL_ASP_TYPE_MAP.AMAZON,
 });
 
@@ -279,23 +286,27 @@ $yahoo-button-color: $yahoo-blue-color;
     align-items: center;
     width: 240px;
     padding: $scale16;
+
     img {
       max-width: 120px;
       height: auto;
     }
     @include tablet {
       width: 200px;
+
       img {
         max-width: 100px;
       }
     }
     @include phone {
       width: 160px;
+
       img {
         max-width: 80px;
       }
     }
   }
+
   &__Contents {
     flex: 1;
     display: flex;
@@ -353,7 +364,7 @@ $yahoo-button-color: $yahoo-blue-color;
       display: block;
       text-align: center;
       border-radius: $border-radius4;
-      box-shadow: 0px 1px 2px $item-card-button-box-shadow-color;
+      box-shadow: 0 1px 2px $item-card-button-box-shadow-color;
     }
   }
 
@@ -383,6 +394,7 @@ $yahoo-button-color: $yahoo-blue-color;
   &__ShopLinkKobo {
     min-width: 50%;
     padding: $scale4;
+
     a {
       width: 100%;
       padding: $scale8;
@@ -400,6 +412,7 @@ $yahoo-button-color: $yahoo-blue-color;
       border: $border-width2 solid $rakuten-button-color;
     }
   }
+
   &__ShopLinkAmazon,
   &__ShopLinkAmazonBook,
   &__ShopLinkKindle {
@@ -408,11 +421,13 @@ $yahoo-button-color: $yahoo-blue-color;
       border: $border-width2 solid $amazon-button-color;
     }
   }
+
   &__ShopLinkYahoo {
     a {
       background-color: $yahoo-button-color;
       border: $border-width2 solid $yahoo-button-color;
     }
+
     img {
       display: none;
     }

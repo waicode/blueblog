@@ -218,6 +218,7 @@ $link-title-before-bg-color-related: $main-blue-color;
       height: 100%;
       border-top-left-radius: $border-radius4;
       border-bottom-left-radius: $border-radius4;
+
       .AppEyeCatchImage__Bg {
         border-top-left-radius: $border-radius4;
         border-bottom-left-radius: $border-radius4;

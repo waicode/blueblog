@@ -129,10 +129,12 @@ watch(currentPage, () => {
 
 <style lang="scss">
 .AppPagenation {
+  /* stylelint-disable selector-class-pattern */
   .pagination-link {
     &.is-current {
       pointer-events: none;
     }
   }
+  /* stylelint-enable selector-class-pattern */
 }
 </style>
