@@ -1,4 +1,5 @@
 import BaSideProfile from '@/components/ba/side/Profile.vue';
+import AppText from '@/components/app/Text.vue';
 
 export default {
   title: '@components/ba/side/Profile',
@@ -14,12 +15,14 @@ export default {
 };
 
 const Template = (args) => ({
-  components: { BaSideProfile },
+  components: { BaSideProfile, AppText },
   setup() {
     return { args };
   },
   template: `
-    <BaSideProfile v-bind="args">ここに簡潔なプロフィールを書きます。だいたい3行くらいで書きます。そして詳しいプロフィールのリンクを貼ります。詳しいプロフィールはこちら。お問合せはこちらから。</BaSideProfile>
+    <BaSideProfile v-bind="args">
+      <AppText :type="TEXT_SIZE.SIDE_DESCRIPTION">ここに簡潔なプロフィールを書きます。だいたい3行くらいで書きます。そして詳しいプロフィールのリンクを貼ります。詳しいプロフィールはこちら。お問合せはこちらから。</AppText>
+    </BaSideProfile>
   `,
 });
 

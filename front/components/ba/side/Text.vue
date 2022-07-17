@@ -15,10 +15,8 @@ defineProps<BaSideTextPropType>();
     <h3 class="BaSideText__Heading">
       <AppText :type="TEXT_SIZE.SIDE_HEADING1">{{ title }}</AppText>
     </h3>
-    <AppText :type="TEXT_SIZE.SIDE_DESCRIPTION">
-      <!-- @slot 囲まれたタグを表示する -->
-      <slot />
-    </AppText>
+    <!-- @slot 囲まれたタグを表示する -->
+    <slot />
   </div>
 </template>
 

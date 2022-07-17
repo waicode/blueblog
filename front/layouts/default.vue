@@ -1,6 +1,9 @@
 <template>
   <BaLayoutHeader />
-  <slot />
+  <BaLayoutContainer>
+    <BaLayoutMain><slot /></BaLayoutMain>
+    <BaLayoutSide />
+  </BaLayoutContainer>
   <BaLayoutFooter />
 </template>
 

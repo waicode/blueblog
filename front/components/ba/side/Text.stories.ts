@@ -1,4 +1,5 @@
 import BaSideText from '@/components/ba/side/Text.vue';
+import AppText from '@/components/app/Text.vue';
 
 export default {
   title: '@components/ba/side/Text',
@@ -14,12 +15,14 @@ export default {
 };
 
 const Template = (args) => ({
-  components: { BaSideText },
+  components: { BaSideText, AppText },
   setup() {
     return { args };
   },
   template: `
-    <BaSideText v-bind="args">${'ここにテキストを入力します。'.repeat(10)}</BaSideText>
+    <BaSideText v-bind="args">
+      <AppText :type="TEXT_SIZE.SIDE_DESCRIPTION">${'ここにテキストを入力します。'.repeat(10)}</AppText>
+    </BaSideText>
   `,
 });
 
