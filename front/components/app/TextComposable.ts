@@ -10,6 +10,7 @@ export const TEXT_SIZE_MAP = {
   description1: 'description1',
   description2: 'description2',
   date1: 'date1',
+  date2: 'date2',
   tag1: 'tag1',
   button1: 'button1',
   share1: 'share1',

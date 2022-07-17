@@ -114,6 +114,12 @@ $text-white-color: $white-color;
       line-height: $line-height-167;
     }
 
+    &-date2 {
+      font-size: $font-size-14px;
+      font-style: normal;
+      line-height: $line-height-143;
+    }
+
     &-tag1 {
       font-size: $font-size-10px;
       font-style: normal;
