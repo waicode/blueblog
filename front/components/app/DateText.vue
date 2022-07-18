@@ -59,6 +59,7 @@ $svg-icon-medium-height: $svg-icon-medium-width;
     .AppDateText {
       &__Icon {
         padding-top: $scale3;
+
         svg {
           width: $svg-icon-small-width;
           height: $svg-icon-small-width;
@@ -71,6 +72,7 @@ $svg-icon-medium-height: $svg-icon-medium-width;
     .AppDateText {
       &__Icon {
         padding-top: $scale3;
+
         svg {
           width: $svg-icon-medium-width;
           height: $svg-icon-medium-width;

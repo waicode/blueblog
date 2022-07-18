@@ -37,7 +37,6 @@ $blockquote-before-icon-height: $blockquote-before-icon-width;
   margin-bottom: $scale32;
   font-style: italic;
   background: $blockquote-bg-color;
-
   border: $border-width2 solid $blockquote-border-color;
   border-radius: $border-radius4;
 

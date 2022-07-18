@@ -55,6 +55,7 @@ import { TEXT_SIZE } from '@/components/app/TextComposable';
 $sub-column-desktop-width: 208px;
 $sub-column-tablet-width: 184px;
 $sub-column-phone-width: 100%;
+
 .BaLayoutSub {
   width: $sub-column-desktop-width;
 

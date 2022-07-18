@@ -47,8 +47,10 @@ const toggle = () => (isActive.value = !isActive.value);
 
 <style lang="scss">
 .AppDropdown {
+  /* stylelint-disable selector-class-pattern */
   .dropdown {
     width: 100%;
+
     .dropdown-trigger,
     .dropdown-menu,
     button {
@@ -56,5 +58,6 @@ const toggle = () => (isActive.value = !isActive.value);
       width: 100%;
     }
   }
+  /* stylelint-enable selector-class-pattern */
 }
 </style>

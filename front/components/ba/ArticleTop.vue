@@ -96,6 +96,7 @@ defineProps<ArticleTopPropType>();
 
   &__Eyecatch {
     margin-bottom: $scale20;
+
     .AppEyeCatchImage {
       border-radius: $scale4;
     }
