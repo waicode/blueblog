@@ -2,8 +2,6 @@
 import { Icon } from '@iconify/vue';
 import { TEXT_SIZE } from '@/components/app/TextComposable';
 
-console.log('TEXT_SIZE', TEXT_SIZE);
-
 interface BaSubProfilePropType {
   /**
    * 見出しのタイトル
