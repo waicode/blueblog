@@ -1,12 +1,16 @@
 $dark-black-color: #111;
 $black-color: #333;
+$gray-99-color: #999;
 $gray-66-color: #666;
 $gray-e0-color: #e0e0e0;
+$gray-eceff1-color: #eceff1;
 $gray-ed-color: #ededed;
 $gray-ee-color: #eee;
 $gray-ef-color: #efefef;
 $gray-f5-color: #f5f5f5;
+$gray-fa-color: #fafafa;
 
+$gray-000-alpha-010-color: rgba(0, 0, 0, 10%);
 $gray-000-alpha-025-color: rgba(0, 0, 0, 25%);
 $gray-051-alpha-050-color: rgba(51, 51, 51, 50%);
 $gray-204-alpha-050-color: rgba(204, 204, 204, 50%);
@@ -69,8 +73,11 @@ $scale44: 44px;
 $scale48: 48px;
 $scale52: 52px;
 $scale56: 56px;
+$scale60: 60px;
 $scale64: 64px;
+$scale72: 72px;
 $scale80: 80px;
+$scale96: 96px;
 
 $scale-minus4: -4px;
 $scale-minus6: -6px;
@@ -88,6 +95,8 @@ $border-width2: 2px;
 $border-radius1: 1px;
 $border-radius2: 2px;
 $border-radius4: 4px;
+$border-radius12: 12px;
+$border-radius-rate20: 20%;
 $border-radius-circle: 50%;
 
 $aspect-ratio-191: 1.91;
