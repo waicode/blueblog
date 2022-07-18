@@ -2,7 +2,7 @@
   <BaLayoutHeader />
   <BaLayoutContainer>
     <BaLayoutMain><slot /></BaLayoutMain>
-    <BaLayoutSide />
+    <BaLayoutSub />
   </BaLayoutContainer>
   <BaLayoutFooter />
 </template>

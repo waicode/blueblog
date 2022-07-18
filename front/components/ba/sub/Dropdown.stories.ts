@@ -1,8 +1,8 @@
-import BaSideDropdown from '@/components/ba/side/Dropdown.vue';
+import BaSubDropdown from '@/components/ba/sub/Dropdown.vue';
 
 export default {
-  title: '@components/ba/side/Dropdown',
-  component: BaSideDropdown,
+  title: '@components/ba/sub/Dropdown',
+  component: BaSubDropdown,
   args: {
     title: '見出しテキスト',
     label: '項目を選択',
@@ -21,12 +21,12 @@ export default {
 };
 
 const Template = (args) => ({
-  components: { BaSideDropdown },
+  components: { BaSubDropdown },
   setup() {
     return { args };
   },
   template: `
-    <BaSideDropdown v-bind="args" />
+    <BaSubDropdown v-bind="args" />
   `,
 });
 

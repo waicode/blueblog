@@ -52,8 +52,8 @@ const props = withDefaults(defineProps<TextPropType>(), {
 
 const className = computed(() =>
   bemx('AppText', {
+    type: TEXT_SIZE_MAP[props.type],
     height: LINE_HEIGHT_MAP[props.height],
-    size: TEXT_SIZE_MAP[props.type],
     spacing: LETTER_SPACING_MAP[props.spacing],
     weight: TEXT_WEIGHT_MAP[props.weight],
     color: TEXT_COLOR_MAP[props.color],
@@ -75,7 +75,7 @@ $text-black-color: $black-color;
 $text-white-color: $white-color;
 
 .AppText {
-  &--size {
+  &--type {
     &-body1 {
       font-size: $font-size-16px;
       font-style: normal;
@@ -140,14 +140,14 @@ $text-white-color: $white-color;
       line-height: $line-height-150;
     }
 
-    &-sideHeading1 {
+    &-subHeading1 {
       font-size: $font-size-20px;
       font-style: normal;
       line-height: $line-height-160;
       font-weight: $font-weight-700;
     }
 
-    &-sideHeading2 {
+    &-subHeading2 {
       font-family: 'Advent Pro';
       font-size: $font-size-20px;
       font-style: normal;
@@ -155,10 +155,14 @@ $text-white-color: $white-color;
       font-weight: $font-weight-600;
     }
 
-    &-sideDescription {
+    &-subDescription1 {
       font-size: $font-size-12px;
       font-style: normal;
       line-height: $line-height-167;
+      @include phone {
+        font-size: $font-size-14px;
+        line-height: $line-height-171;
+      }
     }
 
     &-copyright {

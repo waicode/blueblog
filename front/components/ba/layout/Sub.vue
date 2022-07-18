@@ -3,12 +3,14 @@ import { TEXT_SIZE } from '@/components/app/TextComposable';
 </script>
 
 <template>
-  <side class="BaLayoutSide">
-    <BaSideText title="コンセプト"
-      >デザイナーにもエンジニアにもなりきれなかったアーキテクトが、フロントエンドとサーバレスについて書いてます。その技術を使うことで「得られること」を伝える文章を心がけています。プロダクションを意識した「実際の見た目」と「動くサンプル」も一緒に公開していきます。</BaSideText
+  <aside class="BaLayoutSub">
+    <BaSubText title="コンセプト"
+      ><AppText :type="TEXT_SIZE.SUB_DESCRIPTION1"
+        >モノづくりが好きなアーキテクトがフロントエンドとサーバレスについて書いてます。その技術を使うことで「得られること」を伝える文章を心がけています。プロダクションを意識した「実際の見た目」と「動くサンプル」も一緒に公開していきます。</AppText
+      ></BaSubText
     >
-    <BaSideText title="ストーリーブック"
-      ><AppText :type="TEXT_SIZE.SIDE_DESCRIPTION"
+    <BaSubText title="ストーリーブック"
+      ><AppText :type="TEXT_SIZE.SUB_DESCRIPTION1"
         >このブログのコンポーネント設計が書かれた<a
           href="https://waicode.github.io/blueblog/"
           target="_blank"
@@ -20,9 +22,9 @@ import { TEXT_SIZE } from '@/components/app/TextComposable';
           rel="noopener"
           >Figmaのデザインカンプ</a
         >も公開しています。</AppText
-      ></BaSideText
+      ></BaSubText
     >
-    <BaSideDropdown
+    <BaSubDropdown
       title="タグ"
       label="タグを選択"
       :items="[
@@ -30,7 +32,7 @@ import { TEXT_SIZE } from '@/components/app/TextComposable';
         { label: 'サーバレス', count: 8, path: '/tags/serverless' },
       ]"
     />
-    <BaSideDropdown
+    <BaSubDropdown
       title="アーカイブ"
       label="年月を選択"
       :items="[
@@ -38,19 +40,30 @@ import { TEXT_SIZE } from '@/components/app/TextComposable';
         { label: '2022年6月', count: 4, path: '/archives/2022/06' },
       ]"
     />
-    <BaSideProfile title="Author : waicode">
-      <AppText :type="TEXT_SIZE.SIDE_DESCRIPTION"
+    <BaSubProfile title="Author : waicode">
+      <AppText :type="TEXT_SIZE.SUB_DESCRIPTION1"
         >ここに簡潔なプロフィールを書きます。だいたい3行くらいで書きます。そして詳しいプロフィールのリンクを貼ります。詳しい<NuxtLink
           to="/about"
           >プロフィールはこちら</NuxtLink
         >。お問合せはこちらから。</AppText
       >
-    </BaSideProfile>
-  </side>
+    </BaSubProfile>
+  </aside>
 </template>
 
 <style lang="scss">
-// TODO: ここから
-.BaLayoutSide {
+$sub-column-desktop-width: 208px;
+$sub-column-tablet-width: 184px;
+$sub-column-phone-width: 100%;
+.BaLayoutSub {
+  width: $sub-column-desktop-width;
+
+  @include tablet {
+    width: $sub-column-tablet-width;
+  }
+
+  @include phone {
+    width: $sub-column-phone-width;
+  }
 }
 </style>

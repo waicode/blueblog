@@ -2,44 +2,44 @@
 import { Icon } from '@iconify/vue';
 import { TEXT_SIZE } from '@/components/app/TextComposable';
 
-interface BaSideProfilePropType {
+console.log('TEXT_SIZE', TEXT_SIZE);
+
+interface BaSubProfilePropType {
   /**
    * 見出しのタイトル
    */
   title: string;
 }
 
-defineProps<BaSideProfilePropType>();
+defineProps<BaSubProfilePropType>();
 </script>
 <template>
-  <div class="BaSideProfile">
-    <h3 class="BaSideProfile__Heading">
-      <AppText :type="TEXT_SIZE.SIDE_HEADING2">{{ title }}</AppText>
+  <div class="BaSubProfile">
+    <h3 class="BaSubProfile__Heading">
+      <AppText :type="TEXT_SIZE.SUB_HEADING2">{{ title }}</AppText>
     </h3>
-    <div class="BaSideProfile__AuthorIconWrapper">
-      <div class="BaSideProfile__AuthorIcon">
+    <div class="BaSubProfile__AuthorIconWrapper">
+      <div class="BaSubProfile__AuthorIcon">
         <SvgProfileIconWaicode width="124" height="124" />
       </div>
     </div>
-    <div class="BaSideProfile__SocialIcons">
+    <div class="BaSubProfile__SocialIcons">
       <ul>
-        <li class="BaSideProfile__TwitterIcon">
+        <li class="BaSubProfile__TwitterIcon">
           <a href="https://twitter.com/waicode37" target="_blank" rel="noopener">
             <Icon icon="tabler:brand-twitter" />
           </a>
         </li>
-        <li class="BaSideProfile__GithubIcon">
+        <li class="BaSubProfile__GithubIcon">
           <a href="https://github.com/waicode" target="_blank" rel="noopener">
             <Icon icon="tabler:brand-github" />
           </a>
         </li>
       </ul>
     </div>
-    <div class="BaSideProfile__Text">
-      <AppText :type="TEXT_SIZE.SIDE_DESCRIPTION">
-        <!-- @slot 囲まれたタグを表示する -->
-        <slot />
-      </AppText>
+    <div class="BaSubProfile__Text">
+      <!-- @slot 囲まれたタグを表示する -->
+      <slot />
     </div>
   </div>
 </template>
@@ -56,7 +56,7 @@ $side-profile-github-icon-width: 40px;
 $side-profile-github-icon-height: $side-profile-github-icon-width;
 $side-profile-github-icon-color: $github-purple-color;
 
-.BaSideProfile {
+.BaSubProfile {
   margin-bottom: $scale28;
 
   &__Heading {

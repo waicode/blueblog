@@ -2,7 +2,7 @@
 import { TEXT_SIZE } from '@/components/app/TextComposable';
 import { DropdownItem } from '@/components/app/DropdownComposable';
 
-interface BaSideDropdownPropType {
+interface BaSubDropdownPropType {
   /**
    * 見出しのタイトル
    */
@@ -19,19 +19,19 @@ interface BaSideDropdownPropType {
   items: DropdownItem[];
 }
 
-defineProps<BaSideDropdownPropType>();
+defineProps<BaSubDropdownPropType>();
 </script>
 <template>
-  <div class="BaSideDropdown">
-    <h3 class="BaSideDropdown__Heading">
-      <AppText :type="TEXT_SIZE.SIDE_HEADING1">{{ title }}</AppText>
+  <div class="BaSubDropdown">
+    <h3 class="BaSubDropdown__Heading">
+      <AppText :type="TEXT_SIZE.SUB_HEADING1">{{ title }}</AppText>
     </h3>
     <AppDropdown :label="label" :items="items" />
   </div>
 </template>
 
 <style lang="scss">
-.BaSideDropdown {
+.BaSubDropdown {
   margin-bottom: $scale28;
 
   &__Heading {

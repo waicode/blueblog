@@ -46,6 +46,15 @@ const toggle = () => (isActive.value = !isActive.value);
 </template>
 
 <style lang="scss">
-// .AppDropdown {
-// }
+.AppDropdown {
+  .dropdown {
+    width: 100%;
+    .dropdown-trigger,
+    .dropdown-menu,
+    button {
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+}
 </style>
