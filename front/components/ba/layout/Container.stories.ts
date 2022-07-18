@@ -1,40 +1,61 @@
-import BaLayoutFooter from '@/components/ba/layout/Footer.vue';
-import { FONT_TYPE_MAP, FONT_WEIGHT_MAP } from '@/composables/useWebFont';
-import useCss from '@/composables/useCss';
+import BaLayoutContainer from '@/components/ba/layout/Container.vue';
+import BaLayoutMain from '@/components/ba/layout/Main.vue';
+import BaLayoutSub from '@/components/ba/layout/Sub.vue';
 
 export default {
-  title: '@components/ba/layout/Footer',
-  component: BaLayoutFooter,
-  args: {
-    font: FONT_TYPE_MAP.ADVENT__PRO,
-    weight: FONT_WEIGHT_MAP.weight400,
-  },
-  argTypes: {
-    font: {
-      control: { type: 'inline-radio' },
-      options: Object.values(FONT_TYPE_MAP),
-    },
-    weight: {
-      control: { type: 'inline-radio' },
-      options: Object.values(FONT_WEIGHT_MAP),
-    },
-  },
+  title: '@components/ba/layout/Container',
+  component: BaLayoutContainer,
 };
 
 const Template = (args) => ({
-  components: { BaLayoutFooter },
+  components: { BaLayoutContainer, BaLayoutMain, BaLayoutSub },
   setup() {
-    useCss(
-      () => `
-        body {
-          background: linear-gradient(180deg, #4b73ff 10%, #7cf7ff 100%);
-        }
-      `,
-    );
     return { args };
   },
   template: `
-    <BaLayoutFooter v-bind="args" />
+    <BaLayoutContainer v-bind="args">
+      <BaLayoutMain>
+        <p>キャプションを書きます。だいたい120文字くらいを目安に3行でおさまるボリュームで。ここが長すぎると一覧の高さが合わなくなってしまいます。キャプションは実際の本文の冒頭から取ってくるので、リード文を意識して書きます。</p>
+        <h2>見出し2のテキストはこちら</h2>
+        <p>ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。</p>
+        <h3>見出し3のテキストはこちら</h3>
+        <p>ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。</p>
+        <h4>見出し4のテキストはこちら</h4>
+        <h5>見出し5のテキストはこちら</h5>
+        <p>ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。</p>
+        <ul>
+          <li>これはリストです。これはリストです。これはリストです。これはリストです。これはリストです。これはリストです。これはリストです。これはリストですこれはリストです。これはリストです。これはリストです。これはリストです。</li>
+          <li>これはリストです。これはリストです。これはリストです。これはリストです。</li>
+          <li>これはリストです。これはリストです。これはリストです。これはリストです。</li>
+          <li>これはリストです。これはリストです。これはリストです。これはリストです。</li>
+        </ul>
+        <p>ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。ブログ記事の本文を書きます。</p>
+        <ol>
+          <li>これはリストです。これはリストです。これはリストです。これはリストです。これはリストです。これはリストです。これはリストです。これはリストですこれはリストです。これはリストです。これはリストです。これはリストです。</li>
+          <li>これはリストです。これはリストです。これはリストです。これはリストです。</li>
+          <li>これはリストです。これはリストです。これはリストです。これはリストです。</li>
+          <li>これはリストです。これはリストです。これはリストです。これはリストです。</li>
+        </ol>
+        <AppImage imagePath="capture/content_v1_v2_comparison.png" />
+        <table>
+          <tr>
+            <th>ヘッダー1</th>
+            <th>ヘッダー2</th>
+            <th>ヘッダー3</th>
+            </tr>
+          <tr>
+            <td>ここにテキストが入ります。</td>
+            <td>ここにテキストが入ります。</td>
+            <td>ここにテキストが入ります。</td>
+          </tr>
+          <tr>
+            <td>ここにテキストが入ります。</td>
+            <td>ここにテキストが入ります。</td>
+            <td>ここにテキストが入ります。</td>
+          </tr>
+      </BaLayoutMain>
+      <BaLayoutSub />
+    </BaLayoutContainer>
   `,
 });
 

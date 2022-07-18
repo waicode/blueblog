@@ -1,3 +1,6 @@
 <script setup lang="ts"></script>
 
-<template></template>
+<template>
+  <div></div>
+  <!-- TODO: ここから -->
+</template>
