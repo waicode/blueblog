@@ -38,6 +38,6 @@ const imageSrcPath = computed(() => new URL(`../../assets/images/${props.imagePa
 </script>
 
 <template>
-  <img v-if="imagePath" class="AppAssetsImage" :alt="imageAltText" :src="imageSrcPath" />
-  <img v-else class="AppAssetsImage" :alt="alt" :src="url" />
+  <img v-if="imagePath" class="AppImage" :alt="imageAltText" :src="imageSrcPath" />
+  <img v-else class="AppImage" :alt="alt" :src="url" />
 </template>

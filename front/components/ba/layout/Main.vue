@@ -210,6 +210,11 @@ $table-td-bg-color: $white-color;
     }
   }
 
+  // 画像
+  img {
+    margin-bottom: $scale32;
+  }
+
   // テーブル
   table {
     margin-bottom: $scale32;

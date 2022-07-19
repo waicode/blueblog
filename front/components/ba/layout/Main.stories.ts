@@ -1,4 +1,5 @@
 import BaLayoutMain from '@/components/ba/layout/Main.vue';
+import AppImage from '@/components/app/Image.vue';
 
 export default {
   title: '@components/ba/layout/Main',
@@ -6,7 +7,7 @@ export default {
 };
 
 const Template = (args) => ({
-  components: { BaLayoutMain },
+  components: { BaLayoutMain, AppImage },
   setup() {
     return { args };
   },

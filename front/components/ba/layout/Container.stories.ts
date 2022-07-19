@@ -1,6 +1,7 @@
 import BaLayoutContainer from '@/components/ba/layout/Container.vue';
 import BaLayoutMain from '@/components/ba/layout/Main.vue';
 import BaLayoutSub from '@/components/ba/layout/Sub.vue';
+import AppImage from '@/components/app/Image.vue';
 
 export default {
   title: '@components/ba/layout/Container',
@@ -8,7 +9,7 @@ export default {
 };
 
 const Template = (args) => ({
-  components: { BaLayoutContainer, BaLayoutMain, BaLayoutSub },
+  components: { BaLayoutContainer, BaLayoutMain, BaLayoutSub, AppImage },
   setup() {
     return { args };
   },
@@ -53,6 +54,7 @@ const Template = (args) => ({
             <td>ここにテキストが入ります。</td>
             <td>ここにテキストが入ります。</td>
           </tr>
+        </table>
       </BaLayoutMain>
       <BaLayoutSub />
     </BaLayoutContainer>
