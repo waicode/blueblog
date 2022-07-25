@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@iconify/vue": "^3.2.1",
+    "@nuxt/content": "^2.0.0",
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
     "@storybook/addon-essentials": "~6.5.0",
     "@storybook/builder-vite": "^0.1.36",
@@ -28,7 +29,7 @@
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-vue": "^9.1.1",
-    "nuxt": "3.0.0-rc.3",
+    "nuxt": "3.0.0-rc.4",
     "postcss-html": "^1.4.1",
     "prettier": "^2.7.1",
     "sass": "^1.52.2",

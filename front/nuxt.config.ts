@@ -31,6 +31,7 @@ export default defineNuxtConfig({
       yahooValueCommercePid: '887190364',
     },
   },
+  modules: ['@nuxt/content'],
   buildModules: ['@pinia/nuxt'],
   vite: {
     plugins: [eslintPlugin()],
