@@ -24,20 +24,38 @@ interface ImagePropType {
    * 未指定の場合はファイル名がalt属性に設定される。
    */
   alt?: string;
+
+  /**
+   * 画像の幅
+   */
+  width?: string | number;
+
+  /**
+   * 画像の高さ
+   */
+  height?: string | number;
 }
 
-const props = defineProps<ImagePropType>();
+const props = withDefaults(defineProps<ImagePropType>(), {
+  imagePath: undefined,
+  url: undefined,
+  alt: undefined,
+  width: undefined,
+  height: undefined,
+});
 
 // altが未指定のとき、画像パス指定の場合はファイル名を設定
 const imageAltText = computed(() => {
-  if (!props.imagePath) return undefined;
+  if (!props.imagePath) return props.alt;
   return props.alt ? props.alt : getFileName(props.imagePath);
 });
 
-const imageSrcPath = computed(() => new URL(`../../assets/images/${props.imagePath}`, import.meta.url).href);
+// assets/imagesフォルダ配下のパスが指定された場合はURLを取得
+const imageSrcPath = computed(() =>
+  props.imagePath ? new URL(`../../assets/images/${props.imagePath}`, import.meta.url).href : props.url,
+);
 </script>
 
 <template>
-  <img v-if="imagePath" class="AppImage" :alt="imageAltText" :src="imageSrcPath" />
-  <img v-else class="AppImage" :alt="alt" :src="url" />
+  <img class="AppImage" :alt="imageAltText" :src="imageSrcPath" :width="width" :height="height" />
 </template>

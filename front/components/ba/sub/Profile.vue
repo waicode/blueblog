@@ -14,7 +14,7 @@ defineProps<BaSubProfilePropType>();
 <template>
   <div class="BaSubProfile">
     <h3 class="BaSubProfile__Heading">
-      <AppText :type="TEXT_SIZE.SUB_HEADING2">{{ title }}</AppText>
+      <AppText :type="TEXT_SIZE.SUB_TITLE2">{{ title }}</AppText>
     </h3>
     <div class="BaSubProfile__AuthorIconWrapper">
       <div class="BaSubProfile__AuthorIcon">

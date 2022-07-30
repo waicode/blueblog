@@ -34,7 +34,6 @@ $blockquote-before-icon-height: $blockquote-before-icon-width;
   position: relative;
   box-sizing: border-box;
   padding: $scale12 $scale20 $scale12 $scale72;
-  margin-bottom: $scale32;
   font-style: italic;
   background: $blockquote-bg-color;
   border: $border-width2 solid $blockquote-border-color;

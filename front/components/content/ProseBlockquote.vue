@@ -1,5 +1,11 @@
 <template>
-  <blockquote>
+  <AppBlockquote class="ContentProseBlockquote">
     <slot />
-  </blockquote>
+  </AppBlockquote>
 </template>
+
+<style lang="scss">
+.ContentProseBlockquote {
+  margin-bottom: $scale32;
+}
+</style>

@@ -108,6 +108,60 @@ $text-white-color: $white-color;
       line-height: $line-height-143;
     }
 
+    &-heading2 {
+      font-size: $font-size-24px;
+      font-style: normal;
+      line-height: $line-height-150;
+      font-weight: $font-weight-700;
+    }
+
+    &-heading3 {
+      font-size: $font-size-20px;
+      font-style: normal;
+      line-height: $line-height-160;
+      font-weight: $font-weight-700;
+    }
+
+    &-heading4 {
+      font-size: $font-size-18px;
+      font-style: normal;
+      line-height: $line-height-156;
+      font-weight: $font-weight-700;
+    }
+
+    &-heading5 {
+      font-size: $font-size-16px;
+      font-style: normal;
+      line-height: $line-height-150;
+      font-weight: $font-weight-700;
+    }
+
+    &-heading6 {
+      font-size: $font-size-14px;
+      font-style: normal;
+      line-height: $line-height-150;
+      font-weight: $font-weight-700;
+    }
+
+    &-list1 {
+      font-size: $font-size-16px;
+      font-style: normal;
+      line-height: $line-height-143;
+    }
+
+    &-tableHead1 {
+      font-size: $font-size-16px;
+      font-style: normal;
+      line-height: $line-height-150;
+      font-weight: $font-weight-700;
+    }
+
+    &-tableData1 {
+      font-size: $font-size-16px;
+      font-style: normal;
+      line-height: $line-height-150;
+    }
+
     &-date1 {
       font-size: $font-size-12px;
       font-style: normal;
@@ -140,14 +194,14 @@ $text-white-color: $white-color;
       line-height: $line-height-150;
     }
 
-    &-subHeading1 {
+    &-subTitle1 {
       font-size: $font-size-20px;
       font-style: normal;
       line-height: $line-height-160;
       font-weight: $font-weight-700;
     }
 
-    &-subHeading2 {
+    &-subTitle2 {
       font-family: 'Advent Pro';
       font-size: $font-size-20px;
       font-style: normal;
@@ -156,7 +210,7 @@ $text-white-color: $white-color;
     }
 
     &-subDescription1 {
-      font-size: $font-size-12px;
+      font-size: $font-size-13px;
       font-style: normal;
       line-height: $line-height-167;
       @include phone {

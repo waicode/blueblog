@@ -24,7 +24,7 @@ defineProps<BaSubDropdownPropType>();
 <template>
   <div class="BaSubDropdown">
     <h3 class="BaSubDropdown__Heading">
-      <AppText :type="TEXT_SIZE.SUB_HEADING1">{{ title }}</AppText>
+      <AppText :type="TEXT_SIZE.SUB_TITLE1">{{ title }}</AppText>
     </h3>
     <AppDropdown :label="label" :items="items" />
   </div>

@@ -13,7 +13,7 @@ defineProps<BaSubTextPropType>();
 <template>
   <div class="BaSubText">
     <h3 class="BaSubText__Heading">
-      <AppText :type="TEXT_SIZE.SUB_HEADING1">{{ title }}</AppText>
+      <AppText :type="TEXT_SIZE.SUB_TITLE1">{{ title }}</AppText>
     </h3>
     <!-- @slot 囲まれたタグを表示する -->
     <slot />
