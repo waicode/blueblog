@@ -52,6 +52,10 @@ $blockquote-before-icon-height: $blockquote-before-icon-width;
     width: $blockquote-before-icon-height;
   }
 
+  p {
+    margin-bottom: 0;
+  }
+
   .AppText {
     padding: 0;
     margin: $scale12 0;

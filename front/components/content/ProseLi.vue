@@ -45,7 +45,7 @@ ol.ContentProseOl {
 
     &::before {
       position: absolute;
-      top: 0;
+      top: 3px;
       left: 3px;
       display: block;
       text-align: center;
