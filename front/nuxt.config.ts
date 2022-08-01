@@ -33,6 +33,11 @@ export default defineNuxtConfig({
   },
   modules: ['@nuxt/content'],
   buildModules: ['@pinia/nuxt'],
+  content: {
+    navigation: {
+      fields: ['icon', 'category', 'tags', 'createdAt', 'updatedAt'],
+    },
+  },
   vite: {
     plugins: [eslintPlugin()],
     css: {

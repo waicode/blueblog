@@ -1,12 +1,11 @@
-<script setup lang="ts">
-import { LINK_CARD_TYPE_MAP } from '@/components/ba/LinkCardComposable';
+<script setup lang="ts"></script>
 
-const args = {
-  type: LINK_CARD_TYPE_MAP.EXTERNAL,
-  link: 'https://mujiota.com/',
-};
-</script>
 <template>
-  <h1>トップページ</h1>
-  <BaLinkCard v-bind="args" />
+  <!-- TODO: エラ-の解消から -->
+  <ContentList v-slot="{ list }" path="/articles">
+    <div v-for="(article, index) in list" :key="article._path">
+      <BaArticle :article="article" />
+      <hr v-if="index < list.length - 1" :key="`hr-${article.id}`" />
+    </div>
+  </ContentList>
 </template>

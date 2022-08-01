@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { Article } from '@/store/article';
 import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
 import { DATE_TEXT_TYPE_MAP } from '@/components/app/DateTextComposable';
 import useMediaQuery from '@/composables/useMediaQuery';
 import { tabletMediaQuery, phoneMediaQuery } from '@/utils/util';
 import {
+  ArticleParsedContent,
   EYE_CATCH_WIDTH_DESKTOP,
   EYE_CATCH_WIDTH_PHONE,
   EYE_CATCH_WIDTH_TABLET,
@@ -15,7 +15,7 @@ interface ArticlePropType {
    * 記事情報
    *
    */
-  article: Article;
+  article: ArticleParsedContent;
 }
 
 defineProps<ArticlePropType>();

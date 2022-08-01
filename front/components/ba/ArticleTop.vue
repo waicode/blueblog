@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Article } from '@/store/article';
+import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
 import { TEXT_SIZE } from '@/components/app/TextComposable';
 import { DATE_TEXT_TYPE_MAP } from '@/components/app/DateTextComposable';
 
@@ -8,7 +8,7 @@ interface ArticleTopPropType {
    * 記事情報
    *
    */
-  article: Article;
+  article: ArticleParsedContent;
 }
 
 defineProps<ArticleTopPropType>();
