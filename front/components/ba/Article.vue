@@ -47,7 +47,7 @@ watchEffect(() => {
 
 <template>
   <article class="BaArticle">
-    <NuxtLink :to="`/articles/${article.slug}/`">
+    <NuxtLink :to="article._path">
       <div class="BaArticle__Wrapper">
         <div class="BaArticle__FirstContents">
           <div class="BaArticle__Eyecatch">

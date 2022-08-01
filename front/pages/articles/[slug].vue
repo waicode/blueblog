@@ -1,12 +1,15 @@
 <script setup lang="ts">
+import { Ref } from 'vue';
 import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
 
-const route = useRoute();
 // TODO: メタタグ
-const queryResult = await useAsyncData('articles/slug', () =>
-  queryContent<ArticleParsedContent>('articles', route.params.slug as string).find(),
+
+// 記事を取得
+const route = useRoute();
+const queryResult = await useAsyncData(`articles/${route.params.slug}`, () =>
+  queryContent<ArticleParsedContent>('articles', route.params.slug as string).findOne(),
 );
-const article = queryResult.data[0];
+const article = queryResult.data as Ref<ArticleParsedContent>;
 </script>
 
 <template>

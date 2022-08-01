@@ -1,5 +1,18 @@
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types';
-import { Article } from '@/store/article';
+
+/**
+ * 記事情報の型定義
+ */
+export type Article = {
+  title: string;
+  description: string;
+  category: string;
+  imageFormat?: string;
+  icon?: string;
+  tags?: Array<string>;
+  createdAt: string;
+  updatedAt: string;
+};
 
 /**
  * Contentを拡張した記事情報の型
