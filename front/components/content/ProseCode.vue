@@ -1,35 +1,37 @@
 <script lang="ts">
-import { defineComponent } from '#imports'
+import { defineComponent } from '#imports';
 
 export default defineComponent({
   props: {
     code: {
       type: String,
-      default: ''
+      default: '',
     },
     language: {
       type: String,
-      default: null
+      default: null,
     },
     filename: {
       type: String,
-      default: null
+      default: null,
     },
     highlights: {
       type: Array as () => number[],
-      default: () => []
-    }
-  }
-})
+      default: () => [],
+    },
+  },
+});
 </script>
 
 <template>
   <slot />
 </template>
 
-<style>
+<style lang="scss">
+/* stylelint-disable selector-class-pattern */
 pre code .line {
   display: block;
-  min-height: 1rem;
+  min-height: $font-size-16px;
 }
+/* stylelint-enable selector-class-pattern */
 </style>

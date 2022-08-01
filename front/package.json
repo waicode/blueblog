@@ -11,9 +11,9 @@
     "build-storybook": "build-storybook",
     "lint:script": "eslint --ext .ts,vue --ignore-path .gitignore .",
     "lint:style": "stylelint --ignore-path .gitignore \"**/*.{css,scss,vue,html}\"",
-    "lint:prettier": "prettier --ignore-path .gitignore --check .",
+    "lint:prettier": "prettier --ignore-path .prettierignore --check .",
     "lintfix:style": "yarn lint:style --fix",
-    "lintfix:prettier": "prettier --ignore-path .gitignore --write --list-different ."
+    "lintfix:prettier": "prettier --ignore-path .prettierignore --write --list-different ."
   },
   "devDependencies": {
     "@iconify/vue": "^3.2.1",
