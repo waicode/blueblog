@@ -1,7 +1,9 @@
 <template>
   <div class="BaLayoutHeader">
     <div class="BaLayoutHeader__Logo">
-      <BaLogo />
+      <NuxtLink to="/">
+        <BaLogo />
+      </NuxtLink>
     </div>
   </div>
 </template>
