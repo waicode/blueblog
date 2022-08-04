@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
+const runtimeConfig = useRuntimeConfig();
 
 // 記事を取得
-const queryResult = await useAsyncData('articles', () => queryContent<ArticleParsedContent>('articles').find());
+const queryResult = await useAsyncData('articles', () =>
+  queryContent<ArticleParsedContent>('articles')
+    .sort({ createdAt: 1 }) // 降順
+    .find(),
+);
 const articles = queryResult.data;
 // 1ページあたりの表示数
-const runtimeConfig = useRuntimeConfig();
 const pageSize = runtimeConfig.public.pageSize;
 // ページネーションの初期表示
 const { targetArticles } = usePagenate<ArticleParsedContent>(articles.value, pageSize);
@@ -18,12 +22,7 @@ const displayTargetPosts = (targetPosts) => {
 
 <template>
   <div class="BaPageTop">
-    <div class="BaPageTop__Articles">
-      <div v-for="(article, index) in posts" :key="article._path">
-        <BaArticle :article="article" />
-        <hr v-if="index < posts.length - 1" :key="`hr-${article.id}`" />
-      </div>
-    </div>
+    <BaArticleList :articles="posts" class="BaPageTop__Articles" />
     <div v-show="articles.length > pageSize" class="BaPageTop__Pagenation">
       <AppPagenation :articles="articles" :page-size="pageSize" @change-page="displayTargetPosts" />
     </div>

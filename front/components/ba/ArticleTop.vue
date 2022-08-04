@@ -6,7 +6,6 @@ import { DATE_TEXT_TYPE_MAP } from '@/components/app/DateTextComposable';
 interface ArticleTopPropType {
   /**
    * 記事情報
-   *
    */
   article: ArticleParsedContent;
 }
