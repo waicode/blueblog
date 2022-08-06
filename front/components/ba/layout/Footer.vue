@@ -30,7 +30,8 @@ const props = withDefaults(defineProps<FooterPropType>(), {
 const thisYear = getYear(new Date());
 
 useWebFont(props.font, props.weight);
-const id = useId(`BaLayoutFooter--${getCurrentInstance().uid}`);
+
+const id = useId('BaLayoutFooter');
 const className = bemx('BaLayoutFooter', id.value);
 useCss(
   () =>
