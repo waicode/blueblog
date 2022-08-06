@@ -2,11 +2,10 @@
 import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute();
-const yyyy = route.params.yyyy;
-const mm = route.params.mm;
+const yyyy = route.params.yyyy[0];
+const mm = route.params.mm[0];
 // const mmStr = String(Number(mm)); // ゼロサプレス
 
-console.log(yyyy, mm);
 // 該当年月の記事を取得
 const queryResult = await useAsyncData(`${yyyy}/${mm}`, () =>
   queryContent<ArticleParsedContent>('articles')

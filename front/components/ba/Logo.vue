@@ -27,15 +27,15 @@ const props = withDefaults(defineProps<LogoPropType>(), {
 
 if (props.font !== FONT_TYPE_MAP.ADVENT__PRO || props.weight !== FONT_WEIGHT_MAP.weight600) {
   // Advent Pro SemiBold以外はWebフォントを読み込む。
-  // family=Advent+Pro:wght@600はnuxt.config.tsでheadタグに指定しているため。
+  // family=Advent+Pro:wght@600はnuxt.config.tsでheadタグに指定しているため読み込み不要。
   useWebFont(props.font, props.weight);
 }
 
-const id = useId();
-const className = bemx('BaLayoutLogo', id);
+const id = useId(`BaLayoutLogo--${getCurrentInstance().uid}`);
+const className = bemx('BaLayoutLogo', id.value);
 useCss(
   () =>
-    `.BaLayoutLogo--${id} {
+    `.BaLayoutLogo--${id.value} {
       font-family: "${props.font}" !important;
       font-weight: ${props.weight} !important;
     }`,
@@ -43,17 +43,19 @@ useCss(
 </script>
 
 <template>
-  <div :class="className">
-    <span class="BaLayoutLogo__Blue">
-      <span class="BaLayoutLogo__B">B</span>
-      <span class="BaLayoutLogo__Lue">lue</span>
-    </span>
-    <span class="BaLayoutLogo__Star">*</span>
-    <span class="BaLayoutLogo__Architect">
-      <span class="BaLayoutLogo__A">A</span>
-      <span class="BaLayoutLogo__Rchitect">rchitect</span>
-    </span>
-  </div>
+  <ClientOnly>
+    <div :class="className">
+      <span class="BaLayoutLogo__Blue">
+        <span class="BaLayoutLogo__B">B</span>
+        <span class="BaLayoutLogo__Lue">lue</span>
+      </span>
+      <span class="BaLayoutLogo__Star">*</span>
+      <span class="BaLayoutLogo__Architect">
+        <span class="BaLayoutLogo__A">A</span>
+        <span class="BaLayoutLogo__Rchitect">rchitect</span>
+      </span>
+    </div>
+  </ClientOnly>
 </template>
 
 <style lang="scss">

@@ -9,18 +9,20 @@
  */
 export default (mediaQueryFunc: () => string) => {
   const mediaQueryString = computed(mediaQueryFunc);
-  const matchQuery = window.matchMedia(unref(mediaQueryString));
+  const isMatch = ref(false);
 
-  const isMatch = ref(matchQuery.matches);
-
+  let matchQuery;
   const listener = (event) => (isMatch.value = event.matches);
-
   onMounted(() => {
+    matchQuery = window.matchMedia(unref(mediaQueryString));
+    isMatch.value = matchQuery.matches;
     matchQuery.addEventListener('change', listener);
   });
 
   onUnmounted(() => {
-    matchQuery.removeEventListener('change', listener);
+    if (matchQuery) {
+      matchQuery.removeEventListener('change', listener);
+    }
   });
 
   return isMatch;

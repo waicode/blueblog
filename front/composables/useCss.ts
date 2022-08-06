@@ -49,15 +49,17 @@ export default (cssFunc: () => string) => {
     document.head.append(styleElement.value);
   });
 
-  watch(
-    [style],
-    ([text]) => {
-      if (styleElement.value) {
-        styleElement.value.innerHTML = text;
-      }
-    },
-    { immediate: true },
-  );
+  if (process.client) {
+    watch(
+      [style],
+      ([text]) => {
+        if (styleElement.value) {
+          styleElement.value.innerHTML = text;
+        }
+      },
+      { immediate: true },
+    );
+  }
 
   onUnmounted(() => {
     document.head.removeChild(styleElement.value);

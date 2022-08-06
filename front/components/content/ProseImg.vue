@@ -18,7 +18,9 @@ const imagePath = computed(() => (props.src.match(/^https?:\/\/.+/) ? undefined 
 </script>
 
 <template>
-  <AppImage class="ContentProseImg" :image-path="imagePath" :url="src" :alt="alt" :width="width" :height="height" />
+  <span class="ContentProseImg">
+    <AppImage :image-path="imagePath" :url="src" :alt="alt" :width="width" :height="height" />
+  </span>
 </template>
 
 <style lang="scss">

@@ -30,11 +30,11 @@ const props = withDefaults(defineProps<FooterPropType>(), {
 const thisYear = getYear(new Date());
 
 useWebFont(props.font, props.weight);
-const id = useId();
-const className = bemx('BaLayoutFooter', id);
+const id = useId(`BaLayoutFooter--${getCurrentInstance().uid}`);
+const className = bemx('BaLayoutFooter', id.value);
 useCss(
   () =>
-    `.BaLayoutFooter--${id} .BaLayoutFooter__Copyright{
+    `.BaLayoutFooter--${id.value} .BaLayoutFooter__Copyright{
       font-family: "${props.font}" !important;
       font-weight: ${props.weight} !important;
     }`,

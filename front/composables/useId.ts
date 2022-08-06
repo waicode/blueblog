@@ -1,8 +1,8 @@
-import { onMounted, onUnmounted } from 'vue';
 import { randomString } from '@/utils/util';
 
 /**
- * 貸出済のランダム文字列のSet。
+ * 貸出済のランダム文字列のSet
+ *
  * 重複使用をチェックする際に利用する。
  */
 const lendStrings = new Set<string>();
@@ -12,23 +12,16 @@ const lendStrings = new Set<string>();
  *
  * アプリケーション内で重複しないランダムな文字列を提供する。
  * コンポーネントがunmountされるまで重複されないことを保証する。
- * ただし、SSRの場合はクライアントと違うIDが生成される点に注意すること。
+ * useStateを使い、サーバサイドで生成したIDをクライアントでも利用する。
  *
  * @returns `a-z,A-Z,0-9`の範囲で構成されたランダム文字列
  */
-export default () => {
-  let id = randomString();
-
-  onMounted(() => {
-    while (lendStrings.has(id)) {
-      id = randomString();
-    }
-    lendStrings.add(id);
-  });
-
-  onUnmounted(() => {
-    lendStrings.delete(id);
-  });
-
+export default (key: string) => {
+  let randomId = randomString();
+  while (lendStrings.has(randomId)) {
+    randomId = randomString();
+  }
+  lendStrings.add(randomId);
+  const id = useState<string>(key, () => randomId);
   return id;
 };

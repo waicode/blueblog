@@ -77,15 +77,17 @@ export default (webFontName: Ref<string> | string, weight?: Ref<string> | string
     document.head.append(linkElement.value);
   });
 
-  watch(
-    [hrefText],
-    ([text]) => {
-      if (linkElement.value) {
-        linkElement.value.href = text;
-      }
-    },
-    { immediate: true },
-  );
+  if (process.client) {
+    watch(
+      [hrefText],
+      ([text]) => {
+        if (linkElement.value) {
+          linkElement.value.href = text;
+        }
+      },
+      { immediate: true },
+    );
+  }
 
   onUnmounted(() => {
     document.head.removeChild(linkElement.value);

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { getCurrentInstance } from 'vue';
 import { Icon } from '@iconify/vue';
 
 import useId from '@/composables/useId';
@@ -73,20 +74,22 @@ const iconPixelWidth = computed(() => {
   return `${Math.trunc(Number(widthNumber) * props.iconRatio)}px`;
 });
 
-const id = useId();
-const className = bemx('AppEyeCatchImage', id);
+// TODO: ClientOnlyで逃げたが、本来はサーバサイドとクライアントサイドに共通のランダムIDを用意してSSRしたい
+const id = useId(`AppEyeCatchImage--${getCurrentInstance().uid}`);
+const className = bemx('AppEyeCatchImage', id.value);
+
 useCss(
   () =>
     `
-    .AppEyeCatchImage--${id} .AppEyeCatchImage__Bg {
+    .AppEyeCatchImage--${id.value} .AppEyeCatchImage__Bg {
       ${props.width ? `width: ${props.width};` : ''}
       ${props.height ? `height: ${props.height};` : ''}
       ${unref(aspectRatioValue) ? `aspect-ratio: ${unref(aspectRatioValue)};` : ''}
     }
-    .AppEyeCatchImage--${id} .AppEyeCatchImage__Icon {
+    .AppEyeCatchImage--${id.value} .AppEyeCatchImage__Icon {
       ${unref(iconRatioWidth) ? `width: ${unref(iconRatioWidth)};` : ''}
     }
-    .AppEyeCatchImage--${id} .AppEyeCatchImage__Icon svg {
+    .AppEyeCatchImage--${id.value} .AppEyeCatchImage__Icon svg {
       ${unref(iconPixelWidth) ? `width: ${unref(iconPixelWidth)};` : ''}
     }
     `,
@@ -94,12 +97,16 @@ useCss(
 </script>
 
 <template>
-  <div :class="className">
-    <div class="AppEyeCatchImage__Bg">
-      <div class="AppEyeCatchImage__Icon">
-        <Icon :icon="icon" />
+  <div>
+    <ClientOnly>
+      <div :class="className">
+        <div class="AppEyeCatchImage__Bg">
+          <div class="AppEyeCatchImage__Icon">
+            <Icon :icon="icon" />
+          </div>
+        </div>
       </div>
-    </div>
+    </ClientOnly>
   </div>
 </template>
 

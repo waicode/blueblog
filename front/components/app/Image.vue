@@ -52,10 +52,15 @@ const imageAltText = computed(() => {
 
 // assets/imagesフォルダ配下のパスが指定された場合はURLを取得
 const imageSrcPath = computed(() =>
+  // TODO: Nuxtで動的なAsset指定のやり方が出てきたら更新すること
   props.imagePath ? new URL(`../../assets/images/${props.imagePath}`, import.meta.url).href : props.url,
 );
 </script>
 
 <template>
-  <img class="AppImage" :alt="imageAltText" :src="imageSrcPath" :width="width" :height="height" />
+  <div>
+    <ClientOnly>
+      <img class="AppImage" :alt="imageAltText" :src="imageSrcPath" :width="width" :height="height" />
+    </ClientOnly>
+  </div>
 </template>

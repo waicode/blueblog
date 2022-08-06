@@ -3,8 +3,6 @@ import eslintPlugin from 'vite-plugin-eslint';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  // サーバサイドレンダリングは行わない
-  ssr: false,
   css: ['bulma/bulma.sass'],
   head: {
     link: [
@@ -37,10 +35,9 @@ export default defineNuxtConfig({
     },
   },
   modules: ['@nuxt/content'],
-  buildModules: ['@pinia/nuxt'],
   content: {
     navigation: {
-      fields: ['icon', 'category', 'tags', 'createdAt', 'updatedAt'],
+      fields: ['category', 'createdAt', 'updatedAt'],
     },
   },
   vite: {

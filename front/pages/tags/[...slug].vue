@@ -2,7 +2,8 @@
 import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute();
-const tagSlug = runtimeConfig.public.tags[`${route.params.slug}`];
+const tagSlug = route.params.slug[0] as string;
+const tagName = runtimeConfig.public.tags[tagSlug];
 
 // 該当タグがなければNotFound
 if (!tagSlug) {
@@ -12,7 +13,7 @@ if (!tagSlug) {
 // 該当タグの記事を取得
 const queryResult = await useAsyncData(`tags/${tagSlug}`, () =>
   queryContent<ArticleParsedContent>('articles')
-    .where({ tags: { $contains: tagSlug } })
+    .where({ tags: { $contains: tagName } })
     .sort({ createdAt: -1 }) // 降順
     .find(),
 );
