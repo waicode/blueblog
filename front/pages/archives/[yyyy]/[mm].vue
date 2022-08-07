@@ -27,15 +27,15 @@ const displayTargetPosts = (targetPosts) => {
 
 <template>
   <div class="BaPageTagsSlug">
-    <BaArticleList :articles="posts" class="BaPageTop__Articles" />
-    <div v-show="articles.length > pageSize" class="BaPageTop__Pagenation">
+    <BaArticleList :articles="posts" class="BaPageTagsSlug__Articles" />
+    <div v-show="articles.length > pageSize">
       <AppPagenation :articles="articles" :page-size="pageSize" @change-page="displayTargetPosts" />
     </div>
   </div>
 </template>
 
 <style lang="scss">
-.BaPageTop {
+.BaPageTagsSlug {
   &__Articles {
     margin-bottom: $scale36;
   }

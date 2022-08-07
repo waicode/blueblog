@@ -19,3 +19,17 @@ defineProps<ArticleTopPropType>();
     </div>
   </div>
 </template>
+
+<style lang="scss">
+$article-list-hr-height: 2px;
+
+.BaArticleList {
+  hr {
+    background-color: $gray-f5-color;
+    border: none;
+    display: block;
+    height: $article-list-hr-height;
+    margin: $font-size-24px 0;
+  }
+}
+</style>

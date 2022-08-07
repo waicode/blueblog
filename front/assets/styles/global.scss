@@ -1,4 +1,24 @@
+@font-face {
+  font-family: 'Noto Sans CJK JP DemiLight';
+  src: url('~/assets/fonts/NotoSansJP-DemiLight.woff2') format('woff2'),
+    url('~/assets/fonts/NotoSansJP-DemiLight.woff') format('woff');
+  font-display: swap;
+}
+
 body {
-  // FIXME: グローバルCSSが不要な場合はこのファイルを削除すること
-  vertical-align: baseline;
+  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', meiryo, sans-serif;
+}
+
+a {
+  color: #485fc7;
+  cursor: pointer;
+  text-decoration: none;
+
+  strong {
+    color: currentColor;
+  }
+
+  &:hover {
+    color: #363636;
+  }
 }

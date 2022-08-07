@@ -64,7 +64,6 @@ defineProps<ArticleTopPropType>();
     justify-content: space-between;
     width: 100%;
     margin-bottom: $scale8;
-    color: $text;
   }
 
   &__Date {

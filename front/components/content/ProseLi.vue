@@ -9,7 +9,7 @@ import { TEXT_SIZE } from '@/components/app/TextComposable';
 </template>
 
 <style lang="scss">
-$ul-li-before-width: 9px;
+$ul-li-before-width: 6px;
 $ul-li-before-height: $ul-li-before-width;
 
 ul.ContentProseUl {
@@ -22,13 +22,13 @@ ul.ContentProseUl {
 
     &::before {
       position: absolute;
-      top: 8px;
+      top: 10px;
       left: 4px;
       display: block;
       width: $ul-li-before-width;
       height: $ul-li-before-height;
       content: ' ';
-      background: $dark-black-color;
+      background: $black-color;
       border-radius: $border-radius-rate20;
       box-shadow: -1px -1px 1px $gray-097-alpha-015-color inset;
     }
@@ -45,12 +45,13 @@ ol.ContentProseOl {
 
     &::before {
       position: absolute;
-      top: 3px;
-      left: 3px;
+      top: 0;
+      left: 4px;
       display: block;
       text-align: center;
       content: counter(number) '.';
       counter-increment: number;
+      font-weight: 300;
     }
   }
 }

@@ -38,8 +38,6 @@ module.exports = {
         preprocessorOptions: {
           scss: {
             additionalData: `
-              @import "@/assets/styles/_bulma.scss";
-              @import "../node_modules/bulma/bulma.sass";
               @import "@/assets/styles/_variables.scss";
               @import "@/assets/styles/_mixin.scss";
               @import "@/assets/styles/global.scss";

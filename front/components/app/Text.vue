@@ -75,11 +75,14 @@ $text-black-color: $black-color;
 $text-white-color: $white-color;
 
 .AppText {
+  color: $text-black-color;
+
   &--type {
     &-body1 {
       font-size: $font-size-16px;
       font-style: normal;
       line-height: $line-height-175;
+      font-family: $font-name-noto-sans-cjk-jp-demi-light;
     }
 
     &-title1 {
@@ -147,9 +150,10 @@ $text-white-color: $white-color;
       font-size: $font-size-16px;
       font-style: normal;
       line-height: $line-height-143;
+      font-family: $font-name-noto-sans-cjk-jp-demi-light;
     }
 
-    &-tableHead1 {
+    &-tableHeader1 {
       font-size: $font-size-16px;
       font-style: normal;
       line-height: $line-height-150;
@@ -202,17 +206,18 @@ $text-white-color: $white-color;
     }
 
     &-subTitle2 {
-      font-family: 'Advent Pro';
       font-size: $font-size-20px;
       font-style: normal;
       line-height: $line-height-160;
       font-weight: $font-weight-600;
+      font-family: $font-name-advent-pro;
     }
 
     &-subDescription1 {
       font-size: $font-size-13px;
       font-style: normal;
       line-height: $line-height-167;
+      font-family: $font-name-noto-sans-cjk-jp-demi-light;
       @include phone {
         font-size: $font-size-14px;
         line-height: $line-height-171;

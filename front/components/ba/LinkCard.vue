@@ -390,7 +390,6 @@ $link-title-before-bg-color-related: $main-blue-color;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    color: $text;
   }
 
   &__Date {

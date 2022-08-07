@@ -137,7 +137,6 @@ watchEffect(() => {
   }
 
   &__Title {
-    color: $text;
     @include phone {
       margin-bottom: $scale12;
     }
@@ -158,7 +157,6 @@ watchEffect(() => {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    color: $text;
   }
 
   &__Date {
