@@ -36,7 +36,7 @@ const toggle = () => (isActive.value = !isActive.value);
       </div>
       <div class="dropdown-menu" role="menu">
         <div class="dropdown-content">
-          <NuxtLink v-for="item in items" :key="item.label" class="dropdown-item" :to="item.path"
+          <NuxtLink v-for="item in items" :key="item.label" class="dropdown-item" :to="item.path" @click="toggle"
             ><AppText :type="TEXT_SIZE.BODY1">{{ item.label }}({{ item.count }})</AppText></NuxtLink
           >
         </div>

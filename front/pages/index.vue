@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
+import { useArticlesState } from '@/composables/state';
 const runtimeConfig = useRuntimeConfig();
 
-// 記事を取得
-const queryResult = await useAsyncData('articles', () =>
-  queryContent<ArticleParsedContent>('articles')
-    .sort({ createdAt: 1 }) // 降順
-    .find(),
-);
-const articles = queryResult.data;
+// 記事一覧をストアから取得
+const { articlesState: articles } = useArticlesState();
+
 // 1ページあたりの表示数
 const pageSize = runtimeConfig.public.pageSize;
 // ページネーションの初期表示

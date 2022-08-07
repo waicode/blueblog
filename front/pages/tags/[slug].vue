@@ -1,15 +1,21 @@
 <script setup lang="ts">
 import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
+import { TAXONOMY_MAP } from '@/composables/taxonomies';
+
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute();
-const yyyy = route.params.yyyy[0];
-const mm = route.params.mm[0];
-// const mmStr = String(Number(mm)); // ゼロサプレス
+const tagSlug = route.params.slug;
+const tagName = TAXONOMY_MAP[tagSlug].name;
 
-// 該当年月の記事を取得
-const queryResult = await useAsyncData(`${yyyy}/${mm}`, () =>
+// 該当タグがなければNotFound
+if (!tagSlug) {
+  // TODO: NotFoundへ飛ばす
+}
+
+// 該当タグの記事を取得
+const queryResult = await useAsyncData(`tags/${tagSlug}`, () =>
   queryContent<ArticleParsedContent>('articles')
-    .where({ createdAt: { $regex: `^${yyyy}-${mm}` } })
+    .where({ tags: { $contains: tagName } })
     .sort({ createdAt: -1 }) // 降順
     .find(),
 );

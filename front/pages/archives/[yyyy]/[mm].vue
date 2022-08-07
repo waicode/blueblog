@@ -2,26 +2,22 @@
 import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute();
-const tagSlug = route.params.slug[0] as string;
-const tagName = runtimeConfig.public.tags[tagSlug];
+const yyyy = route.params.yyyy;
+const mm = route.params.mm;
 
-// 該当タグがなければNotFound
-if (!tagSlug) {
-  // TODO: NotFoundへ飛ばす
-}
-
-// 該当タグの記事を取得
-const queryResult = await useAsyncData(`tags/${tagSlug}`, () =>
+// 該当年月の記事を取得
+const queryResult = await useAsyncData(`${yyyy}/${mm}`, () =>
   queryContent<ArticleParsedContent>('articles')
-    .where({ tags: { $contains: tagName } })
+    .where({ createdAt: { $regex: `^${yyyy}-${mm}` } })
     .sort({ createdAt: -1 }) // 降順
     .find(),
 );
 const articles = queryResult.data;
+
 // 1ページあたりの表示数
 const pageSize = runtimeConfig.public.pageSize;
 // ページネーションの初期表示
-const { targetArticles } = usePagenate<ArticleParsedContent>(articles.value, pageSize);
+const { targetArticles } = usePagenate<ArticleParsedContent>(unref(articles), pageSize);
 const posts = ref(unref(targetArticles));
 // ページが切り替わったら表示対象の記事一覧に切り替える
 const displayTargetPosts = (targetPosts) => {

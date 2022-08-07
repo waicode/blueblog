@@ -58,9 +58,7 @@ const imageSrcPath = computed(() =>
 </script>
 
 <template>
-  <div>
-    <ClientOnly>
-      <img class="AppImage" :alt="imageAltText" :src="imageSrcPath" :width="width" :height="height" />
-    </ClientOnly>
-  </div>
+  <ClientOnly>
+    <img class="AppImage" :alt="imageAltText" :src="imageSrcPath" :width="width" :height="height" />
+  </ClientOnly>
 </template>

@@ -97,17 +97,15 @@ useCss(
 </script>
 
 <template>
-  <div>
-    <ClientOnly>
-      <div :class="className">
-        <div class="AppEyeCatchImage__Bg">
-          <div class="AppEyeCatchImage__Icon">
-            <Icon :icon="icon" />
-          </div>
+  <ClientOnly>
+    <div :class="className">
+      <div class="AppEyeCatchImage__Bg">
+        <div class="AppEyeCatchImage__Icon">
+          <Icon :icon="icon" />
         </div>
       </div>
-    </ClientOnly>
-  </div>
+    </div>
+  </ClientOnly>
 </template>
 
 <style lang="scss">

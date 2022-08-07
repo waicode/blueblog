@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { TEXT_SIZE } from '@/components/app/TextComposable';
+
+// 記事一覧から生成されたドロップダウン用のリストをストアから取得
+const { tagItems, archiveItems } = useArticlesState();
 </script>
 
 <template>
@@ -24,22 +27,8 @@ import { TEXT_SIZE } from '@/components/app/TextComposable';
         >も公開しています。</AppText
       ></BaSubText
     >
-    <BaSubDropdown
-      title="タグ"
-      label="タグを選択"
-      :items="[
-        { label: 'フロントエンド', count: 7, path: '/tags/frontend' },
-        { label: 'サーバレス', count: 8, path: '/tags/serverless' },
-      ]"
-    />
-    <BaSubDropdown
-      title="アーカイブ"
-      label="年月を選択"
-      :items="[
-        { label: '2022年5月', count: 2, path: '/archives/2022/05' },
-        { label: '2022年6月', count: 4, path: '/archives/2022/06' },
-      ]"
-    />
+    <BaSubDropdown title="タグ" label="タグを選択" :items="tagItems" />
+    <BaSubDropdown title="アーカイブ" label="年月を選択" :items="archiveItems" />
     <BaSubProfile title="Author : waicode">
       <AppText :type="TEXT_SIZE.SUB_DESCRIPTION1"
         >ここに簡潔なプロフィールを書きます。だいたい3行くらいで書きます。そして詳しいプロフィールのリンクを貼ります。詳しい<NuxtLink
