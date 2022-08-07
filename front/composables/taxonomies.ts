@@ -1,4 +1,4 @@
-import { keyEnumObject, ValueTypeOf } from '../utils/util';
+import { keyEnumObject, ValueTypeOf } from '@/utils/util';
 
 /**
  * タグ情報。
