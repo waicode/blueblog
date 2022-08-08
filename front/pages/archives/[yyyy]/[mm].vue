@@ -29,7 +29,7 @@ const displayTargetPosts = (targetPosts) => {
   <div class="BaPageTagsSlug">
     <BaArticleList :articles="posts" class="BaPageTagsSlug__Articles" />
     <div v-show="articles.length > pageSize">
-      <AppPagenation :articles="articles" :page-size="pageSize" @change-page="displayTargetPosts" />
+      <AppPagination :articles="articles" :page-size="pageSize" @change-page="displayTargetPosts" />
     </div>
   </div>
 </template>

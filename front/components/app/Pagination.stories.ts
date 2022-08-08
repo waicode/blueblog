@@ -1,11 +1,8 @@
-import { Article } from '@/store/article';
-import AppPagenation from '@/components/app/Pagenation.vue';
+import AppPagination from '@/components/app/Pagination.vue';
 
-const sampleArticles: Article[] = [];
+const sampleArticles = [];
 for (let i = 0; i < 20; i++) {
   sampleArticles.push({
-    id: i + 1,
-    slug: `test${i}`,
     title: `テストタイトル${i}`,
     description: `テスト説明${i}`,
     icon: 'tabler:calendar-event',
@@ -17,8 +14,8 @@ for (let i = 0; i < 20; i++) {
 }
 
 export default {
-  title: '@components/app/Pagenation',
-  component: AppPagenation,
+  title: '@components/app/Pagination',
+  component: AppPagination,
   args: {
     pageSize: 5,
     articles: sampleArticles,
@@ -30,12 +27,12 @@ export default {
 };
 
 const Template = (args) => ({
-  components: { AppPagenation },
+  components: { AppPagination },
   setup() {
     return { args };
   },
   template: `
-    <AppPagenation v-bind="args" />
+    <AppPagination v-bind="args" />
   `,
 });
 

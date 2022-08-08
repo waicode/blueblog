@@ -20,8 +20,8 @@ const displayTargetPosts = (targetPosts) => {
 <template>
   <div class="BaPageTop">
     <BaArticleList :articles="posts" class="BaPageTop__Articles" />
-    <div v-show="articles.length > pageSize" class="BaPageTop__Pagenation">
-      <AppPagenation :articles="articles" :page-size="pageSize" @change-page="displayTargetPosts" />
+    <div v-show="articles.length > pageSize">
+      <AppPagination :articles="articles" :page-size="pageSize" @change-page="displayTargetPosts" />
     </div>
   </div>
 </template>

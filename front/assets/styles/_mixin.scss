@@ -2,16 +2,23 @@
 $phone: 479px;
 $tablet: 769px;
 
+// desktop only
+@mixin desktopOnly {
+  @media screen and (min-width: ($tablet)), print {
+    @content;
+  }
+}
+
 // tablet
 @mixin tablet {
-  @media screen and (max-width: ($tablet)) {
+  @media screen and (max-width: ($tablet - 1px)) {
     @content;
   }
 }
 
 // phone
 @mixin phone {
-  @media screen and (max-width: ($phone)) {
+  @media screen and (max-width: ($phone - 1px)) {
     @content;
   }
 }
