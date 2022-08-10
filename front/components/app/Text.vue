@@ -73,6 +73,8 @@ const className = computed(() =>
 $text-dark-black-color: $dark-black-color;
 $text-black-color: $black-color;
 $text-white-color: $white-color;
+$text-dark-gray-color: $gray-42-color;
+$text-light-gray-color: $gray-b5-color;
 
 .AppText {
   color: $text-black-color;
@@ -103,12 +105,14 @@ $text-white-color: $white-color;
       font-size: $font-size-14px;
       font-style: normal;
       line-height: $line-height-167;
+      font-family: $font-name-noto-sans-cjk-jp-demi-light;
     }
 
     &-description2 {
       font-size: $font-size-14px;
       font-style: normal;
       line-height: $line-height-143;
+      font-family: $font-name-noto-sans-cjk-jp-demi-light;
     }
 
     &-heading2 {
@@ -167,7 +171,7 @@ $text-white-color: $white-color;
     }
 
     &-date1 {
-      font-size: $font-size-12px;
+      font-size: $font-size-13px;
       font-style: normal;
       line-height: $line-height-167;
     }
@@ -195,6 +199,12 @@ $text-white-color: $white-color;
       font-size: $font-size-24px;
       font-style: normal;
       font-weight: $font-weight-300;
+      line-height: $line-height-150;
+    }
+
+    &-pagination1 {
+      font-size: $font-size-24px;
+      font-style: normal;
       line-height: $line-height-150;
     }
 
@@ -304,6 +314,14 @@ $text-white-color: $white-color;
 
     &-white {
       color: $text-white-color;
+    }
+
+    &-darkGray {
+      color: $text-dark-gray-color;
+    }
+
+    &-lightGray {
+      color: $text-light-gray-color;
     }
   }
 

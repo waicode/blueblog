@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
+import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
 import usePagenate from '@/composables/usePagenate';
 
 interface PaginationPropType {
@@ -84,98 +85,120 @@ const pageNumbers = computed(() => {
 </script>
 
 <template>
-  <div class="AppPagination">
-    <nav class="pagination is-large" role="navigation" aria-label="pagination">
-      <a
-        :disabled="targetPage === firstPageCount ? `disabled` : undefined"
-        class="pagination-previous"
-        @click="goPreviousPage()"
-        ><Icon icon="fa6-solid:chevron-left"
-      /></a>
-      <a :disabled="targetPage === lastPageCount ? `disabled` : undefined" class="pagination-next" @click="goNextPage()"
-        ><Icon icon="fa6-solid:chevron-right"
-      /></a>
-      <ul class="pagination-list">
-        <li v-for="(pageNumber, index) in pageNumbers" :key="index">
-          <a
-            v-if="pageNumber && targetPage === pageNumber"
-            class="pagination-link is-current"
-            :aria-label="`Page ${pageNumber}`"
-            aria-current="page"
-            >{{ pageNumber }}</a
-          >
-          <a
-            v-else-if="pageNumber && targetPage !== pageNumber"
-            class="pagination-link"
-            :aria-label="`Goto page ${pageNumber}}`"
-            @click="setPage(pageNumber)"
-            >{{ pageNumber }}</a
-          >
-          <span v-else class="pagination-ellipsis">&hellip;</span>
-        </li>
-      </ul>
-    </nav>
-  </div>
+  <nav class="AppPagination" role="navigation" aria-label="pagination">
+    <a
+      :disabled="targetPage === firstPageCount ? `disabled` : undefined"
+      class="AppPagination__Previous"
+      :tabindex="targetPage === firstPageCount ? undefined : `0`"
+      @click="goPreviousPage()"
+      ><AppText :type="TEXT_SIZE.PAGINATION1" :color="TEXT_COLOR.DARK_GRAY"
+        ><Icon icon="fa6-solid:chevron-left" /></AppText
+    ></a>
+    <a
+      :disabled="targetPage === lastPageCount ? `disabled` : undefined"
+      class="AppPagination__Next"
+      :tabindex="targetPage === lastPageCount ? undefined : `0`"
+      @click="goNextPage()"
+      ><AppText :type="TEXT_SIZE.PAGINATION1" :color="TEXT_COLOR.DARK_GRAY"
+        ><Icon icon="fa6-solid:chevron-right" /></AppText
+    ></a>
+    <ul class="AppPagination__List">
+      <li v-for="(pageNumber, index) in pageNumbers" :key="index">
+        <a
+          v-if="pageNumber && targetPage === pageNumber"
+          class="AppPagination__Link AppPagination__Link--isCurrent"
+          :aria-label="`${pageNumber}ページ`"
+          aria-current="page"
+          ><AppText :type="TEXT_SIZE.PAGINATION1" :color="TEXT_COLOR.WHITE">{{ pageNumber }}</AppText></a
+        >
+        <a
+          v-else-if="pageNumber && targetPage !== pageNumber"
+          class="AppPagination__Link"
+          :aria-label="`${pageNumber}ページへ`"
+          tabindex="0"
+          @click="setPage(pageNumber)"
+          ><AppText :type="TEXT_SIZE.PAGINATION1" :color="TEXT_COLOR.DARK_GRAY">{{ pageNumber }}</AppText></a
+        >
+        <span v-else class="AppPagination__Ellipsis"
+          ><AppText :type="TEXT_SIZE.PAGINATION1" :color="TEXT_COLOR.LIGHT_GRAY">&hellip;</AppText></span
+        >
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <style lang="scss">
+$pagination-height: 60px;
+$pagination-link-min-width: $pagination-height;
+$pagination-border-color: $gray-db-color;
+$pagination-color: $black-color;
+$pagination-hover-border-color: $gray-b5-color;
+$pagination-link-current-bg-color: $main-blue-color;
+$pagination-link-current-border-color: $pagination-link-current-bg-color;
+$pagination-disabled-bg-color: $gray-db-color;
+$pagination-disabled-border-color: $pagination-disabled-bg-color;
+
 .AppPagination {
-  // TODO: Pagination CSSのBEM化と変数化
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 
-  /* stylelint-disable selector-class-pattern */
-
-  .pagination {
-    &.is-large {
-      font-size: 1.5rem;
-    }
+  @include desktopOnly {
+    justify-content: space-between;
+    margin-bottom: 0;
+    margin-top: 0;
   }
 
-  .pagination,
-  .pagination-list {
+  @include tablet {
+    flex-wrap: wrap;
+  }
+
+  &__List {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-  }
-
-  .pagination-list {
     flex-wrap: wrap;
+    text-align: center;
+
+    @include desktopOnly {
+      flex-grow: 1;
+      flex-shrink: 1;
+      justify-content: flex-start;
+      order: 1;
+    }
 
     li {
       list-style: none;
+
+      @include tablet {
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
     }
   }
 
-  .pagination-previous,
-  .pagination-next,
-  .pagination-link,
-  .pagination-ellipsis {
+  &__Previous,
+  &__Next,
+  &__Link,
+  &__Ellipsis {
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin: 0.25rem;
-    padding-top: calc(0.5em - 1px);
-    padding-bottom: calc(0.5em - 1px);
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    border: 1px solid transparent;
-    border-radius: 4px;
+    margin: $scale6;
+    padding: $scale12;
+    border: $border-width1 solid transparent;
+    border-radius: $border-radius4;
     box-shadow: none;
-    height: 2.5em;
-    line-height: 1.5;
-    font-size: 1em;
+    height: $pagination-height;
     text-align: center;
     vertical-align: top;
     user-select: none;
 
-    &:focus,
-    &:active {
-      outline: none;
-    }
-
-    &:not(:last-child) {
-      margin-bottom: 1.5rem;
+    @include desktopOnly {
+      margin-bottom: 0;
+      margin-top: 0;
     }
 
     &[disabled] {
@@ -183,102 +206,64 @@ const pageNumbers = computed(() => {
     }
   }
 
-  .pagination-previous,
-  .pagination-next,
-  .pagination-link {
-    border-color: #dbdbdb;
-    color: #363636;
-    min-width: 2.5em;
+  &__Previous,
+  &__Next,
+  &__Link {
+    border-color: $pagination-border-color;
+    color: $pagination-color;
+    min-width: $pagination-link-min-width;
 
     &:hover {
-      border-color: #b5b5b5;
-      color: #363636;
-    }
-
-    &:focus {
-      border-color: #485fc7;
+      border-color: $pagination-hover-border-color;
+      color: $pagination-color;
     }
 
     &:active {
-      box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2);
+      box-shadow: inset 0 1px 2px $gray-010-alpha-020-color;
     }
 
     &[disabled] {
-      background-color: #dbdbdb;
-      border-color: #dbdbdb;
+      background-color: $pagination-disabled-bg-color;
+      border-color: $pagination-disabled-border-color;
       box-shadow: none;
-      color: #7a7a7a;
-      opacity: 0.5;
+      opacity: $opacity-rate50;
     }
   }
 
-  .pagination-previous,
-  .pagination-next {
-    padding-left: 0.75em;
-    padding-right: 0.75em;
+  &__Previous,
+  &__Next {
+    padding-left: $scale20;
+    padding-right: $scale20;
     white-space: nowrap;
+
+    @include tablet {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
   }
 
-  .pagination-link {
-    &.is-current {
-      background-color: #485fc7;
-      border-color: #485fc7;
-      color: #fff;
+  &__Previous {
+    @include desktopOnly {
+      order: 2;
+    }
+  }
+
+  &__Next {
+    @include desktopOnly {
+      order: 3;
+    }
+  }
+
+  &__Link {
+    &--isCurrent {
+      background-color: $pagination-link-current-bg-color;
+      border-color: $pagination-link-current-border-color;
       pointer-events: none;
     }
   }
 
-  .pagination-ellipsis {
-    color: #b5b5b5;
+  &__Ellipsis {
     pointer-events: none;
   }
-
-  @include desktopOnly {
-    .pagination-list {
-      flex-grow: 1;
-      flex-shrink: 1;
-      justify-content: flex-start;
-      order: 1;
-    }
-    .pagination-previous,
-    .pagination-next,
-    .pagination-link,
-    .pagination-ellipsis {
-      margin-bottom: 0;
-      margin-top: 0;
-    }
-    .pagination-previous {
-      order: 2;
-    }
-    .pagination-next {
-      order: 3;
-    }
-    .pagination {
-      justify-content: space-between;
-      margin-bottom: 0;
-      margin-top: 0;
-    }
-  }
-
-  @include tablet {
-    .pagination {
-      flex-wrap: wrap;
-    }
-
-    .pagination-previous,
-    .pagination-next {
-      flex-grow: 1;
-      flex-shrink: 1;
-    }
-
-    .pagination-list {
-      li {
-        flex-grow: 1;
-        flex-shrink: 1;
-      }
-    }
-  }
-
-  /* stylelint-enable selector-class-pattern */
 }
 </style>

@@ -175,7 +175,7 @@ watchEffect(() => {
   &__Tags {
     display: flex;
     padding-left: 0;
-    margin-top: $scale8;
+    padding-top: $scale8;
   }
 
   &__Tag {

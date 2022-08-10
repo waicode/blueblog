@@ -30,6 +30,9 @@ $article-list-hr-height: 2px;
     display: block;
     height: $article-list-hr-height;
     margin: $font-size-24px 0;
+    @include tablet {
+      margin: $font-size-20px 0;
+    }
   }
 }
 </style>

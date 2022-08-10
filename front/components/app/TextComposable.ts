@@ -22,6 +22,7 @@ export const TEXT_SIZE_MAP = {
   tag1: 'tag1',
   button1: 'button1',
   share1: 'share1',
+  pagination1: 'pagination1',
   subTitle1: 'subTitle1',
   subTitle2: 'subTitle2',
   subDescription1: 'subDescription1',
@@ -105,6 +106,8 @@ export const TEXT_COLOR_MAP = {
   normal: 'normal',
   darkBlack: 'darkBlack',
   white: 'white',
+  darkGray: 'darkGray',
+  lightGray: 'lightGray',
 } as const;
 
 /**

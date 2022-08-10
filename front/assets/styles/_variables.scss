@@ -1,7 +1,10 @@
 $dark-black-color: #111;
 $black-color: #333;
+$gray-42-color: #424242;
 $gray-66-color: #666;
 $gray-99-color: #999;
+$gray-b5-color: #b5b5b5;
+$gray-db-color: #dbdbdb;
 $gray-e0-color: #e0e0e0;
 $gray-ed-color: #ededed;
 $gray-ee-color: #eee;
@@ -12,7 +15,10 @@ $gray-fa-color: #fafafa;
 $gray-eceff1-color: #eceff1;
 $gray-cfd8dc-color: #cfd8dc;
 
+$gray-010-alpha-002-color: rgba(10, 10, 10, 2%);
 $gray-000-alpha-010-color: rgba(0, 0, 0, 10%);
+$gray-010-alpha-010-color: rgba(10, 10, 10, 10%);
+$gray-010-alpha-020-color: rgba(10, 10, 10, 20%);
 $gray-000-alpha-025-color: rgba(0, 0, 0, 25%);
 $gray-051-alpha-050-color: rgba(51, 51, 51, 50%);
 $gray-097-alpha-015-color: rgba(97, 97, 97, 15%);
@@ -108,3 +114,7 @@ $border-radius-rate20: 20%;
 $border-radius-circle: 50%;
 
 $aspect-ratio-191: 1.91;
+
+$opacity-rate50: 0.5;
+
+$z-index-20: 20;

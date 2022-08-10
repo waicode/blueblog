@@ -299,7 +299,7 @@ export const formatDate = (datetimeStr: string) => {
  *
  * @returns メディアクエリ
  */
-export const tabletMediaQuery = () => '(max-width: 769px)';
+export const tabletMediaQuery = () => '(max-width: 879px)';
 
 /**
  * スマホ画面幅以下であるかを判定するためのメディアクエリ
