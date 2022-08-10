@@ -198,7 +198,7 @@ $text-light-gray-color: $gray-b5-color;
     &-share1 {
       font-size: $font-size-24px;
       font-style: normal;
-      font-weight: $font-weight-300;
+      font-weight: $font-weight-100;
       line-height: $line-height-150;
     }
 
@@ -226,7 +226,7 @@ $text-light-gray-color: $gray-b5-color;
     &-subDescription1 {
       font-size: $font-size-13px;
       font-style: normal;
-      line-height: $line-height-167;
+      line-height: $line-height-143;
       font-family: $font-name-noto-sans-cjk-jp-demi-light;
       @include phone {
         font-size: $font-size-14px;

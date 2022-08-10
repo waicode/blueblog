@@ -47,12 +47,50 @@ updatedAt: '2021-07-25T09:49:35.000Z'
 
 > これは引用です。これは引用です。これは引用です。これは引用です。これは引用です。これは引用です。これは引用です。これは引用です。これは引用です。これは引用です。これは引用です。これは引用です。これは引用です。これは引用です。これは引用です。
 
-```ruby:test.rb
-puts 'This is code block.'
+```ts
+const a = 4;
+const b = a + 3;
+const c  = a * b;
 ```
 
-```typescript:test.ts
-console.log('This is code block.')
+```vue [components/content/MyComponent.vue] {2,6-10}
+<template>
+  <input v-model.lazy="message"/>
+</template>
+
+<script setup>
+import { watch, ref } from 'vue'
+
+const message = ref('');
+
+const saveMessage = () => {
+  // do anything with the message
+}
+
+watch(message, (newMessage) => {
+  saveMessage(newMessage) // only called on change events
+})
+</script>
+```
+
+```vue [MyComponent.vue]
+<template>
+  <input v-model.lazy="message"/>
+</template>
+
+<script setup>
+import { watch, ref } from 'vue'
+
+const message = ref('');
+
+const saveMessage = () => {
+  // do anything with the message
+}
+
+watch(message, (newMessage) => {
+  saveMessage(newMessage) // only called on change events
+})
+</script>
 ```
 
 これは`コードスパン`です。

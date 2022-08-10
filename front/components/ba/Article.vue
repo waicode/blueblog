@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
+import { TEXT_SIZE } from '@/components/app/TextComposable';
 import { DATE_TEXT_TYPE_MAP } from '@/components/app/DateTextComposable';
 import useMediaQuery from '@/composables/useMediaQuery';
 import { tabletMediaQuery, phoneMediaQuery } from '@/utils/util';
@@ -54,16 +54,16 @@ watchEffect(() => {
             <AppEyeCatchImage :icon="article.icon" :width="eyeCatchImageWidth" />
           </div>
           <h2 v-if="isTabletMedia && !isPhoneMedia" class="BaArticle__Title">
-            <AppText :type="TEXT_SIZE.TITLE1" :color="TEXT_COLOR.NORMAL">{{ article.title }}</AppText>
+            <AppText :type="TEXT_SIZE.TITLE1">{{ article.title }}</AppText>
           </h2>
         </div>
         <div class="BaArticle__SecondContents">
           <h2 v-if="!isTabletMedia || isPhoneMedia" class="BaArticle__Title">
-            <AppText :type="TEXT_SIZE.TITLE1" :color="TEXT_COLOR.NORMAL">{{ article.title }}</AppText>
+            <AppText :type="TEXT_SIZE.TITLE1">{{ article.title }}</AppText>
           </h2>
           <div class="BaArticle__Description">
             <p>
-              <AppText :type="TEXT_SIZE.DESCRIPTION1" :color="TEXT_COLOR.NORMAL">{{ article.description }}</AppText>
+              <AppText :type="TEXT_SIZE.DESCRIPTION1">{{ article.description }}</AppText>
             </p>
           </div>
           <div class="BaArticle__Meta">

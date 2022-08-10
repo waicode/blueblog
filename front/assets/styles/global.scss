@@ -1,3 +1,5 @@
+@import '_variables.scss';
+
 @font-face {
   font-family: 'Noto Sans CJK JP DemiLight';
   src: url('~/assets/fonts/NotoSansJP-DemiLight.woff2') format('woff2'),
@@ -6,19 +8,20 @@
 }
 
 body {
+  // フォント
   font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', meiryo, sans-serif;
+  // 背景グラデーション
+  background: linear-gradient(180deg, #4b73ff 10%, #7cf7ff 100%);
 }
 
+// TODO: コンポーネント化を検討する
 a {
-  color: #485fc7;
+  color: $link-blue-color;
   cursor: pointer;
   text-decoration: none;
-
-  strong {
-    color: currentColor;
-  }
+  padding: 0 2px;
 
   &:hover {
-    color: #363636;
+    color: $black-color;
   }
 }

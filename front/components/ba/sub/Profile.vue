@@ -44,7 +44,7 @@ defineProps<BaSubProfilePropType>();
 
 <style lang="scss">
 $side-profile-waicode-icon-width: 124px;
-$side-profile-waicode-icon-border-color: $gray-204-alpha-050-color;
+$side-profile-waicode-icon-border-color: $gray-db-color;
 
 $side-profile-twitter-icon-width: 40px;
 $side-profile-twitter-icon-height: $side-profile-twitter-icon-width;
@@ -69,8 +69,11 @@ $side-profile-github-icon-color: $github-purple-color;
 
   &__AuthorIcon {
     width: $side-profile-waicode-icon-width;
-    border: 1px solid $side-profile-waicode-icon-border-color;
+    background-color: #fff;
+    border: $border-width1 solid transparent;
+    border-color: $side-profile-waicode-icon-border-color;
     border-radius: $border-radius-circle;
+    box-shadow: none;
   }
 
   &__SocialIcons {

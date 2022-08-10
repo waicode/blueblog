@@ -17,7 +17,7 @@ export default defineNuxtConfig({
         },
         {
           rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Advent+Pro:wght@600&family=Noto+Sans+JP:wght@300;400;700&display=swap',
+          href: 'https://fonts.googleapis.com/css2?family=Advent+Pro:wght@600&family=Noto+Sans+JP:wght@100;300;400;700&display=swap',
         },
       ],
     },
@@ -25,6 +25,7 @@ export default defineNuxtConfig({
   css: ['@/assets/styles/global.scss', '@/assets/styles/reset.scss'],
   runtimeConfig: {
     public: {
+      baseUrl: 'https://archt.blue',
       pageSize: 5,
       amazonTrackingId: 'amayutazon-22',
       rakutenAffiliateId: 'g0000012.1zx7x6a7.g0000013.rphkh6ef',
@@ -32,8 +33,11 @@ export default defineNuxtConfig({
       yahooValueCommercePid: '887190364',
     },
   },
-  modules: ['@nuxt/content'],
+  modules: ['@nuxt/content', '@vueuse/nuxt'],
   content: {
+    highlight: {
+      theme: 'github-light',
+    },
     navigation: {
       fields: ['category', 'createdAt', 'updatedAt'],
     },
