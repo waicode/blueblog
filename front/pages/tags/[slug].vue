@@ -20,15 +20,30 @@ const queryResult = await useAsyncData(`tags/${tagSlug}`, () =>
     .find(),
 );
 const articles = queryResult.data;
+
+if (!articles.value) {
+  notFound();
+}
+
 // 1ページあたりの表示数
 const pageSize = runtimeConfig.public.pageSize;
 // ページネーションの初期表示
-const { targetArticles } = usePagenate<ArticleParsedContent>(articles.value, pageSize);
+const { targetArticles } = usePaginate<ArticleParsedContent>(articles.value, pageSize);
 const posts = ref(unref(targetArticles));
 // ページが切り替わったら表示対象の記事一覧に切り替える
 const displayTargetPosts = (targetPosts) => {
   posts.value = unref(targetPosts);
 };
+
+useHead({
+  title: `${tagName}の記事一覧 ⌇ Blue * Architect`,
+  meta: [
+    {
+      name: 'description',
+      content: `「${tagName}」タグの記事一覧です。`,
+    },
+  ],
+});
 </script>
 
 <template>

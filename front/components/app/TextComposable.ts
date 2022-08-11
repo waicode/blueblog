@@ -30,6 +30,7 @@ export const TEXT_SIZE_MAP = {
   subTitle2: 'subTitle2',
   subDescription1: 'subDescription1',
   copyright: 'copyright',
+  errorCode: 'errorCode',
 } as const;
 
 /**

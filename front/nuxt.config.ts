@@ -5,7 +5,12 @@ import eslintPlugin from 'vite-plugin-eslint';
 export default defineNuxtConfig({
   app: {
     head: {
+      // ヘッダはページ毎に`useHead`を使って設定/上書きする
+      htmlAttrs: { lang: 'ja' },
+      title: 'Blue * Architect',
+      meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
       link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         {
           rel: 'preconnect',
           href: 'https://fonts.googleapis.com',

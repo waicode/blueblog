@@ -12,6 +12,10 @@ const queryResult = await useAsyncData(`articles/${slug}`, () =>
 );
 const article = queryResult.data as Ref<ArticleParsedContent>;
 
+if (!article.value) {
+  notFound();
+}
+
 const runtimeConfig = useRuntimeConfig();
 const pageUrl = ref(`${runtimeConfig.public.baseUrl}${article.value._path}`);
 const title = ref(article.value.title);
@@ -29,6 +33,16 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('scroll', scrollDisplayControl);
+});
+
+useHead({
+  title: `${article.value.title}`,
+  meta: [
+    {
+      name: 'description',
+      content: article.value.description,
+    },
+  ],
 });
 </script>
 

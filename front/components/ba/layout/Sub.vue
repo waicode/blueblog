@@ -8,9 +8,7 @@ const { tagItems, archiveItems } = useArticlesState();
 <template>
   <aside class="BaLayoutSub">
     <BaSubText title="コンセプト"
-      ><AppText :type="TEXT_SIZE.SUB_DESCRIPTION1"
-        >モノづくりが好きなアーキテクトがフロントエンドとサーバレスについて書いてます。その技術を使うことで「得られること」を伝える文章を心がけています。プロダクションを意識した「実際の見た目」と「動くサンプル」も一緒に公開していきます。</AppText
-      ></BaSubText
+      ><AppText :type="TEXT_SIZE.SUB_DESCRIPTION1">{{ DESCRIPTION_MAP[DESCRIPTION.SITE_CONCEPT] }}</AppText></BaSubText
     >
     <BaSubText title="ストーリーブック"
       ><AppText :type="TEXT_SIZE.SUB_DESCRIPTION1"

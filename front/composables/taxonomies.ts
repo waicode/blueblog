@@ -1,7 +1,7 @@
 import { keyEnumObject, ValueTypeOf } from '@/utils/util';
 
 /**
- * タグ情報。
+ * タグ情報
  */
 export const TAXONOMY_MAP = {
   frontend: { name: 'フロントエンド', icon: '😃' },
@@ -10,12 +10,12 @@ export const TAXONOMY_MAP = {
 } as const;
 
 /**
- * タグ情報キー定数。
+ * タグ情報キー定数
  */
 export const TAXONOMY = keyEnumObject(TAXONOMY_MAP);
 
 /**
- * タグ情報キーの型定義。
+ * タグ情報キーの型定義
  */
 export type TaxonomyType = ValueTypeOf<typeof TAXONOMY>;
 

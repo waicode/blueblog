@@ -6,6 +6,10 @@ const runtimeConfig = useRuntimeConfig();
 // 記事一覧をストアから取得
 const { articlesState: articles } = useArticlesState();
 
+if (!articles.value) {
+  notFound();
+}
+
 // 1ページあたりの表示数
 const pageSize = runtimeConfig.public.pageSize;
 // ページネーションの初期表示
@@ -16,16 +20,14 @@ const displayTargetPosts = (targetPosts) => {
   posts.value = unref(targetPosts);
 };
 
-// useHead({
-//   title: 'Blue * Architect',
-//   meta: [
-//     {
-//       name: 'description',
-//       content:
-//         'モノづくりが好きなアーキテクトがフロントエンドとサーバレスについて書いてます。その技術を使うことで「得られること」を伝える文章を心がけています。プロダクションを意識した「実際の見た目」と「動くサンプル」も一緒に公開していきます。',
-//     },
-//   ],
-// });
+useHead({
+  meta: [
+    {
+      name: 'description',
+      content: DESCRIPTION_MAP[DESCRIPTION.SITE_CONCEPT],
+    },
+  ],
+});
 </script>
 
 <template>

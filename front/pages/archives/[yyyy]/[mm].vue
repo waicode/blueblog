@@ -4,6 +4,7 @@ const runtimeConfig = useRuntimeConfig();
 const route = useRoute();
 const yyyy = route.params.yyyy;
 const mm = route.params.mm;
+const monthStr = String(Number(mm)); // ゼロサプレス
 
 // 該当年月の記事を取得
 const queryResult = await useAsyncData(`${yyyy}/${mm}`, () =>
@@ -14,15 +15,29 @@ const queryResult = await useAsyncData(`${yyyy}/${mm}`, () =>
 );
 const articles = queryResult.data;
 
+if (!articles.value) {
+  notFound();
+}
+
 // 1ページあたりの表示数
 const pageSize = runtimeConfig.public.pageSize;
 // ページネーションの初期表示
-const { targetArticles } = usePagenate<ArticleParsedContent>(unref(articles), pageSize);
+const { targetArticles } = usePaginate<ArticleParsedContent>(unref(articles), pageSize);
 const posts = ref(unref(targetArticles));
 // ページが切り替わったら表示対象の記事一覧に切り替える
 const displayTargetPosts = (targetPosts) => {
   posts.value = unref(targetPosts);
 };
+
+useHead({
+  title: `${yyyy}年${monthStr}月の記事一覧 ⌇ Blue * Architect`,
+  meta: [
+    {
+      name: 'description',
+      content: `${yyyy}年${monthStr}月に投稿された記事の一覧です。`,
+    },
+  ],
+});
 </script>
 
 <template>

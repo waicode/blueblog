@@ -8,11 +8,6 @@
   font-display: swap;
 }
 
-body {
-  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', meiryo, sans-serif;
-  background: linear-gradient(180deg, #4b73ff 10%, #7cf7ff 100%);
-}
-
 // TODO: リンクのコンポーネント化を検討する
 a {
   color: $link-blue-color;

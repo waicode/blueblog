@@ -262,6 +262,16 @@ $text-light-gray-color: $gray-b5-color;
         font-size: $font-size-36px;
       }
     }
+
+    &-errorCode {
+      font-size: $font-size-100px;
+      font-weight: $font-weight-600;
+      font-family: $font-group-code;
+
+      @include tablet {
+        font-size: $font-size-80px;
+      }
+    }
   }
 
   &--height {
