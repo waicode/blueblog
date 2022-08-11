@@ -78,6 +78,7 @@ $dropdown-button-hover-color: $gray-b5-color;
 $dropdown-button-bg-color: $white-color;
 $dropdown-button-border-color: $gray-db-color;
 $dropdown-menu-min-width: 192px;
+$dropdown-content-bg-color: $white-color;
 
 .AppDropdown {
   position: relative;
@@ -141,7 +142,7 @@ $dropdown-menu-min-width: 192px;
   }
 
   &__DropdownContent {
-    background-color: white;
+    background-color: $dropdown-content-bg-color;
     border-radius: $border-radius4;
     box-shadow: 0 8px 16px 2px $gray-010-alpha-010-color, 0 0 0 1px $gray-010-alpha-002-color;
     padding-top: $scale8;

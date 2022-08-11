@@ -49,6 +49,9 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss">
+$share-button-menu-top: 232px;
+$share-button-menu-transform-x: -108px;
+
 .BaPageArticlesSlug {
   /* stylelint-disable */
   .fade-enter-active,
@@ -59,14 +62,18 @@ onUnmounted(() => {
   .fade-leave-to {
     opacity: 0%;
   }
-  /* stylelint-eable */
+  /* stylelint-enable */
 
   &__ShareButtonsMenu {
     position: fixed;
-    top: 216px;
+    display: none;
+    top: $share-button-menu-top;
     left: auto;
-    transform: translateX(-108px);
-    z-index: 10;
+    transform: translateX($share-button-menu-transform-x);
+    z-index: $z-index-10;
+    @include desktop-only {
+      display: block;
+    }
   }
 
   // &__ArticleTop {

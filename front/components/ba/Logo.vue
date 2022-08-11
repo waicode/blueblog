@@ -61,45 +61,43 @@ useCss(
 <style lang="scss">
 $logo-initial-letter-spacing: 6px;
 $logo-letter-spacing: 4px;
+$logo-phone-letter-spacing: 2px;
 
 .BaLayoutLogo {
   display: flex;
-  font-size: $font-size-64px;
+  font-size: $font-size-80px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-left: $scale20;
   color: $white-color;
-  @include phone {
-    font-size: $font-size-36px;
-  }
 
-  &__Blue {
-    margin-right: $scale36;
-    @include phone {
-      margin-right: $scale12;
-    }
+  @include phone {
+    margin-left: $scale10;
+    font-size: $font-size-44px;
   }
 
   &__B {
     letter-spacing: $logo-initial-letter-spacing;
     @include phone {
-      letter-spacing: 0;
+      letter-spacing: $logo-phone-letter-spacing;
     }
   }
 
   &__Lue {
     letter-spacing: $logo-letter-spacing;
-    font-weight: $font-weight-700;
-    font-size: $font-size-40px;
+    font-size: $font-size-48px;
+    margin-right: $scale36;
     @include phone {
-      font-size: $font-size-24px;
-      letter-spacing: 0;
+      font-size: $font-size-28px;
+      letter-spacing: $logo-phone-letter-spacing;
+      margin-right: $scale12;
     }
   }
 
   &__Star {
-    margin-top: $scale12;
-    margin-bottom: $scale-minus12;
+    margin-top: $scale16;
+    margin-bottom: $scale-minus16;
     margin-right: $scale36;
     color: $accent-yellow-color;
     @include phone {
@@ -114,17 +112,16 @@ $logo-letter-spacing: 4px;
   &__A {
     letter-spacing: $logo-initial-letter-spacing;
     @include phone {
-      letter-spacing: 0;
+      letter-spacing: $logo-phone-letter-spacing;
     }
   }
 
   &__Rchitect {
     letter-spacing: $logo-letter-spacing;
-    font-weight: $font-weight-700;
-    font-size: $font-size-40px;
+    font-size: $font-size-48px;
     @include phone {
-      font-size: $font-size-24px;
-      letter-spacing: 0;
+      font-size: $font-size-28px;
+      letter-spacing: $logo-phone-letter-spacing;
     }
   }
 }

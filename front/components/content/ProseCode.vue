@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
+import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
 
+// クリップボードにコピー
 const { copy, copied } = useClipboard();
 
+// マウスオーバーまたはタップでコピーボタンを表示
 const contentProseCodeRef = ref(undefined);
-
 const { isOutside } = useMouseInElement(contentProseCodeRef);
 
 withDefaults(
@@ -20,24 +22,28 @@ withDefaults(
 
 <template>
   <div ref="contentProseCodeRef" class="ContentProseCode">
-    <span v-show="filename" class="ContentProseCode__FileName">{{ filename }}</span>
+    <span v-show="filename" class="ContentProseCode__FileName"
+      ><AppText :type="TEXT_SIZE.CODE_TITLE1" :color="TEXT_COLOR.NORMAL">{{ filename }}</AppText></span
+    >
     <transition name="fade"
       ><span v-show="!isOutside" class="ContentProseCode__CopyIcon"
         ><Icon icon="tabler:copy" @click="copy(code)" /></span
     ></transition>
-    <span v-if="copied" class="ContentProseCode__CopiedText">コピーしました！</span>
-    <slot />
+    <span v-if="copied" class="ContentProseCode__CopiedText"
+      ><AppText :type="TEXT_SIZE.TOAST1" :color="TEXT_COLOR.GRAY">コピーしました！</AppText></span
+    >
+    <AppText :type="TEXT_SIZE.CODE1"><slot /></AppText>
   </div>
 </template>
 
 <style lang="scss">
 $code-bg-color: $gray-f5-color;
 $code-copy-icon-color: $gray-99-color;
-$code-copied-text-color: $code-copy-icon-color;
 $code-line-min-height: 16px;
 $code-line-before-width: 16px;
 $code-line-before-text-color: $blue-gray-alpha-040-color;
 $code-line-before-border-color: $accent-yellow-color;
+$code-highlight-bg-color: $gray-ed-color;
 
 .ContentProseCode {
   background: $code-bg-color;
@@ -45,8 +51,8 @@ $code-line-before-border-color: $accent-yellow-color;
   margin-top: $scale16;
   margin-bottom: $scale16;
   padding-top: $scale16;
-  overflow: hidden;
   border-radius: $scale8;
+  overflow: hidden;
 
   /* stylelint-disable */
   .fade-enter-active,
@@ -57,13 +63,11 @@ $code-line-before-border-color: $accent-yellow-color;
   .fade-leave-to {
     opacity: 0%;
   }
-  /* stylelint-eable */
+  /* stylelint-enable */
 
   &__FileName {
     display: block;
-    font-size: 14px;
-    font-weight: 100;
-    padding-left: 20px;
+    padding-left: $scale20;
   }
 
   &__CopyIcon {
@@ -71,7 +75,7 @@ $code-line-before-border-color: $accent-yellow-color;
       position: absolute;
       width: $scale20;
       height: $scale20;
-      top: $scale12;
+      top: $scale16;
       right: $scale16;
       color: $code-copy-icon-color;
     }
@@ -81,13 +85,11 @@ $code-line-before-border-color: $accent-yellow-color;
     }
   }
 
-  // TODO: テキストコンポーネントへの分離
   &__CopiedText {
     position: absolute;
     top: $scale12;
     right: $scale44;
-    font-size: 12px;
-    color: $code-copied-text-color;
+    background-color: $code-bg-color;
   }
 
   pre {
@@ -97,15 +99,14 @@ $code-line-before-border-color: $accent-yellow-color;
     flex: 1 1 0%;
     overflow-x: auto;
     padding: $scale16;
-    line-height: 1.625;
     counter-reset: lines;
 
     code {
-      font-family: $font-group-code;
       width: 100%;
       display: flex;
       flex-direction: column;
 
+      /* stylelint-disable */
       .line {
         display: inline-table;
         min-height: $code-line-min-height;
@@ -122,7 +123,7 @@ $code-line-before-border-color: $accent-yellow-color;
       }
 
       .highlight {
-        background-color: #ededed;
+        background-color: $code-highlight-bg-color;
         display: block;
         margin-right: $scale-minus16;
         margin-left: $scale-minus16;
@@ -130,6 +131,7 @@ $code-line-before-border-color: $accent-yellow-color;
         padding-left: $scale12;
         border-left: $border-width4 solid $code-line-before-border-color;
       }
+      /* stylelint-enable */
     }
   }
 }

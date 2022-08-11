@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
-import usePagenate from '@/composables/usePagenate';
+import usePaginate from '@/composables/usePaginate';
 
 interface PaginationPropType {
   /**
@@ -48,7 +48,7 @@ const emit = defineEmits([
 const firstPageCount = 1;
 const { articles, pageSize } = toRefs(props);
 
-const { targetArticles, targetPage, lastPageCount, setPage, goPreviousPage, goNextPage } = usePagenate<unknown>(
+const { targetArticles, targetPage, lastPageCount, setPage, goPreviousPage, goNextPage } = usePaginate<unknown>(
   articles,
   pageSize,
   firstPageCount,
@@ -144,7 +144,7 @@ $pagination-disabled-border-color: $pagination-disabled-bg-color;
   justify-content: center;
   text-align: center;
 
-  @include desktopOnly {
+  @include desktop-only {
     justify-content: space-between;
     margin-bottom: 0;
     margin-top: 0;
@@ -161,7 +161,7 @@ $pagination-disabled-border-color: $pagination-disabled-bg-color;
     flex-wrap: wrap;
     text-align: center;
 
-    @include desktopOnly {
+    @include desktop-only {
       flex-grow: 1;
       flex-shrink: 1;
       justify-content: flex-start;
@@ -196,13 +196,13 @@ $pagination-disabled-border-color: $pagination-disabled-bg-color;
     vertical-align: top;
     user-select: none;
 
-    @include desktopOnly {
+    @include desktop-only {
       margin-bottom: 0;
       margin-top: 0;
     }
 
     &[disabled] {
-      cursor: not-allowed;
+      pointer-events: none;
     }
   }
 
@@ -243,13 +243,13 @@ $pagination-disabled-border-color: $pagination-disabled-bg-color;
   }
 
   &__Previous {
-    @include desktopOnly {
+    @include desktop-only {
       order: 2;
     }
   }
 
   &__Next {
-    @include desktopOnly {
+    @include desktop-only {
       order: 3;
     }
   }

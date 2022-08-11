@@ -1,9 +1,9 @@
 // スマホ用のブレークポイントを独自に追加
-$phone: 479px;
+$phone: 579px;
 $tablet: 879px;
 
 // desktop only
-@mixin desktopOnly {
+@mixin desktop-only {
   @media screen and (min-width: ($tablet)), print {
     @content;
   }

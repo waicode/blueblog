@@ -43,8 +43,9 @@ defineProps<BaSubProfilePropType>();
 </template>
 
 <style lang="scss">
-$side-profile-waicode-icon-width: 124px;
-$side-profile-waicode-icon-border-color: $gray-db-color;
+$side-profile-author-icon-width: 124px;
+$side-profile-author-icon-border-color: $gray-db-color;
+$side-profile-author-icon-bg-color: $white-color;
 
 $side-profile-twitter-icon-width: 40px;
 $side-profile-twitter-icon-height: $side-profile-twitter-icon-width;
@@ -68,10 +69,10 @@ $side-profile-github-icon-color: $github-purple-color;
   }
 
   &__AuthorIcon {
-    width: $side-profile-waicode-icon-width;
-    background-color: #fff;
+    width: $side-profile-author-icon-width;
+    background-color: $side-profile-author-icon-bg-color;
     border: $border-width1 solid transparent;
-    border-color: $side-profile-waicode-icon-border-color;
+    border-color: $side-profile-author-icon-border-color;
     border-radius: $border-radius-circle;
     box-shadow: none;
   }

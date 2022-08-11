@@ -74,6 +74,7 @@ $text-dark-black-color: $dark-black-color;
 $text-black-color: $black-color;
 $text-white-color: $white-color;
 $text-dark-gray-color: $gray-42-color;
+$text-gray-color: $gray-99-color;
 $text-light-gray-color: $gray-b5-color;
 
 .AppText {
@@ -215,6 +216,24 @@ $text-light-gray-color: $gray-b5-color;
       font-weight: $font-weight-700;
     }
 
+    &-code1 {
+      font-size: $font-size-14px;
+      line-height: $line-height-167;
+      font-family: $font-group-code;
+    }
+
+    &-codeTitle1 {
+      font-size: $font-size-12px;
+      font-weight: $font-weight-100;
+      line-height: $line-height-167;
+      font-family: $font-group-code;
+    }
+
+    &-toast1 {
+      font-size: $font-size-12px;
+      line-height: $line-height-160;
+    }
+
     &-subTitle2 {
       font-size: $font-size-20px;
       font-style: normal;
@@ -318,6 +337,10 @@ $text-light-gray-color: $gray-b5-color;
 
     &-darkGray {
       color: $text-dark-gray-color;
+    }
+
+    &-gray {
+      color: $text-gray-color;
     }
 
     &-lightGray {

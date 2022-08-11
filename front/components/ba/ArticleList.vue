@@ -29,9 +29,9 @@ $article-list-hr-height: 2px;
     border: none;
     display: block;
     height: $article-list-hr-height;
-    margin: $font-size-24px 0;
+    margin: $scale24 0;
     @include tablet {
-      margin: $font-size-20px 0;
+      margin: $scale20 0;
     }
   }
 }

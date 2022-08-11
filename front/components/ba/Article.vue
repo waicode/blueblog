@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { TEXT_SIZE } from '@/components/app/TextComposable';
 import { DATE_TEXT_TYPE_MAP } from '@/components/app/DateTextComposable';
-import useMediaQuery from '@/composables/useMediaQuery';
 import { tabletMediaQuery, phoneMediaQuery } from '@/utils/util';
 import {
   ArticleParsedContent,
@@ -21,10 +20,10 @@ interface ArticlePropType {
 defineProps<ArticlePropType>();
 
 // タブレット画面幅以下かどうか
-const isTabletMedia = useMediaQuery(tabletMediaQuery);
+const isTabletMedia = useMediaQuery(tabletMediaQuery());
 
 // スマホ画面幅以下かどうか
-const isPhoneMedia = useMediaQuery(phoneMediaQuery);
+const isPhoneMedia = useMediaQuery(phoneMediaQuery());
 
 /**
  * アイキャッチ画像の幅

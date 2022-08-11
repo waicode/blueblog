@@ -51,7 +51,7 @@ ol.ContentProseOl {
       text-align: center;
       content: counter(number) '.';
       counter-increment: number;
-      font-weight: 300;
+      font-weight: $font-weight-300;
     }
   }
 }

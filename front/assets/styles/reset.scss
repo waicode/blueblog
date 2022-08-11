@@ -1,3 +1,5 @@
+@import './variables';
+
 html,
 body,
 p,
@@ -31,8 +33,9 @@ h3,
 h4,
 h5,
 h6 {
+  /* stylelint-disable */
   font-size: 100%;
-  font-weight: normal;
+  font-weight: $font-weight-400;
 }
 
 ul {

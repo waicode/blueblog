@@ -306,7 +306,7 @@ export const tabletMediaQuery = () => '(max-width: 879px)';
  *
  * @returns メディアクエリ
  */
-export const phoneMediaQuery = () => '(max-width: 479px)';
+export const phoneMediaQuery = () => '(max-width: 579px)';
 
 /**
  * 文字列をパースしてHTMLドキュメントに変換
