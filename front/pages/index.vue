@@ -9,12 +9,23 @@ const { articlesState: articles } = useArticlesState();
 // 1ページあたりの表示数
 const pageSize = runtimeConfig.public.pageSize;
 // ページネーションの初期表示
-const { targetArticles } = usePagenate<ArticleParsedContent>(articles.value, pageSize);
+const { targetArticles } = usePaginate<ArticleParsedContent>(articles.value, pageSize);
 const posts = ref(unref(targetArticles));
 // ページが切り替わったら表示対象の記事一覧に切り替える
 const displayTargetPosts = (targetPosts) => {
   posts.value = unref(targetPosts);
 };
+
+// useHead({
+//   title: 'Blue * Architect',
+//   meta: [
+//     {
+//       name: 'description',
+//       content:
+//         'モノづくりが好きなアーキテクトがフロントエンドとサーバレスについて書いてます。その技術を使うことで「得られること」を伝える文章を心がけています。プロダクションを意識した「実際の見た目」と「動くサンプル」も一緒に公開していきます。',
+//     },
+//   ],
+// });
 </script>
 
 <template>
