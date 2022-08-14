@@ -14,9 +14,12 @@ jobs:
       - name: Checkout 🛎
         uses: actions/checkout@v1
 
-      - name: Build 🏗
+      - name: Generate 🏗
         run: |
           yarn install
+          yarn lint:script
+          yarn lint:style
+          yarn lint:prettier
           yarn generate
         working-directory: ./front
 
