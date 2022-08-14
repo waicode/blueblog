@@ -7,9 +7,9 @@ const route = useRoute();
 const tagSlug = route.params.slug;
 const tagName = TAXONOMY_MAP[tagSlug].name;
 
-// 該当タグがなければNotFound
-if (!tagSlug) {
-  // TODO: NotFoundへ飛ばす
+if (!tagName) {
+  // 該当タグがなければ404ページへ飛ばす
+  notFound();
 }
 
 // 該当タグの記事を取得
@@ -22,6 +22,7 @@ const queryResult = await useAsyncData(`tags/${tagSlug}`, () =>
 const articles = queryResult.data;
 
 if (!articles.value) {
+  // 該当タグの記事がなければ404ページへ飛ばす
   notFound();
 }
 
@@ -35,15 +36,7 @@ const displayTargetPosts = (targetPosts) => {
   posts.value = unref(targetPosts);
 };
 
-useHead({
-  title: `${tagName}の記事一覧 ⌇ Blue * Architect`,
-  meta: [
-    {
-      name: 'description',
-      content: `「${tagName}」タグの記事一覧です。`,
-    },
-  ],
-});
+useHead(useMetaDescription(`${tagName}の記事一覧 ⌇ ${TITLE_DEFAULT}`, `「${tagName}」タグの記事一覧です。`));
 </script>
 
 <template>

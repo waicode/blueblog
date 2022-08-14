@@ -32,7 +32,7 @@ export const useArticlesState = () => {
   const tagItems = computed(() => {
     const tagsObj: { [key: string]: number } = {};
     articlesState.value
-      .map((data: ArticleParsedContent) => data.tags)
+      .map((data: ArticleParsedContent) => (data.tags ? data.tags : []))
       .flat()
       .forEach((tagName: string) => {
         // { tagName: count }

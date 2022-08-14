@@ -24,7 +24,7 @@ defineProps<ArticleTopPropType>();
           <AppDateText :date-time-text="article.createdAt" size="medium" />
         </span>
         <span
-          v-if="article.updatedAt != article.createdAt"
+          v-if="article.updatedAt && article.updatedAt != article.createdAt"
           class="BaArticleTop__DateUpdated"
           itemprop="updatedAt"
           :content="article.updatedAt"

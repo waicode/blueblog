@@ -29,6 +29,7 @@ export const TEXT_SIZE_MAP = {
   subTitle1: 'subTitle1',
   subTitle2: 'subTitle2',
   subDescription1: 'subDescription1',
+  subList1: 'subList1',
   copyright: 'copyright',
   errorCode: 'errorCode',
 } as const;
@@ -109,6 +110,7 @@ export const TEXT_WEIGHT = keyEnumObject(TEXT_WEIGHT_MAP);
 export const TEXT_COLOR_MAP = {
   normal: 'normal',
   darkBlack: 'darkBlack',
+  blueBlack: 'blueBlack',
   white: 'white',
   darkGray: 'darkGray',
   gray: 'gray',
@@ -124,3 +126,23 @@ export type TextColorType = KeyTypeOf<typeof TEXT_COLOR_MAP>;
  * テキスト色種別定数
  */
 export const TEXT_COLOR = keyEnumObject(TEXT_COLOR_MAP);
+
+/**
+ * フォントファミリー
+ */
+export const FONT_FAMILY_MAP = {
+  normal: 'normal',
+  notoSansCjkJpDemiLight: 'notoSansCjkJpDemiLight',
+  adventPro: 'adventPro',
+  codeGroup: 'codeGroup',
+};
+
+/**
+ * テキスト色の型
+ */
+export type FontFamilyType = KeyTypeOf<typeof FONT_FAMILY_MAP>;
+
+/**
+ * テキスト色種別定数
+ */
+export const FONT_FAMILY = keyEnumObject(FONT_FAMILY_MAP);

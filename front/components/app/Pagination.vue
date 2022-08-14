@@ -91,7 +91,7 @@ const pageNumbers = computed(() => {
       class="AppPagination__Previous"
       :tabindex="targetPage === firstPageCount ? undefined : `0`"
       @click="goPreviousPage()"
-      ><AppText :type="TEXT_SIZE.PAGINATION1" :color="TEXT_COLOR.DARK_GRAY"
+      ><AppText :type="TEXT_SIZE.PAGINATION1" :color="TEXT_COLOR.BLUE_BLACK"
         ><Icon icon="fa6-solid:chevron-left" /></AppText
     ></a>
     <a
@@ -99,7 +99,7 @@ const pageNumbers = computed(() => {
       class="AppPagination__Next"
       :tabindex="targetPage === lastPageCount ? undefined : `0`"
       @click="goNextPage()"
-      ><AppText :type="TEXT_SIZE.PAGINATION1" :color="TEXT_COLOR.DARK_GRAY"
+      ><AppText :type="TEXT_SIZE.PAGINATION1" :color="TEXT_COLOR.BLUE_BLACK"
         ><Icon icon="fa6-solid:chevron-right" /></AppText
     ></a>
     <ul class="AppPagination__List">
@@ -117,7 +117,7 @@ const pageNumbers = computed(() => {
           :aria-label="`${pageNumber}ページへ`"
           tabindex="0"
           @click="setPage(pageNumber)"
-          ><AppText :type="TEXT_SIZE.PAGINATION1" :color="TEXT_COLOR.DARK_GRAY">{{ pageNumber }}</AppText></a
+          ><AppText :type="TEXT_SIZE.PAGINATION1" :color="TEXT_COLOR.BLUE_BLACK">{{ pageNumber }}</AppText></a
         >
         <span v-else class="AppPagination__Ellipsis"
           ><AppText :type="TEXT_SIZE.PAGINATION1" :color="TEXT_COLOR.LIGHT_GRAY">&hellip;</AppText></span

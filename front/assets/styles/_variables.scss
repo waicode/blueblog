@@ -32,8 +32,9 @@ $bluish-white-color: #fefeff;
 
 $main-blue-color: #4b73ff;
 $link-blue-color: #1558d6;
-
+$blue-black-color: #37474f;
 $accent-yellow-color: #f1c32e;
+$main-blue-linear-gradient: linear-gradient(180deg, #4b73ff 10%, #7cf7ff 100%);
 
 $twitter-blue-color: #00afff;
 $github-purple-color: #778cff;
@@ -46,6 +47,7 @@ $pale-yellow-alpha-color: rgba(255, 249, 196, 60%);
 $pale-red-alpha-color: rgba(255, 205, 210, 60%);
 $pale-blue-alpha-color: rgba(207, 216, 220, 24%);
 
+$font-group-normal: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', meiryo, sans-serif;
 $font-name-noto-sans-cjk-jp-demi-light: 'Noto Sans CJK JP DemiLight';
 $font-name-advent-pro: 'Advent Pro';
 $font-group-code: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace, 'Apple Color Emoji',
@@ -58,6 +60,7 @@ $font-size-14px: 14px;
 $font-size-16px: 16px;
 $font-size-18px: 18px;
 $font-size-20px: 20px;
+$font-size-22px: 22px;
 $font-size-24px: 24px;
 $font-size-28px: 28px;
 $font-size-36px: 36px;
@@ -108,6 +111,7 @@ $scale72: 72px;
 $scale80: 80px;
 $scale96: 96px;
 
+$scale-minus2: -2px;
 $scale-minus4: -4px;
 $scale-minus6: -6px;
 $scale-minus8: -8px;

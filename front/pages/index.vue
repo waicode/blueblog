@@ -20,14 +20,7 @@ const displayTargetPosts = (targetPosts) => {
   posts.value = unref(targetPosts);
 };
 
-useHead({
-  meta: [
-    {
-      name: 'description',
-      content: DESCRIPTION_MAP[DESCRIPTION.SITE_CONCEPT],
-    },
-  ],
-});
+useHead(useMetaDescription());
 </script>
 
 <template>

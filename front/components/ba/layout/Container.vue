@@ -9,8 +9,8 @@ $container-bg-color: $bluish-white-color;
 $container-shadow-color: $gray-000-alpha-010-color;
 
 body {
-  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', meiryo, sans-serif;
-  background: linear-gradient(180deg, #4b73ff 10%, #7cf7ff 100%);
+  font-family: $font-group-normal;
+  background: $main-blue-linear-gradient;
 }
 
 .BaLayoutContainer {

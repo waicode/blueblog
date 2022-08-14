@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { TEXT_SIZE } from '@/components/app/TextComposable';
+import { isHalfWidthAlphanumericSymbols } from '@/utils/util';
 
 interface BaSubProfilePropType {
   /**
@@ -14,7 +15,9 @@ defineProps<BaSubProfilePropType>();
 <template>
   <div class="BaSubProfile">
     <h3 class="BaSubProfile__Heading">
-      <AppText :type="TEXT_SIZE.SUB_TITLE2">{{ title }}</AppText>
+      <AppText :type="isHalfWidthAlphanumericSymbols(title) ? TEXT_SIZE.SUB_TITLE2 : TEXT_SIZE.SUB_TITLE1">{{
+        title
+      }}</AppText>
     </h3>
     <div class="BaSubProfile__AuthorIconWrapper">
       <div class="BaSubProfile__AuthorIcon">
@@ -44,8 +47,6 @@ defineProps<BaSubProfilePropType>();
 
 <style lang="scss">
 $side-profile-author-icon-width: 124px;
-$side-profile-author-icon-border-color: $gray-db-color;
-$side-profile-author-icon-bg-color: $white-color;
 
 $side-profile-twitter-icon-width: 40px;
 $side-profile-twitter-icon-height: $side-profile-twitter-icon-width;
@@ -65,14 +66,11 @@ $side-profile-github-icon-color: $github-purple-color;
   &__AuthorIconWrapper {
     display: flex;
     justify-content: center;
-    margin-bottom: $scale20;
+    margin-bottom: $scale4;
   }
 
   &__AuthorIcon {
     width: $side-profile-author-icon-width;
-    background-color: $side-profile-author-icon-bg-color;
-    border: $border-width1 solid transparent;
-    border-color: $side-profile-author-icon-border-color;
     border-radius: $border-radius-circle;
     box-shadow: none;
   }
@@ -80,7 +78,7 @@ $side-profile-github-icon-color: $github-purple-color;
   &__SocialIcons {
     display: flex;
     justify-content: center;
-    margin-bottom: $scale28;
+    margin-bottom: $scale36;
 
     ul {
       display: flex;

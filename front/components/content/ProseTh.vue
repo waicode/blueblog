@@ -13,7 +13,7 @@ $table-th-border-color: $gray-cfd8dc-color;
 $table-th-bg-color: $gray-eceff1-color;
 
 th.ContentProseTh {
-  padding: $scale8;
+  padding: $scale8 $scale12;
   border: 1px solid $table-th-border-color;
   background: $table-th-bg-color;
   text-align: center !important;

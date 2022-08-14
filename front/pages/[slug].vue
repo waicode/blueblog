@@ -10,18 +10,11 @@ const queryResult = await useAsyncData(slug, () => queryContent<ArticleParsedCon
 const article = queryResult.data as Ref<ArticleParsedContent>;
 
 if (!article.value) {
+  // 該当記事がなければ404ページへ飛ばす
   notFound();
 }
 
-useHead({
-  title: `${article.value.title} ⌇ Blue * Architect`,
-  meta: [
-    {
-      name: 'description',
-      content: article.value.description,
-    },
-  ],
-});
+useHead(useMetaDescription(`${article.value.title} ⌇ ${TITLE_DEFAULT}`, article.value.description));
 </script>
 
 <template>

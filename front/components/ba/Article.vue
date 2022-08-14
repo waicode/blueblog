@@ -57,13 +57,15 @@ watchEffect(() => {
           </h2>
         </div>
         <div class="BaArticle__SecondContents">
-          <h2 v-if="!isTabletMedia || isPhoneMedia" class="BaArticle__Title">
-            <AppText :type="TEXT_SIZE.TITLE1">{{ article.title }}</AppText>
-          </h2>
-          <div class="BaArticle__Description">
-            <p>
-              <AppText :type="TEXT_SIZE.DESCRIPTION1">{{ article.description }}</AppText>
-            </p>
+          <div class="BaArticle__TitleDescriptionWrapper">
+            <h2 v-if="!isTabletMedia || isPhoneMedia" class="BaArticle__Title">
+              <AppText :type="TEXT_SIZE.TITLE1">{{ article.title }}</AppText>
+            </h2>
+            <div class="BaArticle__Description">
+              <p>
+                <AppText :type="TEXT_SIZE.DESCRIPTION1">{{ article.description }}</AppText>
+              </p>
+            </div>
           </div>
           <div class="BaArticle__Meta">
             <div class="BaArticle__Date">
@@ -71,7 +73,7 @@ watchEffect(() => {
                 <AppDateText :date-time-text="article.createdAt" />
               </span>
               <span
-                v-if="article.updatedAt != article.createdAt"
+                v-if="article.updatedAt && article.updatedAt != article.createdAt"
                 class="BaArticle__DateUpdated"
                 itemprop="updatedAt"
                 :content="article.updatedAt"
@@ -110,6 +112,9 @@ watchEffect(() => {
     @include tablet {
       margin-bottom: $scale12;
     }
+    @include phone {
+      margin-bottom: $scale16;
+    }
   }
 
   &__Eyecatch {
@@ -133,6 +138,15 @@ watchEffect(() => {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+  }
+
+  &__TitleDescriptionWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $scale12;
+    @include phone {
+      gap: 0;
+    }
   }
 
   &__Title {
@@ -162,6 +176,7 @@ watchEffect(() => {
     display: flex;
     flex-wrap: nowrap;
     padding-right: 0;
+    padding-top: $scale8;
   }
 
   &__DatePublished {

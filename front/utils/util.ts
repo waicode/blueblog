@@ -258,6 +258,16 @@ export const getUrlFqdn = (url: string) => url.match(/^https?:\/{2,}(.*?)(?:\/|\
 export const isNumerical = (str: string) => /^([1-9]\d*|0)$/.test(str);
 
 /**
+ * 文字列が半角英数字記号のみかどうかを判定
+ *
+ * 0以上のゼロ埋めなし整数の場合は`true`を返却する。
+ *
+ * @param str 文字列
+ * @returns 判定結果
+ */
+export const isHalfWidthAlphanumericSymbols = (str: string) => /^[a-zA-Z0-9!-/:-@¥[-`{-~ ]*$/.test(str);
+
+/**
  * 文字列が年月の形式（YYYYMM）かどうかを判定
  *
  * 正しい形式なら`true`を返却する。

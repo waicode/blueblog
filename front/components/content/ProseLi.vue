@@ -45,13 +45,14 @@ ol.ContentProseOl {
 
     &::before {
       position: absolute;
-      top: 0;
+      top: 4px;
       left: 4px;
       display: block;
       text-align: center;
       content: counter(number) '.';
       counter-increment: number;
-      font-weight: $font-weight-300;
+      color: $black-color;
+      font-family: $font-name-noto-sans-cjk-jp-demi-light;
     }
   }
 }

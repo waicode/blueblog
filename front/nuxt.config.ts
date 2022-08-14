@@ -5,10 +5,20 @@ import eslintPlugin from 'vite-plugin-eslint';
 export default defineNuxtConfig({
   app: {
     head: {
-      // ヘッダはページ毎に`useHead`を使って設定/上書きする
+      // タイトル・説明文・画像はページ毎に`useHead`を使って設定すること
       htmlAttrs: { lang: 'ja' },
-      title: 'Blue * Architect',
-      meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+      // title: '', // 要設定
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        // { property: 'og:title', content: '' }, // 要設定
+        // { property: 'og:description', content: '' }, // 要設定
+        { property: 'og:image', content: 'https://archt.blue/images/ogp-main.png' }, // 必要に応じて上書き
+        { property: 'twitter:card', content: 'summary_large_image' },
+        // { property: 'twitter:title', content: '' }, // 要設定
+        // { property: 'twitter:description', content: '' }, // 要設定
+        { property: 'twitter:site', content: '@waicode37' },
+        { property: 'twitter:creator', content: '@waicode37' },
+      ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         {

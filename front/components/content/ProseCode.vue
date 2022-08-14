@@ -23,7 +23,7 @@ withDefaults(
 <template>
   <div ref="contentProseCodeRef" class="ContentProseCode">
     <span v-show="filename" class="ContentProseCode__FileName"
-      ><AppText :type="TEXT_SIZE.CODE_TITLE1" :color="TEXT_COLOR.NORMAL">{{ filename }}</AppText></span
+      ><AppText :type="TEXT_SIZE.CODE_TITLE1" :color="TEXT_COLOR.DARK_GRAY">{{ filename }}</AppText></span
     >
     <transition name="fade"
       ><span v-show="!isOutside" class="ContentProseCode__CopyIcon"
@@ -87,7 +87,7 @@ $code-highlight-bg-color: $gray-ed-color;
 
   &__CopiedText {
     position: absolute;
-    top: $scale12;
+    top: $scale16;
     right: $scale44;
     background-color: $code-bg-color;
   }

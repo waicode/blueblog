@@ -5,6 +5,6 @@
 </template>
 <style lang="scss">
 .ContentProseP {
-  margin-bottom: $scale32;
+  margin-bottom: $scale20;
 }
 </style>

@@ -27,6 +27,12 @@ h6 {
   padding: 0;
 }
 
+body {
+  /* stylelint-disable */
+  line-height: 1;
+  /* stylelint-enable */
+}
+
 h1,
 h2,
 h3,
@@ -35,6 +41,7 @@ h5,
 h6 {
   /* stylelint-disable */
   font-size: 100%;
+  /* stylelint-enable */
   font-weight: $font-weight-400;
 }
 

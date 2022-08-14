@@ -4,8 +4,6 @@ import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
 const route = useRoute();
 const slug = route.params.slug;
 
-// TODO: メタタグ
-
 // 記事を取得
 const queryResult = await useAsyncData(`articles/${slug}`, () =>
   queryContent<ArticleParsedContent>('articles', slug).findOne(),
@@ -13,6 +11,7 @@ const queryResult = await useAsyncData(`articles/${slug}`, () =>
 const article = queryResult.data as Ref<ArticleParsedContent>;
 
 if (!article.value) {
+  // 該当記事がなければ404ページへ飛ばす
   notFound();
 }
 
@@ -35,15 +34,7 @@ onUnmounted(() => {
   window.removeEventListener('scroll', scrollDisplayControl);
 });
 
-useHead({
-  title: `${article.value.title}`,
-  meta: [
-    {
-      name: 'description',
-      content: article.value.description,
-    },
-  ],
-});
+useHead(useMetaDescription(article.value.title, article.value.description));
 </script>
 
 <template>

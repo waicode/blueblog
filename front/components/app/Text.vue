@@ -18,20 +18,13 @@ interface TextPropType {
    * タイポグラフィ種別
    *
    * 指定することで以下が決まる。
+   * 太さや色は必要に応じて個別に上書くこと。
    *
    * - フォントサイズ（font-size）
    * - 行の高さ（line-height）
+   * - 文字の太さ（font-weight）
+   * - 文字の色（color）
    * - 字間（letter-spacing）
-   *
-   * `body1`（デフォルト）
-   *
-   * ```
-   * // desktop
-   * font-size: 16px; line-height: 1.75;
-   * // tablet / phone
-   * font-size: 14px; line-height: 1.714;
-   * ```
-   *
    */
   type?: TextSizeType;
   height?: LineHeightType;
@@ -72,6 +65,7 @@ const className = computed(() =>
 <style lang="scss">
 $text-dark-black-color: $dark-black-color;
 $text-black-color: $black-color;
+$text-blue-black-color: $blue-black-color;
 $text-white-color: $white-color;
 $text-dark-gray-color: $gray-42-color;
 $text-gray-color: $gray-99-color;
@@ -93,6 +87,7 @@ $text-light-gray-color: $gray-b5-color;
       font-style: normal;
       line-height: $line-height-160;
       font-weight: $font-weight-700;
+      color: $text-blue-black-color;
     }
 
     &-title2 {
@@ -100,6 +95,7 @@ $text-light-gray-color: $gray-b5-color;
       font-style: normal;
       line-height: $line-height-125;
       font-weight: $font-weight-700;
+      color: $text-blue-black-color;
     }
 
     &-description1 {
@@ -121,6 +117,7 @@ $text-light-gray-color: $gray-b5-color;
       font-style: normal;
       line-height: $line-height-150;
       font-weight: $font-weight-700;
+      color: $text-blue-black-color;
     }
 
     &-heading3 {
@@ -128,6 +125,7 @@ $text-light-gray-color: $gray-b5-color;
       font-style: normal;
       line-height: $line-height-160;
       font-weight: $font-weight-700;
+      color: $text-blue-black-color;
     }
 
     &-heading4 {
@@ -135,6 +133,7 @@ $text-light-gray-color: $gray-b5-color;
       font-style: normal;
       line-height: $line-height-156;
       font-weight: $font-weight-700;
+      color: $text-blue-black-color;
     }
 
     &-heading5 {
@@ -142,6 +141,7 @@ $text-light-gray-color: $gray-b5-color;
       font-style: normal;
       line-height: $line-height-150;
       font-weight: $font-weight-700;
+      color: $text-blue-black-color;
     }
 
     &-heading6 {
@@ -149,6 +149,7 @@ $text-light-gray-color: $gray-b5-color;
       font-style: normal;
       line-height: $line-height-150;
       font-weight: $font-weight-700;
+      color: $text-blue-black-color;
     }
 
     &-list1 {
@@ -159,9 +160,10 @@ $text-light-gray-color: $gray-b5-color;
     }
 
     &-tableHeader1 {
-      font-size: $font-size-16px;
+      font-size: $font-size-14px;
       font-style: normal;
       line-height: $line-height-150;
+      color: $text-blue-black-color;
       font-weight: $font-weight-700;
     }
 
@@ -209,13 +211,6 @@ $text-light-gray-color: $gray-b5-color;
       line-height: $line-height-150;
     }
 
-    &-subTitle1 {
-      font-size: $font-size-20px;
-      font-style: normal;
-      line-height: $line-height-160;
-      font-weight: $font-weight-700;
-    }
-
     &-code1 {
       font-size: $font-size-14px;
       line-height: $line-height-167;
@@ -224,7 +219,7 @@ $text-light-gray-color: $gray-b5-color;
 
     &-codeTitle1 {
       font-size: $font-size-12px;
-      font-weight: $font-weight-100;
+      font-weight: $font-weight-700;
       line-height: $line-height-167;
       font-family: $font-group-code;
     }
@@ -234,23 +229,39 @@ $text-light-gray-color: $gray-b5-color;
       line-height: $line-height-160;
     }
 
-    &-subTitle2 {
+    &-subTitle1 {
       font-size: $font-size-20px;
       font-style: normal;
       line-height: $line-height-160;
+      font-weight: $font-weight-700;
+      color: $text-blue-black-color;
+    }
+
+    &-subTitle2 {
+      font-size: $font-size-22px;
+      font-style: normal;
+      line-height: $line-height-160;
       font-weight: $font-weight-600;
+      color: $text-blue-black-color;
       font-family: $font-name-advent-pro;
     }
 
     &-subDescription1 {
       font-size: $font-size-13px;
       font-style: normal;
-      line-height: $line-height-143;
+      line-height: $line-height-167;
       font-family: $font-name-noto-sans-cjk-jp-demi-light;
       @include phone {
         font-size: $font-size-14px;
         line-height: $line-height-171;
       }
+    }
+
+    &-subList1 {
+      font-size: $font-size-14px;
+      font-style: normal;
+      line-height: $line-height-167;
+      font-family: $font-name-noto-sans-cjk-jp-demi-light;
     }
 
     &-copyright {
@@ -323,12 +334,28 @@ $text-light-gray-color: $gray-b5-color;
   }
 
   &--weight {
+    &-100 {
+      font-weight: $font-weight-100;
+      font-family: $font-group-normal;
+    }
+
+    &-300 {
+      font-weight: $font-weight-300;
+      font-family: $font-group-normal;
+    }
+
+    &-350 {
+      font-family: $font-name-noto-sans-cjk-jp-demi-light;
+    }
+
     &-400 {
       font-weight: $font-weight-400;
+      font-family: $font-group-normal;
     }
 
     &-700 {
       font-weight: $font-weight-700;
+      font-family: $font-group-normal;
     }
   }
 
@@ -339,6 +366,10 @@ $text-light-gray-color: $gray-b5-color;
 
     &-darkBlack {
       color: $text-dark-black-color;
+    }
+
+    &-blueBlack {
+      color: $text-blue-black-color;
     }
 
     &-white {

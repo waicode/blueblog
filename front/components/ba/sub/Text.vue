@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { TEXT_SIZE } from '@/components/app/TextComposable';
+import { isHalfWidthAlphanumericSymbols } from '@/utils/util';
 
 interface BaSubTextPropType {
   /**
@@ -13,7 +14,9 @@ defineProps<BaSubTextPropType>();
 <template>
   <div class="BaSubText">
     <h3 class="BaSubText__Heading">
-      <AppText :type="TEXT_SIZE.SUB_TITLE1">{{ title }}</AppText>
+      <AppText :type="isHalfWidthAlphanumericSymbols(title) ? TEXT_SIZE.SUB_TITLE2 : TEXT_SIZE.SUB_TITLE1">{{
+        title
+      }}</AppText>
     </h3>
     <!-- @slot 囲まれたタグを表示する -->
     <slot />

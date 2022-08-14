@@ -8,7 +8,7 @@ const monthStr = String(Number(mm)); // ゼロサプレス
 
 // 該当年月の記事を取得
 const queryResult = await useAsyncData(`${yyyy}/${mm}`, () =>
-  queryContent<ArticleParsedContent>('articles')
+  queryContent<ArticleParsedContent>('/') // 個別ページも表示
     .where({ createdAt: { $regex: `^${yyyy}-${mm}` } })
     .sort({ createdAt: -1 }) // 降順
     .find(),
@@ -16,6 +16,7 @@ const queryResult = await useAsyncData(`${yyyy}/${mm}`, () =>
 const articles = queryResult.data;
 
 if (!articles.value) {
+  // 該当年月の記事がなければ404ページへ飛ばす
   notFound();
 }
 
@@ -29,15 +30,12 @@ const displayTargetPosts = (targetPosts) => {
   posts.value = unref(targetPosts);
 };
 
-useHead({
-  title: `${yyyy}年${monthStr}月の記事一覧 ⌇ Blue * Architect`,
-  meta: [
-    {
-      name: 'description',
-      content: `${yyyy}年${monthStr}月に投稿された記事の一覧です。`,
-    },
-  ],
-});
+useHead(
+  useMetaDescription(
+    `${yyyy}年${monthStr}月の記事一覧 ⌇ ${TITLE_DEFAULT}`,
+    `${yyyy}年${monthStr}月に投稿された記事の一覧です。`,
+  ),
+);
 </script>
 
 <template>
