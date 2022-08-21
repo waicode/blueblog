@@ -3,8 +3,7 @@
 @font-face {
   // Noto Sans JPのDemiLightフォントがGoogleフォントに無いため自前で準備する
   font-family: 'Noto Sans CJK JP DemiLight';
-  src: url('~/assets/fonts/NotoSansJP-DemiLight.woff2') format('woff2'),
-    url('~/assets/fonts/NotoSansJP-DemiLight.woff') format('woff');
+  src: url('/fonts/NotoSansJP-DemiLight.woff2') format('woff2'), url('/fonts/NotoSansJP-DemiLight.woff') format('woff');
   font-display: swap;
 }
 

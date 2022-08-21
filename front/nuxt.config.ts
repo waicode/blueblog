@@ -22,6 +22,13 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         {
+          rel: 'preload',
+          href: '/fonts/NotoSansJP-DemiLight.woff2',
+          as: 'font',
+          type: 'font/woff2',
+          crossorigin: true,
+        },
+        {
           rel: 'preconnect',
           href: 'https://fonts.googleapis.com',
         },
