@@ -85,7 +85,7 @@ createdAt: '2022-08-14T13:12:00.000+09:00'
 
 以下は画像です。
 
-![content_v1_v2_comparison](capture/content_v1_v2_comparison.png)
+![content_v1_v2_comparison](article/content_v1_v2_comparison.png)
 
 以下は引用です。
 

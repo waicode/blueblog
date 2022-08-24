@@ -37,7 +37,7 @@ const Template = (args) => ({
           <li>これはリストです。これはリストです。これはリストです。これはリストです。</li>
           <li>これはリストです。これはリストです。これはリストです。これはリストです。</li>
         </ol>
-        <AppImage imagePath="capture/content_v1_v2_comparison.png" />
+        <AppImage imagePath="article/content_v1_v2_comparison.png" />
         <table>
           <tr>
             <th>ヘッダー1</th>

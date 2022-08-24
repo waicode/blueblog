@@ -11,7 +11,6 @@ const Template = (args) => ({
   setup() {
     return { args };
   },
-  // TODO: ここから、見出しを入れる
   template: `
     <BaLayoutMain v-bind="args">
       <p>キャプションを書きます。だいたい120文字くらいを目安に3行でおさまるボリュームで。ここが長すぎると一覧の高さが合わなくなってしまいます。キャプションは実際の本文の冒頭から取ってくるので、リード文を意識して書きます。</p>
@@ -35,7 +34,7 @@ const Template = (args) => ({
         <li>これはリストです。これはリストです。これはリストです。これはリストです。</li>
         <li>これはリストです。これはリストです。これはリストです。これはリストです。</li>
       </ol>
-      <AppImage imagePath="capture/content_v1_v2_comparison.png" />
+      <AppImage imagePath="article/content_v1_v2_comparison.png" />
       <table>
         <tr>
           <th>ヘッダー1</th>

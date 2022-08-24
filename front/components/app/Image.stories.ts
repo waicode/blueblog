@@ -4,7 +4,7 @@ export default {
   title: '@components/app/Image',
   component: AppImage,
   args: {
-    imagePath: 'capture/content_v1_v2_comparison.png',
+    imagePath: 'article/content_v1_v2_comparison.png',
     alt: '@nuxt/content feature comparison',
   },
   argTypes: {
