@@ -12,10 +12,6 @@ export const OG_IMAGE = 'og:image';
  * 引数のリンクからOGP情報をマウント時に非同期で取得する。
  * 取得できない項目はundefinedが設定される。
  *
- * open-graph-scraperの仕様については以下を参照。
- *
- * https://github.com/jshemas/openGraphScraper
- *
  * @returns OGP情報を格納するオブジェクト
  */
 export default (link: string) => {
