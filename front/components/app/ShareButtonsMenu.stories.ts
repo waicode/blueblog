@@ -2,7 +2,7 @@ import AppShareButtonsMenu from '@/components/app/ShareButtonsMenu.vue';
 import useCss from '@/composables/useCss';
 
 export default {
-  title: '@components/app/AppShareButtonsMenu',
+  title: '@components/app/ShareButtonsMenu',
   component: AppShareButtonsMenu,
   args: {
     pageUrl: 'https://mujiota.com/1372/bulletproof-coffee/',

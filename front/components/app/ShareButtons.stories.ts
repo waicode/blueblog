@@ -1,7 +1,7 @@
 import AppShareButtons from '@/components/app/ShareButtons.vue';
 
 export default {
-  title: '@components/app/AppShareButtons',
+  title: '@components/app/ShareButtons',
   component: AppShareButtons,
   args: {
     pageUrl: 'https://mujiota.com/1372/bulletproof-coffee/',
