@@ -3,7 +3,7 @@ import { DATE_TEXT_TYPE_MAP } from '@/components/app/DateTextComposable';
 import { LinkCardType, LINK_CARD_TYPE_MAP } from '@/components/ba/LinkCardComposable';
 import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
 import useOgp from '@/composables/useOgp';
-import { Article } from '@/store/article';
+import { Article } from '@/components/ba/ArticleComposable';
 import { bemx, getUrlFqdn } from '@/utils/util';
 
 interface LinkCardPropType {
@@ -112,52 +112,54 @@ const className = computed(() =>
 </script>
 
 <template>
-  <div :class="className">
-    <a :href="link" target="_blank" rel="nofollow noopener">
-      <div class="BaLinkCard__Wrapper">
-        <div v-if="props.type === LINK_CARD_TYPE_MAP.RELATED && props.article" class="BaLinkCard__LinkImage">
-          <AppEyeCatchImage :icon="props.article.icon" />
-        </div>
-        <div v-else class="BaLinkCard__LinkImage">
-          <AppImage v-if="imgFileName" :image-path="`link/${imgFileName}`" />
-          <AppImage v-else :url="linkImage" />
-        </div>
-        <div class="BaLinkCard__Contents">
-          <div class="BaLinkCard__TitleNoteWrapper">
-            <div class="BaLinkCard__LinkTitle">
-              <AppText :type="TEXT_SIZE.TITLE2" :color="TEXT_COLOR.NORMAL">{{ linkTitle }}</AppText>
-            </div>
-            <div class="BaLinkCard__LinkNote">
-              <AppText :type="TEXT_SIZE.DESCRIPTION2" :color="TEXT_COLOR.NORMAL">{{ linkDescription }}</AppText>
-            </div>
+  <ClientOnly>
+    <div :class="className">
+      <a :href="link" target="_blank" rel="nofollow noopener">
+        <div class="BaLinkCard__Wrapper">
+          <div v-if="props.type === LINK_CARD_TYPE_MAP.RELATED && props.article" class="BaLinkCard__LinkImage">
+            <AppEyeCatchImage :icon="props.article.icon" />
           </div>
-          <div class="BaLinkCard__Meta">
-            <div class="BaLinkCard__LinkDate">
-              <div v-if="type === LINK_CARD_TYPE_MAP.RELATED && article">
-                <div class="BaArticle__Date">
-                  <span class="BaLinkCard__DatePublished" itemprop="createdAt" :content="article.createdAt">
-                    <AppDateText :date-time-text="article.createdAt" />
-                  </span>
-                  <span
-                    v-if="article.updatedAt != article.createdAt"
-                    class="BaLinkCard__DateUpdated"
-                    itemprop="updatedAt"
-                    :content="article.updatedAt"
-                  >
-                    <AppDateText :type="DATE_TEXT_TYPE_MAP.UPDATED" :date-time-text="article.updatedAt" />
-                  </span>
-                </div>
+          <div v-else class="BaLinkCard__LinkImage">
+            <AppImage v-if="imgFileName" :image-path="`link/${imgFileName}`" />
+            <AppImage v-else :url="linkImage" />
+          </div>
+          <div class="BaLinkCard__Contents">
+            <div class="BaLinkCard__TitleNoteWrapper">
+              <div class="BaLinkCard__LinkTitle">
+                <AppText :type="TEXT_SIZE.TITLE2" :color="TEXT_COLOR.NORMAL">{{ linkTitle }}</AppText>
+              </div>
+              <div class="BaLinkCard__LinkNote">
+                <AppText :type="TEXT_SIZE.DESCRIPTION2" :color="TEXT_COLOR.NORMAL">{{ linkDescription }}</AppText>
               </div>
             </div>
-            <div class="BaLinkCard__LinkDomain">
-              <AppText :type="TEXT_SIZE.DATE1" :color="TEXT_COLOR.NORMAL">{{ linkDomain }}</AppText>
+            <div class="BaLinkCard__Meta">
+              <div class="BaLinkCard__LinkDate">
+                <div v-if="type === LINK_CARD_TYPE_MAP.RELATED && article">
+                  <div class="BaArticle__Date">
+                    <span class="BaLinkCard__DatePublished" itemprop="createdAt" :content="article.createdAt">
+                      <AppDateText :date-time-text="article.createdAt" />
+                    </span>
+                    <span
+                      v-if="article.updatedAt != article.createdAt"
+                      class="BaLinkCard__DateUpdated"
+                      itemprop="updatedAt"
+                      :content="article.updatedAt"
+                    >
+                      <AppDateText :type="DATE_TEXT_TYPE_MAP.UPDATED" :date-time-text="article.updatedAt" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="BaLinkCard__LinkDomain">
+                <AppText :type="TEXT_SIZE.DATE1" :color="TEXT_COLOR.NORMAL">{{ linkDomain }}</AppText>
+              </div>
             </div>
+            <img v-if="aspMeasurementImgLink" border="0" width="1" height="1" :src="aspMeasurementImgLink" alt="" />
           </div>
-          <img v-if="aspMeasurementImgLink" border="0" width="1" height="1" :src="aspMeasurementImgLink" alt="" />
         </div>
-      </div>
-    </a>
-  </div>
+      </a>
+    </div>
+  </ClientOnly>
 </template>
 
 <style lang="scss">
