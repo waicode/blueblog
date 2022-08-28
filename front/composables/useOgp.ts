@@ -23,10 +23,12 @@ export default (link: string) => {
     emojiIcon: undefined,
   });
 
-  // TODO: SSGに対応させる
   const { data } = useLazyFetch(link);
 
   watchEffect(() => {
+    // TODO: SSGに対応させる
+    if (process.server) return;
+
     const doc = domParseFromString(data.value as string);
     const headEls = doc.head.children;
 
