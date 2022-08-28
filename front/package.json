@@ -31,6 +31,7 @@
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-vue": "^9.1.1",
+    "mdast-util-to-hast": "^12.2.1",
     "nuxt": "3.0.0-rc.8",
     "parse-entities": "^4.0.0",
     "postcss-html": "^1.4.1",
