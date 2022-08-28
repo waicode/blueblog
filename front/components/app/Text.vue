@@ -170,7 +170,7 @@ $text-light-gray-color: $gray-b5-color;
     &-tableData1 {
       font-size: $font-size-16px;
       font-style: normal;
-      line-height: $line-height-150;
+      line-height: $line-height-175;
     }
 
     &-date1 {

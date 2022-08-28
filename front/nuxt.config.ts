@@ -56,6 +56,12 @@ export default defineNuxtConfig({
     },
   },
   modules: ['@nuxt/content', '@vueuse/nuxt'],
+  components: [
+    {
+      path: '~/components',
+      global: true,
+    },
+  ],
   content: {
     highlight: {
       theme: 'github-light',
