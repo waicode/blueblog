@@ -8,11 +8,6 @@ $container-desktop-max-width: 1200px;
 $container-bg-color: $bluish-white-color;
 $container-shadow-color: $gray-000-alpha-010-color;
 
-body {
-  font-family: $font-group-normal;
-  background: $main-blue-linear-gradient;
-}
-
 .BaLayoutContainer {
   display: flex;
   flex-direction: row;
