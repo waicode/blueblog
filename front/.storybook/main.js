@@ -5,7 +5,17 @@ const path = require('path');
 
 module.exports = {
   stories: ['../components/**/*.stories.mdx', '../components/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: ['@storybook/addon-essentials'],
+  addons: [
+    '@storybook/addon-essentials',
+    {
+      name: '@storybook/addon-postcss',
+      options: {
+        postcssLoaderOptions: {
+          implementation: require('postcss'),
+        },
+      },
+    },
+  ],
   framework: '@storybook/vue3',
   core: {
     builder: '@storybook/builder-vite',
@@ -40,7 +50,6 @@ module.exports = {
             additionalData: `
               @import "@/assets/styles/_variables.scss";
               @import "@/assets/styles/_mixin.scss";
-              @import "@/assets/styles/global.scss";
             `,
           },
         },

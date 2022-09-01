@@ -1,3 +1,6 @@
+import '@/assets/styles/global.scss';
+import '@/assets/styles/reset.scss';
+
 import { app } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 import NuxtLinkStub from './components/NuxtLinkStub.vue';
