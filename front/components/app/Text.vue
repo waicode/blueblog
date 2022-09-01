@@ -339,11 +339,6 @@ $text-light-gray-color: $gray-b5-color;
       font-family: $font-group-normal;
     }
 
-    &-300 {
-      font-weight: $font-weight-300;
-      font-family: $font-group-normal;
-    }
-
     &-350 {
       font-family: $font-name-noto-sans-cjk-jp-demi-light;
     }

@@ -1,4 +1,5 @@
 import BaArticleList from '@/components/ba/ArticleList.vue';
+import { randomString } from '@/utils/util';
 
 export default {
   title: '@components/ba/ArticleList',
@@ -46,3 +47,8 @@ const Template = (args) => ({
 
 export const Primary = Template.bind({});
 Primary.args = {};
+Primary.parameters = {
+  useState: {
+    value: randomString(),
+  },
+};

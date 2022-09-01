@@ -4,10 +4,12 @@ import '@/assets/styles/reset.scss';
 import { app } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 import NuxtLinkStub from './components/NuxtLinkStub.vue';
-import { useFetchDecorator } from './__mocks__/nuxtMock';
+import ClientOnlyStub from './components/ClientOnlyStub.vue';
+import { useFetchDecorator, useStateDecorator } from './__mocks__/nuxtMock';
 
-// NuxtLinkをスタブ化
+// コンポーネントをスタブ化
 app.component('NuxtLink', NuxtLinkStub);
+app.component('ClientOnly', ClientOnlyStub);
 
 // TODO: composablesの自動読み込みを対応する
 export const decorators = [
@@ -21,4 +23,5 @@ export const decorators = [
     });
   },
   useFetchDecorator,
+  useStateDecorator,
 ];

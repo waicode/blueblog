@@ -29,7 +29,7 @@ const Template = (args) => ({
 export const Primary = Template.bind({});
 Primary.args = {};
 Primary.parameters = {
-  useLazyFetch: {
+  useFetch: {
     data: `
     <head>
       <meta property="og:title" content="完全無欠コーヒーを5年以上飲み続けて確信した効果とおすすめの作り方">
@@ -43,7 +43,7 @@ Primary.parameters = {
 export const External = Template.bind({});
 External.args = {};
 External.parameters = {
-  useLazyFetch: {
+  useFetch: {
     data: `
     <head>
       <meta property="og:title" content="完全無欠コーヒーを5年以上飲み続けて確信した効果とおすすめの作り方">
@@ -78,7 +78,7 @@ Qiita.args = {
   link: 'https://qiita.com/cheez921/items/41b744e4e002b966391a',
 };
 Qiita.parameters = {
-  useLazyFetch: {
+  useFetch: {
     data: `
     <head>
       <meta property="og:title" content="【ES6】 JavaScript初心者でもわかるPromise講座 - Qiita">
@@ -100,7 +100,7 @@ Zenn.args = {
   link: 'https://zenn.dev/oreo2990/articles/280d39a45c203e',
 };
 Zenn.parameters = {
-  useLazyFetch: {
+  useFetch: {
     data: `
     <head>
     <meta property="og:title" content="Webブラウザのレンダリングの仕組みを理解する">

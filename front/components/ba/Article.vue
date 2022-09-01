@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useMediaQuery } from '@vueuse/core';
 import { TEXT_SIZE } from '@/components/app/TextComposable';
 import { DATE_TEXT_TYPE_MAP } from '@/components/app/DateTextComposable';
 import { tabletMediaQuery, phoneMediaQuery } from '@/utils/util';

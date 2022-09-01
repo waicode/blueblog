@@ -1,4 +1,5 @@
 import { Ref } from 'vue';
+import { useState } from '#app';
 import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
 import { getTagSlug } from '@/composables/taxonomies';
 

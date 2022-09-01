@@ -1,10 +1,14 @@
+import { CheerioAPI } from 'cheerio';
 import { useLazyFetch } from '#app';
-import { domParseFromString, getAttributeContent, getAttributeProperty } from '@/utils/util';
+import { domParseFromString } from '@/utils/util';
 
 export const OG_TITLE = 'og:title';
 export const OG_TYPE = 'og:type';
 export const OG_DESCRIPTION = 'og:description';
 export const OG_IMAGE = 'og:image';
+
+const getMetaContent = ($: CheerioAPI, property: string) => $(`head meta[property="${property}"]`).attr('content');
+const getZennEmoji = ($: CheerioAPI) => $('span[class^="Emoji_nativeEmoji__"]').text();
 
 /**
  * ## OGP情報の取得
@@ -22,45 +26,23 @@ export default (link: string) => {
     imageUrl: undefined,
     emojiIcon: undefined,
   });
-
   const { data } = useLazyFetch(link);
 
   watchEffect(() => {
-    // TODO: SSGに対応させる
-    if (process.server) return;
+    if (data.value) {
+      const $ = domParseFromString(data.value as string);
 
-    const doc = domParseFromString(data.value as string);
-    const headEls = doc.head.children;
+      ogp.title = getMetaContent($, 'og:title');
+      ogp.type = getMetaContent($, 'og:type');
+      ogp.description = getMetaContent($, 'og:description');
+      ogp.imageUrl = getMetaContent($, 'og:image');
 
-    Array.from(headEls).map((el: Element) => {
-      const propertyName = getAttributeProperty(el);
-
-      if (!propertyName) return el;
-
-      switch (propertyName) {
-        case OG_TITLE:
-          ogp.title = getAttributeContent(el);
-          break;
-        case OG_TYPE:
-          ogp.type = getAttributeContent(el);
-          break;
-        case OG_DESCRIPTION:
-          ogp.description = getAttributeContent(el);
-          break;
-        case OG_IMAGE:
-          ogp.imageUrl = getAttributeContent(el);
-          break;
-        default:
-      }
-
-      return el;
-    });
-
-    if (link.includes('zenn.dev')) {
-      const emojiIconEl = doc.querySelectorAll(`span[class^="Emoji_nativeEmoji__"]`)[0];
-      if (emojiIconEl) {
-        // Zennの絵文字があれば取得
-        ogp.emojiIcon = emojiIconEl.nodeValue;
+      if (link.includes('zenn.dev')) {
+        const zennEmoji = getZennEmoji($);
+        if (zennEmoji) {
+          // Zennの絵文字があれば取得
+          ogp.emojiIcon = zennEmoji;
+        }
       }
     }
   });

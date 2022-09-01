@@ -1,4 +1,5 @@
 import AppEyeCatchImage from '@/components/app/EyeCatchImage.vue';
+import { randomString } from '@/utils/util';
 
 export default {
   title: '@components/app/EyeCatchImage',
@@ -38,3 +39,8 @@ const Template = (args) => ({
 
 export const Primary = Template.bind({});
 Primary.args = {};
+Primary.parameters = {
+  useState: {
+    value: randomString(),
+  },
+};

@@ -1,25 +1,18 @@
 import { ref } from 'vue';
 let result;
 export function useLazyFetch() {
-  if (result) {
-    return {
-      data: ref(result),
-    };
-  }
+  if (result) return { data: ref(result) };
   result = null;
 }
 
 export async function useFetch() {
-  if (result) {
-    return {
-      data: ref(result),
-    };
-  }
+  if (result) return { data: ref(result) };
   result = null;
 }
 
-export function useState<T>(_, func) {
-  return func();
+export function useState() {
+  if (result) return ref(result);
+  result = null;
 }
 
 export function useRuntimeConfig() {
@@ -35,8 +28,15 @@ export function useRuntimeConfig() {
 }
 
 export function useFetchDecorator(story, { parameters }) {
-  if (parameters && parameters.useLazyFetch) {
-    result = parameters.useLazyFetch.data;
+  if (parameters && parameters.useFetch) {
+    result = parameters.useFetch.data;
+  }
+  return story();
+}
+
+export function useStateDecorator(story, { parameters }) {
+  if (parameters && parameters.useState) {
+    result = parameters.useState.value;
   }
   return story();
 }

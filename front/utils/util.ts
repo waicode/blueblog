@@ -2,6 +2,7 @@ import { UnionToIntersection, ScreamingSnakeCase } from 'type-fest';
 import { upperCase } from 'upper-case';
 import { snakeCase } from 'change-case';
 import { format } from 'date-fns';
+import * as cheerio from 'cheerio';
 
 type UnionToObjectUnion<X extends string> = X extends string ? { [key in ScreamingSnakeCase<X>]: X } : never;
 type UnionToEnumObject<X extends string> = UnionToIntersection<UnionToObjectUnion<X>>;
@@ -324,7 +325,10 @@ export const phoneMediaQuery = () => '(max-width: 579px)';
  * @param data HTMLドキュメントの文字列
  * @returns 構文解析されたHTMLドキュメント
  */
-export const domParseFromString = (data: string) => new DOMParser().parseFromString(data, 'text/html');
+export const domParseFromString = (data: string) => {
+  const doc = cheerio.load(data);
+  return doc;
+};
 
 /**
  * HTML要素のproperty属性値を取得

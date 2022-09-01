@@ -1,6 +1,7 @@
 import BaLogo from '@/components/ba/Logo.vue';
 import { FONT_TYPE_MAP, FONT_WEIGHT_MAP } from '@/composables/useWebFont';
 import useCss from '@/composables/useCss';
+import { randomString } from '@/utils/util';
 
 export default {
   title: '@components/ba/Logo',
@@ -26,7 +27,7 @@ const Template = (args) => ({
   setup() {
     useCss(
       () => `
-        body {
+        #root {
           background: #4B73FF;
         }
       `,
@@ -40,3 +41,8 @@ const Template = (args) => ({
 
 export const Primary = Template.bind({});
 Primary.args = {};
+Primary.parameters = {
+  useState: {
+    value: randomString(),
+  },
+};

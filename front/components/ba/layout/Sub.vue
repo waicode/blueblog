@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { TEXT_SIZE } from '@/components/app/TextComposable';
+import { useArticlesState } from '@/composables/state';
+import { DESCRIPTION_MAP, DESCRIPTION } from '@/composables/descriptions';
 
 // 記事一覧から生成されたドロップダウン用のリストをストアから取得
 const { tagItems, archiveItems } = useArticlesState();
