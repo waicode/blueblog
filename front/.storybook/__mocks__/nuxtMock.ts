@@ -9,6 +9,19 @@ export function useLazyFetch() {
   result = null;
 }
 
+export async function useFetch() {
+  if (result) {
+    return {
+      data: ref(result),
+    };
+  }
+  result = null;
+}
+
+export function useState<T>(_, func) {
+  return func();
+}
+
 export function useRuntimeConfig() {
   return {
     public: {
