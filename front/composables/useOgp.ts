@@ -26,7 +26,7 @@ export default (link: string) => {
     imageUrl: undefined,
     emojiIcon: undefined,
   });
-  const { data } = useLazyFetch(link);
+  const { data } = useLazyFetch(link, { key: link });
 
   watchEffect(() => {
     if (data.value) {

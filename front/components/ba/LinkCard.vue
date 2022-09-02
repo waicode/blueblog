@@ -87,6 +87,7 @@ const linkDescription = ref(props.description);
 const linkImage = ref('');
 
 const ogp = useOgp(props.link);
+
 watchEffect(() => {
   if (props.type === LINK_CARD_TYPE_MAP.RELATED) {
     linkTitle.value = props.article?.title;
@@ -118,10 +119,11 @@ const className = computed(() =>
         <div v-if="props.type === LINK_CARD_TYPE_MAP.RELATED && props.article" class="BaLinkCard__LinkImage">
           <AppEyeCatchImage :icon="props.article.icon" />
         </div>
-        <div v-else class="BaLinkCard__LinkImage">
+        <div v-else-if="imgFileName || linkImage" class="BaLinkCard__LinkImage">
           <AppImage v-if="imgFileName" :image-path="`link/${imgFileName}`" />
           <AppImage v-else :url="linkImage" />
         </div>
+        <div v-else class="BaLinkCard__LinkImage"></div>
         <div class="BaLinkCard__Contents">
           <div class="BaLinkCard__TitleNoteWrapper">
             <div class="BaLinkCard__LinkTitle">
@@ -205,7 +207,7 @@ $link-title-before-bg-color-related: $main-blue-color;
 
   &__LinkImage {
     img {
-      max-width: 400px;
+      width: 400px;
       height: 100%;
       object-fit: cover;
       aspect-ratio: $aspect-ratio-191;
