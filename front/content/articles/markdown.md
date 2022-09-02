@@ -11,11 +11,11 @@ createdAt: '2022-08-27T17:41:00+09:00'
 
 このブログでは`nuxt/content`を使って全ての記事をMarkdownファイルで管理しています。
 
-<BaLinkCard type="external" link="https://content.nuxtjs.org/" title="nuxt/content" description="The file-based CMS for your Nuxt application, powered by Markdown and Vue components." img-file-name="nuxt_content_v2_800x420.png"></BaLinkCard>
+<!-- <BaLinkCard type="external" link="https://content.nuxtjs.org/" title="nuxt/content" description="The file-based CMS for your Nuxt application, powered by Markdown and Vue components." img-file-name="nuxt_content_v2_800x420.png"></BaLinkCard> -->
 
 記事を編集するエディタはVSCodeです。
 
-<BaLinkCard type="external" link="https://azure.microsoft.com/ja-jp/products/visual-studio-code/" img-file-name="vscode_icon_800x420.png"></BaLinkCard>
+<!-- <BaLinkCard type="external" link="https://azure.microsoft.com/ja-jp/products/visual-studio-code/" img-file-name="vscode_icon_800x420.png"></BaLinkCard> -->
 
 基本的にはVSCode経由でマークダウンを編集し、VSCode上またはWebブラウザを使って見た目を確認します。そのため、VSCodeの基本設定や拡張機能を利用する前提でこの記事を書いていきます。
 
@@ -29,7 +29,7 @@ createdAt: '2022-08-27T17:41:00+09:00'
 
 ショートカットや便利なコマンドが有効になる拡張機能です。
 
-<BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one"></BaLinkCard>
+<!-- <BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one"></BaLinkCard> -->
 
 ##### 太字にするショートカット
 
@@ -51,7 +51,7 @@ createdAt: '2022-08-27T17:41:00+09:00'
 
 画像を簡単に挿入できるようになる拡張機能です。
 
-<BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=telesoho.vscode-markdown-paste-image"></BaLinkCard>
+<!-- <BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=telesoho.vscode-markdown-paste-image"></BaLinkCard> -->
 
 #### 画像保存と画像挿入記述をコピペ作業で実現
 
@@ -69,7 +69,7 @@ Markdownファイルに画像を挿入するのは結構手間がかかります
 
 絵文字入力が楽になる拡張機能です。
 
-<BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=bierner.emojisense"></BaLinkCard>
+<!-- <BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=bierner.emojisense"></BaLinkCard> -->
 
 #### 絵文字コードのプレビューと入力補完
 
@@ -89,7 +89,7 @@ Markdownファイルに画像を挿入するのは結構手間がかかります
 
 現在時刻文字列のショートカット入力ができるようになる拡張機能です。
 
-<BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=jsynowiec.vscode-insertdatestring"></BaLinkCard>
+<!-- <BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=jsynowiec.vscode-insertdatestring"></BaLinkCard> -->
 
 #### ISO 8601形式の日付文字列を入力補完
 
@@ -140,7 +140,7 @@ HMRは更新の反映が非常にはやいので、立ち上がっているな�
 
 最後にやりたい事とそれを実現するための操作・機能を表にまとめます。
 
-### Markdownを効率よく書く
+### 「Markdownを効率よく書く」のまとめ
 
 | やりたい事 | 実現するための操作・機能 | 備考 |
 | ------- | ------- | ------- |
@@ -156,7 +156,7 @@ HMRは更新の反映が非常にはやいので、立ち上がっているな�
 | コードブロック | スニペットコードブロック表記を挿入 | VSCodeのスニペットで実現 |
 | 独自コンポーネント | スニペットでコンポーネント表記を挿入 | VSCodeのスニペットで実現 |
 
-### Markdownの見た目を確認する
+### 「Markdownの見た目を確認する」のまとめ
 
 | やりたい事 | 実現するための操作・機能 | 備考 |
 | ------- | ------- | ------- |
