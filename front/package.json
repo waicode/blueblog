@@ -37,6 +37,7 @@
     "nuxt": "3.0.0-rc.8",
     "parse-entities": "^4.0.0",
     "parse5": "^7.1.1",
+    "parse5-htmlparser2-tree-adapter": "^7.0.0",
     "postcss-html": "^1.4.1",
     "prettier": "^2.7.1",
     "sass": "^1.52.2",
