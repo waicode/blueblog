@@ -15,7 +15,7 @@ createdAt: '2022-08-27T17:41:00+09:00'
 
 記事を編集するエディタはVSCodeです。
 
-<!-- <BaLinkCard type="external" link="https://azure.microsoft.com/ja-jp/products/visual-studio-code/" img-file-name="vscode_icon_800x420.png"></BaLinkCard> -->
+<BaLinkCard type="external" link="https://azure.microsoft.com/ja-jp/products/visual-studio-code/" img-file-name="vscode_icon_800x420.png"></BaLinkCard>
 
 基本的にはVSCode経由でマークダウンを編集し、VSCode上またはWebブラウザを使って見た目を確認します。そのため、VSCodeの基本設定や拡張機能を利用する前提でこの記事を書いていきます。
 
