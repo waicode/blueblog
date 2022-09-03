@@ -36,7 +36,6 @@
     "mdast-util-to-hast": "^12.2.1",
     "nuxt": "3.0.0-rc.8",
     "parse-entities": "^4.0.0",
-    "parse5": "^7.1.1",
     "parse5-htmlparser2-tree-adapter": "^7.0.0",
     "postcss-html": "^1.4.1",
     "prettier": "^2.7.1",
@@ -56,6 +55,7 @@
   },
   "dependencies": {
     "change-case": "^4.1.2",
+    "parse5": "^7.1.1",
     "type-fest": "^2.14.0",
     "typescript": "^4.7.4",
     "upper-case": "^2.0.2"
