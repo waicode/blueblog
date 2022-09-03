@@ -101,45 +101,63 @@ const props = withDefaults(defineProps<ShopItemCardPropType>(), {
 
 const runtimeConfig = useRuntimeConfig();
 
-const amazonItemUrl = computed(
-  () => `https://www.amazon.co.jp/dp/${props.amazonItemId}?tag=${runtimeConfig.public.amazonTrackingId}&language=ja_JP`,
+const amazonItemUrl = computed(() =>
+  props.amazonItemId
+    ? `https://www.amazon.co.jp/dp/${props.amazonItemId}?tag=${runtimeConfig.public.amazonTrackingId}&language=ja_JP`
+    : undefined,
 );
-const rakutenProductUrl = computed(
-  () =>
-    `https://hb.afl.rakuten.co.jp/hgc/${runtimeConfig.public.rakutenAffiliateId}/mujiota?pc=https://product.rakuten.co.jp/product/-/${props.rakutenItemId}/&m=http://m.product.rakuten.co.jp/product/${props.rakutenItemId}/`,
+const rakutenProductUrl = computed(() =>
+  props.rakutenItemId
+    ? `https://hb.afl.rakuten.co.jp/hgc/${runtimeConfig.public.rakutenAffiliateId}/mujiota?pc=https://product.rakuten.co.jp/product/-/${props.rakutenItemId}/&m=http://m.product.rakuten.co.jp/product/${props.rakutenItemId}/`
+    : undefined,
 );
-const amazonSearchUrl = computed(
-  () =>
-    `https://www.amazon.co.jp/s?k=${props.searchKeyword}&__mk_ja_JP=カタカナ&tag=${runtimeConfig.public.amazonTrackingId}`,
+const amazonSearchUrl = computed(() =>
+  props.searchKeyword
+    ? encodeURI(
+        `https://www.amazon.co.jp/s?k=${props.searchKeyword}&__mk_ja_JP=カタカナ&tag=${runtimeConfig.public.amazonTrackingId}`,
+      )
+    : undefined,
 );
-const rakutenSearchUrl = computed(
-  () =>
-    `https://hb.afl.rakuten.co.jp/hgc/${runtimeConfig.public.rakutenAffiliateId}/mujiota?pc=https://search.rakuten.co.jp/search/mall/${props.searchKeyword}/?v=2&scid=af_pc_ich_link_urltxt&sc2id=af_101_0_0&m=http://m.rakuten.co.jp/`,
+const rakutenSearchUrl = computed(() =>
+  props.searchKeyword
+    ? encodeURI(
+        `https://hb.afl.rakuten.co.jp/hgc/${runtimeConfig.public.rakutenAffiliateId}/mujiota?pc=https://search.rakuten.co.jp/search/mall/${props.searchKeyword}/?v=2&scid=af_pc_ich_link_urltxt&sc2id=af_101_0_0&m=http://m.rakuten.co.jp/`,
+      )
+    : undefined,
 );
-const yahooSearchUrl = computed(
-  () =>
-    `//ck.jp.ap.valuecommerce.com/servlet/referral?sid=${runtimeConfig.public.yahooValueCommerceSid}&pid=${runtimeConfig.public.yahooValueCommercePid}&vc_url=http://search.shopping.yahoo.co.jp/search?p=${props.searchKeyword}&vcptn=mujiota`,
+const yahooSearchUrl = computed(() =>
+  props.searchKeyword
+    ? encodeURI(
+        `//ck.jp.ap.valuecommerce.com/servlet/referral?sid=${runtimeConfig.public.yahooValueCommerceSid}&pid=${runtimeConfig.public.yahooValueCommercePid}&vc_url=http://search.shopping.yahoo.co.jp/search?p=${props.searchKeyword}&vcptn=mujiota`,
+      )
+    : undefined,
 );
 const yahooAspImgUrl = computed(
   () =>
     `//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=${runtimeConfig.public.yahooValueCommerceSid}&pid=${runtimeConfig.public.yahooValueCommercePid}`,
 );
 
-const amazonBookUrl = computed(
-  () => `https://www.amazon.co.jp/exec/obidos/asin/${props.amazonItemId}/${runtimeConfig.public.amazonTrackingId}/`,
+const amazonBookUrl = computed(() =>
+  props.amazonItemId
+    ? `https://www.amazon.co.jp/exec/obidos/asin/${props.amazonItemId}/${runtimeConfig.public.amazonTrackingId}/`
+    : undefined,
 );
 
-const kindleUrl = computed(
-  () => `https://www.amazon.co.jp/exec/obidos/ASIN/${props.kindleItemId}/${runtimeConfig.public.amazonTrackingId}/`,
+const kindleUrl = computed(() =>
+  props.kindleItemId
+    ? `https://www.amazon.co.jp/exec/obidos/ASIN/${props.kindleItemId}/${runtimeConfig.public.amazonTrackingId}/`
+    : undefined,
 );
 
-const rakutenBookUrl = computed(
-  () =>
-    `https://hb.afl.rakuten.co.jp/hgc/${runtimeConfig.public.rakutenAffiliateId}/mujiota?pc=http://books.rakuten.co.jp/rb/${props.rakutenItemId}/?scid=af_ich_link_urltxt&m=http://m.rakuten.co.jp/ev/book/`,
+const rakutenBookUrl = computed(() =>
+  props.rakutenItemId
+    ? `https://hb.afl.rakuten.co.jp/hgc/${runtimeConfig.public.rakutenAffiliateId}/mujiota?pc=http://books.rakuten.co.jp/rb/${props.rakutenItemId}/?scid=af_ich_link_urltxt&m=http://m.rakuten.co.jp/ev/book/`
+    : undefined,
 );
-const koboUrl = computed(
-  () =>
-    `http://hb.afl.rakuten.co.jp/hgc/${runtimeConfig.public.rakutenAffiliateId}/mujiota?pc=https://books.rakuten.co.jp/rk/${props.koboItemId}/?scid=af_ich_link_urltxt&m=http://m.rakuten.co.jp/ev/book/`,
+const koboUrl = computed(() =>
+  props.koboItemId
+    ? `http://hb.afl.rakuten.co.jp/hgc/${runtimeConfig.public.rakutenAffiliateId}/mujiota?pc=https://books.rakuten.co.jp/rk/${props.koboItemId}/?scid=af_ich_link_urltxt&m=http://m.rakuten.co.jp/ev/book/`
+    : undefined,
 );
 
 const titleLink = computed(() => {
