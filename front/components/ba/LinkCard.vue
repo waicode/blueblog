@@ -214,7 +214,8 @@ $link-title-before-bg-color-related: $main-blue-color;
 
   &__LinkImage {
     img {
-      width: 400px;
+      min-width: 240px;
+      max-width: 240px;
       height: 100%;
       object-fit: cover;
       aspect-ratio: $aspect-ratio-191;
@@ -223,7 +224,8 @@ $link-title-before-bg-color-related: $main-blue-color;
     }
 
     .AppEyeCatchImage {
-      width: 400px;
+      min-width: 240px;
+      max-width: 240px;
       height: 100%;
       border-top-left-radius: $border-radius4;
       border-bottom-left-radius: $border-radius4;
@@ -238,13 +240,15 @@ $link-title-before-bg-color-related: $main-blue-color;
       margin-left: $scale12;
 
       img {
-        width: 200px;
+        min-width: 200px;
+        max-width: 200px;
         height: auto;
         border-radius: $border-radius2;
       }
 
       .AppEyeCatchImage {
-        width: 200px;
+        min-width: 200px;
+        max-width: 200px;
         height: auto;
         border-radius: $border-radius2;
       }
@@ -253,12 +257,14 @@ $link-title-before-bg-color-related: $main-blue-color;
       margin: 0 0 $scale12;
 
       img {
-        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
         border-radius: $border-radius4 $border-radius4 $border-radius1 $border-radius1;
       }
 
       .AppEyeCatchImage {
-        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
         border-radius: $border-radius4 $border-radius4 $border-radius1 $border-radius1;
       }
     }

@@ -1,45 +1,47 @@
 ---
-title: Markdownのブログ記事をVSCodeで効率よく書くための備忘録
-description: 「VSCodeでいかに効率良くマークダウンの記事を書くか」はこの技術ブログの生産性に大きく関わるので、Markdownファイル(.md)を快適に見る・書くためのTipsをまとめます。
+title: Markdownのブログ記事をVSCodeで効率良く書くための備忘録
+description: この技術ブログの生産性は「VSCodeでいかに効率良くマークダウンを書けるか」にかかっています。Markdownファイル(.md)を効率良く書いて、その見た目を速やかに確認するTipsをまとめます。
 icon: tabler:markdown
 category: 開発環境
 tags: ['開発環境']
-createdAt: '2022-08-27T17:41:00+09:00'
+createdAt: '2022-09-04T23:24:24+09:00'
 ---
 
-## 見た目が確認できないMarkdownを使う理由
+## すぐに見た目を確認できればMarkdownが最強である
 
 そもそもMarkdownがあまり好きではありません。過去にアウトライナーアプリも試したことがありますが、どうもしっくり来ませんでした。
 
-テキスト編集は最終的な見た目と一緒に確認したい派なので、**見たものがそのま出力されるエディタ**の方が圧倒的に好みです。NotionやSlackの最近のUIアップデートを見ても、トレンドは「WYSIWYG（ウィジウィグ：What You See Is What You Get）」だと思います。
+テキスト編集は最終的な見た目と一緒に確認したい派なので、自由に使えるなら見たものがそのま出力されるエディタの方が圧倒的に好みです。NotionやSlackの最近のUIアップデートを見ても、トレンドは「WYSIWYG（ウィジウィグ：What You See Is What You Get）」だと思います。
 
-それでもMarkdownを使い続ける理由は、**構造をプログラミングして扱えるエコシステムが整っているから**です。マークダウンは簡単に「書き下せる」軽量なマークアップ言語。あくまでもマークアップ言語なので、マークアップしながら統一的なルールを敷いて文章を書く技術ブログにおいては、マークダウン以上に生産性を上げられる選択肢は、今のところないと思います。
+それでもMarkdownを使う理由は、**構造をプログラミングで取り扱えるエコシステムが整っているから**です。マークダウンは簡単に「書き下せる」軽量なマークアップ言語。あくまでもマークアップ言語なので、マークアップしながら統一的なルールを敷いて文章を書くこの技術ブログにおいては、マークダウン以外の選択肢は無いと思います。
 
-コードと一緒に文章を書く効率を最大化するマークダウンをWYSIWYGに負けないようにするためには、エディタ上の更新を速やかに・最終的な見た目そのままにプレビューする仕組みが必要不可欠です。
+マークダウンをWYSIWYGに負けないようにするためには、**エディタ上の更新を速やかに・最終的な見た目そのままにプレビューする仕組み**が必要不可欠です。
 
 ## 前提はVSCodeを使うこと
 
 記事を編集するエディタはVSCodeです。
 
-<BaLinkCard type="external" link="https://azure.microsoft.com/ja-jp/products/visual-studio-code/" img-file-name="vscode_icon_800x420.png"></BaLinkCard>
+<BaLinkCard type="external" link="https://azure.microsoft.com/ja-jp/products/visual-studio-code/" img-file-name="vscode_icon_480x252.png"></BaLinkCard>
 
-基本的にはVSCode経由でマークダウンを編集し、VSCode上またはWebブラウザを使って見た目を確認します。そのため、VSCodeの基本設定や拡張機能を利用する前提でこの記事を書いていきます。
+基本的にはVSCode経由でマークダウンを編集し、VSCode上またはWebブラウザを使って見た目を確認します。そのため、**VSCodeの基本設定や拡張機能を利用する前提**でこの記事を書いていきます。
 
 ## Markdownを効率よく書く
 
 ### 書くための拡張機能を入れる
 
-そもそもMarkdownとは事前に取り決められた文章の書き方の定義です。この定義に則った効率化のために、自分でコードを書くのはもったいないので、VSCodeの拡張機能を使います。
+そもそもMarkdownとは事前に取り決められた文章の書き方の定義です。すでに用意してある定義の効率化のために自分でコードを書くのは時間がもったいないので、VSCodeの拡張機能を使います。
 
 #### Markdown All in One
 
 ショートカットや便利なコマンドが有効になる拡張機能です。
 
-<!-- <BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one"></BaLinkCard> -->
+<BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one" img-file-name="markdown_all_in_one_480x252.png"></BaLinkCard>
 
 ##### 太字にするショートカット
 
 リッチテキストの編集ができるエディタでは定番の太字です。テキストを選択した状態でMacなら`⌘`+`b`、Windowsなら`Ctrl`+`b`で太字になります。
+
+![太字にする](https://i.gyazo.com/f390399598f812a288bf3da76bdfd423.gif)
 
 他に見出しや取り消しなどのショートカットも用意されていますが、太字しか使っていません。見出しはよく使いますが`#`の増減なので、ショートカットコマンドを覚えずとも直接テキスト編集すれば十分です。
 
@@ -47,9 +49,13 @@ createdAt: '2022-08-27T17:41:00+09:00'
 
 リスト入力した状態で改行すると、連続入力ができます。インデントも考慮されます。
 
+![リストを連続入力](https://i.gyazo.com/b10fabc73548c08639036fd35534a2ad.gif)
+
 ##### テキスト選択状態でURLをコピペすると自動でリンク表示に変換
 
 テキストを選択した状態でクリップボードにコピーされたリンク（URL形式の文字列）を貼り付けると、自動でリンク表記に変換してくれます。
+
+![自動でリンク表示変換](https://i.gyazo.com/8a2787336abbaedde4612d677b2b1a4a.gif)
 
 他にも、見出しのナンバリングや目次作成などの機能もありますが、このブログにおいてはスタイルやアプリで出力すべき内容なので使っていません。その他の機能はコマンドパレットで「Markdown All in One:」から呼び出せます。
 
@@ -57,13 +63,15 @@ createdAt: '2022-08-27T17:41:00+09:00'
 
 画像を簡単に挿入できるようになる拡張機能です。
 
-<!-- <BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=telesoho.vscode-markdown-paste-image"></BaLinkCard> -->
+<BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=telesoho.vscode-markdown-paste-image" img-file-name="markdown_paste_image_480x252.png"></BaLinkCard>
 
 #### 画像保存と画像挿入記述をコピペ作業で実現
 
-Markdownファイルに画像を挿入するのは結構手間がかかります。事前に画像を格納しておいて、その画像ファイルへのパスを代替テキストと共に指定しなければなりません。この面倒な作業をコピペ作業で実現できる拡張機能です。
+Markdownファイルに画像を挿入するのは結構手間がかかります。事前に画像を格納しておいて、その画像ファイルへのパスを代替テキストと共に指定しなければなりません。この面倒な作業をコピペで実現できる拡張機能です。
 
 画像ファイルをコピーした状態でMacでは`⌘`+`alt`+`v`、Windowsなら`Ctrl`+`alt`+`v`で「指定フォルダへの画像保存」と「Markdownファイルへの画像挿入記述」を同時にやってくれます。画像を多用する記事では、無いとやってられないくらいに重宝します。
+
+![画像を保存して挿入](https://i.gyazo.com/30e283669b350b15fd7777950676f094.gif)
 
 画像の保存先は設定で変更できます。このブログではNuxtのassets配下（`front/assets/images/article`）を指定しています。例外的にこのフォルダ以外に格納する際には、一度コピペしたあとに手動でパスを直しています。
 
@@ -75,7 +83,7 @@ Markdownファイルに画像を挿入するのは結構手間がかかります
 
 絵文字入力が楽になる拡張機能です。
 
-<!-- <BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=bierner.emojisense"></BaLinkCard> -->
+<BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=bierner.emojisense" img-file-name="emojisense_480x252.png"></BaLinkCard>
 
 #### 絵文字コードのプレビューと入力補完
 
@@ -89,17 +97,23 @@ Markdownファイルに画像を挿入するのは結構手間がかかります
 
 `:`を入力すると一般的な絵文字入力で使われるUnicode絵文字が絵文字コード付きで入力補完されます。たとえば「😀」を入力したい場合は`:grinning:`の選択肢を選びます。
 
+![絵文字を:で入力補完](https://i.gyazo.com/c31228fcd494bb11a29e771a86e950dc.gif)
+
 さらにMacでは`⌘`+`i`、Windowsでは`Ctrl`+`i`でUnicode絵文字ピッカーが使えます。少しややこしいですが、絵文字コードで入力したい絵文字を検索して、そのままUnicode絵文字が入力できます。
+
+![絵文字ピッカーで入力補完](https://i.gyazo.com/f25bf976d6d65999018cef03b76b518e.gif)
 
 ### Insert Date String
 
 現在時刻文字列のショートカット入力ができるようになる拡張機能です。
 
-<!-- <BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=jsynowiec.vscode-insertdatestring"></BaLinkCard> -->
+<BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=jsynowiec.vscode-insertdatestring" img-file-name="insert_date_string_480x252.png"></BaLinkCard>
 
 #### ISO 8601形式の日付文字列を入力補完
 
 日付文字列をショートカットで入力できるようになります。対応するショートカットはMacでは`⌘`+`Shift`+`i`、Windowsでは`Ctrl`+`Shift`+`i`です。
+
+![日付文字列をショートカット入力](https://i.gyazo.com/ef51096d03b00e46f6d5d787f93f9c2d.gif)
 
 注意点としてショートカットキーの競合するとうまく動かなくなります。1つ前に説明した:emojisense:の絵文字Picker表示のショートカットと競合（`⌘`+`Shift`+`i`にも`⌘`+`i`と同じ絵文字Pickerが割り当てられている）するので、こちらを使いたい場合はVSCodeのショートカットキー設定から:emojisense:のキーバインドを削除またはしてください。
 
@@ -124,9 +138,15 @@ VSCodeの拡張機能とスニペット登録を組み合わせることで、�
 
 ### コマンドパレットから「Markdown:プレビューを横に」
 
-単純にプレビューを表示する場合はVSCodeの基本機能で実現できます。コマンドパレットから「Markdown:プレビューを横に（Markdown Open Preview to the Side）」を選択します。
+単純にプレビューを表示する場合はVSCodeの基本機能で実現できます。
+
+コマンドパレットから「Markdown:プレビューを横に（Markdown Open Preview to the Side）」を選択します。
+
+![Markdown:プレビューを横に](article/markdown_preview_to_the_side.png)
 
 プレビューの場合、ファイルを保存する前でもリアルタイムで更新されます。
+
+![プレビューはリアルタイム反映](https://i.gyazo.com/954821775738de048fe99dc736bb9b31.gif)
 
 ### HMRで保存と同時にブラウザで確認
 
@@ -134,17 +154,19 @@ VSCodeの拡張機能とスニペット登録を組み合わせることで、�
 
 前提として、このブログではNuxt3と`nuxt/content`を使って全ての記事をMarkdownファイルで管理しています。
 
-<!-- <BaLinkCard type="external" link="https://content.nuxtjs.org/" title="nuxt/content" description="The file-based CMS for your Nuxt application, powered by Markdown and Vue components." img-file-name="nuxt_content_v2_800x420.png"></BaLinkCard> -->
+<BaLinkCard type="external" link="https://content.nuxtjs.org/" title="nuxt/content" description="The file-based CMS for your Nuxt application, powered by Markdown and Vue components." img-file-name="nuxt_content_v2_480x252.png"></BaLinkCard>
 
-Nuxt3（正確にはVite）の場合は、HMR（Hot module replacement）と呼ばれるホットリロード機能が強力です。devモードでブログを立ち上げて、該当のページをWebブラウザで横に並べて表示しておけば、ファイル保存と同時に見た目が反映されます。
+Nuxt3（正確にはVite）の場合、HMR（Hot module replacement）と呼ばれるホットリロード機能が強力です。devモードでブログを立ち上げて、該当のページをWebブラウザで横に並べて表示しておけば、ファイル保存と同時に見た目が反映されます。
+
+![HMRで見た目をすぐ確認](https://i.gyazo.com/17fb40373d9075d5dd8bc7a6e9c2fc3a.gif)
 
 最終的な見た目をファイル保存のタイミングで確認できるので、これが一番便利です。
 
 ### HMRで確認しているときはプレビュー表示はほぼ見ない
 
-Markdownを書くときはVSCodeを分割してプレビュー表示を左に、さらにその左にWebブラウザを並べてどちらも確認できるようにしています。
+Markdownを書くときはVSCodeを分割してプレビュー表示を右に、さらにその右側にWebブラウザを並べてどちらも確認できるようにしています。
 
-HMRは更新の反映が非常にはやいので、立ち上がっているなら正直こちらだけで十分です。HMR確認の唯一の手間は、一度devモードでNuxtを立ち上げてブラウザで該当ページを表示させる必要があることです。
+HMRは更新の反映が非常にはやいので、**開発モードで立ち上がっているなら正直こちらだけで十分**です。HMR確認の唯一の手間は、一度devモードでNuxtを立ち上げてブラウザで該当ページを表示させる必要があることです。
 
 そのため、最初はプレビュー表示で書いて、途中からHMR確認する流れで書くこともあります。別の作業ですでにdevモードでブログが確認できる場合は、プレビューは表示させずにそのままブラウザで確認します。
 

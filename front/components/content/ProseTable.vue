@@ -1,16 +1,23 @@
 <template>
-  <table class="ContentProseTable">
-    <slot />
-  </table>
+  <div class="ContentProseTable">
+    <table class="ContentProseTable__Table">
+      <slot />
+    </table>
+  </div>
 </template>
 
 <style lang="scss">
-table.ContentProseTable {
+.ContentProseTable {
+  display: flex;
+  justify-content: center;
   margin-bottom: $scale32;
-  width: auto;
-  border-collapse: collapse;
-  word-break: normal;
-  display: block;
-  overflow: auto;
+
+  &__Table {
+    width: auto;
+    border-collapse: collapse;
+    word-break: normal;
+    display: block;
+    overflow: auto;
+  }
 }
 </style>
