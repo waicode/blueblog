@@ -273,7 +273,7 @@ export const unescapedHtml = (html: string) => {
  * @param str 文字列
  * @returns 判定結果
  */
-export const isExternalUrl = (str: string) => /^https?:\/\/*$/g.test(str);
+export const isExternalUrl = (str: string) => /^https?:\/\/.+$/g.test(str);
 
 /**
  * 文字列が数字かどうかを判定
