@@ -1,11 +1,15 @@
 import { Ref } from 'vue';
+import { CheerioAPI } from 'cheerio';
 import { useLazyFetch } from '#app';
-import { domParseFromString, getAttributeContent, getAttributeProperty, unescapedHtml } from '@/utils/util';
+import { domParseFromString } from '@/utils/util';
 
 export const OG_TITLE = 'og:title';
 export const OG_TYPE = 'og:type';
 export const OG_DESCRIPTION = 'og:description';
 export const OG_IMAGE = 'og:image';
+
+const getMetaContent = ($: CheerioAPI, property: string) => $(`head meta[property="${property}"]`).attr('content');
+const getZennEmoji = ($: CheerioAPI) => $('span[class^="Emoji_nativeEmoji__"]').text();
 
 /**
  * OGP情報の型
@@ -38,41 +42,18 @@ export default (link: string | Ref<string>) => {
   const { data } = useLazyFetch(unref(link), { key: unref(link) });
 
   if (data.value) {
-    const doc = domParseFromString(data.value as string);
-    const headEls = doc.getElementsByTagName('head')[0].childNodes;
+    const $ = domParseFromString(data.value as string);
 
-    Array.from(headEls).map((el: Element) => {
-      const propertyName = getAttributeProperty(el);
-
-      if (!propertyName) return el;
-
-      switch (propertyName) {
-        case OG_TITLE:
-          ogp.value.title = unescapedHtml(getAttributeContent(el));
-          break;
-        case OG_TYPE:
-          ogp.value.type = unescapedHtml(getAttributeContent(el));
-          break;
-        case OG_DESCRIPTION:
-          ogp.value.description = unescapedHtml(getAttributeContent(el));
-          break;
-        case OG_IMAGE:
-          ogp.value.imageUrl = unescapedHtml(getAttributeContent(el));
-          break;
-        default:
-      }
-
-      return el;
-    });
-
-    // TODO: Hydration node mismatcを消すところから
+    ogp.value.title = getMetaContent($, 'og:title');
+    ogp.value.type = getMetaContent($, 'og:type');
+    ogp.value.description = getMetaContent($, 'og:description');
+    ogp.value.imageUrl = getMetaContent($, 'og:image');
 
     if (unref(link).includes('zenn.dev')) {
-      // TODO: like検索未対応、追って別ライブラリに変える
-      const emojiIconEl = doc.getElementsByClassName('Emoji_nativeEmoji__')[0];
-      if (emojiIconEl) {
+      const zennEmoji = getZennEmoji($);
+      if (zennEmoji) {
         // Zennの絵文字があれば取得
-        ogp.value.emojiIcon = emojiIconEl.nodeValue;
+        ogp.value.emojiIcon = zennEmoji;
       }
     }
   }
