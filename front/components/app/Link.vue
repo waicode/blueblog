@@ -26,7 +26,7 @@ defineProps<LinkPropType>();
       <NuxtLink v-if="isExternalUrl(to)" :to="to" target="_blank" rel="noopener">
         <slot />
       </NuxtLink>
-      <NuxtLink v-else :to="to" rel="noopener">
+      <NuxtLink v-else :to="to" rel="noopener" :external="true">
         <slot />
       </NuxtLink>
     </template>
@@ -34,7 +34,7 @@ defineProps<LinkPropType>();
       <NuxtLink v-if="isExternalUrl(href)" :href="href" target="_blank" rel="noopener">
         <slot />
       </NuxtLink>
-      <NuxtLink v-else :href="href" rel="noopener">
+      <NuxtLink v-else :href="href" rel="noopener" :external="true">
         <slot />
       </NuxtLink>
     </template>
