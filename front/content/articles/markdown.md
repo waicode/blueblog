@@ -7,7 +7,7 @@ tags: ['開発環境']
 createdAt: '2022-08-27T17:41:00+09:00'
 ---
 
-## 好みでないMarkdownを使う理由
+## 見た目が確認できないMarkdownを使う理由
 
 そもそもMarkdownがあまり好きではありません。過去にアウトライナーアプリも試したことがありますが、どうもしっくり来ませんでした。
 
@@ -21,7 +21,7 @@ createdAt: '2022-08-27T17:41:00+09:00'
 
 記事を編集するエディタはVSCodeです。
 
-<BaLinkCard type="external" link="https://azure.microsoft.com/ja-jp/products/visual-studio-code/" img-file-name="vscode_icon_800x420.png"></BaLinkCard>
+<!-- <BaLinkCard type="external" link="https://azure.microsoft.com/ja-jp/products/visual-studio-code/" img-file-name="vscode_icon_800x420.png"></BaLinkCard> -->
 
 基本的にはVSCode経由でマークダウンを編集し、VSCode上またはWebブラウザを使って見た目を確認します。そのため、VSCodeの基本設定や拡張機能を利用する前提でこの記事を書いていきます。
 
@@ -134,7 +134,7 @@ VSCodeの拡張機能とスニペット登録を組み合わせることで、�
 
 前提として、このブログではNuxt3と`nuxt/content`を使って全ての記事をMarkdownファイルで管理しています。
 
-<BaLinkCard type="external" link="https://content.nuxtjs.org/" title="nuxt/content" description="The file-based CMS for your Nuxt application, powered by Markdown and Vue components." img-file-name="nuxt_content_v2_800x420.png"></BaLinkCard>
+<!-- <BaLinkCard type="external" link="https://content.nuxtjs.org/" title="nuxt/content" description="The file-based CMS for your Nuxt application, powered by Markdown and Vue components." img-file-name="nuxt_content_v2_800x420.png"></BaLinkCard> -->
 
 Nuxt3（正確にはVite）の場合は、HMR（Hot module replacement）と呼ばれるホットリロード機能が強力です。devモードでブログを立ち上げて、該当のページをWebブラウザで横に並べて表示しておけば、ファイル保存と同時に見た目が反映されます。
 
