@@ -262,6 +262,10 @@ $text-light-gray-color: $gray-b5-color;
       font-style: normal;
       line-height: $line-height-167;
       font-family: $font-name-noto-sans-cjk-jp-demi-light;
+      @include phone {
+        font-size: $font-size-16px;
+        line-height: $line-height-175;
+      }
     }
 
     &-copyright {
