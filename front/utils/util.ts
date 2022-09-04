@@ -249,15 +249,31 @@ export const getFileName = (path: string) => path.split('/').reverse()[0].split(
 export const getUrlFqdn = (url: string) => url.match(/^https?:\/{2,}(.*?)(?:\/|\?|#|$)/)[1];
 
 /**
- * 文字列がhttpから始まるURL形式かどうかを判定
+ * HTML特殊文字をアンエスケープ
  *
- * クエリパラメータや日本語を含むURLもマッチする。
+ * 単純に文字列を指定して置換している。不足がある場合は追加すること。
+ *
+ * @param html
+ * @returns アンエスケープされた文字列
+ */
+export const unescapedHtml = (html: string) => {
+  const map = {
+    '&amp;': '&',
+    '&quot;': '"',
+    '&lt;': '<',
+    '&gt;': '>',
+    '&#32;': ' ',
+  };
+  return html.replace(/&(lt|gt|amp|quot|#32);/g, (match) => map[match]);
+};
+
+/**
+ * 文字列がhttpから始まるURL形式かどうかを判定
  *
  * @param str 文字列
  * @returns 判定結果
  */
-export const isExternalUrl = (str: string) =>
-  /https?:\/\/[-_.!~*'()a-zA-Z0-9;/?:@&=+$,%#\u3000-\u30FE\u4E00-\u9FA0\uFF01-\uFFE3]+/g.test(str);
+export const isExternalUrl = (str: string) => /^https?:\/\/*$/g.test(str);
 
 /**
  * 文字列が数字かどうかを判定
@@ -355,4 +371,4 @@ export const getAttributeProperty = (el: Element) => el.getAttribute('property')
  * @param el HTML要素
  * @returns content属性値
  */
-export const getAttributeContent = (el: Element) => el.getAttribute('content');
+export const getAttributeContent = (el: Element) => decodeURI(el.getAttribute('content'));

@@ -1,6 +1,6 @@
 import { Ref } from 'vue';
 import { useLazyFetch } from '#app';
-import { domParseFromString, getAttributeContent, getAttributeProperty } from '@/utils/util';
+import { domParseFromString, getAttributeContent, getAttributeProperty, unescapedHtml } from '@/utils/util';
 
 export const OG_TITLE = 'og:title';
 export const OG_TYPE = 'og:type';
@@ -48,16 +48,16 @@ export default (link: string | Ref<string>) => {
 
       switch (propertyName) {
         case OG_TITLE:
-          ogp.value.title = getAttributeContent(el);
+          ogp.value.title = unescapedHtml(getAttributeContent(el));
           break;
         case OG_TYPE:
-          ogp.value.type = getAttributeContent(el);
+          ogp.value.type = unescapedHtml(getAttributeContent(el));
           break;
         case OG_DESCRIPTION:
-          ogp.value.description = getAttributeContent(el);
+          ogp.value.description = unescapedHtml(getAttributeContent(el));
           break;
         case OG_IMAGE:
-          ogp.value.imageUrl = getAttributeContent(el);
+          ogp.value.imageUrl = unescapedHtml(getAttributeContent(el));
           break;
         default:
       }

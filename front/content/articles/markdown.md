@@ -7,11 +7,17 @@ tags: ['開発環境']
 createdAt: '2022-08-27T17:41:00+09:00'
 ---
 
+## 好みでないMarkdownを使う理由
+
+そもそもMarkdownがあまり好きではありません。過去にアウトライナーアプリも試したことがありますが、どうもしっくり来ませんでした。
+
+テキスト編集は最終的な見た目と一緒に確認したい派なので、**見たものがそのま出力されるエディタ**の方が圧倒的に好みです。NotionやSlackの最近のUIアップデートを見ても、トレンドは「WYSIWYG（ウィジウィグ：What You See Is What You Get）」だと思います。
+
+それでもMarkdownを使い続ける理由は、**構造をプログラミングして扱えるエコシステムが整っているから**です。マークダウンは簡単に「書き下せる」軽量なマークアップ言語。あくまでもマークアップ言語なので、マークアップしながら統一的なルールを敷いて文章を書く技術ブログにおいては、マークダウン以上に生産性を上げられる選択肢は、今のところないと思います。
+
+コードと一緒に文章を書く効率を最大化するマークダウンをWYSIWYGに負けないようにするためには、エディタ上の更新を速やかに・最終的な見た目そのままにプレビューする仕組みが必要不可欠です。
+
 ## 前提はVSCodeを使うこと
-
-このブログでは`nuxt/content`を使って全ての記事をMarkdownファイルで管理しています。
-
-<!-- <BaLinkCard type="external" link="https://content.nuxtjs.org/" title="nuxt/content" description="The file-based CMS for your Nuxt application, powered by Markdown and Vue components." img-file-name="nuxt_content_v2_800x420.png"></BaLinkCard> -->
 
 記事を編集するエディタはVSCodeです。
 
@@ -114,7 +120,7 @@ Markdownファイルに画像を挿入するのは結構手間がかかります
 
 VSCodeの拡張機能とスニペット登録を組み合わせることで、すべての記述を入力補助できます。通常のテキスト以外は、まず何かしら入力補完したうえで書き始めることが可能です。
 
-## Markdownの見た目を確認する
+## Markdownの見た目を速やかに確認する
 
 ### コマンドパレットから「Markdown:プレビューを横に」
 
@@ -124,7 +130,13 @@ VSCodeの拡張機能とスニペット登録を組み合わせることで、�
 
 ### HMRで保存と同時にブラウザで確認
 
-その一方で、プレビューでは記事のスタイルが反映されません。Nuxt3（Vite）の場合は、HMR（Hot module replacement）と呼ばれるホットリロード機能が強力です。devモードでブログを立ち上げて、該当のページをWebブラウザで横に並べて表示しておけば、ファイル保存と同時に見た目が反映されます。
+その一方で、プレビューでは記事のスタイルが反映されません。最終的な見た目を確認するにあたって、プレビューだけでは機能が不足しています。
+
+前提として、このブログではNuxt3と`nuxt/content`を使って全ての記事をMarkdownファイルで管理しています。
+
+<BaLinkCard type="external" link="https://content.nuxtjs.org/" title="nuxt/content" description="The file-based CMS for your Nuxt application, powered by Markdown and Vue components." img-file-name="nuxt_content_v2_800x420.png"></BaLinkCard>
+
+Nuxt3（正確にはVite）の場合は、HMR（Hot module replacement）と呼ばれるホットリロード機能が強力です。devモードでブログを立ち上げて、該当のページをWebブラウザで横に並べて表示しておけば、ファイル保存と同時に見た目が反映されます。
 
 最終的な見た目をファイル保存のタイミングで確認できるので、これが一番便利です。
 
@@ -156,7 +168,7 @@ HMRは更新の反映が非常にはやいので、立ち上がっているな�
 | コードブロック | スニペットコードブロック表記を挿入 | VSCodeのスニペットで実現 |
 | 独自コンポーネント | スニペットでコンポーネント表記を挿入 | VSCodeのスニペットで実現 |
 
-### 「Markdownの見た目を確認する」のまとめ
+### 「Markdownの見た目を速やかに確認する」のまとめ
 
 | やりたい事 | 実現するための操作・機能 | 備考 |
 | ------- | ------- | ------- |
