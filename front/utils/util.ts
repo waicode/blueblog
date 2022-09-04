@@ -249,6 +249,17 @@ export const getFileName = (path: string) => path.split('/').reverse()[0].split(
 export const getUrlFqdn = (url: string) => url.match(/^https?:\/{2,}(.*?)(?:\/|\?|#|$)/)[1];
 
 /**
+ * 文字列がhttpから始まるURL形式かどうかを判定
+ *
+ * クエリパラメータや日本語を含むURLもマッチする。
+ *
+ * @param str 文字列
+ * @returns 判定結果
+ */
+export const isExternalUrl = (str: string) =>
+  /https?:\/\/[-_.!~*'()a-zA-Z0-9;/?:@&=+$,%#\u3000-\u30FE\u4E00-\u9FA0\uFF01-\uFFE3]+/g.test(str);
+
+/**
  * 文字列が数字かどうかを判定
  *
  * 0以上のゼロ埋めなし整数の場合は`true`を返却する。

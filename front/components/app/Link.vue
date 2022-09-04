@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { isExternalUrl } from '@/utils/util';
+
 interface LinkPropType {
   /**
    * 遷移先
@@ -20,9 +22,22 @@ defineProps<LinkPropType>();
 
 <template>
   <span class="AppLink">
-    <NuxtLink :to="to" :href="href" :external="true">
-      <slot />
-    </NuxtLink>
+    <template v-if="to">
+      <NuxtLink v-if="isExternalUrl(to)" :to="to" target="_blank" rel="noopener">
+        <slot />
+      </NuxtLink>
+      <NuxtLink v-else :to="to" rel="noopener">
+        <slot />
+      </NuxtLink>
+    </template>
+    <template v-else>
+      <NuxtLink v-if="isExternalUrl(href)" :href="href" target="_blank" rel="noopener">
+        <slot />
+      </NuxtLink>
+      <NuxtLink v-else :href="href" rel="noopener">
+        <slot />
+      </NuxtLink>
+    </template>
   </span>
 </template>
 
