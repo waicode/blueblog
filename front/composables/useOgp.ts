@@ -1,14 +1,22 @@
-import { CheerioAPI } from 'cheerio';
+import { Ref } from 'vue';
 import { useLazyFetch } from '#app';
-import { domParseFromString } from '@/utils/util';
+import { domParseFromString, getAttributeContent, getAttributeProperty } from '@/utils/util';
 
 export const OG_TITLE = 'og:title';
 export const OG_TYPE = 'og:type';
 export const OG_DESCRIPTION = 'og:description';
 export const OG_IMAGE = 'og:image';
 
-const getMetaContent = ($: CheerioAPI, property: string) => $(`head meta[property="${property}"]`).attr('content');
-const getZennEmoji = ($: CheerioAPI) => $('span[class^="Emoji_nativeEmoji__"]').text();
+/**
+ * OGP情報の型
+ */
+export type OgpType = {
+  title?: string;
+  type?: string;
+  description?: string;
+  imageUrl?: string;
+  emojiIcon?: string;
+};
 
 /**
  * ## OGP情報の取得
@@ -18,34 +26,56 @@ const getZennEmoji = ($: CheerioAPI) => $('span[class^="Emoji_nativeEmoji__"]').
  *
  * @returns OGP情報を格納するオブジェクト
  */
-export default (link: string) => {
-  const ogp = reactive({
+export default (link: string | Ref<string>) => {
+  const ogp = useState<OgpType>(unref(link), () => ({
     title: undefined,
     type: undefined,
     description: undefined,
     imageUrl: undefined,
     emojiIcon: undefined,
-  });
-  const { data } = useLazyFetch(link, { key: link });
+  }));
 
-  watchEffect(() => {
-    if (data.value) {
-      const $ = domParseFromString(data.value as string);
+  const { data } = useLazyFetch(unref(link), { key: unref(link) });
 
-      ogp.title = getMetaContent($, 'og:title');
-      ogp.type = getMetaContent($, 'og:type');
-      ogp.description = getMetaContent($, 'og:description');
-      ogp.imageUrl = getMetaContent($, 'og:image');
+  if (data.value) {
+    const doc = domParseFromString(data.value as string);
+    const headEls = doc.getElementsByTagName('head')[0].childNodes;
 
-      if (link.includes('zenn.dev')) {
-        const zennEmoji = getZennEmoji($);
-        if (zennEmoji) {
-          // Zennの絵文字があれば取得
-          ogp.emojiIcon = zennEmoji;
-        }
+    Array.from(headEls).map((el: Element) => {
+      const propertyName = getAttributeProperty(el);
+
+      if (!propertyName) return el;
+
+      switch (propertyName) {
+        case OG_TITLE:
+          ogp.value.title = getAttributeContent(el);
+          break;
+        case OG_TYPE:
+          ogp.value.type = getAttributeContent(el);
+          break;
+        case OG_DESCRIPTION:
+          ogp.value.description = getAttributeContent(el);
+          break;
+        case OG_IMAGE:
+          ogp.value.imageUrl = getAttributeContent(el);
+          break;
+        default:
+      }
+
+      return el;
+    });
+
+    // TODO: Hydration node mismatcを消すところから
+
+    if (unref(link).includes('zenn.dev')) {
+      // TODO: like検索未対応、追って別ライブラリに変える
+      const emojiIconEl = doc.getElementsByClassName('Emoji_nativeEmoji__')[0];
+      if (emojiIconEl) {
+        // Zennの絵文字があれば取得
+        ogp.value.emojiIcon = emojiIconEl.nodeValue;
       }
     }
-  });
+  }
 
   return ogp;
 };
