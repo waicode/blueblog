@@ -86,38 +86,38 @@ const pageNumbers = computed(() => {
 
 <template>
   <nav class="AppPagination" role="navigation" aria-label="pagination">
-    <a
+    <AppLink
       :disabled="targetPage === firstPageCount ? `disabled` : undefined"
       class="AppPagination__Previous"
       :tabindex="targetPage === firstPageCount ? undefined : `0`"
       @click="goPreviousPage()"
       ><AppText :type="TEXT_SIZE.PAGINATION1" :color="TEXT_COLOR.BLUE_BLACK"
         ><Icon icon="fa6-solid:chevron-left" /></AppText
-    ></a>
-    <a
+    ></AppLink>
+    <AppLink
       :disabled="targetPage === lastPageCount ? `disabled` : undefined"
       class="AppPagination__Next"
       :tabindex="targetPage === lastPageCount ? undefined : `0`"
       @click="goNextPage()"
       ><AppText :type="TEXT_SIZE.PAGINATION1" :color="TEXT_COLOR.BLUE_BLACK"
         ><Icon icon="fa6-solid:chevron-right" /></AppText
-    ></a>
+    ></AppLink>
     <ul class="AppPagination__List">
       <li v-for="(pageNumber, index) in pageNumbers" :key="index">
-        <a
+        <AppLink
           v-if="pageNumber && targetPage === pageNumber"
           class="AppPagination__Link AppPagination__Link--isCurrent"
           :aria-label="`${pageNumber}ページ`"
           aria-current="page"
-          ><AppText :type="TEXT_SIZE.PAGINATION1" :color="TEXT_COLOR.WHITE">{{ pageNumber }}</AppText></a
+          ><AppText :type="TEXT_SIZE.PAGINATION1" :color="TEXT_COLOR.WHITE">{{ pageNumber }}</AppText></AppLink
         >
-        <a
+        <AppLink
           v-else-if="pageNumber && targetPage !== pageNumber"
           class="AppPagination__Link"
           :aria-label="`${pageNumber}ページへ`"
           tabindex="0"
           @click="setPage(pageNumber)"
-          ><AppText :type="TEXT_SIZE.PAGINATION1" :color="TEXT_COLOR.BLUE_BLACK">{{ pageNumber }}</AppText></a
+          ><AppText :type="TEXT_SIZE.PAGINATION1" :color="TEXT_COLOR.BLUE_BLACK">{{ pageNumber }}</AppText></AppLink
         >
         <span v-else class="AppPagination__Ellipsis"
           ><AppText :type="TEXT_SIZE.PAGINATION1" :color="TEXT_COLOR.LIGHT_GRAY">&hellip;</AppText></span

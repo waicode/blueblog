@@ -59,13 +59,13 @@ if (process.client) {
     </div>
     <div class="AppDropdown__DropdownMenu" :class="{ 'AppDropdown__DropdownMenu--isActive': isActive }" role="menu">
       <div class="AppDropdown__DropdownContent">
-        <NuxtLink
+        <AppLink
           v-for="item in items"
           :key="item.label"
           class="AppDropdown__DropdownItem"
           :to="item.path"
           @click="toggle"
-          ><AppText :type="TEXT_SIZE.BODY1">{{ item.label }}({{ item.count }})</AppText></NuxtLink
+          ><AppText :type="TEXT_SIZE.BODY1">{{ item.label }}({{ item.count }})</AppText></AppLink
         >
       </div>
     </div>

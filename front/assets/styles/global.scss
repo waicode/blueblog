@@ -6,14 +6,3 @@
   src: url('/fonts/NotoSansJP-DemiLight.woff2') format('woff2'), url('/fonts/NotoSansJP-DemiLight.woff') format('woff');
   font-display: swap;
 }
-
-// TODO: リンクのコンポーネント化を検討する
-a {
-  color: $link-blue-color;
-  cursor: pointer;
-  text-decoration: none;
-
-  &:hover {
-    color: $black-color;
-  }
-}

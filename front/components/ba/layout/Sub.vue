@@ -13,18 +13,14 @@ const { tagItems, archiveItems } = useArticlesState();
     <BaSubText title="コンセプト"
       ><AppText :type="TEXT_SIZE.SUB_DESCRIPTION1"
         >{{ DESCRIPTION_MAP[DESCRIPTION.SITE_CONCEPT] }}
-        <NuxtLink to="/about">コンセプトの詳細はこちら</NuxtLink>から。</AppText
+        <AppLink to="/about">コンセプトの詳細はこちら</AppLink>から。</AppText
       ></BaSubText
     >
     <BaSubText title="ストーリーブック"
       ><AppText :type="TEXT_SIZE.SUB_DESCRIPTION1"
-        >このブログの<a href="https://waicode.github.io/blueblog/" target="_blank" rel="noopener"
-          >コンポーネント設計が書かれたStorybook</a
-        >はGithubページに公開されています。<a
-          href="https://www.figma.com/file/5pw5pG3l4d0YJoroP55Ras/blueblog"
-          target="_blank"
-          rel="noopener"
-          >Figmaのデザインカンプ</a
+        >このブログの<AppLink href="https://waicode.github.io/blueblog/">コンポーネント設計が書かれたStorybook</AppLink
+        >はGithubページに公開されています。<AppLink href="https://www.figma.com/file/5pw5pG3l4d0YJoroP55Ras/blueblog"
+          >Figmaのデザインカンプ</AppLink
         >も公開しています。</AppText
       ></BaSubText
     >
@@ -32,41 +28,41 @@ const { tagItems, archiveItems } = useArticlesState();
     <BaSubDropdown title="アーカイブ" label="年月を選択" :items="archiveItems" />
     <BaSubProfile title="Author : waicode">
       <AppText :type="TEXT_SIZE.SUB_DESCRIPTION1"
-        ><a href="https://www.wantedly.com/companies/netprotections" target="_blank" rel="noopener">Net Protections</a>
-        で働くアーキテクト。TechとBusinessの垣根がない開発組織とアーキテクチャを目指して、日々奮闘しています。詳しい<NuxtLink
+        ><AppLink href="https://www.wantedly.com/companies/netprotections">Net Protections</AppLink>
+        で働くアーキテクト。TechとBusinessの垣根がない開発組織とアーキテクチャを目指して、日々奮闘しています。詳しい<AppLink
           to="/me"
-          >プロフィールはこちら</NuxtLink
-        >から。<NuxtLink to="/contact">お問合せはこちら</NuxtLink>から。</AppText
+          >プロフィールはこちら</AppLink
+        >から。<AppLink to="/contact">お問合せはこちら</AppLink>から。</AppText
       >
     </BaSubProfile>
     <BaSubText title="About">
       <ul>
         <li>
-          <NuxtLink to="/about"
+          <AppLink to="/about"
             ><AppText :type="TEXT_SIZE.SUB_LIST1"
               ><Icon icon="tabler:code" class="BaLayoutSub__LogosGithubIcon" /></AppText
-            ><AppText :type="TEXT_SIZE.SUB_LIST1">このブログについて</AppText></NuxtLink
+            ><AppText :type="TEXT_SIZE.SUB_LIST1">このブログについて</AppText></AppLink
           >
         </li>
         <li>
-          <NuxtLink to="/me"
+          <AppLink to="/me"
             ><AppText :type="TEXT_SIZE.SUB_LIST1"
               ><Icon icon="tabler:letter-a" class="BaLayoutSub__LogosGithubIcon" /></AppText
-            ><AppText :type="TEXT_SIZE.SUB_LIST1">プロフィール</AppText></NuxtLink
+            ><AppText :type="TEXT_SIZE.SUB_LIST1">プロフィール</AppText></AppLink
           >
         </li>
         <li>
-          <NuxtLink to="/policy"
+          <AppLink to="/policy"
             ><AppText :type="TEXT_SIZE.SUB_LIST1"
               ><Icon icon="tabler:lock" class="BaLayoutSub__LogosGithubIcon" /></AppText
-            ><AppText :type="TEXT_SIZE.SUB_LIST1">プライバシーポリシー</AppText></NuxtLink
+            ><AppText :type="TEXT_SIZE.SUB_LIST1">プライバシーポリシー</AppText></AppLink
           >
         </li>
         <li>
-          <NuxtLink to="/contact"
+          <AppLink to="/contact"
             ><AppText :type="TEXT_SIZE.SUB_LIST1"
               ><Icon icon="tabler:send" class="BaLayoutSub__LogosGithubIcon" /></AppText
-            ><AppText :type="TEXT_SIZE.SUB_LIST1">お問い合わせ</AppText></NuxtLink
+            ><AppText :type="TEXT_SIZE.SUB_LIST1">お問い合わせ</AppText></AppLink
           >
         </li>
       </ul>
@@ -74,24 +70,24 @@ const { tagItems, archiveItems } = useArticlesState();
     <BaSubText title="Links">
       <ul>
         <li>
-          <a href="https://github.com/waicode/blueblog/" target="_blank" rel="noopener"
+          <AppLink href="https://github.com/waicode/blueblog/"
             ><AppText :type="TEXT_SIZE.SUB_LIST1"
               ><Icon icon="logos:github-icon" class="BaLayoutSub__LogosGithubIcon" /></AppText
-            ><AppText :type="TEXT_SIZE.SUB_LIST1">ソースコード</AppText></a
+            ><AppText :type="TEXT_SIZE.SUB_LIST1">ソースコード</AppText></AppLink
           >
         </li>
         <li>
-          <a href="https://waicode.github.io/blueblog/" target="_blank" rel="noopener"
+          <AppLink href="https://waicode.github.io/blueblog/"
             ><AppText :type="TEXT_SIZE.SUB_LIST1"
               ><Icon icon="logos:storybook-icon" class="BaLayoutSub__LogosStorybookIcon" /></AppText
-            ><AppText :type="TEXT_SIZE.SUB_LIST1">コンポーネントガイド</AppText></a
+            ><AppText :type="TEXT_SIZE.SUB_LIST1">コンポーネントガイド</AppText></AppLink
           >
         </li>
         <li>
-          <a href="https://www.figma.com/file/5pw5pG3l4d0YJoroP55Ras/blueblog" target="_blank" rel="noopener"
+          <AppLink href="https://www.figma.com/file/5pw5pG3l4d0YJoroP55Ras/blueblog"
             ><AppText :type="TEXT_SIZE.SUB_LIST1"
               ><Icon icon="logos:figma" class="BaLayoutSub__LogosFigmaIcon" /></AppText
-            ><AppText :type="TEXT_SIZE.SUB_LIST1">デザインカンプ</AppText></a
+            ><AppText :type="TEXT_SIZE.SUB_LIST1">デザインカンプ</AppText></AppLink
           >
         </li>
       </ul>

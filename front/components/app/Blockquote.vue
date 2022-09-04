@@ -15,9 +15,9 @@ defineProps<BlockquotePropType>();
       <slot />
     </AppText>
     <cite v-if="citeText">
-      <a v-if="citeUrl" href="citeUrl" target="_blank" rel="nofollow noopener">
+      <AppLink v-if="citeUrl" :href="citeUrl">
         <AppText :type="TEXT_SIZE.DESCRIPTION1">{{ citeText }}</AppText>
-      </a>
+      </AppLink>
       <AppText v-else :type="TEXT_SIZE.DESCRIPTION1">{{ citeText }}</AppText>
     </cite>
   </blockquote>

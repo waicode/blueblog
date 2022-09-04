@@ -5,9 +5,9 @@ defineProps<{ id: string }>();
 
 <template>
   <h4 :id="id" class="ContentProseH4">
-    <a :href="`#${id}`">
+    <AppLink :href="`#${id}`">
       <AppText :type="TEXT_SIZE.HEADING4" :color="TEXT_COLOR.NORMAL"><slot /></AppText>
-    </a>
+    </AppLink>
   </h4>
 </template>
 

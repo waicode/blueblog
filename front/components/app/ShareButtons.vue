@@ -28,34 +28,28 @@ const shareUrlPocket = computed(() => `http://getpocket.com/edit?url=${props.pag
     </div>
     <div class="AppShareButtons__ShareIcons">
       <div class="AppShareButtons__Twitter">
-        <a
+        <AppLink
           :href="shareUrlTwitter"
-          target="blank"
-          rel="nofollow noopener"
           onclick="window.open(this.href, 'window', 'width=600, height=400, menubar=no, toolbar=no, scrollbars=yes'); return false;"
           ><SvgPostShareIconTwitter
-        /></a>
+        /></AppLink>
       </div>
       <div class="AppShareButtons__Hatena">
-        <a :href="shareUrlHatena" target="_blank" rel="nofollow noopener"><SvgPostShareIconHatena /></a>
+        <AppLink :href="shareUrlHatena"><SvgPostShareIconHatena /></AppLink>
       </div>
       <div class="AppShareButtons__Facebook">
-        <a
+        <AppLink
           :href="shareUrlFacebook"
-          target="blank"
-          rel="nofollow noopener"
           onclick="window.open(this.href, 'window', 'width=600, height=400, menubar=no, toolbar=no, scrollbars=yes'); return false;"
           ><SvgPostShareIconFacebook
-        /></a>
+        /></AppLink>
       </div>
       <div class="AppShareButtons__Pocket">
-        <a
+        <AppLink
           :href="shareUrlPocket"
-          target="blank"
-          rel="nofollow noopener"
           onclick="window.open(this.href, 'window', 'width=600, height=400, menubar=no, toolbar=no, scrollbars=yes'); return false;"
           ><SvgPostShareIconPocket
-        /></a>
+        /></AppLink>
       </div>
     </div>
   </div>

@@ -117,7 +117,7 @@ const className = computed(() =>
 <template>
   <ClientOnly>
     <div :class="className">
-      <a :href="link" target="_blank" rel="nofollow noopener">
+      <AppLink :href="link" target="_blank" rel="nofollow noopener">
         <div class="BaLinkCard__Wrapper">
           <div v-if="props.type === LINK_CARD_TYPE_MAP.RELATED && props.article" class="BaLinkCard__LinkImage">
             <AppEyeCatchImage :icon="props.article.icon" />
@@ -161,7 +161,7 @@ const className = computed(() =>
             <img v-if="aspMeasurementImgLink" border="0" width="1" height="1" :src="aspMeasurementImgLink" alt="" />
           </div>
         </div>
-      </a>
+      </AppLink>
     </div>
   </ClientOnly>
 </template>

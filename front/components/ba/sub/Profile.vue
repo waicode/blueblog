@@ -27,14 +27,14 @@ defineProps<BaSubProfilePropType>();
     <div class="BaSubProfile__SocialIcons">
       <ul>
         <li class="BaSubProfile__TwitterIcon">
-          <a href="https://twitter.com/waicode37" target="_blank" rel="noopener">
+          <AppLink href="https://twitter.com/waicode37">
             <Icon icon="tabler:brand-twitter" />
-          </a>
+          </AppLink>
         </li>
         <li class="BaSubProfile__GithubIcon">
-          <a href="https://github.com/waicode" target="_blank" rel="noopener">
+          <AppLink href="https://github.com/waicode">
             <Icon icon="tabler:brand-github" />
-          </a>
+          </AppLink>
         </li>
       </ul>
     </div>

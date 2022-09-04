@@ -206,15 +206,15 @@ const className = computed(() =>
   <div :class="className">
     <div class="AppShopItemCard__Wrapper">
       <div v-if="imgFileName" class="AppShopItemCard__ItemImage">
-        <a :href="titleLink" target="_blank" rel="nofollow noopener">
+        <AppLink :href="titleLink">
           <AppImage :image-path="`item/${type}/${imgFileName}`" />
-        </a>
+        </AppLink>
       </div>
       <div class="AppShopItemCard__Contents">
         <div class="AppShopItemCard__TitleWrapper">
           <div class="AppShopItemCard__Title">
-            <a :href="titleLink" target="_blank" rel="nofollow noopener"
-              ><AppText :type="TEXT_SIZE.TITLE2" :color="TEXT_COLOR.NORMAL">{{ title }}</AppText></a
+            <AppLink :href="titleLink"
+              ><AppText :type="TEXT_SIZE.TITLE2" :color="TEXT_COLOR.NORMAL">{{ title }}</AppText></AppLink
             >
           </div>
           <div v-if="shopName" class="AppShopItemCard__ShopName">
@@ -226,18 +226,18 @@ const className = computed(() =>
         </div>
         <div v-if="type === SHOP_ITEM_CARD_TYPE_MAP.GOODS" class="AppShopItemCard__SearchGoodsLinks">
           <div v-if="amazonItemId || searchKeyword" class="AppShopItemCard__ShopLinkAmazon">
-            <a :href="amazonItemId ? amazonItemUrl : amazonSearchUrl" target="_blank" rel="noopener"
-              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">Amazon で探す</AppText></a
+            <AppLink :href="amazonItemId ? amazonItemUrl : amazonSearchUrl"
+              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">Amazon で探す</AppText></AppLink
             >
           </div>
           <div v-if="rakutenItemId || searchKeyword" class="AppShopItemCard__ShopLinkRakuten">
-            <a :href="rakutenItemId ? rakutenProductUrl : rakutenSearchUrl" target="_blank" rel="noopener"
-              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">楽天市場 で探す</AppText></a
+            <AppLink :href="rakutenItemId ? rakutenProductUrl : rakutenSearchUrl"
+              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">楽天市場 で探す</AppText></AppLink
             >
           </div>
           <div v-if="searchKeyword" class="AppShopItemCard__ShopLinkYahoo">
-            <a :href="yahooSearchUrl" target="_blank" rel="noopener"
-              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">Yahoo! で探す</AppText></a
+            <AppLink :href="yahooSearchUrl"
+              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">Yahoo! で探す</AppText></AppLink
             >
             <span>
               <img :src="yahooAspImgUrl" height="1" width="1" border="0" />
@@ -247,23 +247,23 @@ const className = computed(() =>
 
         <div v-else-if="type === SHOP_ITEM_CARD_TYPE_MAP.BOOK" class="AppShopItemCard__SearchBookLinks">
           <div v-if="kindleItemId" class="AppShopItemCard__ShopLinkKindle">
-            <a :href="kindleUrl" target="_blank" rel="noopener"
-              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">Kindle で探す</AppText></a
+            <AppLink :href="kindleUrl"
+              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">Kindle で探す</AppText></AppLink
             >
           </div>
           <div v-if="amazonItemId" class="AppShopItemCard__ShopLinkAmazonBook">
-            <a :href="amazonBookUrl" target="_blank" rel="noopener"
-              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">Amazon で探す</AppText></a
+            <AppLink :href="amazonBookUrl"
+              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">Amazon で探す</AppText></AppLink
             >
           </div>
           <div v-if="koboItemId" class="AppShopItemCard__ShopLinkKobo">
-            <a :href="koboUrl" target="_blank" rel="noopener"
-              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">楽天kobo で探す</AppText></a
+            <AppLink :href="koboUrl"
+              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">楽天kobo で探す</AppText></AppLink
             >
           </div>
           <div v-if="rakutenItemId" class="AppShopItemCard__ShopLinkRakutenBook">
-            <a :href="rakutenBookUrl" target="_blank" rel="noopener"
-              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">楽天市場 で探す</AppText></a
+            <AppLink :href="rakutenBookUrl"
+              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">楽天市場 で探す</AppText></AppLink
             >
           </div>
         </div>

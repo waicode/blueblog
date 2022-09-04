@@ -47,7 +47,7 @@ watchEffect(() => {
 
 <template>
   <article class="BaArticle">
-    <NuxtLink :to="article._path">
+    <AppLink :to="article._path">
       <div class="BaArticle__Wrapper">
         <div class="BaArticle__FirstContents">
           <div class="BaArticle__Eyecatch">
@@ -90,7 +90,7 @@ watchEffect(() => {
           </div>
         </div>
       </div>
-    </NuxtLink>
+    </AppLink>
   </article>
 </template>
 

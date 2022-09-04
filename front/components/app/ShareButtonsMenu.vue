@@ -28,36 +28,28 @@ const shareUrlPocket = computed(() => `http://getpocket.com/edit?url=${props.pag
     </div>
     <div class="AppShareButtonsMenu__ShareIcons">
       <div class="AppShareButtons__Twitter">
-        <a
+        <AppLink
           :href="shareUrlTwitter"
-          target="blank"
-          rel="nofollow noopener"
           onclick="window.open(this.href, 'window', 'width=600, height=400, menubar=no, toolbar=no, scrollbars=yes'); return false;"
           ><SvgPostShareIconTwitter width="22" height="18" fill="#fff"
-        /></a>
+        /></AppLink>
       </div>
       <div class="AppShareButtonsMenu__Hatena">
-        <a :href="shareUrlHatena" target="_blank" rel="nofollow noopener"
-          ><SvgPostShareIconHatena width="22" height="18" fill="#fff"
-        /></a>
+        <AppLink :href="shareUrlHatena"><SvgPostShareIconHatena width="22" height="18" fill="#fff" /></AppLink>
       </div>
       <div class="AppShareButtonsMenu__Facebook">
-        <a
+        <AppLink
           :href="shareUrlFacebook"
-          target="blank"
-          rel="nofollow noopener"
           onclick="window.open(this.href, 'window', 'width=600, height=400, menubar=no, toolbar=no, scrollbars=yes'); return false;"
           ><SvgPostShareIconFacebook width="21" height="19" fill="#fff"
-        /></a>
+        /></AppLink>
       </div>
       <div class="AppShareButtonsMenu__Pocket">
-        <a
+        <AppLink
           :href="shareUrlPocket"
-          target="blank"
-          rel="nofollow noopener"
           onclick="window.open(this.href, 'window', 'width=600, height=400, menubar=no, toolbar=no, scrollbars=yes'); return false;"
           ><SvgPostShareIconPocket width="21" height="21" fill="#fff"
-        /></a>
+        /></AppLink>
       </div>
     </div>
   </div>
