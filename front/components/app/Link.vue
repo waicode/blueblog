@@ -15,6 +15,10 @@ interface LinkPropType {
    * toのエイリアス。toが指定されている場合は無視される。
    */
   href?: string;
+
+  // FIXME: あとでととのえること
+  rel?: string;
+  onclick?: any;
 }
 
 defineProps<LinkPropType>();
@@ -23,18 +27,18 @@ defineProps<LinkPropType>();
 <template>
   <span class="AppLink">
     <template v-if="to">
-      <NuxtLink v-if="isExternalUrl(to)" :to="to" target="_blank">
+      <NuxtLink v-if="isExternalUrl(to)" :to="to" :rel="rel ?? 'noopener'" target="_blank" :onclick="onclick">
         <slot />
       </NuxtLink>
-      <NuxtLink v-else :to="to" rel="noopener" :external="true">
+      <NuxtLink v-else :to="to" :rel="rel ?? 'noopener'" :external="true">
         <slot />
       </NuxtLink>
     </template>
     <template v-else>
-      <NuxtLink v-if="isExternalUrl(href)" :href="href" target="_blank">
+      <NuxtLink v-if="isExternalUrl(href)" :href="href" :rel="rel ?? 'noopener'" target="_blank" :onclick="onclick">
         <slot />
       </NuxtLink>
-      <NuxtLink v-else :href="href" rel="noopener" :external="true">
+      <NuxtLink v-else :href="href" :rel="rel ?? 'noopener'" :external="true">
         <slot />
       </NuxtLink>
     </template>

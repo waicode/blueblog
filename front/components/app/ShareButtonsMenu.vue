@@ -30,16 +30,20 @@ const shareUrlPocket = computed(() => `http://getpocket.com/edit?url=${props.pag
       <div class="AppShareButtons__Twitter">
         <AppLink
           :href="shareUrlTwitter"
+          rel="nofollow noopener"
           onclick="window.open(this.href, 'window', 'width=600, height=400, menubar=no, toolbar=no, scrollbars=yes'); return false;"
           ><SvgPostShareIconTwitter width="22" height="18" fill="#fff"
         /></AppLink>
       </div>
       <div class="AppShareButtonsMenu__Hatena">
-        <AppLink :href="shareUrlHatena"><SvgPostShareIconHatena width="22" height="18" fill="#fff" /></AppLink>
+        <AppLink :href="shareUrlHatena" rel="nofollow noopener"
+          ><SvgPostShareIconHatena width="22" height="18" fill="#fff"
+        /></AppLink>
       </div>
       <div class="AppShareButtonsMenu__Facebook">
         <AppLink
           :href="shareUrlFacebook"
+          rel="nofollow noopener"
           onclick="window.open(this.href, 'window', 'width=600, height=400, menubar=no, toolbar=no, scrollbars=yes'); return false;"
           ><SvgPostShareIconFacebook width="21" height="19" fill="#fff"
         /></AppLink>
@@ -47,6 +51,7 @@ const shareUrlPocket = computed(() => `http://getpocket.com/edit?url=${props.pag
       <div class="AppShareButtonsMenu__Pocket">
         <AppLink
           :href="shareUrlPocket"
+          rel="nofollow noopener"
           onclick="window.open(this.href, 'window', 'width=600, height=400, menubar=no, toolbar=no, scrollbars=yes'); return false;"
           ><SvgPostShareIconPocket width="21" height="21" fill="#fff"
         /></AppLink>
