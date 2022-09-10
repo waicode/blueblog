@@ -34,8 +34,10 @@ module.exports = {
     // TODO: 自動インポートされるように修正
     config.plugins.push(
       Components({
-        dirs: ['../../src/components'],
+        dirs: ['../src/components'],
+        deep: true,
         directoryAsNamespace: true,
+        extensions: ['vue'],
         dts: '.storybook/components.d.ts',
       }),
     );
