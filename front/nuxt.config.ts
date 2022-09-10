@@ -3,6 +3,7 @@ import eslintPlugin from 'vite-plugin-eslint';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  srcDir: 'src/',
   app: {
     head: {
       // タイトル・説明文・画像はページ毎に`useHead`を使って設定すること

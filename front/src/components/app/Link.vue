@@ -18,7 +18,7 @@ interface LinkPropType {
 
   // FIXME: あとでととのえること
   rel?: string;
-  onclick?: any;
+  onclick?: string;
 }
 
 defineProps<LinkPropType>();

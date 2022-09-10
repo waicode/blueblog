@@ -157,11 +157,15 @@ iOSリマインダーベースのTODO管理アプリを個人で開発しまし�
 
 お気に入りの銘柄をいくつか載せておきます。
 
-<AppShopItemCard title="伊勢角屋麦酒 ペールエール 缶 350ml" img-file-name="isekado_paleale_can_350ml_500x500.png" shop-name="伊勢角屋麦酒" search-keyword="伊勢角屋麦酒 ペールエール 缶"></AppShopItemCard>
+::app-link
+---
+to: https://sauna.or.jp/professional/
+---
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+::
 
-<AppShopItemCard title="暁ブルワリー ドラゴンアイ サン 缶 350ml" img-file-name="akatsuki_brewery_dragoneye_sun_can_350ml_500x500.png" shop-name="暁ブルワリー" search-keyword="暁ブルワリー ドラゴンアイ サン 缶"></AppShopItemCard>
+あああ
 
-<AppShopItemCard title="バラストポイント スカルピン IPA 缶 355ml" img-file-name="ballastpoint_sculpin_ipa_can_355ml_500x500.png" shop-name="バラストポイント" search-keyword="バラストポイント スカルピン IPA 缶"></AppShopItemCard>
 
 ### 自作キーボード
 

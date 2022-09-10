@@ -4,7 +4,7 @@ const AutoImport = require('unplugin-auto-import/vite');
 const path = require('path');
 
 module.exports = {
-  stories: ['../components/**/*.stories.mdx', '../components/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../../src/components/**/*.stories.mdx', '../../src/components/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-essentials',
     {
@@ -31,9 +31,10 @@ module.exports = {
       }),
     );
     // Nuxt3のコンポーネント自動インポートをStorybookで再現
+    // TODO: 自動インポートされるように修正
     config.plugins.push(
       Components({
-        dirs: ['components'],
+        dirs: ['../../src/components'],
         directoryAsNamespace: true,
         dts: '.storybook/components.d.ts',
       }),
@@ -56,8 +57,8 @@ module.exports = {
       },
       resolve: {
         alias: {
-          '@': path.resolve(__dirname, '../'),
-          '~': path.resolve(__dirname, '../'),
+          '@': path.resolve(__dirname, '../../src'),
+          '~': path.resolve(__dirname, '../../src'),
         },
       },
     });

@@ -88,11 +88,10 @@ const linkTitle = ref('');
 const linkDescription = ref('');
 const linkImage = ref(undefined);
 
-const ogp = useOgp(link);
-
 linkTitle.value = title.value;
 linkDescription.value = description.value;
 
+const ogp = useOgp(link);
 if (ogp.value) {
   if (props.type === LINK_CARD_TYPE_MAP.RELATED) {
     linkTitle.value = article.value?.title;
