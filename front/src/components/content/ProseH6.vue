@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
+import { TEXT_SIZE } from '@/components/app/TextComposable';
 </script>
 
 <template>
   <h6 class="ContentProseH6">
-    <AppText :type="TEXT_SIZE.HEADING6" :color="TEXT_COLOR.NORMAL"><slot /></AppText>
+    <AppText :type="TEXT_SIZE.HEADING6"><slot /></AppText>
   </h6>
 </template>
 

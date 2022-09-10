@@ -1,5 +1,5 @@
 <script setup lang="ts">
-interface PhotoImagePropType {
+interface PhotoPropType {
   /**
    * 画像パス
    *
@@ -39,15 +39,15 @@ interface PhotoImagePropType {
   caption?: string;
 }
 
-const props = defineProps<PhotoImagePropType>();
+const props = defineProps<PhotoPropType>();
 </script>
 
 <template>
-  <div class="AppPhotoImage">
-    <div class="AppPhotoImage__Image">
+  <div class="AppPhoto">
+    <div class="AppPhoto__Image">
       <AppImage v-bind="props" />
     </div>
-    <div v-if="caption" class="AppPhotoImage__Caption">
+    <div v-if="caption" class="AppPhoto__Caption">
       <AppText>{{ caption }}</AppText>
     </div>
   </div>
@@ -62,11 +62,12 @@ $photo-image-frame-tilt-top: -10px;
 $photo-image-frame-tilt-left: -25px;
 $photo-image-frame-tilt-right: $photo-image-frame-tilt-left;
 $photo-image-frame-tilt-bottom: $photo-image-frame-tilt-top;
-.AppPhotoImage {
+.AppPhoto {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   margin-top: $scale40;
-  margin-bottom: $scale8;
+  margin-bottom: $scale32;
 
   &__Image {
     position: relative;
@@ -97,7 +98,7 @@ $photo-image-frame-tilt-bottom: $photo-image-frame-tilt-top;
     img {
       vertical-align: top;
       filter: sepia(0.25) contrast(1.1) brightness(1.1);
-      border-radius: $border-radius8;
+      border-radius: $border-radius4;
       box-shadow: 0 2px 4px $photo-image-shadow-color;
 
       &::before {
@@ -108,8 +109,7 @@ $photo-image-frame-tilt-bottom: $photo-image-frame-tilt-top;
     }
   }
   &__Caption {
-    padding-top: $scale24;
-    padding-bottom: $scale16;
+    padding-top: $scale8;
     text-align: center;
   }
 }

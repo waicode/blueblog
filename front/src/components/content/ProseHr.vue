@@ -1,6 +1,7 @@
 <template>
   <hr class="ContentProseHr" />
 </template>
+
 <style lang="scss">
 $hr-height: 2px;
 

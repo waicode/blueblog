@@ -306,6 +306,7 @@ $link-title-before-bg-color-related: $main-blue-color;
       margin-right: $scale8;
       font-size: $font-size-10px;
       font-weight: $font-weight-700;
+      line-height: $line-height-143;
       transition: 0.3s ease-in-out;
     }
   }

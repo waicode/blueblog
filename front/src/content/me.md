@@ -9,11 +9,16 @@ createdAt: '2022-08-13T17:49:00.000+09:00'
 
 Net Protectionsでアーキテクトをしています。Net ProtectionsはCreditTech×ティール型組織で「つぎのアタリマエをつくる」ことを目指し、「後払い決済」という新しい仕組みをつくり上げてきたBNPL市場のリーディングカンパニーです。
 
-<BaLinkCard type="external" link="https://corp.netprotections.com/"></BaLinkCard>
+::ba-link-card
+---
+type: external
+link: https://corp.netprotections.com/
+---
+::
 
 このブログではフロントエンドとサーバレスを中心に書いてますが、キャリアにおけるIT経験はかなり雑食です。
 
-Java製独自ミドルウェアに疲弊して、スマホアプリの個人開発をしながらRailsに出会ったときめきは束の間、一人目エンジニアとして決済システムの立ち上げを経験して、その後はフルスタック解体工事とIT組織開発の道へ。
+Java製独自ミドルウェアに疲弊して、スマホアプリの個人開発をしながらRailsに出会ったときめきは束の間。一人目エンジニアとして決済システムの立ち上げを経験して、その後はフルスタック解体工事とIT組織開発の道へ。
 
 現在は、BtoC向け事業を中心に開発プロジェクト推進及びフォローをしながら、TechとBusinessの垣根がない開発組織とアーキテクチャを目指して日々奮闘しています。
 
@@ -27,7 +32,7 @@ Java製独自ミドルウェアに疲弊して、スマホアプリの個人開�
 
 扱う言語はJava。この時代によくあった話ですが、COBOLで書かれた基幹システムを刷新した直後のタイミングでの参画でした。翌日までに遅延なく大量データを配信できるか、すわわち、夜間処理のパフォーマンスが肝だったのでOracle（PL/SQLを含む）をいかに上手く扱うかもとても重要でした。
 
-振り返ってみて、特に保守運用を経験したことで**「実際に使われる・使い続ける」という視点で資産としてシステムをどのように構築すべきか**という視点が身に付いたように思います。
+振り返ってみて、特に保守運用を経験したことで**システムを「実際に使う・使い続ける」という視点で資産としてシステムをどのように構築すべきか**という視点が身に付いたように思います。
 
 ただ、技術的には独自ミドルウェア多いがゆえに構造的に介入できる余地がほとんど無く、表面的な改善部分にしか手を出せない環境に物足りなさも感じていました。
 
@@ -67,7 +72,12 @@ ITが関わる業務の改善プロジェクトを遂行をはじめ、インフ
 
 クレジットカード不要で誰でも便利にお得に使える会員登録制の後払いサービス「atone」の立ち上げにシステム統括の立場で参画。**一人目エンジニアとして決済をゼロからつくるシステム開発**を行いました。
 
-<BaLinkCard type="external" link="https://atone.be/"></BaLinkCard>
+::ba-link-card
+---
+type: external
+link: https://atone.be/
+---
+::
 
 当時は過渡期でしたが、インフラはアプリケーションレイヤーを含め積極的にクラウドネイティブで構築。品質強化のためCI/CDの取り組みにも力を入れつつ、スピード重視でフルスタックフレームワークで開発し、事業横断活用を見据えて譲れない部分はサービス化しました。
 
@@ -93,7 +103,12 @@ atoneの事業推進が一時ストップしているときに、NP後払いair�
 
 文字を入力して、色を指定すると文字ロゴが作成できる簡単なアプリを開発しました。
 
-![mojilogo](article/mojilogo.png)
+::app-capture
+---
+imagePath: article/mojilogo.png
+alt: mojilogo
+---
+::
 
 結婚前に一人暮らしをしていた頃は、家具・家電の9割は無印良品で揃える「MUJIラー」でした。「無印良品みたいなロゴが簡単につくれたらいいな」が開発動機です。まだSwiftが出てくる前で、Objective-Cを使って開発しました。
 
@@ -105,11 +120,22 @@ atoneの事業推進が一時ストップしているときに、NP後払いair�
 
 iOSリマインダーベースのTODO管理アプリを個人で開発しました。
 
-![nalavender](article/nalavender.png)
+::app-capture
+---
+imagePath: article/nalavender.png
+alt: nalavender
+---
+::
 
 開発した時期は前述のatoneがストップしたタイミングでした。ストップする前まではローンチに向けてひたすらTODOと格闘していたのに、急にやることがなくなってエネルギー余ってしまい、その持て余した推進力で一気に完成させました。Swiftを使って開発しています。ありがたいことにライフハッカーでも紹介していただきました。
 
-<BaLinkCard type="external" link="https://www.lifehacker.jp/article/160404naravender/" description="「ナラベンダー」はリマインダーを優先度順に並び替えられるTODO管理アプリです。iOS標準の「リマインダー」アプリと連携して利用することができますよ。リマインダーアプリ内に登録されているタスクに優先度をつけて管理することができます。"></BaLinkCard>
+::ba-link-card
+---
+type: external
+link: https://www.lifehacker.jp/article/160404naravender/
+description: 「ナラベンダー」はリマインダーを優先度順に並び替えられるTODO管理アプリです。iOS標準の「リマインダー」アプリと連携して利用することができますよ。リマインダーアプリ内に登録されているタスクに優先度をつけて管理することができます。
+---
+::
 
 同様の理由で、現在は公開を停止しています。
 
@@ -121,7 +147,12 @@ iOSリマインダーベースのTODO管理アプリを個人で開発しまし�
 
 2010年から運営している生活ネタ中心の個人ブログです。ドメインの由来は前述の通りで、MUJIへの偏愛ぶりがここにも現れています。
 
-<BaLinkCard type="external" link="https://mujiota.com"></BaLinkCard>
+::ba-link-card
+---
+type: external
+link: https://mujiota.com/
+---
+::
 
 最初はMovable Typeで構築しましたが、当時CMS（Contents Management System）はMovable TypeからWordpressにスタンダードが変わりつつあるタイミングで、1年待たずにWordpressに乗り換えました。
 
@@ -139,15 +170,31 @@ iOSリマインダーベースのTODO管理アプリを個人で開発しまし�
 
 サウナのおかげで体調が少しずつ良くなっていくのを実感しながら、当時は北関東を中心に色々なサウナ施設を渡り歩き、時には新幹線にも乗って遠征して、サウナの魅力を堪能していました。
 
-![サウナしきじ](article/sauna_shikiji.jpeg)
+::app-photo
+---
+imagePath: article/sauna_shikiji.jpeg
+alt: サウナしきじ
+caption: 静岡・聖地と呼ばれる「サウナしきじ」
+---
+::
 
-![サウナスイートキャビン](article/sauna_sweet_cabin.jpeg)
+::app-photo
+---
+imagePath: article/sauna_mt_fuji.jpeg
+alt: ホテルマウント富士
+caption: 富士山を眺めて外気浴「ホテルマウント富士」
+---
+::
 
-![ホテルマウント富士](article/sauna_mt_fuji.jpeg)
+::app-photo
+---
+imagePath: article/sauna_yanagiyu.jpeg
+alt: 柳湯
+caption: 徒歩2分のホームサウナ「柳湯」
+---
+::
 
 最近は昔ほど遠征しなくなりましたが、徒歩1分の銭湯サウナに17.5度の水風呂がある幸せを噛みしめながら、週3くらいのペースで通ってます。
-
-![柳湯](article/sauna_yanagiyu.jpeg)
 
 ### クラフトビール
 
@@ -157,25 +204,48 @@ iOSリマインダーベースのTODO管理アプリを個人で開発しまし�
 
 お気に入りの銘柄をいくつか載せておきます。
 
-::app-link
+::app-shop-item-card
 ---
-to: https://sauna.or.jp/professional/
+title: 伊勢角屋麦酒 ペールエール 缶 350ml
+imgFileName: isekado_paleale_can_350ml_500x500.png
+shopName: 伊勢角屋麦酒
+searchKeyword: 伊勢角屋麦酒 ペールエール 缶
 ---
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ::
 
-あああ
+::app-shop-item-card
+---
+title: 暁ブルワリー ドラゴンアイ サン 缶 350ml
+imgFileName: akatsuki_brewery_dragoneye_sun_can_350ml_500x500.png
+shopName: 暁ブルワリー
+searchKeyword: 暁ブルワリー ドラゴンアイ サン 缶
+---
+::
 
+::app-shop-item-card
+---
+title: バラストポイント スカルピン IPA 缶 355ml
+imgFileName: ballastpoint_sculpin_ipa_can_355ml_500x500.png
+shopName: バラストポイント
+searchKeyword: バラストポイント スカルピン IPA 缶
+---
+::
 
 ### 自作キーボード
 
 DIYは昔から好きでした。隙間やニッチなニーズをピタッと埋める、ちょっとした家具を作れるからです。
 
-その中でも、特に一時期ハマっていたのが自作キーボード。自作に求めたのは**タイピングする手に可能な限り負荷をかけない「押し心地」**です。自作キーボードに手を出す前は、キースイッチ品質の高さで知られているHHKBを愛用していました。
+その中でも、特に一時期ハマっていたのが自作キーボード。自作に求めたのは**タイピングする手に可能な限り負荷をかけない押し心地**です。自作キーボードに手を出す前は、キースイッチ品質の高さで知られているHHKBを愛用していました。
 
 HHKBの[静電容量無接点の押し心地](https://www.pfu.fujitsu.com/hhkeyboard/hhkbpro/leaflet.html)を超えることを目指して、数多くのスイッチとグリスの組み合わせを試しました。そして、ついに巡り合ったのが「OUTEMU Silent フォレスト キースイッチ 5Pin/62g (5PCs)」というスイッチです。
 
-![OUTEMU Silent フォレスト キースイッチ 5Pin/62g (5PCs)](article/outemu_silent_switch_forest_5pin_62g.jpeg)
+::app-capture
+---
+imagePath: article/outemu_silent_switch_forest_5pin_62g.jpeg
+alt: OUTEMU Silent フォレスト キースイッチ 5Pin/62g (5PCs)
+caption: OUTEMU Silent フォレスト キースイッチ 5Pin/62g (5PCs)
+---
+::
 
 | タイプ | 押下圧 | 固定方法 |
 | ------- | ------- | ------- |
@@ -183,9 +253,17 @@ HHKBの[静電容量無接点の押し心地](https://www.pfu.fujitsu.com/hhkeyb
 
 押下圧は62gでHHKBの45gと比較すると、重く見えるかもしれません。ですがここにグリスを塗って調整することで、タッチ感がHHKBに近づいていきます。指が自然に押し戻される、あの感じにかなり近くなります。
 
-![Choco60](article/choco60_instagram.jpeg)
+このスイッチを使って組み立てた「Choco60」というHHKB配列の分割キーボードを愛用しています。
 
-このスイッチを使って組み立てた「Choco60」というHHKB配列の分割キーボードを愛用しています。全く同じキーボード基盤とスイッチで2個作って使い回してます。求めていたキーボードを手に入れてからは満足してしまい、最近は新しいキーボード作りはやっていません。
+::app-photo
+---
+imagePath: article/choco60_instagram.jpeg
+alt: Choco60
+caption: HHKB配列でそのまま分割した「Choco60」
+---
+::
+
+いまは全く同じキーボード基盤とスイッチで2個作って使い回してます。求めていたキーボードを手に入れてからは満足してしまい、最近は新しいキーボード作りはやっていません。
 
 ## その他のSNSアカウント
 

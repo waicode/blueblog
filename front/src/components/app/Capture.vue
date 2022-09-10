@@ -1,5 +1,5 @@
 <script setup lang="ts">
-interface CaptureImagePropType {
+interface CapturePropType {
   /**
    * 画像パス
    *
@@ -32,15 +32,23 @@ interface CaptureImagePropType {
    * 画像の高さ
    */
   height?: string | number;
+
+  /**
+   * 画像のキャプション
+   */
+  caption?: string;
 }
 
-const props = defineProps<CaptureImagePropType>();
+const props = defineProps<CapturePropType>();
 </script>
 
 <template>
-  <div class="AppCaptureImage">
-    <div class="AppCaptureImage__Image">
+  <div class="AppCapture">
+    <div class="AppCapture__Image">
       <AppImage v-bind="props" />
+    </div>
+    <div v-if="caption" class="AppCapture__Caption">
+      <AppText>{{ caption }}</AppText>
     </div>
   </div>
 </template>
@@ -48,10 +56,11 @@ const props = defineProps<CaptureImagePropType>();
 <style lang="scss">
 $capture-image-border-color: $gray-b5-color;
 
-.AppCaptureImage {
+.AppCapture {
   display: flex;
-  justify-content: center;
-  margin-top: $scale32;
+  align-items: center;
+  flex-direction: column;
+  margin-top: $scale40;
   margin-bottom: $scale32;
 
   &__Image {
@@ -60,28 +69,24 @@ $capture-image-border-color: $gray-b5-color;
 
     img {
       vertical-align: top;
+      border-radius: $border-radius2;
     }
 
-    &::after {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: calc(100% + 20px);
-      height: calc(100% + 20px);
+    &::before {
       content: '';
-      border-style: solid;
-      border-width: $border-width8;
-      border-image-source: repeating-linear-gradient(
-        45deg,
-        $capture-image-border-color,
-        $capture-image-border-color $border-width2,
-        transparent 0,
-        transparent 6px
-      );
-      border-image-slice: 20;
-      border-image-repeat: round;
-      transform: translate(-50%, -50%);
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      box-shadow: inset 0 0 0 6px rgba(255, 255, 255, 60%);
     }
+  }
+
+  &__Caption {
+    padding-top: $scale8;
+    text-align: center;
   }
 }
 </style>

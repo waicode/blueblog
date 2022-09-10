@@ -40,27 +40,7 @@ $capture-image-border-color: $gray-b5-color;
 
     img {
       vertical-align: top;
-    }
-
-    &::after {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: calc(100% + 20px);
-      height: calc(100% + 20px);
-      content: '';
-      border-style: solid;
-      border-width: $border-width8;
-      border-image-source: repeating-linear-gradient(
-        45deg,
-        $capture-image-border-color,
-        $capture-image-border-color $border-width2,
-        transparent 0,
-        transparent 6px
-      );
-      border-image-slice: 20;
-      border-image-repeat: round;
-      transform: translate(-50%, -50%);
+      border-radius: $border-radius2;
     }
   }
 }

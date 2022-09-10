@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
+import { TEXT_SIZE } from '@/components/app/TextComposable';
 defineProps<{ id: string }>();
 </script>
 
 <template>
   <h4 :id="id" class="ContentProseH4">
     <AppLink :href="`#${id}`">
-      <AppText :type="TEXT_SIZE.HEADING4" :color="TEXT_COLOR.NORMAL"><slot /></AppText>
+      <AppText :type="TEXT_SIZE.HEADING4"><slot /></AppText>
     </AppLink>
   </h4>
 </template>

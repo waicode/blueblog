@@ -203,73 +203,75 @@ const className = computed(() =>
 </script>
 
 <template>
-  <div :class="className">
-    <div class="AppShopItemCard__Wrapper">
-      <div v-if="imgFileName" class="AppShopItemCard__ItemImage">
-        <AppLink :href="titleLink">
-          <AppImage :image-path="`item/${type}/${imgFileName}`" />
-        </AppLink>
-      </div>
-      <div class="AppShopItemCard__Contents">
-        <div class="AppShopItemCard__TitleWrapper">
-          <div class="AppShopItemCard__Title">
-            <AppLink :href="titleLink"
-              ><AppText :type="TEXT_SIZE.TITLE2" :color="TEXT_COLOR.NORMAL">{{ title }}</AppText></AppLink
-            >
-          </div>
-          <div v-if="shopName" class="AppShopItemCard__ShopName">
-            <AppText :type="TEXT_SIZE.DESCRIPTION2" :color="TEXT_COLOR.NORMAL">{{ shopName }}</AppText>
-          </div>
-          <div v-else-if="authorName" class="AppShopItemCard__AuthorName">
-            <AppText :type="TEXT_SIZE.DESCRIPTION2" :color="TEXT_COLOR.NORMAL">{{ authorName }}</AppText>
-          </div>
+  <ClientOnly>
+    <div :class="className">
+      <div class="AppShopItemCard__Wrapper">
+        <div v-if="imgFileName" class="AppShopItemCard__ItemImage">
+          <AppLink :href="titleLink">
+            <AppImage :image-path="`item/${type}/${imgFileName}`" />
+          </AppLink>
         </div>
-        <div v-if="type === SHOP_ITEM_CARD_TYPE_MAP.GOODS" class="AppShopItemCard__SearchGoodsLinks">
-          <div v-if="amazonItemId || searchKeyword" class="AppShopItemCard__ShopLinkAmazon">
-            <AppLink :href="amazonItemId ? amazonItemUrl : amazonSearchUrl"
-              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">Amazon で探す</AppText></AppLink
-            >
+        <div class="AppShopItemCard__Contents">
+          <div class="AppShopItemCard__TitleWrapper">
+            <div class="AppShopItemCard__Title">
+              <AppLink :href="titleLink"
+                ><AppText :type="TEXT_SIZE.TITLE2" :color="TEXT_COLOR.NORMAL">{{ title }}</AppText></AppLink
+              >
+            </div>
+            <div v-if="shopName" class="AppShopItemCard__ShopName">
+              <AppText :type="TEXT_SIZE.DESCRIPTION2" :color="TEXT_COLOR.NORMAL">{{ shopName }}</AppText>
+            </div>
+            <div v-else-if="authorName" class="AppShopItemCard__AuthorName">
+              <AppText :type="TEXT_SIZE.DESCRIPTION2" :color="TEXT_COLOR.NORMAL">{{ authorName }}</AppText>
+            </div>
           </div>
-          <div v-if="rakutenItemId || searchKeyword" class="AppShopItemCard__ShopLinkRakuten">
-            <AppLink :href="rakutenItemId ? rakutenProductUrl : rakutenSearchUrl"
-              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">楽天市場 で探す</AppText></AppLink
-            >
+          <div v-if="type === SHOP_ITEM_CARD_TYPE_MAP.GOODS" class="AppShopItemCard__SearchGoodsLinks">
+            <div v-if="amazonItemId || searchKeyword" class="AppShopItemCard__ShopLinkAmazon">
+              <AppLink :href="amazonItemId ? amazonItemUrl : amazonSearchUrl"
+                ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">Amazon で探す</AppText></AppLink
+              >
+            </div>
+            <div v-if="rakutenItemId || searchKeyword" class="AppShopItemCard__ShopLinkRakuten">
+              <AppLink :href="rakutenItemId ? rakutenProductUrl : rakutenSearchUrl"
+                ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">楽天市場 で探す</AppText></AppLink
+              >
+            </div>
+            <div v-if="searchKeyword" class="AppShopItemCard__ShopLinkYahoo">
+              <AppLink :href="yahooSearchUrl"
+                ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">Yahoo! で探す</AppText></AppLink
+              >
+              <span>
+                <img :src="yahooAspImgUrl" height="1" width="1" border="0" />
+              </span>
+            </div>
           </div>
-          <div v-if="searchKeyword" class="AppShopItemCard__ShopLinkYahoo">
-            <AppLink :href="yahooSearchUrl"
-              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">Yahoo! で探す</AppText></AppLink
-            >
-            <span>
-              <img :src="yahooAspImgUrl" height="1" width="1" border="0" />
-            </span>
-          </div>
-        </div>
 
-        <div v-else-if="type === SHOP_ITEM_CARD_TYPE_MAP.BOOK" class="AppShopItemCard__SearchBookLinks">
-          <div v-if="kindleItemId" class="AppShopItemCard__ShopLinkKindle">
-            <AppLink :href="kindleUrl"
-              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">Kindle で探す</AppText></AppLink
-            >
-          </div>
-          <div v-if="amazonItemId" class="AppShopItemCard__ShopLinkAmazonBook">
-            <AppLink :href="amazonBookUrl"
-              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">Amazon で探す</AppText></AppLink
-            >
-          </div>
-          <div v-if="koboItemId" class="AppShopItemCard__ShopLinkKobo">
-            <AppLink :href="koboUrl"
-              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">楽天kobo で探す</AppText></AppLink
-            >
-          </div>
-          <div v-if="rakutenItemId" class="AppShopItemCard__ShopLinkRakutenBook">
-            <AppLink :href="rakutenBookUrl"
-              ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">楽天市場 で探す</AppText></AppLink
-            >
+          <div v-else-if="type === SHOP_ITEM_CARD_TYPE_MAP.BOOK" class="AppShopItemCard__SearchBookLinks">
+            <div v-if="kindleItemId" class="AppShopItemCard__ShopLinkKindle">
+              <AppLink :href="kindleUrl"
+                ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">Kindle で探す</AppText></AppLink
+              >
+            </div>
+            <div v-if="amazonItemId" class="AppShopItemCard__ShopLinkAmazonBook">
+              <AppLink :href="amazonBookUrl"
+                ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">Amazon で探す</AppText></AppLink
+              >
+            </div>
+            <div v-if="koboItemId" class="AppShopItemCard__ShopLinkKobo">
+              <AppLink :href="koboUrl"
+                ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">楽天kobo で探す</AppText></AppLink
+              >
+            </div>
+            <div v-if="rakutenItemId" class="AppShopItemCard__ShopLinkRakutenBook">
+              <AppLink :href="rakutenBookUrl"
+                ><AppText :type="TEXT_SIZE.BUTTON1" :color="TEXT_COLOR.WHITE">楽天市場 で探す</AppText></AppLink
+              >
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </ClientOnly>
 </template>
 
 <style lang="scss">
