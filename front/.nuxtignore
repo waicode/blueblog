@@ -1,0 +1,4 @@
+# storybook
+.storybook
+storybook-static
+*.stories.ts

@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@iconify/vue": "^3.2.1",
-    "@nuxt/content": "^2.0.1",
+    "@nuxt/content": "^2.1.0",
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
     "@storybook/addon-essentials": "~6.5.0",
     "@storybook/addon-postcss": "^2.0.0",
@@ -47,7 +47,7 @@
     "stylelint-declaration-strict-value": "^1.8.0",
     "stylelint-no-unsupported-browser-features": "^5.0.3",
     "stylelint-order": "^5.0.0",
-    "typescript": "^4.7.4",
+    "typescript": "^4.8.3",
     "unist-builder": "^3.0.0",
     "unplugin-auto-import": "^0.8.6",
     "unplugin-vue-components": "^0.19.6",
@@ -56,7 +56,6 @@
   "dependencies": {
     "change-case": "^4.1.2",
     "type-fest": "^2.14.0",
-    "typescript": "^4.7.4",
     "upper-case": "^2.0.2"
   },
   "resolutions": {
