@@ -1,3 +1,7 @@
+$sub-column-desktop-width: 208px;
+$sub-column-tablet-width: 160px;
+$sub-column-phone-width: 100%;
+
 $dark-black-color: #111;
 $black-color: #333;
 $gray-42-color: #424242;
@@ -11,6 +15,9 @@ $gray-ee-color: #eee;
 $gray-ef-color: #efefef;
 $gray-f5-color: #f5f5f5;
 $gray-fa-color: #fafafa;
+
+$dark-blue-black-color: #263238;
+$blue-black-color: #37474f;
 
 $gray-eceff1-color: #eceff1;
 $gray-cfd8dc-color: #cfd8dc;
@@ -32,7 +39,6 @@ $bluish-white-color: #fefeff;
 
 $main-blue-color: #4b73ff;
 $link-blue-color: #1558d6;
-$blue-black-color: #37474f;
 $accent-yellow-color: #f1c32e;
 $main-blue-linear-gradient: linear-gradient(180deg, #4b73ff 10%, #7cf7ff 100%);
 

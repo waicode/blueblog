@@ -6,8 +6,14 @@
 
 <style lang="scss">
 .BaLayoutMain {
-  // flexの可変レイアウト
-  flex: 1;
-  width: 100%;
+  width: calc(100% - $scale60 - $sub-column-desktop-width);
+
+  @include tablet {
+    width: calc(100% - $scale60 - $sub-column-tablet-width);
+  }
+
+  @include phone {
+    width: 100%;
+  }
 }
 </style>

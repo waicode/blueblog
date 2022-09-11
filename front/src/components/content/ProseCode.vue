@@ -102,7 +102,6 @@ $code-highlight-bg-color: $gray-ed-color;
     counter-reset: lines;
 
     code {
-      width: 100%;
       display: flex;
       flex-direction: column;
 

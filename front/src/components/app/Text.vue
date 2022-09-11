@@ -64,7 +64,7 @@ const className = computed(() =>
 
 <style lang="scss">
 $text-dark-black-color: $dark-black-color;
-$text-black-color: $black-color;
+$text-black-color: $dark-blue-black-color;
 $text-blue-black-color: $blue-black-color;
 $text-white-color: $white-color;
 $text-dark-gray-color: $gray-42-color;

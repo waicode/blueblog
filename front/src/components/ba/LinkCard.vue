@@ -125,8 +125,8 @@ const className = computed(() =>
             <AppEyeCatchImage :icon="props.article.icon" />
           </div>
           <div v-else-if="imgFileName || linkImage" class="BaLinkCard__LinkImage">
-            <AppImage v-if="imgFileName" :image-path="`link/${imgFileName}`" />
-            <AppImage v-else :url="linkImage" />
+            <AppImage v-if="imgFileName" :src="`link/${imgFileName}`" />
+            <AppImage v-else :src="linkImage" />
           </div>
           <div v-else class="BaLinkCard__LinkImage"></div>
           <div class="BaLinkCard__Contents">
@@ -170,7 +170,7 @@ const className = computed(() =>
 
 <style lang="scss">
 $card-bg-color: $white-color;
-$card-border-color: $gray-f5-color;
+$card-border-color: $gray-eceff1-color;
 $link-box-shadow-color: $gray-000-alpha-025-color;
 $card-link-hover-color: $gray-66-color;
 $card-link-hover-bg-color: $pale-blue-alpha-color;
@@ -181,7 +181,7 @@ $link-title-before-height: 22px;
 $link-title-before-height-qiita: 20px;
 $link-title-before-height-zenn: 16px;
 $link-title-before-text-color: $white-color;
-$link-title-before-bg-color-external: $black-color;
+$link-title-before-bg-color-external: $dark-blue-black-color;
 $link-title-before-bg-color-related: $main-blue-color;
 
 .BaLinkCard {
@@ -193,7 +193,7 @@ $link-title-before-bg-color-related: $main-blue-color;
     background: $card-bg-color;
     border: $border-width1 solid $card-border-color;
     border-radius: $border-radius4;
-    box-shadow: 0 0 2px $link-box-shadow-color;
+    box-shadow: 0 0 1px $link-box-shadow-color;
     transition: 0.3s ease-in-out;
 
     &:hover {

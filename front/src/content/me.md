@@ -105,7 +105,7 @@ atoneの事業推進が一時ストップしているときに、NP後払いair�
 
 ::app-capture
 ---
-imagePath: article/mojilogo.png
+src: article/mojilogo.png
 alt: mojilogo
 ---
 ::
@@ -122,7 +122,7 @@ iOSリマインダーベースのTODO管理アプリを個人で開発しまし�
 
 ::app-capture
 ---
-imagePath: article/nalavender.png
+src: article/nalavender.png
 alt: nalavender
 ---
 ::
@@ -172,7 +172,7 @@ link: https://mujiota.com/
 
 ::app-photo
 ---
-imagePath: article/sauna_shikiji.jpeg
+src: article/sauna_shikiji.jpeg
 alt: サウナしきじ
 caption: 静岡・聖地と呼ばれる「サウナしきじ」
 ---
@@ -180,7 +180,7 @@ caption: 静岡・聖地と呼ばれる「サウナしきじ」
 
 ::app-photo
 ---
-imagePath: article/sauna_mt_fuji.jpeg
+src: article/sauna_mt_fuji.jpeg
 alt: ホテルマウント富士
 caption: 富士山を眺めて外気浴「ホテルマウント富士」
 ---
@@ -188,7 +188,7 @@ caption: 富士山を眺めて外気浴「ホテルマウント富士」
 
 ::app-photo
 ---
-imagePath: article/sauna_yanagiyu.jpeg
+src: article/sauna_yanagiyu.jpeg
 alt: 柳湯
 caption: 徒歩2分のホームサウナ「柳湯」
 ---
@@ -241,7 +241,7 @@ HHKBの[静電容量無接点の押し心地](https://www.pfu.fujitsu.com/hhkeyb
 
 ::app-capture
 ---
-imagePath: article/outemu_silent_switch_forest_5pin_62g.jpeg
+src: article/outemu_silent_switch_forest_5pin_62g.jpeg
 alt: OUTEMU Silent フォレスト キースイッチ 5Pin/62g (5PCs)
 caption: OUTEMU Silent フォレスト キースイッチ 5Pin/62g (5PCs)
 ---
@@ -257,7 +257,7 @@ caption: OUTEMU Silent フォレスト キースイッチ 5Pin/62g (5PCs)
 
 ::app-photo
 ---
-imagePath: article/choco60_instagram.jpeg
+src: article/choco60_instagram.jpeg
 alt: Choco60
 caption: HHKB配列でそのまま分割した「Choco60」
 ---

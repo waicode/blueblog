@@ -208,7 +208,7 @@ const className = computed(() =>
       <div class="AppShopItemCard__Wrapper">
         <div v-if="imgFileName" class="AppShopItemCard__ItemImage">
           <AppLink :href="titleLink">
-            <AppImage :image-path="`item/${type}/${imgFileName}`" />
+            <AppImage :src="`item/${type}/${imgFileName}`" />
           </AppLink>
         </div>
         <div class="AppShopItemCard__Contents">

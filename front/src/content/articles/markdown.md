@@ -11,7 +11,7 @@ createdAt: '2022-09-04T23:24:24+09:00'
 
 そもそもMarkdownがあまり好きではありません。過去にアウトライナーアプリも試したことがありますが、どうもしっくり来ませんでした。
 
-テキスト編集は最終的な見た目と一緒に確認したい派なので、自由に使えるなら見たものがそのま出力されるエディタの方が圧倒的に好みです。NotionやSlackの最近のUIアップデートを見ても、トレンドは「WYSIWYG（ウィジウィグ：What You See Is What You Get）」だと思います。
+テキスト編集は最終的な見た目と一緒に確認したい派なので、自由に使えるなら見たものがそのま出力されるエディタの方が圧倒的に好みです。NotionやSlackの最近のUIアップデートを見ても、もはや死語になりつつあるくらい「WYSIWYG（ウィジウィグ：What You See Is What You Get）」がトレンドだと思います。
 
 それでもMarkdownを使う理由は、**構造をプログラミングで取り扱えるエコシステムが整っているから**です。マークダウンは簡単に「書き下せる」軽量なマークアップ言語。あくまでもマークアップ言語なので、マークアップしながら統一的なルールを敷いて文章を書くこの技術ブログにおいては、マークダウン以外の選択肢は無いと思います。
 
@@ -21,7 +21,13 @@ createdAt: '2022-09-04T23:24:24+09:00'
 
 記事を編集するエディタはVSCodeです。
 
-<BaLinkCard type="external" link="https://azure.microsoft.com/ja-jp/products/visual-studio-code/" img-file-name="vscode_icon_480x252.png"></BaLinkCard>
+::ba-link-card
+---
+type: external
+link: https://azure.microsoft.com/ja-jp/products/visual-studio-code/
+imgFileName: vscode_icon_480x252.png
+---
+::
 
 基本的にはVSCode経由でマークダウンを編集し、VSCode上またはWebブラウザを使って見た目を確認します。そのため、**VSCodeの基本設定や拡張機能を利用する前提**でこの記事を書いていきます。
 
@@ -35,7 +41,13 @@ createdAt: '2022-09-04T23:24:24+09:00'
 
 ショートカットや便利なコマンドが有効になる拡張機能です。
 
-<BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one" img-file-name="markdown_all_in_one_480x252.png"></BaLinkCard>
+::ba-link-card
+---
+type: external
+link: https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one
+imgFileName: markdown_all_in_one_480x252.png
+---
+::
 
 ##### 太字にするショートカット
 
@@ -63,7 +75,13 @@ createdAt: '2022-09-04T23:24:24+09:00'
 
 画像を簡単に挿入できるようになる拡張機能です。
 
-<BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=telesoho.vscode-markdown-paste-image" img-file-name="markdown_paste_image_480x252.png"></BaLinkCard>
+::ba-link-card
+---
+type: external
+link: https://marketplace.visualstudio.com/items?itemName=telesoho.vscode-markdown-paste-image
+imgFileName: markdown_paste_image_480x252.png
+---
+::
 
 #### 画像保存と画像挿入記述をコピペ作業で実現
 
@@ -83,7 +101,13 @@ Markdownファイルに画像を挿入するのは結構手間がかかります
 
 絵文字入力が楽になる拡張機能です。
 
-<BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=bierner.emojisense" img-file-name="emojisense_480x252.png"></BaLinkCard>
+::ba-link-card
+---
+type: external
+link: https://marketplace.visualstudio.com/items?itemName=bierner.emojisense
+imgFileName: emojisense_480x252.png
+---
+::
 
 #### 絵文字コードのプレビューと入力補完
 
@@ -107,7 +131,13 @@ Markdownファイルに画像を挿入するのは結構手間がかかります
 
 現在時刻文字列のショートカット入力ができるようになる拡張機能です。
 
-<BaLinkCard type="external" link="https://marketplace.visualstudio.com/items?itemName=jsynowiec.vscode-insertdatestring" img-file-name="insert_date_string_480x252.png"></BaLinkCard>
+::ba-link-card
+---
+type: external
+link: https://marketplace.visualstudio.com/items?itemName=jsynowiec.vscode-insertdatestring
+imgFileName: insert_date_string_480x252.png
+---
+::
 
 #### ISO 8601形式の日付文字列を入力補完
 
@@ -134,6 +164,44 @@ Markdownファイルに画像を挿入するのは結構手間がかかります
 
 VSCodeの拡張機能とスニペット登録を組み合わせることで、すべての記述を入力補助できます。通常のテキスト以外は、まず何かしら入力補完したうえで書き始めることが可能です。
 
+### 静的解析（lint）で誤りがないかチェックする
+
+書いているマークダウンの構文に問題ないかもVSCodeの拡張機能でリアルタイムにチェックできます。
+
+#### markdownlint
+
+markdownlintを使えばeslintやstylelintのようにマークダウンの構文チェックができます。
+
+::ba-link-card
+---
+type: external
+link: https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint
+imgFileName: markdownlint_480x252.png
+---
+::
+
+問題がある場合、VSCodeのエディタ上で波線で警告されます。
+
+インストールすればすぐ使えますが、デフォルトの構文チェックは厳しめに設定されています。そのため[markdownlintのRules](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md001)を見て`markdownlint.config`で設定を調整することをおすすめします。この技術ブログではNuxtのMDC（マークダウンにコンポーネント表記ができる特殊記述）を使っているため、特殊記述の影響で出る警告はすべて無効化しています。
+
+`.vscode/settings.json`に設定を書いておけば、プロジェクト固有の設定として有効になります。
+
+```json [.vscode/settings.json]
+{
+  "markdownlint.config": {
+    "heading-increment": false, // MD001: 見出しレベルが1つずつ増加されているか、MDCコンポーネントの影響で見出しの階層を正しく判定できないため
+    "heading-style": false, // MD003: 見出しスタイルがMDCのコンポーネント記述と競合するため
+    "blanks-around-headings": false, // MD022: 見出しを空白行で囲む必要があるスタイルが同じく競合するため
+    "no-duplicate-heading": false, // MD024: 見出し判断されたコンポーネント名が重複するため見出しテキストの重複を許容
+    "no-trailing-punctuation": false, // MD026: 見出しに.,;:が入ることを許容
+    "no-bare-urls": false // MD034: コンポーネントの引数で指定するためURLそのままの表記を許容
+  }
+}
+
+```
+
+eslintやstylelintと同様に、markdownlintもhuskyを使ってプレコミット時に構文チェックすれば、不正なマークダウンがコミットされることを防ぐことができます。
+
 ## Markdownの見た目を速やかに確認する
 
 ### コマンドパレットから「Markdown:プレビューを横に」
@@ -154,7 +222,15 @@ VSCodeの拡張機能とスニペット登録を組み合わせることで、�
 
 前提として、このブログではNuxt3と`nuxt/content`を使って全ての記事をMarkdownファイルで管理しています。
 
-<BaLinkCard type="external" link="https://content.nuxtjs.org/" title="nuxt/content" description="The file-based CMS for your Nuxt application, powered by Markdown and Vue components." img-file-name="nuxt_content_v2_480x252.png"></BaLinkCard>
+::ba-link-card
+---
+type: external
+link: https://content.nuxtjs.org/
+title: nuxt/content
+description: The file-based CMS for your Nuxt application, powered by Markdown and Vue components.
+imgFileName: nuxt_content_v2_480x252.png
+---
+::
 
 Nuxt3（正確にはVite）の場合、HMR（Hot module replacement）と呼ばれるホットリロード機能が強力です。devモードでブログを立ち上げて、該当のページをWebブラウザで横に並べて表示しておけば、ファイル保存と同時に見た目が反映されます。
 
@@ -189,6 +265,7 @@ HMRは更新の反映が非常にはやいので、**開発モードで立ち上
 | テーブル | スニペットでテーブル表記を挿入 | VSCodeのスニペットで実現 |
 | コードブロック | スニペットコードブロック表記を挿入 | VSCodeのスニペットで実現 |
 | 独自コンポーネント | スニペットでコンポーネント表記を挿入 | VSCodeのスニペットで実現 |
+| 構文チェック | markdownlintを有効化して設定を調整 | 拡張機能で実現 |
 
 ### 「Markdownの見た目を速やかに確認する」のまとめ
 

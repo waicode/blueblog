@@ -28,5 +28,20 @@
       "|         |         |         |"
     ],
     "description": "テーブル（Markdown形式）"
+  },
+  "baLinkExternal": {
+    "prefix": "ba-link-external",
+    "body": [
+      "::ba-link-card",
+      "---",
+      "type: external",
+      "link:",
+      "title:",
+      "description:",
+      "imgFileName:",
+      "---",
+      "::"
+    ],
+    "description": "外部リンク（Markdown形式）"
   }
 }

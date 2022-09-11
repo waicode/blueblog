@@ -1,21 +1,17 @@
 <script setup lang="ts">
 import { getFileName } from '@/utils/util';
+import { isAssetImageSrcPath } from '@/components/app/ImageComposable';
 
 interface ImagePropType {
   /**
-   * 画像パス
+   * 画像のソース
    *
-   * assets/imagesフォルダ配下のパスを指定する。
-   */
-  imagePath?: string;
-
-  /**
-   * 画像リンク
+   * 以下のいずれかを受け取り、値で判定して処理を分ける。
    *
-   * 外部サイトの画像を利用する際に画像URLを指定する。
-   * imagePathが指定されている場合はそちらが優先される。
+   * 1. assets/imagesフォルダ配下のパス
+   * 2. 外部サイトの画像を利用する際に画像URL
    */
-  url?: string;
+  src: string;
 
   /**
    * 画像のaltテキスト
@@ -36,29 +32,23 @@ interface ImagePropType {
   height?: string | number;
 }
 
-const props = withDefaults(defineProps<ImagePropType>(), {
-  imagePath: undefined,
-  url: undefined,
-  alt: undefined,
-  width: undefined,
-  height: undefined,
-});
+const props = defineProps<ImagePropType>();
 
 // altが未指定のとき、画像パス指定の場合はファイル名を設定
 const imageAltText = computed(() => {
-  if (!props.imagePath) return props.alt;
-  return props.alt ? props.alt : getFileName(props.imagePath);
+  if (!isAssetImageSrcPath(props.src)) return props.alt;
+  return props.alt ? props.alt : getFileName(props.src);
 });
 
 // assets/imagesフォルダ配下のパスが指定された場合はURLを取得
-const imageSrcPath = computed(() =>
+const imageSrc = computed(() =>
   // TODO: Nuxtで動的なAsset指定のやり方が出てきたら更新すること
-  props.imagePath ? new URL(`../../assets/images/${props.imagePath}`, import.meta.url).href : props.url,
+  isAssetImageSrcPath(props.src) ? new URL(`../../assets/images/${props.src}`, import.meta.url).href : props.src,
 );
 </script>
 
 <template>
   <ClientOnly>
-    <img class="AppImage" :alt="imageAltText" :src="imageSrcPath" :width="width" :height="height" />
+    <img class="AppImage" :alt="imageAltText" :src="imageSrc" :width="width" :height="height" />
   </ClientOnly>
 </template>

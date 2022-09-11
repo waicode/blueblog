@@ -1,19 +1,14 @@
 <script setup lang="ts">
 interface PhotoPropType {
   /**
-   * 画像パス
+   * 画像のソース
    *
-   * assets/imagesフォルダ配下のパスを指定する。
-   */
-  imagePath?: string;
-
-  /**
-   * 画像リンク
+   * 以下のいずれかを受け取り、値で判定して処理を分ける。
    *
-   * 外部サイトの画像を利用する際に画像URLを指定する。
-   * imagePathが指定されている場合はそちらが優先される。
+   * 1. assets/imagesフォルダ配下のパス
+   * 2. 外部サイトの画像を利用する際に画像URL
    */
-  url?: string;
+  src: string;
 
   /**
    * 画像のaltテキスト

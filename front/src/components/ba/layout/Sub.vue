@@ -96,10 +96,6 @@ const { tagItems, archiveItems } = useArticlesState();
 </template>
 
 <style lang="scss">
-$sub-column-desktop-width: 208px;
-$sub-column-tablet-width: 160px;
-$sub-column-phone-width: 100%;
-
 .BaLayoutSub {
   width: $sub-column-desktop-width;
 

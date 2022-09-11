@@ -12,15 +12,12 @@ const props = withDefaults(defineProps<ProseImgPropType>(), {
   width: undefined,
   height: undefined,
 });
-
-// リンクでない場合はassets/imagesフォルダ配下のパスが指定されたとみなす
-const imagePath = computed(() => (props.src.match(/^https?:\/\/.+/) ? undefined : props.src));
 </script>
 
 <template>
   <div class="ContentProseImg">
     <div class="ContentProseImg__Image">
-      <AppImage :image-path="imagePath" :url="src" :alt="alt" :width="width" :height="height" />
+      <AppImage v-bind="props" />
     </div>
   </div>
 </template>
