@@ -51,9 +51,15 @@ imgFileName: markdown_all_in_one_480x252.png
 
 ##### 太字にするショートカット
 
-リッチテキストの編集ができるエディタでは定番の太字です。テキストを選択した状態でMacなら`⌘`+`b`、Windowsなら`Ctrl`+`b`で太字になります。
+リッチテキストの編集ができるエディタでは定番の太字です。テキストを選択した状態でMacなら`⌘`+`B`、Windowsなら`Ctrl`+`B`で太字になります。
 
-![太字にする](https://i.gyazo.com/f390399598f812a288bf3da76bdfd423.gif)
+::app-capture
+---
+src: article/markdown_all_in_one_b.gif
+alt: Markdown All in One 太字にする
+caption: ⌘ + B で太字
+---
+::
 
 他に見出しや取り消しなどのショートカットも用意されていますが、太字しか使っていません。見出しはよく使いますが`#`の増減なので、ショートカットコマンドを覚えずとも直接テキスト編集すれば十分です。
 
@@ -61,7 +67,13 @@ imgFileName: markdown_all_in_one_480x252.png
 
 リスト入力した状態で改行すると、連続入力ができます。インデントも考慮されます。
 
-![リストを連続入力](https://i.gyazo.com/b10fabc73548c08639036fd35534a2ad.gif)
+::app-capture
+---
+src: article/markdown_all_in_one_list.gif
+alt: Markdown All in One リストを連続入力
+caption: 改行でリストを連続入力
+---
+::
 
 ##### テキスト選択状態でURLをコピペすると自動でリンク表示に変換
 
@@ -185,8 +197,6 @@ imgFileName: markdownlint_480x252.png
 インストールすればすぐ使えますが、デフォルトの構文チェックは厳しめに設定されています。そのため[markdownlintのRules](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md001)を見て`markdownlint.config`で設定を調整することをおすすめします。`.vscode/settings.json`に設定を書いておけば、プロジェクト固有の設定として有効になります。
 
 このブログではNuxtのMDC（マークダウンにコンポーネント表記ができる特殊記述）を使っているため、特殊記述の影響で出る警告はすべて無効化しています。
-
-
 
 ```json [.vscode/settings.json]
 {

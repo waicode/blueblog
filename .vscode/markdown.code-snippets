@@ -35,13 +35,39 @@
       "::ba-link-card",
       "---",
       "type: external",
-      "link:",
-      "title:",
-      "description:",
-      "imgFileName:",
+      "link: ",
+      "title: ",
+      "description: ",
+      "imgFileName: ",
       "---",
       "::"
     ],
-    "description": "外部リンク（Markdown形式）"
+    "description": "外部リンク（MDC形式）"
+  },
+  "appCapture": {
+    "prefix": "app-capture",
+    "body": [
+      "::app-capture",
+      "---",
+      "src: article/xxx.png",
+      "alt: ",
+      "caption: ",
+      "---",
+      "::"
+    ],
+    "description": "画面キャプチャ（MDC形式）"
+  },
+  "appPhoto": {
+    "prefix": "app-photo",
+    "body": [
+      "::app-photo",
+      "---",
+      "src: article/xxx.png",
+      "alt: ",
+      "caption: ",
+      "---",
+      "::"
+    ],
+    "description": "写真（MDC形式）"
   }
 }

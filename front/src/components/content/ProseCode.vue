@@ -21,19 +21,21 @@ withDefaults(
 </script>
 
 <template>
-  <div ref="contentProseCodeRef" class="ContentProseCode">
-    <span v-show="filename" class="ContentProseCode__FileName"
-      ><AppText :type="TEXT_SIZE.CODE_TITLE1" :color="TEXT_COLOR.DARK_GRAY">{{ filename }}</AppText></span
-    >
-    <transition name="fade"
-      ><span v-show="!isOutside" class="ContentProseCode__CopyIcon"
-        ><Icon icon="tabler:copy" @click="copy(code)" /></span
-    ></transition>
-    <span v-if="copied" class="ContentProseCode__CopiedText"
-      ><AppText :type="TEXT_SIZE.TOAST1" :color="TEXT_COLOR.GRAY">コピーしました！</AppText></span
-    >
-    <AppText :type="TEXT_SIZE.CODE1"><slot /></AppText>
-  </div>
+  <ClientOnly>
+    <div ref="contentProseCodeRef" class="ContentProseCode">
+      <span v-show="filename" class="ContentProseCode__FileName"
+        ><AppText :type="TEXT_SIZE.CODE_TITLE1" :color="TEXT_COLOR.DARK_GRAY">{{ filename }}</AppText></span
+      >
+      <transition name="fade"
+        ><span v-show="!isOutside" class="ContentProseCode__CopyIcon"
+          ><Icon icon="tabler:copy" @click="copy(code)" /></span
+      ></transition>
+      <span v-if="copied" class="ContentProseCode__CopiedText"
+        ><AppText :type="TEXT_SIZE.TOAST1" :color="TEXT_COLOR.GRAY">コピーしました！</AppText></span
+      >
+      <AppText :type="TEXT_SIZE.CODE1"><slot /></AppText>
+    </div>
+  </ClientOnly>
 </template>
 
 <style lang="scss">
