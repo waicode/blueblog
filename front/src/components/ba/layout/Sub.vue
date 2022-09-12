@@ -28,8 +28,8 @@ const { tagItems, archiveItems } = useArticlesState();
     <BaSubDropdown title="アーカイブ" label="年月を選択" :items="archiveItems" />
     <BaSubProfile title="Author : waicode">
       <AppText :type="TEXT_SIZE.SUB_DESCRIPTION1"
-        ><AppLink href="https://www.wantedly.com/companies/netprotections">Net Protections</AppLink>
-        で働くアーキテクト。TechとBusinessの垣根がない開発組織とアーキテクチャを目指して、日々奮闘しています。詳しい<AppLink
+        >Net
+        Protectionsで働くアーキテクト。TechとBusinessの垣根がない開発組織とアーキテクチャを目指して、日々奮闘しています。詳しい<AppLink
           to="/me"
           >プロフィールはこちら</AppLink
         >から。<AppLink to="/contact">お問合せはこちら</AppLink>から。</AppText

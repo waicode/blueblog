@@ -1,6 +1,6 @@
 ---
-title: このブログで実装したすべてのコンポーネントをサンプルと一緒に解説
-description: ブログで実装したすべてのコンポーネントをサンプルと一緒に確認できます。記事ファイルに記述可能なコンポーネントはすべて載せています。
+title: この技術ブログで実装したすべてのコンポーネントの一覧（サンプルと解説付き）
+description: このブログで実装したすべてのコンポーネントをサンプルと一緒に確認できます。記事ファイルに記述可能なコンポーネントはすべて載せています。
 icon: tabler:components
 category: フロントエンド
 tags: ['フロントエンド']
@@ -101,14 +101,13 @@ const b = a + 3;
 const c  = a * b;
 ```
 
-```vue [components/content/MyComponent.vue] {2,6-10}
+```ts [components/content/MyComponent.vue] {2,6-10}
 <template>
   <input v-model.lazy="message"/>
 </template>
 
 <script setup>
 import { watch, ref } from 'vue'
-
 const message = ref('');
 
 const saveMessage = () => {
@@ -120,6 +119,7 @@ watch(message, (newMessage) => {
 })
 </script>
 ```
+
 
 これは`コードスパン`です。
 

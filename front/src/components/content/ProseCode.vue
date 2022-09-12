@@ -100,38 +100,38 @@ $code-highlight-bg-color: $gray-ed-color;
     overflow-x: auto;
     padding: $scale16;
     counter-reset: lines;
+  }
 
-    code {
-      display: flex;
-      flex-direction: column;
+  code {
+    display: flex;
+    flex-direction: column;
 
-      /* stylelint-disable */
-      .line {
-        display: inline-table;
-        min-height: $code-line-min-height;
+    /* stylelint-disable */
+    .line {
+      display: inline-table;
+      min-height: $code-line-min-height;
 
-        &::before {
-          counter-increment: lines;
-          content: counter(lines);
-          width: $code-line-before-width;
-          margin-right: $scale24;
-          display: inline-block;
-          text-align: left;
-          color: $code-line-before-text-color;
-        }
+      &::before {
+        counter-increment: lines;
+        content: counter(lines);
+        width: $code-line-before-width;
+        margin-right: $scale24;
+        display: inline-block;
+        text-align: left;
+        color: $code-line-before-text-color;
       }
-
-      .highlight {
-        background-color: $code-highlight-bg-color;
-        display: block;
-        margin-right: $scale-minus16;
-        margin-left: $scale-minus16;
-        padding-right: $scale16;
-        padding-left: $scale12;
-        border-left: $border-width4 solid $code-line-before-border-color;
-      }
-      /* stylelint-enable */
     }
+
+    .highlight {
+      background-color: $code-highlight-bg-color;
+      display: block;
+      margin-right: $scale-minus16;
+      margin-left: $scale-minus16;
+      padding-right: $scale16;
+      padding-left: $scale12;
+      border-left: $border-width4 solid $code-line-before-border-color;
+    }
+    /* stylelint-enable */
   }
 }
 </style>

@@ -279,7 +279,6 @@ $item-card-bg-color: $white-color;
 $item-card-border-color: $gray-f5-color;
 $item-card-box-shadow-color: $gray-000-alpha-025-color;
 
-$item-card-button-box-shadow-color: $gray-051-alpha-050-color;
 $rakuten-button-color: $rakuten-red-color;
 $amazon-button-color: $amazon-yellow-color;
 $yahoo-button-color: $yahoo-blue-color;
@@ -293,7 +292,7 @@ $yahoo-button-color: $yahoo-blue-color;
     background: $item-card-bg-color;
     border: $border-width1 solid $item-card-border-color;
     border-radius: $border-radius4;
-    box-shadow: 0 0 2px $item-card-box-shadow-color;
+    box-shadow: 0 0 1px $item-card-box-shadow-color;
     transition: 0.3s ease-in-out;
     @include phone {
       gap: $scale8;
@@ -384,7 +383,6 @@ $yahoo-button-color: $yahoo-blue-color;
       display: block;
       text-align: center;
       border-radius: $border-radius4;
-      box-shadow: 0 1px 2px $item-card-button-box-shadow-color;
     }
   }
 

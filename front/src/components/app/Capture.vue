@@ -75,7 +75,7 @@ $capture-image-border-color: $gray-b5-color;
       left: 0;
       width: 100%;
       height: 100%;
-      box-shadow: inset 0 0 0 6px rgba(255, 255, 255, 60%);
+      box-shadow: inset 0 0 0 6px $gray-240-alpha-060-color;
     }
   }
 

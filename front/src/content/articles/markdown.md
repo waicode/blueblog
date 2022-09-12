@@ -182,9 +182,11 @@ imgFileName: markdownlint_480x252.png
 
 問題がある場合、VSCodeのエディタ上で波線で警告されます。
 
-インストールすればすぐ使えますが、デフォルトの構文チェックは厳しめに設定されています。そのため[markdownlintのRules](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md001)を見て`markdownlint.config`で設定を調整することをおすすめします。この技術ブログではNuxtのMDC（マークダウンにコンポーネント表記ができる特殊記述）を使っているため、特殊記述の影響で出る警告はすべて無効化しています。
+インストールすればすぐ使えますが、デフォルトの構文チェックは厳しめに設定されています。そのため[markdownlintのRules](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md001)を見て`markdownlint.config`で設定を調整することをおすすめします。`.vscode/settings.json`に設定を書いておけば、プロジェクト固有の設定として有効になります。
 
-`.vscode/settings.json`に設定を書いておけば、プロジェクト固有の設定として有効になります。
+このブログではNuxtのMDC（マークダウンにコンポーネント表記ができる特殊記述）を使っているため、特殊記述の影響で出る警告はすべて無効化しています。
+
+
 
 ```json [.vscode/settings.json]
 {

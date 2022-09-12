@@ -9,8 +9,16 @@
 <style lang="scss">
 .ContentProseTable {
   display: flex;
-  justify-content: center;
   margin-bottom: $scale32;
+
+  &--align {
+    &-center {
+      // TODO: マークダウンでスタイルを指定できるようにする方法を模索する
+      .ContentProseTable {
+        justify-content: center;
+      }
+    }
+  }
 
   &__Table {
     width: auto;
