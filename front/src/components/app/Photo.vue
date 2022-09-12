@@ -68,6 +68,14 @@ $photo-image-frame-tilt-bottom: $photo-image-frame-tilt-top;
     position: relative;
     max-width: 60%;
 
+    @include tablet {
+      max-width: 80%;
+    }
+
+    @include phone {
+      max-width: 100%;
+    }
+
     &::before,
     &::after {
       position: absolute;

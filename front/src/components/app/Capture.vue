@@ -62,6 +62,14 @@ $capture-image-border-color: $gray-b5-color;
     position: relative;
     max-width: 80%;
 
+    @include tablet {
+      max-width: 92%;
+    }
+
+    @include phone {
+      max-width: 100%;
+    }
+
     img {
       vertical-align: top;
       border-radius: $border-radius2;
