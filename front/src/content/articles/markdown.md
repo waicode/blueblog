@@ -79,7 +79,13 @@ caption: 改行でリストを連続入力
 
 テキストを選択した状態でクリップボードにコピーされたリンク（URL形式の文字列）を貼り付けると、自動でリンク表記に変換してくれます。
 
-![自動でリンク表示変換](https://i.gyazo.com/8a2787336abbaedde4612d677b2b1a4a.gif)
+::app-capture
+---
+src: article/markdown_all_in_one_url.gif
+alt: Markdown All in One URLコピペで自動リンク表示変換
+caption: URLコピペで自動リンク表示変換
+---
+::
 
 他にも、見出しのナンバリングや目次作成などの機能もありますが、このブログにおいてはスタイルやアプリで出力すべき内容なので使っていません。その他の機能はコマンドパレットで「Markdown All in One:」から呼び出せます。
 
