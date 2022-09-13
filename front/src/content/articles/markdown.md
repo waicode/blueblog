@@ -105,11 +105,17 @@ imgFileName: markdown_paste_image_480x252.png
 
 Markdownファイルに画像を挿入するのは結構手間がかかります。事前に画像を格納しておいて、その画像ファイルへのパスを代替テキストと共に指定しなければなりません。この面倒な作業をコピペで実現できる拡張機能です。
 
-画像ファイルをコピーした状態でMacでは`⌘`+`alt`+`v`、Windowsなら`Ctrl`+`alt`+`v`で「指定フォルダへの画像保存」と「Markdownファイルへの画像挿入記述」を同時にやってくれます。画像を多用する記事では、無いとやってられないくらいに重宝します。
+画像ファイルをコピーした状態でMacでは`⌘`+`alt`+`V`、Windowsなら`Ctrl`+`alt`+`V`で「指定フォルダへの画像保存」と「Markdownファイルへの画像挿入記述」を同時にやってくれます。画像を多用する記事では、無いとやってられないくらいに重宝します。
 
-![画像を保存して挿入](https://i.gyazo.com/30e283669b350b15fd7777950676f094.gif)
+::app-capture
+---
+src: article/markdown_paste_image.gif
+alt:  Markdown Paste Image 画像保存と挿入
+caption: ⌘ + alt + V で画像の保存・記述を同時に実現
+---
+::
 
-画像の保存先は設定で変更できます。このブログではNuxtのassets配下（`front/assets/images/article`）を指定しています。例外的にこのフォルダ以外に格納する際には、一度コピペしたあとに手動でパスを直しています。
+画像の保存先は設定で変更できます。このブログではNuxtのassets配下（`front/src/assets/images/article`）を指定しています。例外的にこのフォルダ以外に格納する際には、一度コピペしたあとに手動でパスを直しています。
 
 1つ注意点として、Macでコピーする場合は画像を開いていない状態だとFinderから画像ファイルを選択してコピーしても正しく動作しません。Githubに[関連するissue](https://github.com/mushanshitiancai/vscode-paste-image/issues/46)があがっていました。
 
@@ -139,11 +145,23 @@ imgFileName: emojisense_480x252.png
 
 `:`を入力すると一般的な絵文字入力で使われるUnicode絵文字が絵文字コード付きで入力補完されます。たとえば「😀」を入力したい場合は`:grinning:`の選択肢を選びます。
 
-![絵文字を:で入力補完](https://i.gyazo.com/c31228fcd494bb11a29e771a86e950dc.gif)
+::app-capture
+---
+src: article/markdown_emojisense_input.gif
+alt:  Markdown emojisense 絵文字の入力補完
+caption: ': で絵文字の入力補完'
+---
+::
 
-さらにMacでは`⌘`+`i`、Windowsでは`Ctrl`+`i`でUnicode絵文字ピッカーが使えます。少しややこしいですが、絵文字コードで入力したい絵文字を検索して、そのままUnicode絵文字が入力できます。
+さらにMacでは`⌘`+`I`、Windowsでは`Ctrl`+`I`でUnicode絵文字ピッカーが使えます。少しややこしいですが、絵文字コードで入力したい絵文字を検索して、そのままUnicode絵文字が入力できます。
 
-![絵文字ピッカーで入力補完](https://i.gyazo.com/f25bf976d6d65999018cef03b76b518e.gif)
+::app-capture
+---
+src: article/markdown_emojisense_picker.gif
+alt:  Markdown emojisense 絵文字ピッカー
+caption: ⌘ + I で絵文字ピッカー
+---
+::
 
 ### Insert Date String
 
@@ -159,11 +177,11 @@ imgFileName: insert_date_string_480x252.png
 
 #### ISO 8601形式の日付文字列を入力補完
 
-日付文字列をショートカットで入力できるようになります。対応するショートカットはMacでは`⌘`+`Shift`+`i`、Windowsでは`Ctrl`+`Shift`+`i`です。
+日付文字列をショートカットで入力できるようになります。対応するショートカットはMacでは`⌘`+`Shift`+`I`、Windowsでは`Ctrl`+`Shift`+`I`です。
 
 ![日付文字列をショートカット入力](https://i.gyazo.com/ef51096d03b00e46f6d5d787f93f9c2d.gif)
 
-注意点としてショートカットキーの競合するとうまく動かなくなります。1つ前に説明した:emojisense:の絵文字Picker表示のショートカットと競合（`⌘`+`Shift`+`i`にも`⌘`+`i`と同じ絵文字Pickerが割り当てられている）するので、こちらを使いたい場合はVSCodeのショートカットキー設定から:emojisense:のキーバインドを削除またはしてください。
+注意点としてショートカットキーの競合するとうまく動かなくなります。1つ前に説明した:emojisense:の絵文字Picker表示のショートカットと競合（`⌘`+`Shift`+`I`にも`⌘`+`I`と同じ絵文字Pickerが割り当てられている）するので、こちらを使いたい場合はVSCodeのショートカットキー設定から:emojisense:のキーバインドを削除またはしてください。
 
 このブログでは記事の更新日付はMarkdownファイル（.md）の更新日から引っ張ってきていますが、作成日（createdAt）は最初に記録しておく必要があります。その作成日を入力する際に重宝しています。
 
@@ -273,13 +291,13 @@ HMRは更新の反映が非常にはやいので、**開発モードで立ち上
 | やりたい事 | 実現するための操作・機能 | 備考 |
 | ------- | ------- | ------- |
 | 記事を書き始める | スニペットで記事テンプレートを挿入 | VSCodeのスニペットで実現 |
-| 太字にする | `⌘`+`b` | 拡張機能で実現（Windowsでは`Ctrl`+`b`） |
+| 太字にする | `⌘`+`B` | 拡張機能で実現（Windowsでは`Ctrl`+`B`） |
 | 見出し | 直接テキストで`#`を入力 | ショートカットは使わない |
 | リスト | 直接テキストで`-`または`*`を入力 | 拡張機能で連続入力できる |
 | リンク | テキスト選択状態でURLコピペ | 拡張機能で実現 |
-| 画像の保存・挿入 | 画像ファイル開いてコピーして`⌘`+`alt`+`v` | 拡張機能で実現（Windowsでは`Ctrl`+`alt`+`v`） |
-| 絵文字 | `:`で入力補完、または`⌘`+`i`で絵文字ピッカー | 拡張機能で実現（Windowsでは`Ctrl`+`i`） |
-| 日付文字列 | `⌘`+`Shift`+`i` | 拡張機能で実現（Windowsでは`Ctrl`+`Shift`+`i`） |
+| 画像の保存・挿入 | 画像ファイル開いてコピーして`⌘`+`alt`+`V` | 拡張機能で実現（Windowsでは`Ctrl`+`alt`+`V`） |
+| 絵文字 | `:`で入力補完、または`⌘`+`I`で絵文字ピッカー | 拡張機能で実現（Windowsでは`Ctrl`+`I`） |
+| 日付文字列 | `⌘`+`Shift`+`I` | 拡張機能で実現（Windowsでは`Ctrl`+`Shift`+`I`） |
 | テーブル | スニペットでテーブル表記を挿入 | VSCodeのスニペットで実現 |
 | コードブロック | スニペットコードブロック表記を挿入 | VSCodeのスニペットで実現 |
 | 独自コンポーネント | スニペットでコンポーネント表記を挿入 | VSCodeのスニペットで実現 |
