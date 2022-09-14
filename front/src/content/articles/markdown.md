@@ -179,7 +179,13 @@ imgFileName: insert_date_string_480x252.png
 
 日付文字列をショートカットで入力できるようになります。対応するショートカットはMacでは`⌘`+`Shift`+`I`、Windowsでは`Ctrl`+`Shift`+`I`です。
 
-![日付文字列をショートカット入力](https://i.gyazo.com/ef51096d03b00e46f6d5d787f93f9c2d.gif)
+::app-capture
+---
+src: article/markdown_insert_date_string.gif
+alt:  Markdown Insert Date String 日付文字列をショートカット入力
+caption: ⌘ + Shift + I で日付文字列を入力
+---
+::
 
 注意点としてショートカットキーの競合するとうまく動かなくなります。1つ前に説明した:emojisense:の絵文字Picker表示のショートカットと競合（`⌘`+`Shift`+`I`にも`⌘`+`I`と同じ絵文字Pickerが割り当てられている）するので、こちらを使いたい場合はVSCodeのショートカットキー設定から:emojisense:のキーバインドを削除またはしてください。
 
@@ -246,11 +252,15 @@ eslintやstylelintと同様に、markdownlintもhuskyを使ってプレコミッ
 
 コマンドパレットから「Markdown:プレビューを横に（Markdown Open Preview to the Side）」を選択します。
 
-![Markdown:プレビューを横に](article/markdown_preview_to_the_side.png)
+::app-capture
+---
+src: article/markdown_preview.gif
+alt:  Markdown プレビューを横に
+caption: コマンドパレットから「Markdown:プレビューを横に」を選択
+---
+::
 
 プレビューの場合、ファイルを保存する前でもリアルタイムで更新されます。
-
-![プレビューはリアルタイム反映](https://i.gyazo.com/954821775738de048fe99dc736bb9b31.gif)
 
 ### HMRで保存と同時にブラウザで確認
 
