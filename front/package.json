@@ -27,6 +27,8 @@
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-vue": "^9.1.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "markdownlint-cli2": "^0.5.1",
     "nuxt": "3.0.0-rc.10",
     "prettier": "^2.7.1",

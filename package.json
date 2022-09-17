@@ -1,5 +1,8 @@
 {
   "private": true,
+  "scripts": {
+    "prepare": "husky install"
+  },
   "workspaces": [
     "front",
     "bff",
