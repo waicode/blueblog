@@ -120,7 +120,6 @@ watch(message, (newMessage) => {
 </script>
 ```
 
-
 これは`コードスパン`です。
 
 以下はリンクです。

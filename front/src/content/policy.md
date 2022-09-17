@@ -31,7 +31,9 @@ updatedAt: '2022-08-13T15:05:20.000+09:00'
 
 ### アクセス解析ツール
 
-当ブログではGoogleアナリティクスによりアクセス情報を解析しています。アクセス情報の解析にはCookieを使用しています。アクセス情報の収集はCookieを無効にすることで拒否できます。Google社のデータ収集・処理の仕組みについては[Googleサービス プライバシーガイド](https://policies.google.com/technologies/partner-sites?hl=ja)をご覧ください。
+当ブログではGoogleアナリティクスによりアクセス情報を解析しています。アクセス情報の解析にはCookieを使用しています。アクセス情報の収集はCookieを無効にすることで拒否できます。
+
+Google社のデータ収集・処理の仕組みについては[Googleサービス プライバシーガイド](https://policies.google.com/technologies/partner-sites?hl=ja)をご覧ください。
 
 ## 免責事項
 

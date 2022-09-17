@@ -1,12 +1,5 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode", // デフォルトフォーマッターとして Prettier プラグインを利用
-  "editor.formatOnSave": true, // ファイル保存時にデフォルトフォーマッターでファイルをフォーマットする
-  "editor.codeActionsOnSave": {
-    // ファイル保存時のコードアクション設定
-    "source.fixAll.eslint": true, // ESLint プラグインでフォーマットする
-    "source.fixAll.stylelint": true // Stylelint プラグインでフォーマットする
-  },
-  "markdownlint.config": {
+  "config": {
     "heading-increment": false, // MD001: 見出しレベルが1つずつ増加されているか、MDCコンポーネントの影響で見出しの階層を正しく判定できないため
     "heading-style": false, // MD003: 見出しスタイルがMDCのコンポーネント記述と競合するため
     "line-length": {
@@ -18,5 +11,6 @@
     "no-trailing-punctuation": false, // MD026: 見出しに.,;:が入ることを許容
     "no-inline-html": false, // MD033: HTML記述を許容
     "no-bare-urls": false // MD034: コンポーネントの引数で指定するためURLそのままの表記を許容
-  }
+  },
+  "ignores": ["node_modules", ".nuxt"]
 }

@@ -10,6 +10,7 @@
     "lint:script": "eslint --ext .ts,vue --ignore-path .gitignore .",
     "lint:style": "stylelint --ignore-path .gitignore \"**/*.{css,scss,vue,html}\"",
     "lint:prettier": "prettier --ignore-path .prettierignore --check .",
+    "lint:markdown": "markdownlint-cli2 \"**/*.md\"",
     "lintfix:style": "yarn lint:style --fix",
     "lintfix:prettier": "prettier --ignore-path .prettierignore --write --list-different ."
   },
@@ -26,6 +27,7 @@
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-vue": "^9.1.1",
+    "markdownlint-cli2": "^0.5.1",
     "nuxt": "3.0.0-rc.10",
     "prettier": "^2.7.1",
     "sass": "^1.52.2",
