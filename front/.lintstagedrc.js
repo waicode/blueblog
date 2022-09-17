@@ -1,5 +1,5 @@
 module.exports = {
-  '*.{js,jsx,ts,tsx}': [() => 'yarn run lint:script', () => 'yarn run lint:prettier'],
-  '*.{css,less,sass,scss}': [() => 'yarn run lint:style', () => 'yarn run lint:prettier'],
-  '*.{md}': [() => 'yarn run lint:markdown'],
+  '*.{js,jsx,ts,tsx}': ['yarn lint:script', 'yarn lint:prettier'],
+  '*.{css,less,sass,scss}': ['yarn lint:style', 'yarn lint:prettier'],
+  '*.{md}': ['yarn lint:markdown'],
 };

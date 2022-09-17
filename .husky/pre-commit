@@ -2,4 +2,4 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 cd front
-yarn lint-staged --config .lintstagedrc.js
+yarn lint-staged
