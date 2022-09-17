@@ -23,7 +23,7 @@ Notionや最近のSlack UIアップデートを見ても、もはや死語にな
 
 マークダウンはもともとプレーンテキストでも読みやすいように生み出された言語です。そのため、マークダウンだけを使って最終的なスタイルを調整するのは限界があります。
 
-かわりに、構文が統一されて**構造が把握しやすい文章が書けるのがマークダウンの強み**です。プレーンテキストでも読みやすく書いていけば、パース後にCSSでスタイルを当てられる前、その文章構造自体から美しくできます。
+その代わり、構文が統一されて**構造が把握しやすい文章が書けるのがマークダウンの強み**です。プレーンテキストでも読みやすく書いていけば、パース後にCSSでスタイルを当てられる前、その文章構造自体から美しくできます。
 
 マークダウンをWYSIWYGに負けないようにするためには、**エディタ上の更新を速やかに・最終的な見た目そのままにプレビューする仕組み**が必要不可欠です。
 
@@ -216,9 +216,11 @@ caption: ⌘ + Shift + I で日付文字列を入力
 
 VSCodeの拡張機能とスニペット登録を組み合わせることで、すべての記述を入力補助できます。通常のテキスト以外は、まず何かしら入力補完したうえで書き始めることが可能です。
 
-### 静的解析（lint）で誤りがないかチェックする
+## Markdownの構文に誤りがないかチェックする
 
 書いているマークダウンの構文に問題ないかもVSCodeの拡張機能でリアルタイムにチェックできます。
+
+### 静的解析（lint）でマークダウンの構文をチェックする
 
 #### markdownlint
 
@@ -232,9 +234,11 @@ imgFileName: markdownlint_480x252.png
 ---
 ::
 
-問題がある場合、VSCodeのエディタ上で波線で警告されます。
+マークダウンの書き方に問題がある場合、VSCodeのエディタ上で波線で警告されます。
 
-インストールすればすぐ使えますが、デフォルトの構文チェックは厳しめに設定されています。そのため[markdownlintのRules](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md001)を見て`markdownlint.config`で設定を調整することをおすすめします。`.vscode/settings.json`に設定を書いておけば、プロジェクト固有の設定として有効になります。
+拡張機能をインストールすればすぐ使えますが、デフォルトの構文チェックは厳しめに設定されています。
+
+そのため[markdownlintのRules](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md001)を見て`markdownlint.config`で設定を調整することをおすすめします。`.vscode/settings.json`に設定を書いておけば、プロジェクト固有の設定として有効になります。
 
 このブログではNuxtのMDC（マークダウンにコンポーネント表記ができる特殊記述）を使っているため、特殊記述の影響で出る警告はすべて無効化しています。
 
@@ -243,16 +247,227 @@ imgFileName: markdownlint_480x252.png
   "markdownlint.config": {
     "heading-increment": false, // MD001: 見出しレベルが1つずつ増加されているか、MDCコンポーネントの影響で見出しの階層を正しく判定できないため
     "heading-style": false, // MD003: 見出しスタイルがMDCのコンポーネント記述と競合するため
+    "line-length": {
+      // MD013: 1文の最大文字数を調整
+      "line_length": 120
+    },
     "blanks-around-headings": false, // MD022: 見出しを空白行で囲む必要があるスタイルが同じく競合するため
     "no-duplicate-heading": false, // MD024: 見出し判断されたコンポーネント名が重複するため見出しテキストの重複を許容
     "no-trailing-punctuation": false, // MD026: 見出しに.,;:が入ることを許容
+    "no-inline-html": false, // MD033: HTML記述を許容
     "no-bare-urls": false // MD034: コンポーネントの引数で指定するためURLそのままの表記を許容
   }
 }
 
 ```
 
+::ba-link-card
+---
+type: external
+link: https://github.com/waicode/blueblog/blob/main/.vscode/markdown.code-snippets
+---
+::
+
+### 静的解析（lint）でマークダウンの構文をチェックする
+
+#### markdownlint-cli2
+
 eslintやstylelintと同様に、markdownlintもhuskyを使ってプレコミット時に構文チェックすれば、不正なマークダウンがコミットされることを防ぐことができます。
+
+CLIでチェックするなら`markdownlint-cli2`がおすすめです。
+
+::ba-link-card
+---
+type: external
+link: https://github.com/DavidAnson/markdownlint-cli2
+---
+::
+
+`markdownlint-cli`でも良いのですが`markdownlint-cli2`の方が設定ベースで調整しやすく、VSCodeとうまく連動するように設計されています。
+
+##### markdownlint-cli2のインストール
+
+`npm`または`yarn`でインストールします。
+
+```sh
+npm install --save-dev markdownlint-cli2
+```
+
+```sh
+yarn add -D markdownlint-cli2
+```
+
+##### lint実行とスクリプト登録
+
+インストール後、以下のコマンドでlintできます。
+
+```sh
+markdownlint-cli2 "**/*.md"
+```
+
+実際には`package.json`のscriptsに登録して使うのが通例です。
+
+```json [package.json]
+"scripts": {
+  "lint:markdown": "markdownlint-cli2 \"**/*.md\""
+}
+```
+
+##### 設定ファイル
+
+ただし、このままではすべてのマークダウン・すべてのルールが対象となるため設定ファイルで調整します。プロジェクトルートに`.markdownlint-cli2.jsonc`を作成すれば設定が読み込まれます。
+
+設定ファイルはいくつかのフォーマットに対応していますが、VSCodeと揃えるために`.jsonc`（Commentが書けるJSON）がおすすめです。`config`の項目にはVSCode拡張機能のmarkdownlintの設定はそのまま記載できます。また、解析対象から外したいファイルやフォルダは`ignores`で設定します。
+
+```json [.markdownlint-cli2.jsonc]
+{
+  "config": {
+    "heading-increment": false, // MD001: 見出しレベルが1つずつ増加されているか、MDCコンポーネントの影響で見出しの階層を正しく判定できないため
+    "heading-style": false, // MD003: 見出しスタイルがMDCのコンポーネント記述と競合するため
+    "line-length": {
+      // MD013: 1文の最大文字数を調整
+      "line_length": 120
+    },
+    "blanks-around-headings": false, // MD022: 見出しを空白行で囲む必要があるスタイルが同じく競合するため
+    "no-duplicate-heading": false, // MD024: 見出し判断されたコンポーネント名が重複するため見出しテキストの重複を許容
+    "no-trailing-punctuation": false, // MD026: 見出しに.,;:が入ることを許容
+    "no-inline-html": false, // MD033: HTML記述を許容
+    "no-bare-urls": false // MD034: コンポーネントの引数で指定するためURLそのままの表記を許容
+  },
+  "ignores": ["node_modules", ".nuxt"]
+}
+```
+
+::ba-link-card
+---
+type: external
+link: https://github.com/waicode/blueblog/blob/main/front/.markdownlint-cli2.jsonc
+---
+::
+
+なお、VSCodeの設定ファイルの拡張子は`.json`ですがコメントの記載が可能になっています。これは、VSCodeが内部でJSONの設定ファイルを`.jsonc`として解釈しているからです。
+
+##### huskyとlint-stagedでプレコミット時に確認
+
+[husky](https://github.com/typicode/husky)と[lint-staged](https://github.com/okonet/lint-staged)が入ってない場合、`npm`または`yarn`でインストールします。
+
+```sh
+npm install --save-dev husky lint-staged
+```
+
+```sh
+yarn add -D husky lint-staged
+```
+
+続いて、huskyを有効化します。
+
+```sh
+npx husky install
+```
+
+```sh
+yarn husky install
+```
+
+この操作で`.husky`ディレクトリが作成されます。
+
+```sh
+.husky
+├── _
+│   └── husky.sh
+└── .gitignore
+```
+
+`package.json`のscriptsにhuskyが有効化される設定を入れておきます。
+
+`prepare`に`husky install`を記述します。
+
+この技術ブログのようにモノレポ構成を採用している場合は、ルート直下のpackage.jsonに設定を入れます。
+
+```json [package.json]
+"scripts": {
+  "prepare": "husky install"
+}
+```
+
+なお、yarn2を採用している場合は`prepare`でなく`postinstall`に記述します。
+
+```json [package.json]
+"scripts": {
+  "private": true,
+  "postinstall": "husky install"
+}
+```
+
+パッケージを公開している場合は以下となります。詳しくは[huskyの公式ドキュメント](https://typicode.github.io/husky/#/?id=yarn-2)をご覧ください。
+
+```json [package.json]
+"scripts": {
+  "private": false,
+  "scripts": {
+    "postinstall": "husky install",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable"
+  }
+}
+```
+
+その後、コミット時にチェックするためpre-commitファイルを作成します。
+
+```sh
+npx husky add .husky/pre-commit "npm lint-staged"
+```
+
+```sh
+yarn husky add .husky/pre-commit "yarn lint-staged"
+```
+
+以下の`.husky/pre-commit`ファイルが作成されます。
+
+```sh [.husky/pre-commit]
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# npmの場合
+npm lint-staged
+# yarnの場合
+yarn lint-staged
+```
+
+一般的なレポジトリ構成であればこの記述で問題ありません。モノレポ構成の場合、リポジトリの中にある指定プロジェクトフォルダで実行したいのでコマンドを追記します。
+
+```sh [.husky/pre-commit]
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# frontフォルダへ移動
+cd front
+
+# lintを実行
+yarn lint-staged
+```
+
+::ba-link-card
+---
+type: external
+link: https://github.com/waicode/blueblog/blob/main/.husky/pre-commit
+---
+::
+
+これでコミット時にlintされるようになりました。最後にlint-stagedの設定ファイルで実行する静的解析（lint）を指定します。
+
+以下は`.md`の拡張子のファイルに対してmarkdownlintを行う設定です。
+
+```js [.lintstagedrc.js]
+module.exports = {
+  '*.{md}': ['yarn run lint:markdown']
+};
+
+```
+
+lint-stagedの動作は`package.json`に書くこともできますが、別の設定ファイルに書いて`yarn`のコマンドを直接叩くのがオススメです。
+
+設定ファイルは`.lintstagedrc.js`のように[lint-stagedのConfiguration](https://github.com/okonet/lint-staged#configuration)に記載されている設定ファイル名にすれば自動で読み込んでくれます。
 
 ## Markdownの見た目を速やかに確認する
 
@@ -338,6 +553,13 @@ HMRは更新の反映が非常にはやいので、**開発モードで立ち上
 | コードブロック | スニペットコードブロック表記を挿入 | VSCodeのスニペットで実現 |
 | 独自コンポーネント | スニペットでコンポーネント表記を挿入 | VSCodeのスニペットで実現 |
 | 構文チェック | markdownlintを有効化して設定を調整 | 拡張機能で実現 |
+
+### 「Markdownの構文に誤りがないかチェックする」のまとめ
+
+| やりたい事 | 実現するための操作・機能 | 備考 |
+| ------- | ------- | ------- |
+| 構文チェック | markdownlintを有効化して設定を調整 | 拡張機能で実現 |
+| コミット時に確認 | huskyとlint-stagedでチェック | `npm`または`yarn`でインストール |
 
 ### 「Markdownの見た目を速やかに確認する」のまとめ
 
