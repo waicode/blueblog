@@ -469,6 +469,14 @@ lint-stagedの動作は`package.json`に書くこともできますが、別の�
 
 設定ファイルは`.lintstagedrc.js`のように[lint-stagedのConfiguration](https://github.com/okonet/lint-staged#configuration)に記載されている設定ファイル名にすれば自動で読み込んでくれます。
 
+::app-capture
+---
+src: article/markdown_husky.gif
+alt:  Markdown プレコミットでmarkdownlint
+caption: markdownlintでコミット時にチェック
+---
+::
+
 ## Markdownの見た目を速やかに確認する
 
 ### コマンドパレットから「Markdown:プレビューを横に」
