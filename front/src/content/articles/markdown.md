@@ -23,9 +23,9 @@ Notionや最近のSlack UIアップデートを見ても、もはや死語にな
 
 マークダウンはもともとプレーンテキストでも読みやすいように生み出された言語です。そのため、マークダウンだけを使って最終的なスタイルを調整するのは限界があります。
 
-その代わり、構文が統一されて**構造が把握しやすい文章が書けるのがマークダウンの強み**です。プレーンテキストでも読みやすく書いていけば、パース後にCSSでスタイルを当てられる前、その文章構造自体から美しくできます。
+その代わり、構文が統一されて**構造が把握しやすい文章が書けるのがマークダウンの強み**です。Markdownのお作法に則りプレーンテキストでも読みやすく書いていけば、パース後にCSSでスタイルを当てる前の**その文章構造自体から美しく**できます。
 
-マークダウンをWYSIWYGに負けないようにするためには、**エディタ上の更新を速やかに・最終的な見た目そのままにプレビューする仕組み**が必要不可欠です。
+逆に言えば、マークダウンをWYSIWYGに負けないようにするには**エディタ上の更新を速やかに・最終的な見た目そのままにプレビューする仕組み**が必要不可欠だということです。
 
 ## 前提はVSCodeを使うこと
 
@@ -236,6 +236,14 @@ imgFileName: markdownlint_480x252.png
 
 マークダウンの書き方に問題がある場合、VSCodeのエディタ上で波線で警告されます。
 
+::app-capture
+---
+src: article/markdown_lint.gif
+alt:  Markdown markdownlint 問題がある場合は波線で警告
+caption: 問題がある場合はVSCodeのエディタ上で波線で警告
+---
+::
+
 拡張機能をインストールすればすぐ使えますが、デフォルトの構文チェックは厳しめに設定されています。
 
 そのため[markdownlintのRules](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md001)を見て`markdownlint.config`で設定を調整することをおすすめします。`.vscode/settings.json`に設定を書いておけば、プロジェクト固有の設定として有効になります。
@@ -349,6 +357,8 @@ link: https://github.com/waicode/blueblog/blob/main/front/.markdownlint-cli2.jso
 
 ##### huskyとlint-stagedでプレコミット時に確認
 
+huskyを使うとコミットやプッシュ時に、任意のコマンドを自動で実行できます。これに加えてlint-stagedを使うと、ソースコード全体ではなく`git stage`されたファイルに対してlintすることができるようになります。
+
 [husky](https://github.com/typicode/husky)と[lint-staged](https://github.com/okonet/lint-staged)が入ってない場合、`npm`または`yarn`でインストールします。
 
 ```sh
@@ -460,10 +470,17 @@ link: https://github.com/waicode/blueblog/blob/main/.husky/pre-commit
 
 ```js [.lintstagedrc.js]
 module.exports = {
-  '*.{md}': ['yarn run lint:markdown']
+  '*.{md}': ['yarn lint:markdown']
 };
 
 ```
+
+::ba-link-card
+---
+type: external
+link: https://github.com/waicode/blueblog/blob/main/front/.lintstagedrc.js
+---
+::
 
 lint-stagedの動作は`package.json`に書くこともできますが、別の設定ファイルに書いて`yarn`のコマンドを直接叩くのがオススメです。
 
@@ -475,6 +492,14 @@ src: article/markdown_husky.gif
 alt:  Markdown プレコミットでmarkdownlint
 caption: markdownlintでコミット時にチェック
 ---
+::
+
+::app-supplement
+---
+type: warning
+title: Markdownの自動整形（format）はやらないほうが無難
+---
+markdownlint-cli2にも自動修正モードで実行できるコマンド（`markdownlint-cli2-fix`）があります。しかし、自動整形は使わない方が無難です。マークダウンはシステムのためでなく「人が読むために書かれること」が多いです。自動整形を入れると意図せず補正されて見た目が崩れるリスクが上回ると考えています。
 ::
 
 ## Markdownの見た目を速やかに確認する
