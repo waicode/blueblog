@@ -69,5 +69,65 @@
       "::"
     ],
     "description": "写真（MDC形式）"
+  },
+  "appShopItemCardGoods": {
+    "prefix": "app-shop-item-card-goods",
+    "body": [
+      "::app-shop-item-card",
+      "---",
+      "title: ",
+      "imgFileName: ",
+      "shopName: ",
+      "amazonItemId: ",
+      "rakutenItemId: ",
+      "searchKeyword: ",
+      "---",
+      "::"
+    ],
+    "description": "商品紹介カード（MDC形式）"
+  },
+  "appShopItemCardBook": {
+    "prefix": "app-shop-item-card-book",
+    "body": [
+      "::app-shop-item-card",
+      "---",
+      "type: book",
+      "title: ",
+      "imgFileName: ",
+      "shopName: ",
+      "amazonItemId: ",
+      "kindleItemId: ",
+      "rakutenItemId: ",
+      "koboItemId: ",
+      "---",
+      "::"
+    ],
+    "description": "書籍紹介カード（MDC形式）"
+  },
+  "appSupplementInfo": {
+    "prefix": "app-supplement-info",
+    "body": [
+      "::app-supplement",
+      "---",
+      "type: info",
+      "title: ",
+      "---",
+      "ここに本文を書きます。ここに本文を書きます。ここに本文を書きます。",
+      "::"
+    ],
+    "description": "補足説明の情報（MDC形式）"
+  },
+  "appSupplementWarning": {
+    "prefix": "app-supplement-warning",
+    "body": [
+      "::app-supplement",
+      "---",
+      "type: warning",
+      "title: ",
+      "---",
+      "ここに本文を書きます。ここに本文を書きます。ここに本文を書きます。",
+      "::"
+    ],
+    "description": "補足説明の警告（MDC形式）"
   }
 }
