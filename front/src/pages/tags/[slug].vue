@@ -4,7 +4,7 @@ import { TAXONOMY_MAP } from '@/composables/taxonomies';
 
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute();
-const tagSlug = route.params.slug;
+const tagSlug = route.params.slug as string;
 const tagName = TAXONOMY_MAP[tagSlug].name;
 
 if (!tagName) {

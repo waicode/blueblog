@@ -2,8 +2,8 @@
 import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute();
-const yyyy = route.params.yyyy;
-const mm = route.params.mm;
+const yyyy = route.params.yyyy as string;
+const mm = route.params.mm as string;
 const monthStr = String(Number(mm)); // ゼロサプレス
 
 // 該当年月の記事を取得

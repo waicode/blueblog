@@ -3,7 +3,7 @@ import { Ref } from 'vue';
 import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
 
 const route = useRoute();
-const slug = route.params.slug;
+const slug = route.params.slug as string;
 
 // 記事を取得
 const queryResult = await useAsyncData(slug, () => queryContent<ArticleParsedContent>(slug).findOne());
