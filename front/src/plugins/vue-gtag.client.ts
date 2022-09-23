@@ -1,9 +1,10 @@
 import VueGtag from 'vue-gtag-next';
 
 export default defineNuxtPlugin((nuxtApp) => {
+  const config = useRuntimeConfig();
   nuxtApp.vueApp.use(VueGtag, {
     property: {
-      id: 'G-3JHC646NJ9',
+      id: config.public.gaId,
     },
   });
 });
