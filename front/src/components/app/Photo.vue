@@ -52,11 +52,12 @@ const props = defineProps<PhotoPropType>();
 $photo-image-frame-bg-color: $bluish-white-color;
 $photo-image-frame-border-color: $gray-cfd8dc-color;
 $photo-image-shadow-color: $blue-gray-alpha-007-color;
-$photo-image-blend-color: rgba(230, 193, 61, 0.1);
+$photo-image-blend-color: $filter-yellow-alpha-color;
 $photo-image-frame-tilt-top: -10px;
 $photo-image-frame-tilt-left: -25px;
 $photo-image-frame-tilt-right: $photo-image-frame-tilt-left;
 $photo-image-frame-tilt-bottom: $photo-image-frame-tilt-top;
+
 .AppPhoto {
   display: flex;
   align-items: center;
@@ -98,6 +99,7 @@ $photo-image-frame-tilt-bottom: $photo-image-frame-tilt-top;
       bottom: $photo-image-frame-tilt-bottom;
       border-top: $border-width1 solid $photo-image-frame-border-color;
     }
+
     img {
       vertical-align: top;
       filter: sepia(0.25) contrast(1.1) brightness(1.1);
@@ -111,6 +113,7 @@ $photo-image-frame-tilt-bottom: $photo-image-frame-tilt-top;
       }
     }
   }
+
   &__Caption {
     padding-top: $scale8;
     text-align: center;
