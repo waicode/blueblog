@@ -4,8 +4,9 @@ import { keyEnumObject, ValueTypeOf } from '@/utils/util';
  * タグ情報
  */
 export const TAXONOMY_MAP = {
-  frontend: { name: 'フロントエンド', icon: '😃' },
-  serverless: { name: 'サーバレス', icon: '😶‍🌫️' },
+  frontend: { name: 'フロントエンド', icon: '⛰' },
+  serverless: { name: 'サーバレス', icon: '🌥' },
+  development: { name: '開発環境', icon: '✨' },
   notyet: { name: '未分類', icon: '❔' },
 } as const;
 
