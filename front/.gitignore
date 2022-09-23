@@ -10,3 +10,5 @@ dist
 storybook/storybook-static
 storybook/.storybook/auto-imports.d.ts
 storybook/.storybook/components.d.ts
+
+.DS_store
