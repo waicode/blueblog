@@ -22,6 +22,11 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         {
+          rel: 'apple-touch-icon',
+          type: 'image/png',
+          href: '/apple-touch-icon.png',
+        },
+        {
           rel: 'preload',
           href: '/fonts/NotoSansJP-DemiLight.woff2',
           as: 'font',
