@@ -17,7 +17,6 @@ const queryResult = await useAsyncData('articles', () =>
     .find(),
 );
 const articles = queryResult.data;
-console.log(queryResult.data);
 setArticlesState(articles);
 </script>
 
