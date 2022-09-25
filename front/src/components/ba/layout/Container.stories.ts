@@ -112,7 +112,6 @@ Primary.parameters = {
         category: '開発環境',
         tags: ['開発環境'],
         createdAt: '2022-08-27T17:41:00+09:00',
-        draft: true,
       },
     ],
   },

@@ -9,7 +9,7 @@ const monthStr = String(Number(mm)); // ゼロサプレス
 // 該当年月の記事を取得
 const queryResult = await useAsyncData(`${yyyy}/${mm}`, () =>
   queryContent<ArticleParsedContent>('articles')
-    .where({ createdAt: { $regex: `^${yyyy}-${mm}` } })
+    .where({ createdAt: { $regex: `^${yyyy}-${mm}` }, _draft: false })
     .sort({ createdAt: -1 }) // 降順
     .find(),
 );

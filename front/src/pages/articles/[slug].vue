@@ -6,7 +6,7 @@ const slug = route.params.slug as string;
 
 // 記事を取得
 const queryResult = await useAsyncData(`articles/${slug}`, () =>
-  queryContent<ArticleParsedContent>('articles', slug).findOne(),
+  queryContent<ArticleParsedContent>('articles', slug).where({ _draft: false }).findOne(),
 );
 const article = queryResult.data as Ref<ArticleParsedContent>;
 

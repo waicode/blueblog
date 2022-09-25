@@ -15,7 +15,7 @@ if (!tagName) {
 // 該当タグの記事を取得
 const queryResult = await useAsyncData(`tags/${tagSlug}`, () =>
   queryContent<ArticleParsedContent>('articles')
-    .where({ tags: { $contains: tagName } })
+    .where({ tags: { $contains: tagName }, _draft: false })
     .sort({ createdAt: -1 }) // 降順
     .find(),
 );

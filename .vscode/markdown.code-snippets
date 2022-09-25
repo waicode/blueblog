@@ -9,7 +9,7 @@
       "category: フロントエンド",
       "tags: ['フロントエンド']",
       "createdAt: `⌘`+`Shift`+`i`で現在日時を挿入",
-      "draft: true",
+      "_draft: true",
       "---",
       "",
       "## 見出し2",

@@ -12,10 +12,12 @@ nuxtApp.hook('page:finish', () => {
 const { setArticlesState } = useArticlesState();
 const queryResult = await useAsyncData('articles', () =>
   queryContent<ArticleParsedContent>('articles')
+    .where({ _draft: false })
     .sort({ createdAt: 1 }) // 降順
     .find(),
 );
 const articles = queryResult.data;
+console.log(queryResult.data);
 setArticlesState(articles);
 </script>
 
