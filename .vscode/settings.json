@@ -1,4 +1,16 @@
 {
+  // Markdown word wrap & suggestions
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": true,
+      "strings": true
+    },
+    "editor.snippetSuggestions": "top"
+  },
+
+  // リンターとフォーマッターの設定
   "editor.defaultFormatter": "esbenp.prettier-vscode", // デフォルトフォーマッターとして Prettier プラグインを利用
   "editor.formatOnSave": true, // ファイル保存時にデフォルトフォーマッターでファイルをフォーマットする
   "editor.codeActionsOnSave": {
@@ -6,13 +18,15 @@
     "source.fixAll.eslint": true, // ESLint プラグインでフォーマットする
     "source.fixAll.stylelint": true // Stylelint プラグインでフォーマットする
   },
+
+  // Insert Date Stringの形式
+  "insertDateString.format": "YYYY-MM-DDThh:mm:ss+09:00",
+
+  // Markdownlint
   "markdownlint.config": {
     "heading-increment": false, // MD001: 見出しレベルが1つずつ増加されているか、MDCコンポーネントの影響で見出しの階層を正しく判定できないため
     "heading-style": false, // MD003: 見出しスタイルがMDCのコンポーネント記述と競合するため
-    "line-length": {
-      // MD013: 1文の最大文字数を調整
-      "line_length": 120
-    },
+    "line-length": false, // MD013: 1行あたりの文字数はtextlintと競合するため無効にする
     "blanks-around-headings": false, // MD022: 見出しを空白行で囲む必要があるスタイルが同じく競合するため
     "no-duplicate-heading": false, // MD024: 見出し判断されたコンポーネント名が重複するため見出しテキストの重複を許容
     "no-trailing-punctuation": false, // MD026: 見出しに.,;:が入ることを許容

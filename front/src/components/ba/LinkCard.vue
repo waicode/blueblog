@@ -3,7 +3,7 @@ import { DATE_TEXT_TYPE_MAP } from '@/components/app/DateTextComposable';
 import { LinkCardType, LINK_CARD_TYPE_MAP } from '@/components/ba/LinkCardComposable';
 import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
 import useOgp from '@/composables/useOgp';
-import { Article } from '@/components/ba/ArticleComposable';
+import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
 import { bemx, getUrlFqdn } from '@/utils/util';
 
 interface LinkCardPropType {
@@ -57,9 +57,18 @@ interface LinkCardPropType {
   /**
    * 記事情報
    *
-   * 関連記事の場合は必須。
+   * 関連記事の場合に設定。
    */
-  article?: Article;
+  article?: ArticleParsedContent;
+
+  /**
+   * 記事スラッグ
+   *
+   * 関連記事で記事情報が渡せない場合に設定。
+   * 記事情報を取得したうえで表示する。
+   * `article`が渡されている場合は無視される。
+   */
+  articleSlug?: string;
 }
 
 const props = defineProps<LinkCardPropType>();
@@ -83,29 +92,35 @@ switch (props.type) {
 }
 
 const { article, title, description, link } = toRefs(props);
+const articleData = ref(article.value);
+const linkPath = ref(link.value);
+const linkTitle = ref(title.value);
+const linkDescription = ref(description.value);
 
-const linkTitle = ref('');
-const linkDescription = ref('');
+// 関連記事
+if (props.type === LINK_CARD_TYPE_MAP.RELATED) {
+  if (!props.article && props.articleSlug) {
+    // 記事スラッグが渡された場合は記事データを取得
+    const data = await useAsyncArticlesSlug(props.articleSlug);
+    articleData.value = data.value;
+  }
+  linkPath.value = articleData.value?._path;
+  linkTitle.value = articleData.value?.title;
+  linkDescription.value = articleData.value?.description;
+}
+
+// OGPを設定
+const ogp = props.type !== LINK_CARD_TYPE_MAP.RELATED ? useOgp(props.link) : ref(undefined);
 const linkImage = ref(undefined);
-
-linkTitle.value = title.value;
-linkDescription.value = description.value;
-
-const ogp = useOgp(link);
-if (ogp.value) {
-  if (props.type === LINK_CARD_TYPE_MAP.RELATED) {
-    linkTitle.value = article.value?.title;
-    linkDescription.value = article.value?.description;
-  } else if (props.link) {
-    if (ogp.value.title) {
-      linkTitle.value = title.value ?? ogp.value.title;
-    }
-    if (ogp.value.description) {
-      linkDescription.value = description.value ?? ogp.value.description;
-    }
-    if (ogp.value.imageUrl) {
-      linkImage.value = ogp.value.imageUrl;
-    }
+if (props.link && ogp.value) {
+  if (ogp.value.title) {
+    linkTitle.value = props.title ?? ogp.value.title;
+  }
+  if (ogp.value.description) {
+    linkDescription.value = props.description ?? ogp.value.description;
+  }
+  if (ogp.value.imageUrl) {
+    linkImage.value = ogp.value.imageUrl;
   }
 }
 
@@ -119,10 +134,10 @@ const className = computed(() =>
 <template>
   <ClientOnly>
     <div :class="className">
-      <AppLink :href="link" target="_blank" rel="nofollow noopener">
+      <AppLink :href="linkPath" target="_blank" rel="nofollow noopener">
         <div class="BaLinkCard__Wrapper">
-          <div v-if="props.type === LINK_CARD_TYPE_MAP.RELATED && props.article" class="BaLinkCard__LinkImage">
-            <AppEyeCatchImage :icon="props.article.icon" />
+          <div v-if="props.type === LINK_CARD_TYPE_MAP.RELATED && articleData" class="BaLinkCard__LinkImage">
+            <AppEyeCatchImage :icon="articleData.icon" />
           </div>
           <div v-else-if="imgFileName || linkImage" class="BaLinkCard__LinkImage">
             <AppImage v-if="imgFileName" :src="`link/${imgFileName}`" />
@@ -140,18 +155,18 @@ const className = computed(() =>
             </div>
             <div class="BaLinkCard__Meta">
               <div class="BaLinkCard__LinkDate">
-                <div v-if="type === LINK_CARD_TYPE_MAP.RELATED && article">
+                <div v-if="type === LINK_CARD_TYPE_MAP.RELATED && articleData">
                   <div class="BaArticle__Date">
-                    <span class="BaLinkCard__DatePublished" itemprop="createdAt" :content="article.createdAt">
-                      <AppDateText :date-time-text="article.createdAt" />
+                    <span class="BaLinkCard__DatePublished" itemprop="createdAt" :content="articleData.createdAt">
+                      <AppDateText :date-time-text="articleData.createdAt" />
                     </span>
                     <span
-                      v-if="article.updatedAt != article.createdAt"
+                      v-if="articleData.updatedAt && articleData.updatedAt != articleData.createdAt"
                       class="BaLinkCard__DateUpdated"
                       itemprop="updatedAt"
-                      :content="article.updatedAt"
+                      :content="articleData.updatedAt"
                     >
-                      <AppDateText :type="DATE_TEXT_TYPE_MAP.UPDATED" :date-time-text="article.updatedAt" />
+                      <AppDateText :type="DATE_TEXT_TYPE_MAP.UPDATED" :date-time-text="articleData.updatedAt" />
                     </span>
                   </div>
                 </div>

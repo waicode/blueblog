@@ -7,13 +7,7 @@ const mm = route.params.mm as string;
 const monthStr = String(Number(mm)); // ゼロサプレス
 
 // 該当年月の記事を取得
-const queryResult = await useAsyncData(`${yyyy}/${mm}`, () =>
-  queryContent<ArticleParsedContent>('articles')
-    .where({ createdAt: { $regex: `^${yyyy}-${mm}` }, _draft: false })
-    .sort({ createdAt: -1 }) // 降順
-    .find(),
-);
-const articles = queryResult.data;
+const articles = await useAsyncArchives(yyyy, mm);
 
 if (!articles.value) {
   // 該当年月の記事がなければ404ページへ飛ばす

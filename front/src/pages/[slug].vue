@@ -1,15 +1,9 @@
 <script setup lang="ts">
-import { Ref } from 'vue';
-import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
-
 const route = useRoute();
 const slug = route.params.slug as string;
 
 // 記事を取得
-const queryResult = await useAsyncData(slug, () =>
-  queryContent<ArticleParsedContent>(slug).where({ _draft: false }).findOne(),
-);
-const article = queryResult.data as Ref<ArticleParsedContent>;
+const article = await useAsyncPageSlug(slug);
 
 if (!article.value) {
   // 該当記事がなければ404ページへ飛ばす

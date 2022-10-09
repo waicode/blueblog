@@ -44,6 +44,18 @@
     ],
     "description": "外部リンク（MDC形式）"
   },
+  "baLinkRelated": {
+    "prefix": "ba-link-related",
+    "body": [
+      "::ba-link-card",
+      "---",
+      "type: related",
+      "articleId: ",
+      "---",
+      "::"
+    ],
+    "description": "関連リンク（MDC形式）"
+  },
   "appCapture": {
     "prefix": "app-capture",
     "body": [
