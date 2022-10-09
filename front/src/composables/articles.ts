@@ -1,11 +1,16 @@
 import { Ref } from 'vue';
 import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
 
+/**
+ * すべての記事データ一覧を取得
+ *
+ * @returns 記事データ一覧
+ */
 export const useAsyncArticles = async () => {
   const queryResult = await useAsyncData('articles', () =>
     queryContent<ArticleParsedContent>('articles')
       .where({ _draft: false })
-      .sort({ createdAt: 1 }) // 降順
+      .sort({ createdAt: -1 }) // 降順
       .find(),
   );
   return queryResult.data;
