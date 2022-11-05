@@ -73,6 +73,7 @@ $capture-image-border-color: $gray-b5-color;
     img {
       vertical-align: top;
       border-radius: $border-radius2;
+      width: 100%;
     }
 
     &::before {
