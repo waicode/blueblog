@@ -31,7 +31,7 @@ export default defineNuxtConfig({
           href: '/fonts/NotoSansJP-DemiLight.woff2',
           as: 'font',
           type: 'font/woff2',
-          crossorigin: true,
+          crossorigin: 'anonymous',
         },
         {
           rel: 'preconnect',
@@ -40,7 +40,7 @@ export default defineNuxtConfig({
         {
           rel: 'preconnect',
           href: 'https://fonts.gstatic.com',
-          crossorigin: true,
+          crossorigin: 'anonymous',
         },
         {
           rel: 'stylesheet',
