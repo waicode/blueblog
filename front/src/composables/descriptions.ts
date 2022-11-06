@@ -34,7 +34,7 @@ export type DescriptionType = ValueTypeOf<typeof DESCRIPTION>;
 export const useMetaDescription = (
   title: Ref<string> | string = TITLE_DEFAULT,
   description: Ref<string> | string = DESCRIPTION_MAP.siteConcept,
-  imageUrl: Ref<string> | string = undefined,
+  imageUrl: Ref<string> | string = '',
 ) => {
   const meta: { [key: string]: string }[] = [
     {

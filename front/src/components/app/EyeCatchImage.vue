@@ -75,7 +75,8 @@ const iconPixelWidth = computed(() => {
 });
 
 // TODO: ClientOnlyで逃げたが、本来はサーバサイドとクライアントサイドに共通のランダムIDを用意してSSRしたい
-const id = useId(`AppEyeCatchImage--${getCurrentInstance().uid}`);
+const instanceUid = getCurrentInstance()?.uid;
+const id = useId(`AppEyeCatchImage--${instanceUid}`);
 const className = bemx('AppEyeCatchImage', id.value);
 
 useCss(

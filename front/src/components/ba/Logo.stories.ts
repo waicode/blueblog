@@ -1,3 +1,4 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import BaLogo from '@/components/ba/Logo.vue';
 import { FONT_TYPE_MAP, FONT_WEIGHT_MAP } from '@/composables/useWebFont';
 import useCss from '@/composables/useCss';
@@ -20,9 +21,9 @@ export default {
       options: Object.values(FONT_WEIGHT_MAP),
     },
   },
-};
+} as Meta<typeof BaLogo>;
 
-const Template = (args) => ({
+const Template: StoryFn<typeof BaLogo> = (args) => ({
   components: { BaLogo },
   setup() {
     useCss(

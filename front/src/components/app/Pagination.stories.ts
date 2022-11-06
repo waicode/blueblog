@@ -1,3 +1,4 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import AppPagination from '@/components/app/Pagination.vue';
 
 const sampleArticles = [];
@@ -24,9 +25,9 @@ export default {
     articles: { control: { type: 'object' } },
     pageSize: { control: { type: 'number' } },
   },
-};
+} as Meta<typeof AppPagination>;
 
-const Template = (args) => ({
+const Template: StoryFn<typeof AppPagination> = (args) => ({
   components: { AppPagination },
   setup() {
     return { args };

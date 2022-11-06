@@ -1,3 +1,4 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import BaSubDropdown from '@/components/ba/sub/Dropdown.vue';
 
 export default {
@@ -18,9 +19,9 @@ export default {
       control: { type: 'object' },
     },
   },
-};
+} as Meta<typeof BaSubDropdown>;
 
-const Template = (args) => ({
+const Template: StoryFn<typeof BaSubDropdown> = (args) => ({
   components: { BaSubDropdown },
   setup() {
     return { args };

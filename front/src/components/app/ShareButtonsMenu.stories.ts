@@ -1,3 +1,4 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import AppShareButtonsMenu from '@/components/app/ShareButtonsMenu.vue';
 import useCss from '@/composables/useCss';
 
@@ -16,9 +17,9 @@ export default {
       control: { type: 'text' },
     },
   },
-};
+} as Meta<typeof AppShareButtonsMenu>;
 
-const Template = (args) => ({
+const Template: StoryFn<typeof AppShareButtonsMenu> = (args) => ({
   components: { AppShareButtonsMenu },
   setup() {
     useCss(

@@ -1,11 +1,12 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import BaLayoutSub from '@/components/ba/layout/Sub.vue';
 
 export default {
   title: '@components/ba/layout/Sub',
   BaLayoutSub,
-};
+} as Meta<typeof BaLayoutSub>;
 
-const Template = (args) => ({
+const Template: StoryFn<typeof BaLayoutSub> = (args) => ({
   components: { BaLayoutSub },
   setup() {
     return { args };

@@ -1,3 +1,4 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import BaSubText from '@/components/ba/sub/Text.vue';
 import AppText from '@/components/app/Text.vue';
 import { TEXT_SIZE } from '@/components/app/TextComposable';
@@ -13,9 +14,9 @@ export default {
       control: { type: 'text' },
     },
   },
-};
+} as Meta<typeof BaSubText>;
 
-const Template = (args) => ({
+const Template: StoryFn<typeof BaSubText> = (args) => ({
   components: { BaSubText, AppText },
   setup() {
     return { args, TEXT_SIZE };

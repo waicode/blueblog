@@ -1,3 +1,4 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import AppBlockquote from '@/components/app/Blockquote.vue';
 
 export default {
@@ -15,9 +16,9 @@ export default {
       control: { type: 'text' },
     },
   },
-};
+} as Meta<typeof AppBlockquote>;
 
-const Template = (args) => ({
+const Template: StoryFn<typeof AppBlockquote> = (args) => ({
   components: { AppBlockquote },
   setup() {
     return { args };

@@ -1,3 +1,4 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import BaLinkCard from '@/components/ba/LinkCard.vue';
 import { LINK_CARD_TYPE_MAP } from '@/components/ba/LinkCardComposable';
 
@@ -14,9 +15,9 @@ export default {
       options: Object.values(LINK_CARD_TYPE_MAP),
     },
   },
-};
+} as Meta<typeof BaLinkCard>;
 
-const Template = (args) => ({
+const Template: StoryFn<typeof BaLinkCard> = (args) => ({
   components: { BaLinkCard },
   setup() {
     return { args };

@@ -1,3 +1,4 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import AppShareButtons from '@/components/app/ShareButtons.vue';
 
 export default {
@@ -15,9 +16,9 @@ export default {
       control: { type: 'text' },
     },
   },
-};
+} as Meta<typeof AppShareButtons>;
 
-const Template = (args) => ({
+const Template: StoryFn<typeof AppShareButtons> = (args) => ({
   components: { AppShareButtons },
   setup() {
     return { args };

@@ -1,3 +1,4 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import AppShopItemCard from '@/components/app/ShopItemCard.vue';
 import { SHOP_ITEM_CARD_TYPE_MAP } from '@/components/app/ShopItemCardComposable';
 
@@ -18,9 +19,9 @@ export default {
       options: Object.values(SHOP_ITEM_CARD_TYPE_MAP),
     },
   },
-};
+} as Meta<typeof AppShopItemCard>;
 
-const Template = (args) => ({
+const Template: StoryFn<typeof AppShopItemCard> = (args) => ({
   components: { AppShopItemCard },
   setup() {
     return { args };

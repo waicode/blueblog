@@ -1,3 +1,4 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import BaArticle from '@/components/ba/Article.vue';
 import { randomString } from '@/utils/util';
 
@@ -23,9 +24,9 @@ export default {
       control: { type: 'object' },
     },
   },
-};
+} as Meta<typeof BaArticle>;
 
-const Template = (args) => ({
+const Template: StoryFn<typeof BaArticle> = (args) => ({
   components: { BaArticle },
   setup() {
     return { args };

@@ -1,3 +1,4 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import AppDropdown from '@/components/app/Dropdown.vue';
 
 export default {
@@ -14,9 +15,9 @@ export default {
       control: { type: 'object' },
     },
   },
-};
+} as Meta<typeof AppDropdown>;
 
-const Template = (args) => ({
+const Template: StoryFn<typeof AppDropdown> = (args) => ({
   components: { AppDropdown },
   setup() {
     return { args };

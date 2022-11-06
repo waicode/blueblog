@@ -1,3 +1,4 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import BaLayoutMain from '@/components/ba/layout/Main.vue';
 import ContentProseP from '@/components/content/ProseP.vue';
 import ContentProseH2 from '@/components/content/ProseH2.vue';
@@ -16,9 +17,9 @@ import ContentProseTd from '@/components/content/ProseTd.vue';
 export default {
   title: '@components/ba/layout/Main',
   BaLayoutMain,
-};
+} as Meta<typeof BaLayoutMain>;
 
-const Template = (args) => ({
+const Template: StoryFn<typeof BaLayoutMain> = (args) => ({
   components: {
     BaLayoutMain,
     ContentProseP,

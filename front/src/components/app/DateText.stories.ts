@@ -1,3 +1,4 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import AppDateText from '@/components/app/DateText.vue';
 import { DATE_TEXT_TYPE_MAP, DATE_SIZE_TYPE_MAP } from '@/components/app/DateTextComposable';
 
@@ -20,9 +21,9 @@ export default {
       control: { type: 'text' },
     },
   },
-};
+} as Meta<typeof AppDateText>;
 
-const Template = (args) => ({
+const Template: StoryFn<typeof AppDateText> = (args) => ({
   components: { AppDateText },
   setup() {
     return { args };

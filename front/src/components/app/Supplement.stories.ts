@@ -1,3 +1,4 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import AppSupplement from '@/components/app/Supplement.vue';
 import { SUPPLEMENT_TYPE } from '@/components/app/SupplementComposable';
 
@@ -19,9 +20,9 @@ export default {
     },
     default: { control: { type: 'text' } },
   },
-};
+} as Meta<typeof AppSupplement>;
 
-const Template = (args) => ({
+const Template: StoryFn<typeof AppSupplement> = (args) => ({
   components: { AppSupplement },
   setup() {
     return { args: { ...args }, slotValue: args.default };

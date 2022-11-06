@@ -1,3 +1,4 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import AppEyeCatchImage from '@/components/app/EyeCatchImage.vue';
 import { randomString } from '@/utils/util';
 
@@ -25,9 +26,9 @@ export default {
       control: { type: 'number' },
     },
   },
-};
+} as Meta<typeof AppEyeCatchImage>;
 
-const Template = (args) => ({
+const Template: StoryFn<typeof AppEyeCatchImage> = (args) => ({
   components: { AppEyeCatchImage },
   setup() {
     return { args };

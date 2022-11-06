@@ -1,3 +1,4 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import AppText from '@/components/app/Text.vue';
 import { LETTER_SPACING, LINE_HEIGHT, TEXT_COLOR, TEXT_SIZE, TEXT_WEIGHT } from '@/components/app/TextComposable';
 
@@ -32,9 +33,9 @@ export default {
     underline: { control: { type: 'boolean' } },
     default: { control: { type: 'text' } },
   },
-};
+} as Meta<typeof AppText>;
 
-const Template = (args) => ({
+const Template: StoryFn<typeof AppText> = (args) => ({
   components: { AppText },
   setup() {
     const slotValue = args.default;
@@ -43,7 +44,8 @@ const Template = (args) => ({
     return { args, slotValue };
   },
   template: `
-      <AppText v-bind="args">{{ slotValue }}</AppText>`,
+      <AppText v-bind="args">{{ slotValue }}</AppText>
+  `,
 });
 
 export const Primary = Template.bind({});

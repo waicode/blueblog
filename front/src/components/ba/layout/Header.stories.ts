@@ -1,3 +1,4 @@
+import { Meta, StoryFn } from '@storybook/vue3';
 import BaLayoutHeader from '@/components/ba/layout/Header.vue';
 import useCss from '@/composables/useCss';
 import { randomString } from '@/utils/util';
@@ -5,9 +6,9 @@ import { randomString } from '@/utils/util';
 export default {
   title: '@components/ba/layout/Header',
   component: BaLayoutHeader,
-};
+} as Meta<typeof BaLayoutHeader>;
 
-const Template = (args) => ({
+const Template: StoryFn<typeof BaLayoutHeader> = (args) => ({
   components: { BaLayoutHeader },
   setup() {
     useCss(
