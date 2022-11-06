@@ -1,3 +1,4 @@
 .storybook/auto-imports.d.ts
+.storybook/composables.d.ts
 .storybook/components.d.ts
 

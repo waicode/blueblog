@@ -33,7 +33,15 @@ module.exports = {
         dts: ".storybook/auto-imports.d.ts",
       })
     );
-    // Nuxt3のコンポーネント自動インポートをStorybookで再現
+    // Nuxt3のcomposables配下の自動インポートをStorybookで再現
+    config.plugins.push(
+      AutoImport({
+        dirs: ["../front/src/composables"],
+        vueTemplate: true,
+        dts: ".storybook/composables.d.ts",
+      })
+    );
+    // Nuxt3のcomponentsは以下の自動インポートをStorybookで再現
     config.plugins.push(
       Components({
         dirs: ["../front/src/components"],
@@ -48,6 +56,7 @@ module.exports = {
     config.resolve.alias["#app"] = require.resolve("./__mocks__/nuxtMock.ts");
 
     return mergeConfig(config, {
+      // Githubページにデプロイするためビルド時のみベースパスを`/blueblog/`に変更（https://waicode.github.io/blueblog/）
       base: config.build ? "/blueblog/" : "/",
       css: {
         preprocessorOptions: {
