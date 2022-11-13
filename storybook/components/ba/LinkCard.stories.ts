@@ -7,12 +7,39 @@ export default {
   component: BaLinkCard,
   args: {
     type: LINK_CARD_TYPE_MAP.EXTERNAL,
+    title: undefined,
+    description: undefined,
     link: 'https://mujiota.com/1372/bulletproof-coffee/',
+    imgFileName: undefined,
+    aspMeasurementImgLink: undefined,
+    article: undefined,
+    articleSlug: undefined,
   },
   argTypes: {
     type: {
       control: { type: 'inline-radio' },
       options: Object.values(LINK_CARD_TYPE_MAP),
+    },
+    title: {
+      control: { type: 'text' },
+    },
+    description: {
+      control: { type: 'text' },
+    },
+    link: {
+      control: { type: 'text' },
+    },
+    imgFileName: {
+      control: { type: 'text' },
+    },
+    aspMeasurementImgLink: {
+      control: { type: 'text' },
+    },
+    article: {
+      control: { type: 'object' },
+    },
+    articleSlug: {
+      control: { type: 'text' },
     },
   },
 } as Meta<typeof BaLinkCard>;
@@ -22,15 +49,27 @@ const Template: StoryFn<typeof BaLinkCard> = (args) => ({
   setup() {
     return { args };
   },
-  template: `
-    <BaLinkCard v-bind="args" />
-  `,
+  template: `<BaLinkCard v-bind="args" />`,
 });
+
+const ogpValue = {
+  title: undefined,
+  type: undefined,
+  description: undefined,
+  imageUrl: undefined,
+  emojiIcon: undefined,
+};
 
 export const Primary = Template.bind({});
 Primary.args = {};
 Primary.parameters = {
-  useFetch: {
+  useState: {
+    value: ogpValue,
+  },
+  useAsyncArticlesSlug: {
+    data: {},
+  },
+  useLazyFetch: {
     data: `
     <head>
       <meta property="og:title" content="完全無欠コーヒーを5年以上飲み続けて確信した効果とおすすめの作り方">
@@ -44,7 +83,13 @@ Primary.parameters = {
 export const External = Template.bind({});
 External.args = {};
 External.parameters = {
-  useFetch: {
+  useState: {
+    value: ogpValue,
+  },
+  useAsyncArticlesSlug: {
+    data: {},
+  },
+  useLazyFetch: {
     data: `
     <head>
       <meta property="og:title" content="完全無欠コーヒーを5年以上飲み続けて確信した効果とおすすめの作り方">
@@ -71,25 +116,40 @@ Related.args = {
     updatedAt: '2021-07-25T09:49:35.000Z',
   },
 };
-Related.parameters = {};
+Related.parameters = {
+  useState: {
+    value: ogpValue,
+  },
+  useAsyncArticlesSlug: {
+    data: {},
+  },
+  useLazyFetch: {
+    data: '',
+  },
+};
 
 export const Qiita = Template.bind({});
 Qiita.args = {
   type: LINK_CARD_TYPE_MAP.QIITA,
-  link: 'https://qiita.com/cheez921/items/41b744e4e002b966391a',
+  link: 'https://qiita.com/waicode/items/61ec0f9478fdb8a8e542',
 };
 Qiita.parameters = {
-  useFetch: {
+  useState: {
+    value: ogpValue,
+  },
+  useAsyncArticlesSlug: {
+    data: {},
+  },
+  useLazyFetch: {
     data: `
     <head>
-      <meta property="og:title" content="【ES6】 JavaScript初心者でもわかるPromise講座 - Qiita">
-      <meta property="og:image" content="https://qiita-user-contents.imgix.net/https%3A%2F%2Fcdn.qiita.com%2Fassets%2Fpublic%2Farticle-ogp-background-9f5428127621718a910c8b63951390ad.png?ixlib=rb-4.0.0&amp;w=1200&amp;mark64=aHR0cHM6Ly9xaWl0YS11c2VyLWNvbnRlbnRzLmltZ2l4Lm5ldC9-dGV4dD9peGxpYj1yYi00LjAuMCZ3PTkxNiZ0eHQ9JUUzJTgwJTkwRVM2JUUzJTgwJTkxJTIwSmF2YVNjcmlwdCVFNSU4OCU5RCVFNSVCRiU4MyVFOCU4MCU4NSVFMyU4MSVBNyVFMyU4MiU4MiVFMyU4MiU4RiVFMyU4MSU4QiVFMyU4MiU4QlByb21pc2UlRTglQUMlOUIlRTUlQkElQTcmdHh0LWNvbG9yPSUyMzIxMjEyMSZ0eHQtZm9udD1IaXJhZ2lubyUyMFNhbnMlMjBXNiZ0eHQtc2l6ZT01NiZ0eHQtY2xpcD1lbGxpcHNpcyZ0eHQtYWxpZ249bGVmdCUyQ3RvcCZzPWNiZjA4ODFjNzdlOTA1NGFhOTRkOWNhNDE5YWY1MTkw&amp;mark-x=142&amp;mark-y=112&amp;blend64=aHR0cHM6Ly9xaWl0YS11c2VyLWNvbnRlbnRzLmltZ2l4Lm5ldC9-dGV4dD9peGxpYj1yYi00LjAuMCZ3PTYxNiZ0eHQ9JTQwY2hlZXo5MjEmdHh0LWNvbG9yPSUyMzIxMjEyMSZ0eHQtZm9udD1IaXJhZ2lubyUyMFNhbnMlMjBXNiZ0eHQtc2l6ZT0zNiZ0eHQtYWxpZ249bGVmdCUyQ3RvcCZzPTk2MDAwM2EwZGM0MTMwMWUzMzkwZmU4ZGZkMTZhZGU5&amp;blend-x=142&amp;blend-y=491&amp;blend-mode=normal&amp;s=81358f9fc0d0027190ee4726c2ef590f">
+      <meta property="og:title" content="VSCodeでGitHub連携するQiita執筆環境ボイラープレート - Qiita">
+      <meta property="og:image" content="https://qiita-user-contents.imgix.net/https%3A%2F%2Fcdn.qiita.com%2Fassets%2Fpublic%2Farticle-ogp-background-9f5428127621718a910c8b63951390ad.png?ixlib=rb-4.0.0&amp;w=1200&amp;mark64=aHR0cHM6Ly9xaWl0YS11c2VyLWNvbnRlbnRzLmltZ2l4Lm5ldC9-dGV4dD9peGxpYj1yYi00LjAuMCZ3PTkxNiZ0eHQ9VlNDb2RlJUUzJTgxJUE3R2l0SHViJUU5JTgwJUEzJUU2JTkwJUJBJUUzJTgxJTk5JUUzJTgyJThCUWlpdGElRTUlOUYlQjclRTclQUQlODYlRTclOTIlQjAlRTUlQTIlODMlRTMlODMlOUMlRTMlODIlQTQlRTMlODMlQTklRTMlODMlQkMlRTMlODMlOTclRTMlODMlQUMlRTMlODMlQkMlRTMlODMlODgmdHh0LWNvbG9yPSUyMzIxMjEyMSZ0eHQtZm9udD1IaXJhZ2lubyUyMFNhbnMlMjBXNiZ0eHQtc2l6ZT01NiZ0eHQtY2xpcD1lbGxpcHNpcyZ0eHQtYWxpZ249bGVmdCUyQ3RvcCZzPTM4OGIyYzliYWVmNjkwODJjZmJlNTEyNTAxNzM2NzA0&amp;mark-x=142&amp;mark-y=112&amp;blend64=aHR0cHM6Ly9xaWl0YS11c2VyLWNvbnRlbnRzLmltZ2l4Lm5ldC9-dGV4dD9peGxpYj1yYi00LjAuMCZ3PTYxNiZ0eHQ9JTQwd2FpY29kZSZ0eHQtY29sb3I9JTIzMjEyMTIxJnR4dC1mb250PUhpcmFnaW5vJTIwU2FucyUyMFc2JnR4dC1zaXplPTM2JnR4dC1hbGlnbj1sZWZ0JTJDdG9wJnM9MTQyZmU5ZTZiMWRmYmU3MmQxMGQ0MTlkOTVkMjVlYmU&amp;blend-x=142&amp;blend-y=491&amp;blend-mode=normal&amp;s=849a2666f2a84fb8e717fe6baa6fc685">
       <meta property="og:description" content="
+        QiitaをGithubと連携してVSCodeで書くために
+        Qiitaの記事投稿でもZennのように「Githubリポジトリと連携してVSCodeで書けたら便利だな」と思い、Qiita執筆環境のボイラープレート1を作成しました。
 
-はじめに
-
-Promiseって...難しくないですか？？？
-3ヶ月くらい前の私は、Promiseをほとんど理解できてないのにasync/awaitとか使っちゃってたし、様々な記事を読み漁ってもなかなか理解できず、Promiseの正...">
+        ...">
     </head>
     `,
   },
@@ -101,11 +161,17 @@ Zenn.args = {
   link: 'https://zenn.dev/oreo2990/articles/280d39a45c203e',
 };
 Zenn.parameters = {
+  useState: {
+    value: ogpValue,
+  },
+  useAsyncArticlesSlug: {
+    data: {},
+  },
   useFetch: {
     data: `
     <head>
-    <meta property="og:title" content="Webブラウザのレンダリングの仕組みを理解する">
-    <meta property="og:image" content="https://res.cloudinary.com/zenn/image/upload/s--9EpDAbl5--/co_rgb:222%2Cg_south_west%2Cl_text:notosansjp-medium.otf_37_bold:oreo2990%2Cx_203%2Cy_98/c_fit%2Cco_rgb:222%2Cg_north_west%2Cl_text:notosansjp-medium.otf_70_bold:Web%25E3%2583%2596%25E3%2583%25A9%25E3%2582%25A6%25E3%2582%25B6%25E3%2581%25AE%25E3%2583%25AC%25E3%2583%25B3%25E3%2583%2580%25E3%2583%25AA%25E3%2583%25B3%25E3%2582%25B0%25E3%2581%25AE%25E4%25BB%2595%25E7%25B5%2584%25E3%2581%25BF%25E3%2582%2592%25E7%2590%2586%25E8%25A7%25A3%25E3%2581%2599%25E3%2582%258B%2Cw_1010%2Cx_90%2Cy_100/g_south_west%2Ch_90%2Cl_fetch:aHR0cHM6Ly9yZXMuY2xvdWRpbmFyeS5jb20vemVubi9pbWFnZS9mZXRjaC9zLS11UHFTbWtwcy0tL2NfbGltaXQlMkNmX2F1dG8lMkNmbF9wcm9ncmVzc2l2ZSUyQ3FfYXV0byUyQ3dfNzAvaHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3plbm4tdXNlci11cGxvYWQvYXZhdGFyLzdlZWE4N2IyOGEuanBlZw==%2Cr_max%2Cw_90%2Cx_87%2Cy_72/v1627274783/default/og-base_z4sxah.png">
+      <meta property="og:title" content="VSCodeが導くZenn執筆環境ボイラープレート">
+      <meta property="og:image" content="https://res.cloudinary.com/zenn/image/upload/s--JdxGLV4F--/co_rgb:222%2Cg_south_west%2Cl_text:notosansjp-medium.otf_37_bold:waicode%2Cx_203%2Cy_98/c_fit%2Cco_rgb:222%2Cg_north_west%2Cl_text:notosansjp-medium.otf_70_bold:VSCode%25E3%2581%258C%25E5%25B0%258E%25E3%2581%258FZenn%25E5%259F%25B7%25E7%25AD%2586%25E7%2592%25B0%25E5%25A2%2583%25E3%2583%259C%25E3%2582%25A4%25E3%2583%25A9%25E3%2583%25BC%25E3%2583%2597%25E3%2583%25AC%25E3%2583%25BC%25E3%2583%2588%2Cw_1010%2Cx_90%2Cy_100/g_south_west%2Ch_90%2Cl_fetch:aHR0cHM6Ly9yZXMuY2xvdWRpbmFyeS5jb20vemVubi9pbWFnZS9mZXRjaC9zLS03SzJwVmROVC0tL2NfbGltaXQlMkNmX2F1dG8lMkNmbF9wcm9ncmVzc2l2ZSUyQ3FfYXV0byUyQ3dfNzAvaHR0cHM6Ly9zdG9yYWdlLmdvb2dsZWFwaXMuY29tL3plbm4tdXNlci11cGxvYWQvYXZhdGFyLzZjMzlkMzhiNTMuanBlZw==%2Cr_max%2Cw_90%2Cx_87%2Cy_72/v1627274783/default/og-base_z4sxah.png">
     </head>
     `,
   },

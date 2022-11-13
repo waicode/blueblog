@@ -4,6 +4,7 @@ import { LinkCardType, LINK_CARD_TYPE_MAP } from '@/components/ba/LinkCardCompos
 import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
 import useOgp from '@/composables/useOgp';
 import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
+import { useAsyncArticlesSlug } from '@/composables/articles';
 import { bemx, getUrlFqdn } from '@/utils/util';
 
 interface LinkCardPropType {
@@ -101,6 +102,7 @@ const linkDescription = ref(description.value);
 if (props.type === LINK_CARD_TYPE_MAP.RELATED) {
   if (!props.article && props.articleSlug) {
     // 記事スラッグが渡された場合は記事データを取得
+    // TODO: トップレベルでawaitを使うとStorybookが表示されなくなる問題を解消する
     const data = await useAsyncArticlesSlug(props.articleSlug);
     articleData.value = data.value;
   }

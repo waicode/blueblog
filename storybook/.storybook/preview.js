@@ -1,25 +1,18 @@
-import "@/assets/styles/global.scss";
-import "@/assets/styles/reset.scss";
+import '@/assets/styles/global.scss';
+import '@/assets/styles/reset.scss';
 
-import { app } from "@storybook/vue3";
+import { app } from '@storybook/vue3';
 
 // Componentsのモック
-import NuxtLinkStub from "./components/NuxtLinkStub.vue";
-import ClientOnlyStub from "./components/ClientOnlyStub.vue";
+import NuxtLinkStub from './components/NuxtLinkStub.vue';
+import ClientOnlyStub from './components/ClientOnlyStub.vue';
 
 // Nuxtのモック
-import {
-  useFetchDecorator,
-  useLazyFetchDecorator,
-  useStateDecorator,
-} from "./__mocks__/nuxtMock";
+import { useFetchDecorator, useLazyFetchDecorator, useStateDecorator } from './__mocks__/nuxtMock';
+import { useAsyncArticlesSlugDecorator } from './__mocks__/articlesMock';
 
 // コンポーネントをスタブ化
-app.component("NuxtLink", NuxtLinkStub);
-app.component("ClientOnly", ClientOnlyStub);
+app.component('NuxtLink', NuxtLinkStub);
+app.component('ClientOnly', ClientOnlyStub);
 
-export const decorators = [
-  useFetchDecorator,
-  useLazyFetchDecorator,
-  useStateDecorator,
-];
+export const decorators = [useFetchDecorator, useLazyFetchDecorator, useStateDecorator, useAsyncArticlesSlugDecorator];

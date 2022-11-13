@@ -10,6 +10,7 @@
     "../front/.nuxt/nuxt.d.ts",
     "../front/**/*",
     "../front/src/**/*",
-    "./components/**/*"
+    "./components/**/*",
+    "./.storybook/**/*"
   ]
 }

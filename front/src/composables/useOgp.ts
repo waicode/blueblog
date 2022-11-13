@@ -1,6 +1,6 @@
 import { Ref } from 'vue';
 import { CheerioAPI } from 'cheerio';
-import { useLazyFetch } from '#app';
+import { useLazyFetch, useState } from '#app';
 import { domParseFromString } from '@/utils/util';
 
 export const OG_TITLE = 'og:title';
