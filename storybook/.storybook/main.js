@@ -5,8 +5,8 @@ const path = require("path");
 
 module.exports = {
   stories: [
-    "../../front/src/components/**/*.stories.mdx",
-    "../../front/src/components/**/*.stories.@(js|jsx|ts|tsx)",
+    "../components/**/*.stories.mdx",
+    "../components/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: [
     "@storybook/addon-essentials",

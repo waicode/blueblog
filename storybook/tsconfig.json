@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@": ["../front/src"],
+      "@/*": ["../front/src/*"]
+    }
+  },
+  "include": [
+    "../front/.nuxt/nuxt.d.ts",
+    "../front/**/*",
+    "../front/src/**/*",
+    "./components/**/*"
+  ]
+}
