@@ -16,7 +16,7 @@ const pageSize = runtimeConfig.public.pageSize;
 const { targetArticles } = usePaginate<ArticleParsedContent>(articles.value, pageSize);
 const posts = ref(unref(targetArticles));
 // ページが切り替わったら表示対象の記事一覧に切り替える
-const displayTargetPosts = (targetPosts) => {
+const displayTargetPosts = (targetPosts: ArticleParsedContent[]) => {
   posts.value = unref(targetPosts);
 };
 

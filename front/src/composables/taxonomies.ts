@@ -29,6 +29,8 @@ export type TaxonomyType = ValueTypeOf<typeof TAXONOMY>;
  * @returns スラッグ（タグ情報のキー）
  */
 export const getTagSlug = (tagName: string) => {
-  const tagSlug = Object.keys(TAXONOMY_MAP).filter((key) => TAXONOMY_MAP[key].name === tagName)[0];
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const tagSlug = Object.keys(TAXONOMY_MAP).filter((key) => TAXONOMY_MAP[key].name === tagName)[0]; // 定数用TAXONOMY_MAPは意図的に型未定義のためts-ignore
   return tagSlug || TAXONOMY.NOTYET;
 };

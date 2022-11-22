@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
+import { useArchivesYyyyMmPage } from '@/composables/pages/archives/yyyy/mm';
+
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute();
 const yyyy = route.params.yyyy as string;
@@ -7,7 +9,7 @@ const mm = route.params.mm as string;
 const monthStr = String(Number(mm)); // ゼロサプレス
 
 // 該当年月の記事を取得
-const articles = await useAsyncArchives(yyyy, mm);
+const { data: articles } = useArchivesYyyyMmPage(yyyy, mm);
 
 if (!articles.value) {
   // 該当年月の記事がなければ404ページへ飛ばす
@@ -20,7 +22,7 @@ const pageSize = runtimeConfig.public.pageSize;
 const { targetArticles } = usePaginate<ArticleParsedContent>(unref(articles), pageSize);
 const posts = ref(unref(targetArticles));
 // ページが切り替わったら表示対象の記事一覧に切り替える
-const displayTargetPosts = (targetPosts) => {
+const displayTargetPosts = (targetPosts: ArticleParsedContent[]) => {
   posts.value = unref(targetPosts);
 };
 

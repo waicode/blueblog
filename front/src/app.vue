@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Ref } from 'vue';
 import { useArticlesState } from '@/composables/state';
 import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
 
@@ -16,7 +17,7 @@ const queryResult = await useAsyncData('articles', () =>
     .sort({ createdAt: 1 }) // 降順
     .find(),
 );
-const articles = queryResult.data;
+const articles = queryResult.data as Ref<ArticleParsedContent[]>;
 setArticlesState(articles);
 </script>
 

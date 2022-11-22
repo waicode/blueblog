@@ -13,10 +13,12 @@ defineProps({
       <BaLayoutMain>
         <div class="BaError__Content">
           <code class="BaError__Code"
-            ><AppText :type="TEXT_SIZE.ERROR_CODE" :color="TEXT_COLOR.DARK_GRAY">{{ error.statusCode }}</AppText></code
+            ><AppText :type="TEXT_SIZE.ERROR_CODE" :color="TEXT_COLOR.DARK_GRAY">{{
+              error ? error.statusCode : ''
+            }}</AppText></code
           >
           <div class="BaError__Message">
-            <AppText v-if="error.statusCode === '404'" :type="TEXT_SIZE.BODY1"
+            <AppText v-if="error && error.statusCode === '404'" :type="TEXT_SIZE.BODY1"
               >お探しのページが見つかりませんでした。</AppText
             >
             <AppText v-else :type="TEXT_SIZE.BODY1">エラーが発生しました。</AppText>

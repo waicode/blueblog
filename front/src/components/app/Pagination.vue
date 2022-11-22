@@ -67,7 +67,10 @@ const pageNumbers = computed(() => {
   }
   if (targetPage.value < Math.ceil(maxWidth / 2)) {
     // 1, 2, 3, 4, 5, ..., 20
-    return [...Array(maxWidth - 2).keys()].map((val) => val + 1).concat([undefined, unref(lastPageCount)]);
+    return ([...Array(maxWidth - 2).keys()].map((val) => val + 1) as Array<number | undefined>).concat([
+      undefined,
+      unref(lastPageCount),
+    ]);
   }
   if (targetPage.value > unref(lastPageCount) - Math.ceil(maxWidth / 2)) {
     // 1, ..., 16, 17, 18, 19, 20

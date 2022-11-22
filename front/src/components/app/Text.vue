@@ -27,10 +27,30 @@ interface TextPropType {
    * - 字間（letter-spacing）
    */
   type?: TextSizeType;
+
+  /**
+   * 行の高さ
+   */
   height?: LineHeightType;
+
+  /**
+   * 字間
+   */
   spacing?: LetterSpacingType;
+
+  /**
+   * 太さ
+   */
   weight?: TextWeightType;
+
+  /**
+   * 色
+   */
   color?: TextColorType;
+
+  /**
+   * 下線
+   */
   underline?: boolean;
 }
 
@@ -46,10 +66,10 @@ const props = withDefaults(defineProps<TextPropType>(), {
 const className = computed(() =>
   bemx('AppText', {
     type: TEXT_SIZE_MAP[props.type],
-    height: LINE_HEIGHT_MAP[props.height],
-    spacing: LETTER_SPACING_MAP[props.spacing],
-    weight: TEXT_WEIGHT_MAP[props.weight],
-    color: TEXT_COLOR_MAP[props.color],
+    height: props.height ? LINE_HEIGHT_MAP[props.height] : undefined,
+    spacing: props.spacing ? LETTER_SPACING_MAP[props.spacing] : undefined,
+    weight: props.weight ? TEXT_WEIGHT_MAP[props.weight] : undefined,
+    color: props.color ? TEXT_COLOR_MAP[props.color] : undefined,
     underline: props.underline,
   }),
 );

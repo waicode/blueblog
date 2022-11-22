@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { Ref } from 'vue';
 import { DATE_TEXT_TYPE_MAP } from '@/components/app/DateTextComposable';
-import { LinkCardType, LINK_CARD_TYPE_MAP } from '@/components/ba/LinkCardComposable';
+import { LinkCardType, LINK_CARD_TYPE_MAP, useLinkCard } from '@/components/ba/LinkCardComposable';
 import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
 import useOgp from '@/composables/useOgp';
 import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
-import { useAsyncArticlesSlug } from '@/composables/articles';
 import { bemx, getUrlFqdn } from '@/utils/util';
 
 interface LinkCardPropType {
@@ -78,7 +78,7 @@ const linkDomain = ref('');
 
 switch (props.type) {
   case LINK_CARD_TYPE_MAP.EXTERNAL:
-    linkDomain.value = getUrlFqdn(props.link);
+    linkDomain.value = props.link ? getUrlFqdn(props.link) : '';
     break;
   case LINK_CARD_TYPE_MAP.RELATED:
     linkDomain.value = 'archt.blue';
@@ -93,38 +93,27 @@ switch (props.type) {
 }
 
 const { article, title, description, link } = toRefs(props);
-const articleData = ref(article.value);
-const linkPath = ref(link.value);
-const linkTitle = ref(title.value);
-const linkDescription = ref(description.value);
 
 // 関連記事
+const relatedArticleData: Ref<ArticleParsedContent | undefined> = ref(undefined);
 if (props.type === LINK_CARD_TYPE_MAP.RELATED) {
   if (!props.article && props.articleSlug) {
     // 記事スラッグが渡された場合は記事データを取得
-    // TODO: トップレベルでawaitを使うとStorybookが表示されなくなる問題を解消する
-    const data = await useAsyncArticlesSlug(props.articleSlug);
-    articleData.value = data.value;
+    const { data } = useLinkCard(props.articleSlug);
+    relatedArticleData.value = data.value;
   }
-  linkPath.value = articleData.value?._path;
-  linkTitle.value = articleData.value?.title;
-  linkDescription.value = articleData.value?.description;
 }
 
 // OGPを設定
-const ogp = props.type !== LINK_CARD_TYPE_MAP.RELATED ? useOgp(props.link) : ref(undefined);
-const linkImage = ref(undefined);
-if (props.link && ogp.value) {
-  if (ogp.value.title) {
-    linkTitle.value = props.title ?? ogp.value.title;
-  }
-  if (ogp.value.description) {
-    linkDescription.value = props.description ?? ogp.value.description;
-  }
-  if (ogp.value.imageUrl) {
-    linkImage.value = ogp.value.imageUrl;
-  }
-}
+const ogp = props.type !== LINK_CARD_TYPE_MAP.RELATED && props.link ? useOgp(props.link) : ref(undefined);
+
+const articleData = computed(() => relatedArticleData.value ?? article?.value);
+const linkPath = computed(() => relatedArticleData?.value?._path ?? link?.value);
+const linkTitle = computed(() => relatedArticleData?.value?.title ?? title?.value ?? ogp?.value?.title);
+const linkDescription = computed(
+  () => relatedArticleData?.value?.description ?? description?.value ?? ogp?.value?.description,
+);
+const linkImage = computed(() => ogp?.value?.imageUrl);
 
 const className = computed(() =>
   bemx('BaLinkCard', {
@@ -139,11 +128,11 @@ const className = computed(() =>
       <AppLink :href="linkPath" target="_blank" rel="nofollow noopener">
         <div class="BaLinkCard__Wrapper">
           <div v-if="props.type === LINK_CARD_TYPE_MAP.RELATED && articleData" class="BaLinkCard__LinkImage">
-            <AppEyeCatchImage :icon="articleData.icon" />
+            <AppEyeCatchImage v-if="articleData.icon" :icon="articleData.icon" />
           </div>
           <div v-else-if="imgFileName || linkImage" class="BaLinkCard__LinkImage">
             <AppImage v-if="imgFileName" :src="`link/${imgFileName}`" />
-            <AppImage v-else :src="linkImage" />
+            <AppImage v-else-if="linkImage" :src="linkImage" />
           </div>
           <div v-else class="BaLinkCard__LinkImage"></div>
           <div class="BaLinkCard__Contents">

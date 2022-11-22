@@ -51,7 +51,7 @@ watchEffect(() => {
       <div class="BaArticle__Wrapper">
         <div class="BaArticle__FirstContents">
           <div class="BaArticle__Eyecatch">
-            <AppEyeCatchImage :icon="article.icon" :width="eyeCatchImageWidth" />
+            <AppEyeCatchImage v-if="article.icon" :icon="article.icon" :width="eyeCatchImageWidth" />
           </div>
           <h2 v-if="isTabletMedia && !isPhoneMedia" class="BaArticle__Title">
             <AppText :type="TEXT_SIZE.TITLE1">{{ article.title }}</AppText>

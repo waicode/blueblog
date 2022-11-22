@@ -1,5 +1,4 @@
 import { Ref } from 'vue';
-import { CheerioAPI } from 'cheerio';
 import { useLazyFetch, useState } from '#app';
 import { domParseFromString } from '@/utils/util';
 
@@ -8,8 +7,8 @@ export const OG_TYPE = 'og:type';
 export const OG_DESCRIPTION = 'og:description';
 export const OG_IMAGE = 'og:image';
 
-const getMetaContent = ($: CheerioAPI, property: string) => $(`head meta[property="${property}"]`).attr('content');
-const getZennEmoji = ($: CheerioAPI) => $('span[class^="Emoji_nativeEmoji__"]').text();
+const getMetaContent = ($: cheerio.Root, property: string) => $(`head meta[property="${property}"]`).attr('content');
+const getZennEmoji = ($: cheerio.Root) => $('span[class^="Emoji_nativeEmoji__"]').text();
 
 /**
  * OGP情報の型

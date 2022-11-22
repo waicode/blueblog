@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
 import { TAXONOMY_MAP } from '@/composables/taxonomies';
+import { useTagsSlugPage } from '@/composables/pages/tags/slug';
 
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute();
 const tagSlug = route.params.slug as string;
-const tagName = TAXONOMY_MAP[tagSlug].name;
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+const tagName = TAXONOMY_MAP[tagSlug].name; // 定数用TAXONOMY_MAPは意図的に型未定義のためts-ignore
 
 if (!tagName) {
   // 該当タグがなければ404ページへ飛ばす
@@ -13,7 +17,7 @@ if (!tagName) {
 }
 
 // 該当タグの記事を取得
-const articles = await useAsyncTagsSlug(tagSlug, tagName);
+const { data: articles } = useTagsSlugPage(tagSlug, tagName);
 
 if (!articles.value) {
   // 該当タグの記事がなければ404ページへ飛ばす
@@ -26,7 +30,7 @@ const pageSize = runtimeConfig.public.pageSize;
 const { targetArticles } = usePaginate<ArticleParsedContent>(articles.value, pageSize);
 const posts = ref(unref(targetArticles));
 // ページが切り替わったら表示対象の記事一覧に切り替える
-const displayTargetPosts = (targetPosts) => {
+const displayTargetPosts = (targetPosts: ArticleParsedContent[]) => {
   posts.value = unref(targetPosts);
 };
 

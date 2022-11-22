@@ -16,8 +16,19 @@ interface LinkPropType {
    */
   href?: string;
 
-  // FIXME: あとでととのえること
+  /**
+   * rel属性
+   *
+   * hrefで指定しているページとの間でどのような関係があるか。
+   * 未指定の場合は"noopener"となる。
+   */
   rel?: string;
+
+  /**
+   * onclick属性
+   *
+   * リンククリック時に実行される関数を指定する。
+   */
   onclick?: string;
 }
 
@@ -27,7 +38,7 @@ defineProps<LinkPropType>();
 <template>
   <span class="AppLink">
     <template v-if="to">
-      <NuxtLink v-if="isExternalUrl(to)" :to="to" :rel="rel ?? 'noopener'" target="_blank" :onclick="onclick">
+      <NuxtLink v-if="to && isExternalUrl(to)" :to="to" :rel="rel ?? 'noopener'" target="_blank" :onclick="onclick">
         <slot />
       </NuxtLink>
       <NuxtLink v-else :to="to" :rel="rel ?? 'noopener'" :external="true">
@@ -35,7 +46,13 @@ defineProps<LinkPropType>();
       </NuxtLink>
     </template>
     <template v-else>
-      <NuxtLink v-if="isExternalUrl(href)" :href="href" :rel="rel ?? 'noopener'" target="_blank" :onclick="onclick">
+      <NuxtLink
+        v-if="href && isExternalUrl(href)"
+        :href="href"
+        :rel="rel ?? 'noopener'"
+        target="_blank"
+        :onclick="onclick"
+      >
         <slot />
       </NuxtLink>
       <NuxtLink v-else :href="href" :rel="rel ?? 'noopener'" :external="true">

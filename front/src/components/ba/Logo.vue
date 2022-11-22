@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// TODO: Storybookのautoimports対応が完了したら消す
+import { ComponentInternalInstance } from 'vue';
 import useId from '@/composables/useId';
 import useCss from '@/composables/useCss';
 import useWebFont, { FONT_TYPE_MAP, FontType, FONT_WEIGHT_MAP, FontWeightValueType } from '@/composables/useWebFont';
@@ -31,7 +31,8 @@ if (props.font !== FONT_TYPE_MAP.ADVENT__PRO || props.weight !== FONT_WEIGHT_MAP
   useWebFont(props.font, props.weight);
 }
 
-const id = useId(`BaLayoutLogo--${getCurrentInstance().uid}`);
+const instance = getCurrentInstance() as ComponentInternalInstance;
+const id = useId(`BaLayoutLogo--${instance.uid}`);
 const className = bemx('BaLayoutLogo', id.value);
 useCss(
   () =>

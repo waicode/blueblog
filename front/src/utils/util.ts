@@ -246,7 +246,10 @@ export const getFileName = (path: string) => path.split('/').reverse()[0].split(
  * const fqdnName = getUrlFqdn(url) // sample.archt.blue
  * ```
  */
-export const getUrlFqdn = (url: string) => url.match(/^https?:\/{2,}(.*?)(?:\/|\?|#|$)/)[1];
+export const getUrlFqdn = (url: string) => {
+  const data = url.match(/^https?:\/{2,}(.*?)(?:\/|\?|#|$)/);
+  return data ? data[1] : '';
+};
 
 /**
  * HTML特殊文字をアンエスケープ
@@ -257,7 +260,7 @@ export const getUrlFqdn = (url: string) => url.match(/^https?:\/{2,}(.*?)(?:\/|\
  * @returns アンエスケープされた文字列
  */
 export const unescapedHtml = (html: string) => {
-  const map = {
+  const map: { [key: string]: string } = {
     '&amp;': '&',
     '&quot;': '"',
     '&lt;': '<',
@@ -370,4 +373,7 @@ export const getAttributeProperty = (el: Element) => el.getAttribute('property')
  * @param el HTML要素
  * @returns content属性値
  */
-export const getAttributeContent = (el: Element) => decodeURI(el.getAttribute('content'));
+export const getAttributeContent = (el: Element) => {
+  const data = el.getAttribute('content');
+  return data ? decodeURI(data) : '';
+};

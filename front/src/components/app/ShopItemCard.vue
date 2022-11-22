@@ -50,7 +50,7 @@ interface ShopItemCardPropType {
   /**
    * Amazon商品ID
    */
-  amazonItemId?: string;
+  amazonItemId?: string | number;
 
   /**
    * Kindle商品ID
@@ -60,7 +60,7 @@ interface ShopItemCardPropType {
   /**
    * 楽天商品ID
    */
-  rakutenItemId?: string;
+  rakutenItemId?: string | number;
 
   /**
    * Kobo商品ID

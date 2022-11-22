@@ -40,7 +40,7 @@ defineProps<ArticleTopPropType>();
       </div>
     </div>
     <div class="BaArticleTop__Eyecatch">
-      <AppEyeCatchImage :icon="article.icon" />
+      <AppEyeCatchImage v-if="article.icon" :icon="article.icon" />
     </div>
     <div class="BaArticleTop__Description">
       <AppText :type="TEXT_SIZE.BODY1">{{ article.description }}</AppText>
