@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { TEXT_SIZE } from '@/components/app/TextComposable';
-import { DropdownItem } from '@/components/app/DropdownComposable';
+import { TEXT_SIZE } from '@/components/app/TextConst';
+import { DropdownItem } from '@/components/app/DropdownConst';
 
 interface BaSubDropdownPropType {
   /**

@@ -4,7 +4,6 @@ import type { ParsedContent } from '@nuxt/content/dist/runtime/types';
  * 記事情報の型定義
  */
 export type Article = {
-  title: string;
   description: string;
   category: string;
   imageFormat?: string;

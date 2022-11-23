@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
+import { ArticleParsedContent } from '@/components/ba/ArticleConst';
 import { useArchivesYyyyMmPage } from '@/composables/pages/archives/yyyy/mm';
 
 const runtimeConfig = useRuntimeConfig();

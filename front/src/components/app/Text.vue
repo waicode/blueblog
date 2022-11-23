@@ -10,7 +10,7 @@ import {
   TextWeightType,
   TEXT_COLOR_MAP,
   TextColorType,
-} from './TextComposable';
+} from '@/components/app/TextConst';
 import { bemx } from '@/utils/util';
 
 interface TextPropType {

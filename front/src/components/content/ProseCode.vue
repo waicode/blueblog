@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
+import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextConst';
 
 // クリップボードにコピー
 const { copy, copied } = useClipboard();

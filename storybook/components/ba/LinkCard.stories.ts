@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/vue3';
 import BaLinkCard from '@/components/ba/LinkCard.vue';
-import { LINK_CARD_TYPE_MAP } from '@/components/ba/LinkCardComposable';
+import { LINK_CARD_TYPE_MAP } from '@/components/ba/LinkCardConst';
 
 export default {
   title: '@components/ba/LinkCard',
@@ -86,9 +86,6 @@ External.parameters = {
   useState: {
     value: ogpValue,
   },
-  useAsyncArticlesSlug: {
-    data: {},
-  },
   useLazyFetch: {
     data: `
     <head>
@@ -100,12 +97,12 @@ External.parameters = {
   },
 };
 
-export const Related = Template.bind({});
-Related.args = {
+export const RelatedArticle = Template.bind({});
+RelatedArticle.args = {
   type: LINK_CARD_TYPE_MAP.RELATED,
   article: {
-    id: 123,
-    slug: 'storybook123',
+    _id: 123,
+    _path: 'articles/storybook123',
     title: 'タイトルを書きます：最大文字数は40文字程度を目安にするのは2行以内にはおさめたいから',
     description:
       'キャプションを書きます。だいたい120文字くらいを目安に3行でおさまるボリュームで。ここが長すぎると一覧の高さが合わなくなってしまいます。キャプションは実際の本文の冒頭から取ってくるので、リード文を意識して書きます。',
@@ -116,12 +113,40 @@ Related.args = {
     updatedAt: '2021-07-25T09:49:35.000Z',
   },
 };
-Related.parameters = {
+RelatedArticle.parameters = {
   useState: {
     value: ogpValue,
   },
   useAsyncArticlesSlug: {
     data: {},
+  },
+  useLazyFetch: {
+    data: '',
+  },
+};
+
+export const RelatedArticleSlug = Template.bind({});
+RelatedArticleSlug.args = {
+  type: LINK_CARD_TYPE_MAP.RELATED,
+  articleSlug: 'storybook123',
+};
+RelatedArticleSlug.parameters = {
+  useState: {
+    value: ogpValue,
+  },
+  useAsyncArticlesSlug: {
+    data: {
+      _id: 123,
+      _path: 'articles/storybook123',
+      title: 'タイトルを書きます：最大文字数は40文字程度を目安にするのは2行以内にはおさめたいから',
+      description:
+        'キャプションを書きます。だいたい120文字くらいを目安に3行でおさまるボリュームで。ここが長すぎると一覧の高さが合わなくなってしまいます。キャプションは実際の本文の冒頭から取ってくるので、リード文を意識して書きます。',
+      icon: 'tabler:calendar-event',
+      category: 'フロントエンド',
+      tags: ['フロントエンド', 'サーバレス'],
+      createdAt: '2017-05-06T18:36:20.000Z',
+      updatedAt: '2021-07-25T09:49:35.000Z',
+    },
   },
   useLazyFetch: {
     data: '',
@@ -136,9 +161,6 @@ Qiita.args = {
 Qiita.parameters = {
   useState: {
     value: ogpValue,
-  },
-  useAsyncArticlesSlug: {
-    data: {},
   },
   useLazyFetch: {
     data: `
@@ -164,10 +186,7 @@ Zenn.parameters = {
   useState: {
     value: ogpValue,
   },
-  useAsyncArticlesSlug: {
-    data: {},
-  },
-  useFetch: {
+  useLazyFetch: {
     data: `
     <head>
       <meta property="og:title" content="VSCodeが導くZenn執筆環境ボイラープレート">

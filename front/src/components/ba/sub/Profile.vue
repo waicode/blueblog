@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import { TEXT_SIZE } from '@/components/app/TextComposable';
+import { TEXT_SIZE } from '@/components/app/TextConst';
 import { isHalfWidthAlphanumericSymbols } from '@/utils/util';
 
 interface BaSubProfilePropType {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
+import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextConst';
 import usePaginate from '@/composables/usePaginate';
 
 interface PaginationPropType {

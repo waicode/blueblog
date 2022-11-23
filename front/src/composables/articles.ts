@@ -1,5 +1,4 @@
-import { Ref } from 'vue';
-import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
+import { ArticleParsedContent } from '@/components/ba/ArticleConst';
 
 /**
  * すべての記事データ一覧を取得
@@ -26,7 +25,7 @@ export const useAsyncPageSlug = async (slug: string) => {
   const queryResult = await useAsyncData(slug, () =>
     queryContent<ArticleParsedContent>(slug).where({ _draft: false }).findOne(),
   );
-  return queryResult.data as Ref<ArticleParsedContent>;
+  return queryResult.data;
 };
 
 /**
@@ -39,7 +38,7 @@ export const useAsyncArticlesSlug = async (slug: string) => {
   const queryResult = await useAsyncData(`articles/${slug}`, () =>
     queryContent<ArticleParsedContent>('articles', slug).where({ _draft: false }).findOne(),
   );
-  return queryResult.data as Ref<ArticleParsedContent>;
+  return queryResult.data;
 };
 
 /**

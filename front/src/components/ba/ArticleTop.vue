@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
-import { TEXT_SIZE } from '@/components/app/TextComposable';
-import { DATE_TEXT_TYPE_MAP } from '@/components/app/DateTextComposable';
+import { ArticleParsedContent } from '@/components/ba/ArticleConst';
+import { TEXT_SIZE } from '@/components/app/TextConst';
+import { DATE_TEXT_TYPE_MAP } from '@/components/app/DateTextConst';
 
 interface ArticleTopPropType {
   /**

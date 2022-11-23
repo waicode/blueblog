@@ -1,15 +1,17 @@
 import { ref } from 'vue';
 
-let queryResultData;
+let resultData;
 
 export async function useAsyncArticlesSlug(slug: string) {
-  if (queryResultData) return { data: ref(queryResultData) };
-  queryResultData = null;
+  if (resultData) {
+    return ref(resultData);
+  }
+  resultData = null;
 }
 
 export function useAsyncArticlesSlugDecorator(story, { parameters }) {
   if (parameters && parameters.useAsyncArticlesSlug) {
-    queryResultData = parameters.useAsyncArticlesSlug.data;
+    resultData = parameters.useAsyncArticlesSlug.data;
   }
   return story();
 }

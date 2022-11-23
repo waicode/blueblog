@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { getYear } from 'date-fns';
-import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
+import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextConst';
 import useId from '@/composables/useId';
 import useCss from '@/composables/useCss';
 import useWebFont, { FONT_TYPE_MAP, FontType, FONT_WEIGHT_MAP, FontWeightValueType } from '@/composables/useWebFont';

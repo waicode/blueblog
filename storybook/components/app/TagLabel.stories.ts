@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/vue3';
 import AppTagLabel from '@/components/app/TagLabel.vue';
-import { TEXT_SIZE } from '@/components/app/TextComposable';
+import { TEXT_SIZE } from '@/components/app/TextConst';
 import AppText from '@/components/app/Text.vue';
 
 export default {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TEXT_WEIGHT } from '@/components/app/TextComposable';
+import { TEXT_WEIGHT } from '@/components/app/TextConst';
 </script>
 
 <template>

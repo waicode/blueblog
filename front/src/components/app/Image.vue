@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { getFileName } from '@/utils/util';
-import { isAssetImageSrcPath } from '@/components/app/ImageComposable';
 
 interface ImagePropType {
   /**
@@ -31,6 +30,9 @@ interface ImagePropType {
    */
   height?: string | number;
 }
+
+// 文字列がassets配下の画像パスかどうかを判定
+const isAssetImageSrcPath = (str: string) => /^(article|item|link|shared)\/.*$/.test(str);
 
 const props = defineProps<ImagePropType>();
 

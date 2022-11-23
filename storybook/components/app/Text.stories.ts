@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/vue3';
 import AppText from '@/components/app/Text.vue';
-import { LETTER_SPACING, LINE_HEIGHT, TEXT_COLOR, TEXT_SIZE, TEXT_WEIGHT } from '@/components/app/TextComposable';
+import { LETTER_SPACING, LINE_HEIGHT, TEXT_COLOR, TEXT_SIZE, TEXT_WEIGHT } from '@/components/app/TextConst';
 
 export default {
   title: '@components/app/Text',

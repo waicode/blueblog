@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { Ref } from 'vue';
-import { DATE_TEXT_TYPE_MAP } from '@/components/app/DateTextComposable';
-import { LinkCardType, LINK_CARD_TYPE_MAP, useLinkCard } from '@/components/ba/LinkCardComposable';
-import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
-import useOgp from '@/composables/useOgp';
-import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
-import { bemx, getUrlFqdn } from '@/utils/util';
+import { DATE_TEXT_TYPE_MAP } from '@/components/app/DateTextConst';
+import { LinkCardType, LINK_CARD_TYPE_MAP } from '@/components/ba/LinkCardConst';
+import useLinkCard from '@/composables/components/ba/useLinkCard';
+
+import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextConst';
+import { ArticleParsedContent } from '@/components/ba/ArticleConst';
+import { bemx } from '@/utils/util';
 
 interface LinkCardPropType {
   /**
@@ -59,6 +59,7 @@ interface LinkCardPropType {
    * 記事情報
    *
    * 関連記事の場合に設定。
+   * `articleSlug`が渡されている場合は無視される。
    */
   article?: ArticleParsedContent;
 
@@ -67,53 +68,22 @@ interface LinkCardPropType {
    *
    * 関連記事で記事情報が渡せない場合に設定。
    * 記事情報を取得したうえで表示する。
-   * `article`が渡されている場合は無視される。
    */
   articleSlug?: string;
 }
 
 const props = defineProps<LinkCardPropType>();
 
-const linkDomain = ref('');
+const { type, articleSlug, article, title, description, link } = toRefs(props);
 
-switch (props.type) {
-  case LINK_CARD_TYPE_MAP.EXTERNAL:
-    linkDomain.value = props.link ? getUrlFqdn(props.link) : '';
-    break;
-  case LINK_CARD_TYPE_MAP.RELATED:
-    linkDomain.value = 'archt.blue';
-    break;
-  case LINK_CARD_TYPE_MAP.QIITA:
-    linkDomain.value = 'qiita.com';
-    break;
-  case LINK_CARD_TYPE_MAP.ZENN:
-    linkDomain.value = 'zenn.dev';
-    break;
-  default:
-}
-
-const { article, title, description, link } = toRefs(props);
-
-// 関連記事
-const relatedArticleData: Ref<ArticleParsedContent | undefined> = ref(undefined);
-if (props.type === LINK_CARD_TYPE_MAP.RELATED) {
-  if (!props.article && props.articleSlug) {
-    // 記事スラッグが渡された場合は記事データを取得
-    const { data } = useLinkCard(props.articleSlug);
-    relatedArticleData.value = data.value;
-  }
-}
-
-// OGPを設定
-const ogp = props.type !== LINK_CARD_TYPE_MAP.RELATED && props.link ? useOgp(props.link) : ref(undefined);
-
-const articleData = computed(() => relatedArticleData.value ?? article?.value);
-const linkPath = computed(() => relatedArticleData?.value?._path ?? link?.value);
-const linkTitle = computed(() => relatedArticleData?.value?.title ?? title?.value ?? ogp?.value?.title);
-const linkDescription = computed(
-  () => relatedArticleData?.value?.description ?? description?.value ?? ogp?.value?.description,
+const { articleData, linkDomain, linkPath, linkTitle, linkDescription, linkImage } = useLinkCard(
+  type,
+  articleSlug,
+  article,
+  link,
+  title,
+  description,
 );
-const linkImage = computed(() => ogp?.value?.imageUrl);
 
 const className = computed(() =>
   bemx('BaLinkCard', {

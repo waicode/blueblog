@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Ref } from 'vue';
 import { useArticlesState } from '@/composables/state';
-import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
+import { ArticleParsedContent } from '@/components/ba/ArticleConst';
 
 // TODO: Nuxt3に`scrollToTop: true`がないため暫定対応
 const nuxtApp = useNuxtApp();

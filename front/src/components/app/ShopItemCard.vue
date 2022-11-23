@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRuntimeConfig } from '#app';
-import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
+import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextConst';
 import {
   ShopItemCardType,
   EC_MALL_ASP_TYPE_MAP,
@@ -8,7 +8,7 @@ import {
   BookAspType,
   SHOP_ITEM_CARD_TYPE_MAP,
   BOOK_ASP_TYPE_MAP,
-} from '@/components/app/ShopItemCardComposable';
+} from '@/components/app/ShopItemCardConst';
 import { bemx } from '@/utils/util';
 
 interface ShopItemCardPropType {

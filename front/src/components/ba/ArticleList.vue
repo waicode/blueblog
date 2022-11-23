@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArticleParsedContent } from './ArticleComposable';
+import { ArticleParsedContent } from '@/components/ba/ArticleConst';
 
 interface ArticleTopPropType {
   /**

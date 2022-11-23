@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/vue3';
 import AppSupplement from '@/components/app/Supplement.vue';
-import { SUPPLEMENT_TYPE } from '@/components/app/SupplementComposable';
+import { SUPPLEMENT_TYPE } from '@/components/app/SupplementConst';
 
 export default {
   title: '@components/app/Supplement',

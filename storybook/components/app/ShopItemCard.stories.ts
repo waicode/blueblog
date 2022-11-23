@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/vue3';
 import AppShopItemCard from '@/components/app/ShopItemCard.vue';
-import { SHOP_ITEM_CARD_TYPE_MAP } from '@/components/app/ShopItemCardComposable';
+import { SHOP_ITEM_CARD_TYPE_MAP } from '@/components/app/ShopItemCardConst';
 
 export default {
   title: '@components/app/ShopItemCard',

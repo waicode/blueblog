@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArticleParsedContent } from '@/components/ba/ArticleComposable';
+import { ArticleParsedContent } from '@/components/ba/ArticleConst';
 import { useArticlesState } from '@/composables/state';
 const runtimeConfig = useRuntimeConfig();
 

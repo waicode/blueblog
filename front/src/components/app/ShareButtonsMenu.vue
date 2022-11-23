@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextComposable';
+import { TEXT_SIZE, TEXT_COLOR } from '@/components/app/TextConst';
 
 interface ShareButtonsPropType {
   pageUrl: string;

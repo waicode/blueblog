@@ -51,7 +51,7 @@ module.exports = {
 
     // Nuxtが用意している処理をモック化
     config.resolve.alias['#app'] = require.resolve('./__mocks__/nuxtMock.ts');
-    // composables/articlesをモック化
+    // LinkCardComposableをモック化
     config.resolve.alias['@/composables/articles'] = require.resolve('./__mocks__/articlesMock.ts');
 
     return mergeConfig(config, {

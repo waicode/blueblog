@@ -2,6 +2,10 @@ import '@/assets/styles/global.scss';
 import '@/assets/styles/reset.scss';
 
 import { app } from '@storybook/vue3';
+import { VueQueryPlugin } from '@tanstack/vue-query';
+
+// vue-queryの利用設定
+app.use(VueQueryPlugin);
 
 // Componentsのモック
 import NuxtLinkStub from './components/NuxtLinkStub.vue';

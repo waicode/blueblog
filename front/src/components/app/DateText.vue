@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import { DATE_TEXT_TYPE_MAP, DateTextType, DATE_SIZE_TYPE_MAP, DateSizeType } from './DateTextComposable';
-import { TEXT_SIZE } from '@/components/app/TextComposable';
+import { DATE_TEXT_TYPE_MAP, DateTextType, DATE_SIZE_TYPE_MAP, DateSizeType } from '@/components/app/DateTextConst';
+import { TEXT_SIZE } from '@/components/app/TextConst';
 import { bemx, formatDate } from '@/utils/util';
 
 interface DateTextPropType {

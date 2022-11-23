@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from '@storybook/vue3';
 import BaSubProfile from '@/components/ba/sub/Profile.vue';
 import AppText from '@/components/app/Text.vue';
-import { TEXT_SIZE } from '@/components/app/TextComposable';
+import { TEXT_SIZE } from '@/components/app/TextConst';
 
 export default {
   title: '@components/ba/sub/Profile',

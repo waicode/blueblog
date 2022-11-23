@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/vue3';
 import AppDateText from '@/components/app/DateText.vue';
-import { DATE_TEXT_TYPE_MAP, DATE_SIZE_TYPE_MAP } from '@/components/app/DateTextComposable';
+import { DATE_TEXT_TYPE_MAP, DATE_SIZE_TYPE_MAP } from '@/components/app/DateTextConst';
 
 export default {
   title: '@components/app/DateText',
