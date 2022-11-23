@@ -35,7 +35,7 @@ export default (
   }
 
   // 記事スラッグが渡された場合は記事データを取得
-  const { data: relatedArticleData } = useQuery(['useLinkCard'], async () => {
+  const { data: relatedArticleData } = useQuery([articleSlug?.value], async () => {
     if (type.value === LINK_CARD_TYPE_MAP.RELATED) {
       if (!article?.value && articleSlug?.value) {
         const queryResult = await useAsyncArticlesSlug(articleSlug.value as string);
