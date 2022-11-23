@@ -13,11 +13,11 @@ if (!articles.value) {
 // 1ページあたりの表示数
 const pageSize = runtimeConfig.public.pageSize;
 // ページネーションの初期表示
-const { targetArticles } = usePaginate<ArticleParsedContent>(articles.value, pageSize);
-const posts = ref(unref(targetArticles));
+const { targetArticles: initialPosts } = usePaginate<ArticleParsedContent>(articles, pageSize);
 // ページが切り替わったら表示対象の記事一覧に切り替える
+const updatedPosts = ref();
 const displayTargetPosts = (targetPosts: ArticleParsedContent[]) => {
-  posts.value = unref(targetPosts);
+  updatedPosts.value = unref(targetPosts);
 };
 
 useHead(useMetaDescription());
@@ -25,7 +25,7 @@ useHead(useMetaDescription());
 
 <template>
   <div class="BaPageTop">
-    <BaArticleList :articles="posts" class="BaPageTop__Articles" />
+    <BaArticleList :articles="updatedPosts ?? initialPosts" class="BaPageTop__Articles" />
     <div v-show="articles.length > pageSize">
       <AppPagination :articles="articles" :page-size="pageSize" @change-page="displayTargetPosts" />
     </div>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ComputedRef } from 'vue';
 import { ArticleParsedContent } from '@/components/ba/ArticleConst';
 import { useArchivesYyyyMmPage } from '@/composables/pages/archives/yyyy/mm';
 
@@ -9,21 +10,16 @@ const mm = route.params.mm as string;
 const monthStr = String(Number(mm)); // ゼロサプレス
 
 // 該当年月の記事を取得
-const { data: articles } = useArchivesYyyyMmPage(yyyy, mm);
-
-if (!articles.value) {
-  // 該当年月の記事がなければ404ページへ飛ばす
-  notFound();
-}
+const articles = useArchivesYyyyMmPage(yyyy, mm);
 
 // 1ページあたりの表示数
 const pageSize = runtimeConfig.public.pageSize;
 // ページネーションの初期表示
-const { targetArticles } = usePaginate<ArticleParsedContent>(unref(articles), pageSize);
-const posts = ref(unref(targetArticles));
+const { targetArticles: initialPosts } = usePaginate<ArticleParsedContent>(articles, pageSize);
 // ページが切り替わったら表示対象の記事一覧に切り替える
-const displayTargetPosts = (targetPosts: ArticleParsedContent[]) => {
-  posts.value = unref(targetPosts);
+const updatedPosts = ref();
+const displayTargetPosts = (targetPosts: ComputedRef<ArticleParsedContent[]>) => {
+  updatedPosts.value = unref(targetPosts);
 };
 
 useHead(
@@ -36,7 +32,7 @@ useHead(
 
 <template>
   <div class="BaPageTagsSlug">
-    <BaArticleList :articles="posts" class="BaPageTagsSlug__Articles" />
+    <BaArticleList :articles="updatedPosts ?? initialPosts" class="BaPageTagsSlug__Articles" />
     <div v-show="articles.length > pageSize">
       <AppPagination :articles="articles" :page-size="pageSize" @change-page="displayTargetPosts" />
     </div>

@@ -1,4 +1,4 @@
-import { Ref } from 'vue';
+import { ComputedRef } from 'vue';
 import { keyEnumObject, ValueTypeOf } from '@/utils/util';
 
 /**
@@ -32,33 +32,35 @@ export type DescriptionType = ValueTypeOf<typeof DESCRIPTION>;
  * @returns ページ毎に上書きする`useHead`の引数になるオブジェクト
  */
 export const useMetaDescription = (
-  title: Ref<string> | string = TITLE_DEFAULT,
-  description: Ref<string> | string = DESCRIPTION_MAP.siteConcept,
-  imageUrl: Ref<string> | string = '',
+  title: ComputedRef<string> | string = TITLE_DEFAULT,
+  description: ComputedRef<string> | string = DESCRIPTION_MAP.siteConcept,
+  imageUrl: ComputedRef<string> | string = '',
 ) => {
-  const meta: { [key: string]: string }[] = [
-    {
-      name: 'description',
-      content: unref(description),
-    },
-    { property: 'og:title', content: unref(title) },
-    {
-      name: 'og:description',
-      content: unref(description),
-    },
-    { property: 'twitter:title', content: unref(title) },
-    {
-      name: 'twitter:description',
-      content: unref(description),
-    },
-  ];
-
-  if (imageUrl) {
-    meta.push({ property: 'og:image', content: unref(imageUrl) });
-  }
+  const meta = computed(() => {
+    const list = [
+      {
+        name: 'description',
+        content: unref(description),
+      },
+      { property: 'og:title', content: unref(title) },
+      {
+        name: 'og:description',
+        content: unref(description),
+      },
+      { property: 'twitter:title', content: unref(title) },
+      {
+        name: 'twitter:description',
+        content: unref(description),
+      },
+    ];
+    if (imageUrl) {
+      list.push({ property: 'og:image', content: unref(imageUrl) });
+    }
+    return list;
+  });
 
   return {
-    title: unref(title),
+    title,
     meta,
   };
 };

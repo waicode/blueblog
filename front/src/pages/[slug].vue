@@ -1,16 +1,16 @@
 <script setup lang="ts">
+import { useSlugPage } from '@/composables/pages/slug';
+
 const route = useRoute();
 const slug = route.params.slug as string;
 
 // 記事を取得
-const article = await useAsyncPageSlug(slug);
+const article = useSlugPage(slug);
 
-if (!article.value) {
-  // 該当記事がなければ404ページへ飛ばす
-  notFound();
-}
+const title = computed(() => unref(article).title ?? '');
+const description = computed(() => unref(article).description);
 
-useHead(useMetaDescription(`${article.value.title} ⌇ ${TITLE_DEFAULT}`, article.value.description));
+useHead(useMetaDescription(title, description));
 </script>
 
 <template>
