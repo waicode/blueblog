@@ -60,6 +60,8 @@ const ogpValue = {
   emojiIcon: undefined,
 };
 
+const randamIdSample = 1;
+
 export const Primary = Template.bind({});
 Primary.args = {};
 Primary.parameters = {
@@ -115,7 +117,7 @@ RelatedArticle.args = {
 };
 RelatedArticle.parameters = {
   useState: {
-    value: ogpValue,
+    value: randamIdSample,
   },
   useAsyncArticlesSlug: {
     data: {},
@@ -132,7 +134,7 @@ RelatedArticleSlug.args = {
 };
 RelatedArticleSlug.parameters = {
   useState: {
-    value: ogpValue,
+    value: randamIdSample,
   },
   useAsyncArticlesSlug: {
     data: {
