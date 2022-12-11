@@ -1,3 +1,4 @@
+import process from 'process';
 import { VueQueryPlugin, VueQueryPluginOptions, QueryClient, dehydrate, hydrate } from '@tanstack/vue-query';
 
 export default defineNuxtPlugin((nuxtApp) => {

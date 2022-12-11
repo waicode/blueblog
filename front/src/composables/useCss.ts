@@ -1,3 +1,4 @@
+import process from 'process';
 import { ref, unref, computed, watch, onMounted, onUnmounted } from 'vue';
 
 /**

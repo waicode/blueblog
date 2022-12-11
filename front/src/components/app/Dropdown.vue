@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import process from 'process';
 import { Icon } from '@iconify/vue';
 import { TEXT_SIZE } from '@/components/app/TextConst';
 import { DropdownItem } from '@/components/app/DropdownConst';

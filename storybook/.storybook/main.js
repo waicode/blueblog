@@ -49,6 +49,8 @@ module.exports = {
       }),
     );
 
+    // NodeJSのprocessをモック化
+    config.resolve.alias['process'] = require.resolve('./__mocks__/processMock.ts');
     // Nuxtが用意している処理をモック化
     config.resolve.alias['#app'] = require.resolve('./__mocks__/nuxtMock.ts');
     // LinkCardComposableをモック化

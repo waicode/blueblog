@@ -7,9 +7,6 @@ import { VueQueryPlugin } from '@tanstack/vue-query';
 // vue-queryの利用設定
 app.use(VueQueryPlugin);
 
-// processを再現
-export const process = { client: true, server: false };
-
 // Componentsのモック
 import NuxtLinkStub from './components/NuxtLinkStub.vue';
 import ClientOnlyStub from './components/ClientOnlyStub.vue';
