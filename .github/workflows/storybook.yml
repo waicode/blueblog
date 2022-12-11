@@ -17,6 +17,12 @@ jobs:
           curl https://get.volta.sh | bash
           source ~/.bash_profile
 
+      - name: Prepare 🏗
+        run: |
+          yarn install
+          yarn run build
+        working-directory: ./front
+
       - name: Build storybook 🏗
         run: |
           yarn install
