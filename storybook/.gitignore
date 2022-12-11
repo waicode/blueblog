@@ -2,3 +2,4 @@
 .storybook/composables.d.ts
 .storybook/components.d.ts
 
+storybook-static
