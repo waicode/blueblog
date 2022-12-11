@@ -22,10 +22,10 @@ jobs:
           yarn install
           yarn run build
           yarn run build-storybook
-        working-directory: ./front
+        working-directory: ./storybook
 
       - name: Deploy pages 📄
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: gh-pages
-          folder: ./front/storybook-static
+          folder: ./storybook/storybook-static
